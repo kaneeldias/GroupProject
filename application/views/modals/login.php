@@ -1,6 +1,6 @@
 <div id="login_modal" class="modal">
 
-    <form class="modal-content animate" action="http://<?=base_url("login")?>" method="POST">
+    <form class="modal-content animate" action="<?=base_url("login")?>" method="POST">
         <div class="imgcontainer">
             <span onclick="document.getElementById('login_modal').style.display='none'" class="close" title="Close Modal">&times;</span>
             <img src="login.png" alt="Avatar" class="avatar">
@@ -14,11 +14,6 @@
             <input type="password" placeholder="Enter Password" name="password" required>
 
             <button type="submit">Login</button>
-
-        </div>
-
-        <div class="container" style="background-color:#f1f1f1">
-            <button type="button" onclick="document.getElementById('login_modal').style.display='none'" class="cancelbtn">Cancel</button>
 
         </div>
     </form>
@@ -45,14 +40,14 @@
         background-color: #fefefe;
         margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
         border: 1px solid #888;
-        width: 80%; /* Could be more or less, depending on screen size */
+        width:400px;/* Could be more or less, depending on screen size */
     }
 
     /* The Close Button (x) */
     .close {
         position: absolute;
-        right: 25px;
-        top: 0;
+        right:5px;
+        top: -30px;
         color: #000;
         font-size: 35px;
         font-weight: bold;
@@ -94,12 +89,15 @@
 
 <script>
     // Get the modal
-    var modal = document.getElementById('login_modal');
+    var modal = document.getElementsByClassName('modal');
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "none";
+        for (index = 0; index < modal.length; ++index) {
+            if (event.target == modal[index]) {
+                modal[index].style.display = "none";
+            }
         }
+
     }
 </script>

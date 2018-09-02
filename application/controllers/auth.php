@@ -5,37 +5,32 @@ class auth extends CI_Controller {
 
 	public function login()
 	{
-		if(isset($_POST['email'])){
-			//$this->load->view("templates/header");
-			$email = $_POST['email'];
-			$password = $_POST['password'];
-			//$email = "kaneeldias@gmail.com";
-			//$password = "abcd@123";
+		$email = $_POST['email'];
+		$password = $_POST['password'];
 
-			$this->load->database();
-			//$this->db->select("email");
-			$this->db->select("password");
-			$this->db->select("type");
-			$this->db->from("user");
-			$this->db->where("email", $email);
-			$query = $this->db->get();
+		$this->load->database();
+		//$this->db->select("email");
+		$this->db->select("password");
+		$this->db->select("type");
+		$this->db->from("user");
+		$this->db->where("email", $email);
+		$query = $this->db->get();
 
-			foreach($query->result() as $row){
-                if($row->password == $password){
-                    echo "success";
-                    return;
-                }
-                break;
-            }
-            echo "fail";
-			//$this->load->view("templates/footer");
-			return;
+		foreach($query->result() as $row){
+			if($row->password == $password){
+				$this->load->library('session');
+				$this->session->set_userdata('logged', true);
+				redirect(base_url()."?login=true", 'location');
+			}
+			break;
 		}
+		redirect(base_url()."?login=false", 'location');
+	}
 
-		$this->load->view("templates/header");
-		$this->load->view("auth/login");
-		$this->load->view("templates/footer");
-
+	public function logout(){
+		$this->load->library('session');
+		$this->session->sess_destroy();
+		redirect(base_url()."?logout=true", 'location');
 	}
 
 }
