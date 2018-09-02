@@ -14,6 +14,7 @@
 
 <script>
     function show_alert(title){
+        console.log("hello");
         document.getElementById("alert_title").innerHTML = title;
         document.getElementById('alert_modal').style.display='block'
     }

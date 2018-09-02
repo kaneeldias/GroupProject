@@ -9,7 +9,6 @@ class auth extends CI_Controller {
 		$password = $_POST['password'];
 
 		$this->load->database();
-		//$this->db->select("email");
 		$this->db->select("password");
 		$this->db->select("type");
 		$this->db->from("user");
