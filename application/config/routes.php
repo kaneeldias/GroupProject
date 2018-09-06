@@ -55,3 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
 $route['logout'] = 'auth/logout';
 $route['add-lecture-hall'] = 'LectureHall/add';
+$route['add-lecturer'] = 'lecturer/add';
