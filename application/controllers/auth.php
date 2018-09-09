@@ -30,7 +30,7 @@ class auth extends CI_Controller {
 			}
 			break;
 		}
-		redirect(base_url()."?login=false", 'location');
+		redirect(base_url("log-in")."?login=false", 'location');
 	}
 
 	public function logout(){
