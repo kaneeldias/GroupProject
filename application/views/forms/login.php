@@ -4,16 +4,16 @@
         <div class="form_title">Log In</div>
 
 
-        <form class="form_content">
+        <form class="form_content" method="POST" action="<?=base_url("login")?>">
 
             <div class="form_item">
                 <span class="form_label">Email</span>
-                <input  class="form_input" type="email" placeholder="Email"/>
+                <input  class="form_input" type="email" placeholder="Email" name="email"/>
             </div>
 
             <div class="form_item">
                 <span class="form_label">Password</span>
-                <input  class="form_input" type="password" placeholder="Password"/>
+                <input  class="form_input" type="password" placeholder="Password" name="password"/>
             </div>
 
             <div class="form_item">
