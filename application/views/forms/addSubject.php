@@ -14,14 +14,18 @@
     <label>Subject Name</label>
     <input name="subjectName">
     </br>
+    </br>
     <label>Degree</label>
     <input name="degree">
+    </br>
     </br>
     <label>Year</label>
     <input name="year">
     </br>
+    </br>
     <label>Semester</label>
     <input name="semester">
+    </br>
     </br>
 
 
