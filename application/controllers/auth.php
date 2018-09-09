@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class auth extends CI_Controller {
 
+	public function log_in(){
+		$this->load->library('session');
+		$this->load->view("templates/header");
+		$this->load->view("forms/login");
+		$this->load->view("templates/footer");
+	}
+
 	public function login()
 	{
 		$email = $_POST['email'];
