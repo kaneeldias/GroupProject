@@ -2,7 +2,6 @@
 <div class="row">
       <div class="col-md-8">
           <form>
-
               <div class="control-group">
                   <div class="form-group floating-label-form-group controls mb-0 pb-2">
                       <label>Lecture Hall ID</label>
@@ -14,7 +13,6 @@
               <div class="form-group col-md-2">
                   <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Send</button>
               </div>
-
           </form>
       </div>
 </div>
