@@ -6,7 +6,6 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/form_styles.css")?>"
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/freelancer.css")?>"
 
     <script type="text/javascript" src="<?=base_url("assets/js/modal_script.js")?>"></script>
 
@@ -19,6 +18,10 @@
 
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
 </head>
 
 <body>
@@ -65,11 +68,10 @@
             <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged')): ?>
                 <span><a href="<?=base_url("auth/logout")?>">Log out</a></span>
             <?php else : ?>
-                <span onclick="document.getElementById('login_modal').style.display='block'">Login</span>
+                <span><a href="<?=base_url("log-in")?>">Login</a></span>
             <?php endif ?>
         </div>
     </div>
-
 
 
     <div id="content" style="margin-top:100px;">

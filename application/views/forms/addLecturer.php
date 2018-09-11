@@ -1,26 +1,31 @@
+<div class="row">
+    <div class="col-md-8 col-md-offset-2 form_container">
 
-    <form>
-        <label>Lecturer ID</label>
-        <input class="form-control" id="lecturerId" type="text" placeholder="Lecturer Id" required="required" data-validation-required-message="Please enter your name.">
-        <p class="help-block text-danger"></p>
+        <div class="form_title">Add Lecturer</div>
 
-        <label>Name</label>
-        <input class="form-control" id="name" type="text" placeholder="Name" required="required" data-validation-required-message="Please enter your name.">
-        <p class="help-block text-danger"></p>
 
-        <label>Email</label>
-        <input class="form-control" id="email" type="text" placeholder="Enter email" required="required" data-validation-required-message="Please enter your name.">
-        <p class="help-block text-danger"></p>
+        <form class="form_content">
 
-        <label>Password</label>
-        <input class="form-control" id="password" type="text" placeholder="Password" required="required" data-validation-required-message="Please enter your name.">
-        <p class="help-block text-danger"></p>
+            <div class="form_item col-md-3">
+                <span class="form_label">Lecturer ID</span>
+                <input class="form_input" type="text" placeholder="ID"/>
+            </div>
 
-        <label>Repeat Password</label>
-        <input class="form-control" id="repeatPassword" type="text" placeholder="Repeat Password" required="required" data-validation-required-message="Please enter your name.">
-        <p class="help-block text-danger"></p>
+            <div class="form_item col-md-6">
+                <span class="form_label">Name</span>
+                <input  class="form_input" type="text" placeholder="Name"/>
+            </div>
 
-        <div class="form-group col-md-2">
-            <button type="submit" class="btn btn-primary btn-xl" id="sendMessageButton">Submit</button>
-        </div>
-    </form>
+            <div class="form_item col-md-3">
+                <span class="form_label">Shortform</span>
+                <input  class="form_input" type="text" placeholder="Shortform"/>
+            </div>
+
+
+            <div class="form_item col-md-3">
+                <button type="submit">Submit</button>
+            </div>
+
+        </form>
+    </div>
+</div>
