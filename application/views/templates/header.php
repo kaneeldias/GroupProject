@@ -7,7 +7,8 @@
 
     <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/form_styles.css")?>"
 
-    <script type="text/javascript" src="<?=base_url("assets/js/modal_script.js")?>"></script>
+    <!--<script type="text/javascript" src="<?=base_url("assets/js/modal_script.js")?>"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
     <!-- Latest compiled and minified CSS -->
@@ -19,7 +20,6 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
 
 </head>
@@ -32,7 +32,7 @@
     }
 </style>
 
-    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/modal_styles.css")?>">
+    <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/custom_modal_styles.css")?>">
 
 
     <?php
