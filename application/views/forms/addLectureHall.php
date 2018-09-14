@@ -3,7 +3,6 @@
 
           <div class="form_title">Add Lecture Hall</div>
 
-
           <form class="form_content" method="POST" action="<?=base_url("add-lecture-hall/process")?>">
 
               <div class="col-md-12 filler">
@@ -39,7 +38,6 @@
               <div class="form_item col-md-3">
                   <button type="submit">Submit</button>
               </div>
-
           </form>
       </div>
 </div>
