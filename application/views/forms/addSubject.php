@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-md-6 col-md-offset-3 form_container">
+    <div class="col-md-6 mx-auto form_container">
 
         <div class="form_title">Add Subject</div>
 
 
-        <form class="form_content">
+        <form class="column form_content">
 
-            <div class="col-md-12 filler">
+            <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Subject Code</span>
                     <input  class="form_input" type="text" placeholder="Code"/>
@@ -20,7 +20,7 @@
 
 
 
-            <div class="col-md-12 filler">
+            <div class="row col-md-12">
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Degree</span>

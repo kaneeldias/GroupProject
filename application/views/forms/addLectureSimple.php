@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-10 col-md-offset-1 form_container">
+    <div class="col-md-10 mx-auto form_container">
 
         <div class="form_title">
             <div>Add Lecture</div>
@@ -7,9 +7,9 @@
         </div>
 
 
-        <form class="form_content">
+        <form class="column form_content">
 
-            <div class="col-md-12 filler">
+            <div class="row col-md-12">
                 <div class="form_item col-md-6">
                     <span class="form_label">Subject</span>
                     <select class="form_input">
@@ -19,7 +19,7 @@
                     </select>
                 </div>
 
-                <div class="form_item col-md-4">
+                <div class="form_item col-md-6">
                     <span class="form_label">Type</span>
                     <select class="form_input">
                         <option value="" disabled selected>Type</option>
@@ -31,7 +31,7 @@
                 </div>
             </div>
 
-            <div class="col-md-12 filler">
+            <div class="row col-md-12">
 
                 <div class="form_item col-md-4">
                     <span class="form_label" style="margin-bottom:0px;">Student Group</span>
@@ -54,7 +54,7 @@
 
             <link href="<?=base_url("assets/libraries/lou-multi-select/css/multi-select.css")?>" media="screen" rel="stylesheet" type="text/css">
 
-            <div class="col-md-12 filler">
+            <div class="row col-md-12">
                 <div class="form_item col-md-4">
                 <span class="form_label">Staff<span>
                 <select multiple="multiple" id="my-select" name="staff[]">

@@ -1,11 +1,11 @@
 <div class="row">
-      <div class="col-md-6 col-md-offset-3 form_container">
+      <div class="col-md-6 mx-auto form_container">
 
           <div class="form_title">Add Lecture Hall</div>
 
-          <form class="form_content" method="POST" action="<?=base_url("add-lecture-hall/process")?>">
+          <form class="column form_content" method="POST" action="<?=base_url("add-lecture-hall/process")?>">
 
-              <div class="col-md-12 filler">
+              <div class="row col-md-12">
                   <div class="form_item col-md-4">
                       <span class="form_label">Hall Code</span>
                       <input class="form_input" type="text" placeholder="Code" name="code"/>
@@ -17,7 +17,7 @@
                   </div class="form_item">
               </div>
 
-                <div class="com-md-12 filler">
+                <div class="row col-md-12">
                     <div class="form_item col-md-6">
                         <span class="form_label">Hall Type</span>
                         <select class="form_input" name="type">
@@ -33,11 +33,11 @@
                         <input class="form_input" type="number" placeholder="Capacity" name="capacity"/>
                     </div>
                 </div>
-
-
-              <div class="form_item col-md-3">
+              <div class="form_item col-md-2">
                   <button type="submit">Submit</button>
               </div>
+
+
           </form>
       </div>
 </div>
