@@ -60,13 +60,10 @@ $route['add-lecture-hall'] = 'LectureHall/add';
 $route['add-lecture-hall/process'] = 'LectureHall/process_add';
 
 $route['add-lecturer'] = 'lecturer/add';
-<<<<<<< HEAD
 $route['add-lecturer/process'] = 'lecturer/process_add';
 
 
 $route['time-table'] = 'TimeTableController/index';
-=======
 $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
 $route['signup'] = 'SignUp/submit';
->>>>>>> 1354d844fc87573e0bd12a4572e228ea50e6227f
