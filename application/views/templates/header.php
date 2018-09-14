@@ -35,26 +35,10 @@
     <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/custom_modal_styles.css")?>">
 
 
-    <?php
-        $this->view('modals/login');
-        $this->view('modals/alert');
-    ?>
-
-
-
     <script>
 
-        <?php if(isset($_GET['login']) && $_GET['login'] == "true"): ?>
-            show_alert("You have successfully logged in.");
-        <?php endif?>
-
         <?php if(isset($_GET['login']) && $_GET['login'] == "false"): ?>
-        console.log("lol");
-        show_alert("Incorrect email and/or password.");
-        <?php endif?>
-
-        <?php if(isset($_GET['logout']) && $_GET['logout'] == "true"): ?>
-        show_alert("You have successfully logged out.");
+            show_alert("Incorrect email and/or password.");
         <?php endif?>
 
     </script>

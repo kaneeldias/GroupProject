@@ -87,3 +87,14 @@
     padding-left:0px !important;
     padding-right:0px !important;
 }
+
+.form_info_box{
+    padding:20px;
+    border-radius:3px;
+    text-align:center;
+}
+
+.form_info_box .form_info{
+    font-size:18px;
+    color:black;
+}

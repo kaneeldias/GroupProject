@@ -3,22 +3,21 @@
 
         <div class="form_title">Add Lecturer</div>
 
-
-        <form class="form_content">
+        <form class="form_content" method="POST" action="<?=base_url("add-lecturer/process")?>">
 
             <div class="form_item col-md-3">
                 <span class="form_label">Lecturer ID</span>
-                <input class="form_input" type="text" placeholder="ID"/>
+                <input class="form_input" type="text" placeholder="ID" name="id"/>
             </div>
 
             <div class="form_item col-md-6">
                 <span class="form_label">Name</span>
-                <input  class="form_input" type="text" placeholder="Name"/>
+                <input  class="form_input" type="text" placeholder="Name" name="name"/>
             </div>
 
             <div class="form_item col-md-3">
                 <span class="form_label">Shortform</span>
-                <input  class="form_input" type="text" placeholder="Shortform"/>
+                <input class="form_input" type="text" placeholder="Shortform" name="shortform"/>
             </div>
 
 
