@@ -58,6 +58,9 @@ $route['logout'] = 'auth/logout';
 $route['add-subject'] = 'Subject/add';
 $route['add-lecture-hall'] = 'LectureHall/add';
 $route['add-lecture-hall/process'] = 'LectureHall/process_add';
+
 $route['add-lecturer'] = 'lecturer/add';
-$route['add-lecture'] = 'lecture/add';
-$route['add-student-group'] = 'studentGroup/add';
+$route['add-lecturer/process'] = 'lecturer/process_add';
+
+
+$route['time-table'] = 'TimeTableController/index';
