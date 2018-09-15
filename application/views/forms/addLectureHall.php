@@ -8,12 +8,12 @@
               <div class="col-md-12 filler">
                   <div class="form_item col-md-4">
                       <span class="form_label">Hall ID</span>
-                      <input class="form_input" type="text" placeholder="ID"/>
+                      <input class="form_input" type="text" placeholder="ID" name="code"/>
                   </div>
 
                   <div class="form_item col-md-8">
                       <span class="form_label">Hall Name</span>
-                      <input  class="form_input" type="text" placeholder="Name"/>
+                      <input  class="form_input" type="text" placeholder="Name" name="name"/>
                   </div class="form_item">
               </div>
 
