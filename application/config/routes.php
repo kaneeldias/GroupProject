@@ -53,9 +53,19 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
+$route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
 $route['add-subject'] = 'Subject/add';
 $route['add-subject/process'] = 'Subject/process_add';
 
 $route['add-lecture-hall'] = 'LectureHall/add';
+$route['add-lecture-hall/process'] = 'LectureHall/process_add';
+
 $route['add-lecturer'] = 'lecturer/add';
+$route['add-lecturer/process'] = 'lecturer/process_add';
+
+
+$route['time-table'] = 'TimeTableController/index';
+$route['add-lecture'] = 'lecture/add';
+$route['add-student-group'] = 'studentGroup/add';
+$route['signup'] = 'SignUp/submit';
