@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-md-10 col-md-offset-1 form_container">
+    <div class="column col-md-10 mx-auto form_container">
 
         <div class="form_title">Add Lecture</div>
 
