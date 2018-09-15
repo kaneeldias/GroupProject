@@ -67,3 +67,5 @@ $route['time-table'] = 'TimeTableController/index';
 $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
 $route['signup'] = 'SignUp/submit';
+
+$route['lecture/process'] = 'Lecture/process';
