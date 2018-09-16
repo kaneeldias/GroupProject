@@ -10,7 +10,7 @@ class LectureHall extends CI_Controller {
 		$this->load->view("forms/addLectureHall");
 		$this->load->view("templates/footer");
 	}
-    public function process_add(){
+    public function InsertLectureHall(){
         try{
             $code = $_POST['code'];
             $name = $_POST['name'];
@@ -24,10 +24,10 @@ class LectureHall extends CI_Controller {
             $this->db->set("capacity",$capacity);
             $this->db->insert("lecture_hall");
 
-            redirect(base_url("signUp")."?success=true",'location');
+            redirect(base_url("add-lecture-hall")."?success=true",'location');
 
         }catch(Exeption $e){
-            redirect(base_url("signUp")."?error=true",'location');
+            redirect(base_url("add-lecture-hall")."?error=true",'location');
         }
     }
 

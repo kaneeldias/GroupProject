@@ -19,8 +19,8 @@ class SignUp extends CI_Controller {
             $password = $_POST['password'];
 
             $this->load->database();
-            $this->db->set("",$fname);
-            $this->db->set("",$lname);
+            $this->db->set("fname",$fname);
+            $this->db->set("lname",$lname);
             $this->db->set("email",$email);
             $this->db->set("password",$password);
             $this->db->insert("user");

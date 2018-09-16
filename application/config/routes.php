@@ -60,6 +60,7 @@ $route['add-lecture-hall'] = 'LectureHall/add';
 $route['add-lecturer'] = 'lecturer/add';
 $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
-$route['signup'] = 'SignUp/submit';
+$route['signUp'] = 'SignUp/submit';
 $route['process_add'] = 'SignUp/process_add';
+$route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
 
