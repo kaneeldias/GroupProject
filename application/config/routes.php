@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
 $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
+
 $route['add-subject'] = 'Subject/add';
 $route['add-subject/process'] = 'Subject/process_add';
 
@@ -70,6 +71,10 @@ $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
 $route['process_add'] = 'SignUp/process_add';
 $route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
-$route['signup'] = 'SignUp/submit';
+
+$route['signup'] = 'SignUp/index';
+$route['signup/process'] = 'SignUp/process_add';
 
 $route['lecture/process'] = 'Lecture/process';
+
+$route['dashboard'] = 'Dashboard/index';

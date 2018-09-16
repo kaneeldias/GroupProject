@@ -48,4 +48,21 @@ class Degree_model extends CI_Model{
 
        return $degree;
    }
+
+   public function getAllDegrees(){
+       $degrees = [];
+       $this->load->database();
+       $this->db->select("name");
+       $this->db->select("degree_id");
+       $this->db->from("degree");
+       $query = $this->db->get();
+
+       foreach($query->result() as $row){
+           $degree = new Degree_model();
+           $degree->setId($row->degree_id);
+           $degree->setName($row->name);
+           array_push($degrees, $degree);
+       }
+       return $degrees;
+   }
 }
