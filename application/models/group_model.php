@@ -39,6 +39,24 @@ class Group_model extends CI_Model{
         return $group;
     }
 
+    public function getAllGroups(){
+        $groups = [];
+        $this->load->database();
+        $this->db->select("name");
+        $this->db->select("group_id");
+        $this->db->from("student_group");
+        $query = $this->db->get();
+
+        foreach($query->result() as $row){
+            $group = new Group_model();
+            $group->setName($row->name);
+            $group->setGroupId($row->group_id);
+            array_push($groups, $group);
+        }
+
+        return $groups;
+    }
+
     /**
      * @return mixed
      */
