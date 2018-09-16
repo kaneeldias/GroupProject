@@ -9,11 +9,11 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-6">
                     <span class="form_label">Degree</span>
-                    <select class="form_input">
-                        <option value="" disabled selected>Degree</option>
-                        <option value="lecture_hall">BSc Computer Science</option>
-                        <option value="lab">BSc Software Engineering</option>
-                        <option value="other">BSc Information Systems</option>
+                    <select class="form_input" name="degree">
+                        <option selected disabled>Degree</option>
+                        <?php foreach($degrees as $degree): ?>
+                            <option value="<?=$degree->getId()?>"><?=$degree->getName()?></option>
+                        <?php endforeach?>
                     </select>
                 </div>
 
@@ -21,10 +21,10 @@
                     <span class="form_label">Year</span>
                     <select class="form_input">
                         <option value="" disabled selected>Year</option>
-                        <option value="lecture_hall">1st Year</option>
-                        <option value="lecture_hall">2nd Year</option>
-                        <option value="lecture_hall">3rd Year</option>
-                        <option value="lecture_hall">4th Year</option>
+                        <option value="1">1st Year</option>
+                        <option value="2">2nd Year</option>
+                        <option value="3">3rd Year</option>
+                        <option value="4">4th Year</option>
                     </select>
                 </div>
             </div>
@@ -36,17 +36,14 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Parent Group</span>
                     <select class="form_input">
-                        <option value="lecture_hall" selected>None</option>
-                        <option value="lecture_hall">CS Year 1 Group 1</option>
-                        <option value="lecture_hall">CS Year 1 Group 2</option>
+                        <option value="lecture_hall" disabled selected>None</option>
+                        <?php foreach($groups as $group): ?>
+                            <option value="<?=$group->getGroupId()?>"><?=$group->getName()?></option>
+                        <?php endforeach?>
                     </select>
                 </div>
 
-            </div>
-
-            <div class="row col-md-12">
-
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-8">
                     <span class="form_label">Group Name</span>
                     <input  class="form_input" type="text" placeholder="Group Name"/>
 

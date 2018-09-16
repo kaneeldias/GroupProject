@@ -13,7 +13,7 @@
         </tr>
         <?php for($i = 8; $i <=17; $i++): ?>
             <tr>
-                <td><?= $i." to ".($i+1) ?></td>
+                <td><?= $i.":00 - ".($i+1).":00" ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
                         <?php if(isset($lectures[$j][$i])): ?>
@@ -41,6 +41,7 @@
             background-color:#2e3131;
             cursor:pointer;
             transition:all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
 
         .fab:hover{
@@ -63,10 +64,14 @@
 </div>
 
 <style>
+    .time_table_container{
+        margin:20px;
+    }
+
     .time_table td{
         padding:5px;
         border-style:solid;
-        border-color:black;
+        border-color:#555555;
         border-width:1px;
         width:900px;
         height:60px;
@@ -76,6 +81,8 @@
     .time_table .header td{
         font-weight:bold;
         font-size:18px;
+        background-color:#22313f;
+        color:white;
     }
 
     .time_table .selectable{
