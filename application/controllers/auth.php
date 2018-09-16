@@ -26,7 +26,7 @@ class auth extends CI_Controller {
 			if($row->password == $password){
 				$this->load->library('session');
 				$this->session->set_userdata('logged', true);
-				redirect(base_url()."?login=true", 'location');
+				redirect(base_url(), 'location');
 			}
 			break;
 		}
@@ -36,7 +36,7 @@ class auth extends CI_Controller {
 	public function logout(){
 		$this->load->library('session');
 		$this->session->sess_destroy();
-		redirect(base_url()."?logout=true", 'location');
+		redirect(base_url(), 'location');
 	}
 
 }

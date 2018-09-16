@@ -56,11 +56,20 @@ $route['login'] = 'auth/login';
 $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
 $route['add-subject'] = 'Subject/add';
+$route['add-subject/process'] = 'Subject/process_add';
+
 $route['add-lecture-hall'] = 'LectureHall/add';
+$route['add-lecture-hall/process'] = 'LectureHall/process_add';
+
 $route['add-lecturer'] = 'lecturer/add';
+$route['add-lecturer/process'] = 'lecturer/process_add';
+
+
+$route['time-table'] = 'TimeTableController/index';
 $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
-$route['signUp'] = 'SignUp/submit';
 $route['process_add'] = 'SignUp/process_add';
 $route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
+$route['signup'] = 'SignUp/submit';
 
+$route['lecture/process'] = 'Lecture/process';
