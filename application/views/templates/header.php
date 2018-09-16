@@ -25,22 +25,17 @@
 <body>
 
 <style>
+    html,body{
+        overflow:auto;
+        height:100%;
+    }
+
     body{
         font-family: 'Roboto', sans-serif;
     }
 </style>
 
     <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/custom_modal_styles.css")?>">
-
-
-    <script>
-
-        <?php if(isset($_GET['login']) && $_GET['login'] == "false"): ?>
-            show_alert("Incorrect email and/or password.");
-        <?php endif?>
-
-    </script>
-
 
     <div id="header" class="row align-middle" style="width:100%; margin:0px;">
         <div class="flex-row col-md-12" style="display:flex; align-items:center;">
@@ -77,9 +72,8 @@
             </div>
             <div>
                 <div id="header_links">
-                    <span><a href="<?=base_url("signup")?>">Sign Up</a></span>
-
                     <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged')): ?>
+                        <span><a href="<?=base_url("Dashboard")?>">Dashboard</a></span>
                         <span><a href="<?=base_url("auth/logout")?>">Log out</a></span>
                     <?php else : ?>
                         <span><a href="<?=base_url("log-in")?>">Login</a></span>
@@ -91,4 +85,4 @@
     </div>
 
 
-    <div id="content" style="margin-top:100px;">
+    <div class="column-flex h-100" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%;">

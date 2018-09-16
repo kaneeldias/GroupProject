@@ -26,16 +26,20 @@
     color:#22313f;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
+    text-align:center;
 }
 
 .modal-title{
     font-size:30px;
     font-weight:bold;
     text-transform:uppercase;
+    text-align:center;
+    width:100%;
 }
 
 .modal-body{
     font-size:18px;
+    text-align:center;
 }
 
 .modal-footer{

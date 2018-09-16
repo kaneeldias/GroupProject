@@ -2,7 +2,7 @@
 
     <h2 style="margin-bottom:20px;">Viewing Time Table for <?php if(isset($group)) echo $group->getName()?> Semester <?php if(isset($semester)) echo $semester?></h2>
 
-    <table class="time_table col-md-10 mx-auto">
+    <table class="time_table col-md-12 mx-auto">
         <tr class="header">
             <td>Time</td>
             <td>Monday</td>
@@ -16,11 +16,10 @@
                 <td><?= $i." to ".($i+1) ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
-                        <?php
-                            if(isset($lectures[$j][$i])){
-                               echo $lectures[$j][$i]["subject"]->getName();
-                            }
-                        ?>
+                        <?php if(isset($lectures[$j][$i])): ?>
+                            <div><?=$lectures[$j][$i]["subject"]->getCode()?></div>
+                            <div style="font-size:12px;"><?=$lectures[$j][$i]["subject"]->getName()?></div>
+                        <?php endif ?>
                     </td>
                 <?php endfor?>
             </tr>
@@ -65,12 +64,12 @@
 
 <style>
     .time_table td{
-        padding:10px;
+        padding:5px;
         border-style:solid;
         border-color:black;
         border-width:1px;
-        width:200px;
-        height:45px;
+        width:900px;
+        height:60px;
         text-align:center;
     }
 

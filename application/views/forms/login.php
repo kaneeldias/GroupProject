@@ -29,3 +29,29 @@
 <script>
     $('#my-select').multiSelect();
 </script>
+
+<?php if(isset($_GET['login']) && $_GET['login'] == "false"):?>
+    <div id="errorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Incorrect username and/or password. Please try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $('#errorModal').modal('show');
+    </script>
+<?php endif ?>
+

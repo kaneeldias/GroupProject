@@ -12,17 +12,24 @@ class lecturer extends CI_Controller {
     }
 
 	public function process_add(){
-		$id = $_POST['id'];
-		$name = $_POST['name'];
-		$shortform = $_POST['shortform'];
+		try {
+			$id = $_POST['id'];
+			$name = $_POST['name'];
+			$shortform = $_POST['shortform'];
 
-		//validation
+			//validation
 
-		$this->load->database();
-		$this->db->set("id", $id);
-		$this->db->set("name", $name);
-		$this->db->set("short_name", $shortform);
-		$this->db->insert("academic_staff");
+			$this->load->database();
+			$this->db->set("id", $id);
+			$this->db->set("name", $name);
+			$this->db->set("short_name", $shortform);
+			$this->db->insert("academic_staff");
+
+			redirect(base_url("add-lecturer") . "?success=true", 'location');
+		}
+		catch(Exception $e){
+			redirect(base_url("add-lecturer")."?error=true", 'location');
+		}
 	}
 
 }
