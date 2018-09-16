@@ -85,4 +85,4 @@
     </div>
 
 
-    <div class="column-flex h-100" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%;">
+    <div class="column" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
