@@ -1,58 +1,103 @@
-body {font-family: Arial, Helvetica, sans-serif;}
-
-/* Full-width input fields */
-input[type=text], input[type=password] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
+.form_container{
+    margin:10px;
+    padding:0px !important;
+    background-color:#f2f1ef;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    border-radius:5px;
 }
 
-/* Set a style for all buttons */
-button {
-    background-color: #6C7A89;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 100%;
+.form_container .form_title{
+    font-size:30px;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:30px;
+    padding:10px;
+    text-align:center;
+    color:white;
+    background-color: #32485c;
+    border-top-left-radius:3px;
+    border-top-right-radius:3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
-button:hover {
-    opacity: 0.8;
+.form_container .form_content{
+    margin:10px;
 }
 
-/* Extra styles for the cancel button */
-.cancelbtn {
-    width: auto;
-    padding: 10px 18px;
-    background-color: #f44336;
+.form_container .form_item{
+    margin-bottom:30px;
+    margin-top:10px;
 }
 
-/* Center the image and position the close button */
-.imgcontainer {
-    text-align: center;
-    margin: 24px 0 12px 0;
-    position: relative;
+.form_container .form_item .form_label{
+    display:block;
+    margin-bottom:5px;
+    color: #777b77;
+    margin-left:5px;
 }
 
-img.avatar {
-    width: 20%;
-    border-radius: 0%;
-}
-img.ucsc {
-    width: 100%;
-    border-radius: 0%;
+.form_container .form_item .form_input{
+    width:100%;
+    outline:none;
+    border-width:1px;
+    border-style:solid;
+    border-color:#d2d7d3;
+    padding:10px;
+    transition:all 0.2s;
+    opacity:0.7;
+    border-radius:3px;
 }
 
-.container {
-    padding: 16px;
+.form_container .form_item .form_input:hover{
+    opacity:1;
 }
 
-span.psw {
-    float: right;
-    padding-top: 16px;
+.form_container .form_item .form_input:focus {
+    border-width:1px;
+    border-style:solid;
+    border-color: #6d706d;
+    opacity:1;
+}
+
+
+
+.form_item button{
+    background-color:#22313f;
+    border:none;
+    color:white;
+    padding:10px;
+    font-size:20px;
+    border-radius:3px;
+    transition:all 0.2s;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+.form_item button:hover {
+    background-color: #385065;
+}
+
+.select-items {
+    position: absolute;
+    background-color: DodgerBlue;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+.form_container .filler{
+    padding-left:0px !important;
+    padding-right:0px !important;
+}
+
+.form_info_box{
+    padding:20px;
+    border-radius:3px;
+    text-align:center;
+}
+
+.form_info_box .form_info{
+    font-size:18px;
+    color:black;
 }

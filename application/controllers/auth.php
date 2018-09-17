@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class auth extends CI_Controller {
 
+	public function log_in(){
+		$this->load->library('session');
+		$this->load->view("templates/header");
+		$this->load->view("forms/login");
+		$this->load->view("templates/footer");
+	}
+
 	public function login()
 	{
 		$email = $_POST['email'];
@@ -19,17 +26,17 @@ class auth extends CI_Controller {
 			if($row->password == $password){
 				$this->load->library('session');
 				$this->session->set_userdata('logged', true);
-				redirect(base_url()."?login=true", 'location');
+				redirect(base_url("Dashboard"), 'location');
 			}
 			break;
 		}
-		redirect(base_url()."?login=false", 'location');
+		redirect(base_url("log-in")."?login=false", 'location');
 	}
 
 	public function logout(){
 		$this->load->library('session');
 		$this->session->sess_destroy();
-		redirect(base_url()."?logout=true", 'location');
+		redirect(base_url(), 'location');
 	}
 
 }
