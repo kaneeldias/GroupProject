@@ -40,6 +40,20 @@ class Venue_model extends CI_Model{
         return $halls;
     }
 
+    public function getVenueById($id){
+        $this->load->database();
+        $this->db->select("name");
+        $this->db->from("lecture_hall");
+        $this->db->where("hall_id", $id);
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $venue = new Venue_model();
+            $venue->setName($row->name);
+            return $venue;
+        }
+    }
+
     /**
      * @return mixed
      */
