@@ -56,6 +56,7 @@ $route['login'] = 'auth/login';
 $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
 
+$route['subjects'] = 'Subject/index';
 $route['add-subject'] = 'Subject/add';
 $route['add-subject/process'] = 'Subject/process_add';
 

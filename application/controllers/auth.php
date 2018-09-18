@@ -10,27 +10,34 @@ class auth extends CI_Controller {
 		$this->load->view("templates/footer");
 	}
 
-	public function login()
-	{
-		$email = $_POST['email'];
-		$password = $_POST['password'];
+	public function login(){
+		try{
+			if(!isset($_POST['email']) || !isset($_POST['password'])) throw new Exception();
 
-		$this->load->database();
-		$this->db->select("password");
-		$this->db->select("type");
-		$this->db->from("user");
-		$this->db->where("email", $email);
-		$query = $this->db->get();
+			$email = $_POST['email'];
+			$password = $_POST['password'];
 
-		foreach($query->result() as $row){
-			if($row->password == $password){
-				$this->load->library('session');
-				$this->session->set_userdata('logged', true);
-				redirect(base_url("Dashboard"), 'location');
+			$this->load->database();
+			$this->db->select("password");
+			$this->db->select("type");
+			$this->db->from("user");
+			$this->db->where("email", $email);
+			$query = $this->db->get();
+
+			foreach($query->result() as $row){
+				if($row->password == $password){
+					$this->load->library('session');
+					$this->session->set_userdata('logged', true);
+					redirect(base_url("Dashboard"), 'location');
+				}
+				break;
 			}
-			break;
+			redirect(base_url("log-in")."?login=false", 'location');
 		}
-		redirect(base_url("log-in")."?login=false", 'location');
+		catch(Exception $ex) {
+			redirect(base_url("log-in")."?login=false", 'location');
+		}
+
 	}
 
 	public function logout(){

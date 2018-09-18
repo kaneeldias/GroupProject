@@ -33,13 +33,44 @@ class LectureHall extends CI_Controller {
 
 	public function process_add(){
 		try{
+
+			$this->load->library('form_validation');
+			$this->load->database();
+
+			$this->form_validation->set_rules(
+				'code',
+				'Code',
+				'required|is_unique[lecture_hall.code]'
+			);
+
+			$this->form_validation->set_rules(
+				'name',
+				'Name',
+				'required'
+			);
+
+			$this->form_validation->set_rules(
+				'type',
+				'Type',
+				'required|in_list[lecture_hall,lab,other]'
+			);
+
+			$this->form_validation->set_rules(
+				'capacity',
+				'Capacity',
+				'required|integer'
+			);
+
+			if($this->form_validation->run() == false){
+				throw new Exception();
+			}
+
+
 			$code = $_POST['code'];
 			$name = $_POST['name'];
 			$type = $_POST['type'];
 			$capacity = $_POST['capacity'];
 
-			if(!isset($code) || !isset($name) || !isset($type) || !isset($capacity)) throw new Exception();
-			if($code == "" || $name == "" || $type == "" || $capacity == "") throw new Exception();
 
 			$this->load->database();
 			$this->db->set("code", $code);

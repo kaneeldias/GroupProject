@@ -13,6 +13,32 @@ class lecturer extends CI_Controller {
 
 	public function process_add(){
 		try {
+
+			$this->load->library('form_validation');
+			$this->load->database();
+
+			$this->form_validation->set_rules(
+				'id',
+				'ID',
+				'required|is_unique[academic_staff.id]'
+			);
+
+			$this->form_validation->set_rules(
+				'name',
+				'Name',
+				'required'
+			);
+
+			$this->form_validation->set_rules(
+				'shortform',
+				'Short Form',
+				'required|is_unique[academic_staff.short_name]|min_length[3]'
+			);
+
+			if($this->form_validation->run() == false){
+				throw new Exception();
+			}
+
 			$id = $_POST['id'];
 			$name = $_POST['name'];
 			$shortform = $_POST['shortform'];

@@ -41,6 +41,22 @@ class Staff_model extends CI_Model{
         return $staff;
     }
 
+    public function getStaffById($id){
+        $this->load->database();
+        $this->db->select("name");
+        $this->db->select("short_name");
+        $this->db->from("academic_staff");
+        $this->db->where("staff_id", $id);
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $lecturer = new Staff_model();
+            $lecturer->setName($row->name);
+            $lecturer->setShortform($row->short_name);
+            return $lecturer;
+        }
+    }
+
     /**
      * @return mixed
      */
