@@ -2,7 +2,7 @@
 
     <h2 style="margin-bottom:20px;">Viewing Time Table for <?php if(isset($group)) echo $group->getName()?> Semester <?php if(isset($semester)) echo $semester?></h2>
 
-    <table class="time_table col-md-10 mx-auto">
+    <table class="time_table col-md-12 mx-auto">
         <tr class="header">
             <td>Time</td>
             <td>Monday</td>
@@ -13,14 +13,19 @@
         </tr>
         <?php for($i = 8; $i <=17; $i++): ?>
             <tr>
-                <td><?= $i." to ".($i+1) ?></td>
+                <td><?= $i.":00 - ".($i+1).":00" ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
-                        <?php
-                            if(isset($lectures[$j][$i])){
-                               echo $lectures[$j][$i]["subject"]->getName();
-                            }
-                        ?>
+                        <?php if(isset($lectures[$j][$i])): ?>
+                            <div><?=$lectures[$j][$i]["subject"]->getCode()?></div>
+                            <!--<div style="font-size:12px;"><?=$lectures[$j][$i]["subject"]->getName()?></div>-->
+                            <div style="font-size:12px;">
+                                <?=implode(", ", $lectures[$j][$i]["venues"])?>
+                            </div>
+                            <div style="font-size:12px; font-weight:bold;">
+                                <?=implode(", ", $lectures[$j][$i]["staff"])?>
+                            </div>
+                        <?php endif ?>
                     </td>
                 <?php endfor?>
             </tr>
@@ -29,9 +34,16 @@
 
 </div>
 
-<div class="fab" onclick="$('#add_modal').modal('show')">
+<div id="add_lecture" class="fab" onclick="$('#add_modal').modal('show')"> +
     <style>
         .fab{
+            display:none;
+            font-size:50px;
+            font-weight:bold;
+            color:white;
+            text-align:center;
+            line-height:70px;
+            vertical-align:middle;
             border-radius:300px;
             width:70px;
             height:70px;
@@ -39,13 +51,14 @@
             margin:30px;
             bottom:0px;
             right:0px;
-            background-color:#2e3131;
+            background-color: #208a4c;
             cursor:pointer;
             transition:all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         }
 
         .fab:hover{
-            background-color: #595f5f;
+            background-color: #269f58   ;
         }
     </style>
 </div>
@@ -64,19 +77,25 @@
 </div>
 
 <style>
+    .time_table_container{
+        margin:20px;
+    }
+
     .time_table td{
-        padding:10px;
+        padding:5px;
         border-style:solid;
-        border-color:black;
+        border-color:#555555;
         border-width:1px;
-        width:200px;
-        height:45px;
+        width:900px;
+        height:60px;
         text-align:center;
     }
 
     .time_table .header td{
         font-weight:bold;
         font-size:18px;
+        background-color:#22313f;
+        color:white;
     }
 
     .time_table .selectable{
@@ -106,6 +125,7 @@
         $("#day_input").val($(element).attr("day"));
         $("#start_time_input").val($(element).attr("start_time"));
         $("#end_time_input").val($(element).attr("end_time"));
+        $("#add_lecture").show(200);
         $(element).removeClass("selectable").addClass("selected");
         $(element).unbind( "click" );
         $(element).click(function(){
@@ -116,6 +136,7 @@
     function selectedClick(element){
         $(element).removeClass("selected").addClass("selectable");
         $(element).unbind( "click" );
+        $("#add_lecture").hide(200);
         $(element).click(function(){
             selectableClick(element);
         })
@@ -158,3 +179,29 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+<?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+    <div id="errorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p>There was an error in your form. Please try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $('#errorModal').modal('show');
+    </script>
+<?php endif ?>
+
