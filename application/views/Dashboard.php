@@ -8,6 +8,9 @@
         <a href="<?=base_url("time-table?group=5&semester=1")?>"><div class="dashboard_link">Time Tables</div></a>
     </div>
     <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
+        <div class="mx-auto">
+            <img style="width:700px;" src="https://i.ytimg.com/vi/Zu7pIrl5XbU/maxresdefault.jpg"/>
+        </div>
     </div>
 </div>
 
