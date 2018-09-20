@@ -1,19 +1,19 @@
 <div class="row">
       <div class="col-md-6 mx-auto form_container">
 
-          <div class="form_title">Add Lecture Hall</div>
+          <div class="form_title">Edit Lecture Hall</div>
 
-          <form class="column form_content" method="POST" action="<?=base_url("lecture-halls/add/process")?>">
+          <form class="column form_content" method="POST" action="<?=base_url("lecture-halls/edit/process?id=$id")?>">
 
               <div class="row col-md-12">
                   <div class="form_item col-md-4">
                       <span class="form_label">Hall Code</span>
-                      <input class="form_input" type="text" placeholder="Code" name="code"/>
+                      <input class="form_input" type="text" placeholder="Code" name="code" value="<?=$venue->getCode()?>"/>
                   </div>
 
                   <div class="form_item col-md-8">
                       <span class="form_label">Hall Name</span>
-                      <input  class="form_input" type="text" placeholder="Name" name="name"/>
+                      <input  class="form_input" type="text" placeholder="Name" name="name" value="<?=$venue->getName()?>"/>
                   </div class="form_item">
               </div>
 
@@ -21,16 +21,16 @@
                     <div class="form_item col-md-6">
                         <span class="form_label">Hall Type</span>
                         <select class="form_input" name="type">
-                            <option value="" disabled selected>Type</option>
-                            <option value="lecture_hall">Lecture Hall</option>
-                            <option value="lab">Lab</option>
-                            <option value="other">Other</option>
+                            <option value="" disabled>Type</option>
+                            <option value="lecture_hall" <?php if($venue->getType() == "lecture_hall") echo "selected"?>>Lecture Hall</option>
+                            <option value="lab" <?php if($venue->getType() == "lab") echo "selected"?>>Lab</option>
+                            <option value="other" <?php if($venue->getType() == "other") echo "selected"?>>Other</option>
                         </select>
                     </div>
 
                     <div class="form_item col-md-6">
                         <span class="form_label">Capacity</span>
-                        <input class="form_input" type="number" placeholder="Capacity" name="capacity"/>
+                        <input class="form_input" type="number" placeholder="Capacity" name="capacity" value="<?=$venue->getCapacity()?>"/>
                     </div>
                 </div>
               <div class="form_item col-md-2">
@@ -79,7 +79,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecture Hall has been added successfully.</p>
+                    <p>Lecture Hall has been edited successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>

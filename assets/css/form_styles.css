@@ -71,6 +71,7 @@
     transition:all 0.2s;
     padding-left:20px;
     padding-right:20px;
+    cursor:pointer;
 }
 
 .form_item button:hover {

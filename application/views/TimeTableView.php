@@ -2,7 +2,9 @@
 
     <h2 style="margin-bottom:20px;">Viewing Time Table for <?php if(isset($group)) echo $group->getName()?> Semester <?php if(isset($semester)) echo $semester?></h2>
 
-    <table class="time_table col-md-12 mx-auto">
+    <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"></link>
+
+    <table class="custom_table time_table col-md-12 mx-auto">
         <tr class="header">
             <td>Time</td>
             <td>Monday</td>
@@ -81,22 +83,13 @@
         margin:20px;
     }
 
+
     .time_table td{
-        padding:5px;
-        border-style:solid;
-        border-color:#555555;
-        border-width:1px;
         width:900px;
-        height:60px;
-        text-align:center;
+        border-left-width:1px;
+        border-right-width:1px;
     }
 
-    .time_table .header td{
-        font-weight:bold;
-        font-size:18px;
-        background-color:#22313f;
-        color:white;
-    }
 
     .time_table .selectable{
         transition:all 0.3s;
