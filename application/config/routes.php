@@ -60,9 +60,13 @@ $route['subjects'] = 'Subject/index';
 $route['add-subject'] = 'Subject/add';
 $route['add-subject/process'] = 'Subject/process_add';
 
-$route['add-lecture-hall'] = 'LectureHall/add';
-$route['add-lecture-hall/process'] = 'LectureHall/process_add';
+$route['lecture-halls'] = 'LectureHall/index';
+$route['lecture-halls/add'] = 'LectureHall/add';
+$route['lecture-halls/add/process'] = 'LectureHall/process_add';
+$route['lecture-halls/edit'] = 'LectureHall/edit';
+$route['lecture-halls/edit/process'] = 'LectureHall/process_edit';
 
+$route['lecturers'] = 'lecturer/index';
 $route['add-lecturer'] = 'lecturer/add';
 $route['add-lecturer/process'] = 'lecturer/process_add';
 

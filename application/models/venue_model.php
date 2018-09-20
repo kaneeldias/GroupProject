@@ -12,6 +12,7 @@ class Venue_model extends CI_Model{
     private $code;
     private $name;
     private $type;
+    private $capacity;
 
     function __construct(){
         parent::__construct();
@@ -25,6 +26,7 @@ class Venue_model extends CI_Model{
         $this->db->select("name");
         $this->db->select("code");
         $this->db->select("type");
+        $this->db->select("capacity");
         $this->db->from("lecture_hall");
         $query = $this->db->get();
 
@@ -34,6 +36,7 @@ class Venue_model extends CI_Model{
             $hall->setName($row->name);
             $hall->setCode($row->code);
             $hall->setType($row->type);
+            $hall->setCapacity($row->capacity);
             array_push($halls, $hall);
         }
 
@@ -42,16 +45,38 @@ class Venue_model extends CI_Model{
 
     public function getVenueById($id){
         $this->load->database();
+        $this->db->select("code");
         $this->db->select("name");
+        $this->db->select("type");
+        $this->db->select("capacity");
         $this->db->from("lecture_hall");
         $this->db->where("hall_id", $id);
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
             $venue = new Venue_model();
+            $venue->setCode($row->code);
             $venue->setName($row->name);
+            $venue->setType($row->type);
+            $venue->setCapacity($row->capacity);
             return $venue;
         }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * @param mixed $capacity
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = $capacity;
     }
 
     /**

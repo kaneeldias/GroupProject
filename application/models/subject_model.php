@@ -13,6 +13,8 @@ class Subject_model extends CI_Model{
     private $name;
     private $degree_id;
     private $year;
+    private $semester;
+
 
     function __construct(){
         parent::__construct();
@@ -32,6 +34,30 @@ class Subject_model extends CI_Model{
             $subject->setCode($row->code);
             return $subject;
         }
+    }
+
+    public function getAllSubjects()
+    {
+        $subjects = [];
+        $this->load->database();
+        $this->db->select("code");
+        $this->db->select("name");
+        $this->db->select("degree_id");
+        $this->db->select("year");
+        $this->db->select("semester");
+        $this->db->from("subject");
+        $query = $this->db->get();
+        foreach ($query->result() as $row) {
+            $subject = new Subject_model();
+            $subject->setCode($row->code);
+            $subject->setName($row->name);
+            $subject->setDegreeId($row->degree_id);
+            $subject->setYear($row->year);
+            $subject->setSemester($row->semester);
+            array_push($subjects, $subject);
+        }
+
+        return $subjects;
     }
 
 
@@ -135,6 +161,22 @@ class Subject_model extends CI_Model{
     public function setYear($year)
     {
         $this->year = $year;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSemester()
+    {
+        return $this->semester;
+    }
+
+    /**
+     * @param mixed $semester
+     */
+    public function setSemester($semester)
+    {
+        $this->semester = $semester;
     }
 
 
