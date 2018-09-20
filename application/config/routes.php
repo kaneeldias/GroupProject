@@ -74,6 +74,9 @@ $route['add-lecturer/process'] = 'lecturer/process_add';
 $route['time-table'] = 'TimeTableController/index';
 $route['add-lecture'] = 'lecture/add';
 $route['add-student-group'] = 'studentGroup/add';
+
+$route['signup'] = 'SignUp/submit';
+
 $route['process_add'] = 'SignUp/process_add';
 $route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
 
@@ -83,3 +86,4 @@ $route['signup/process'] = 'SignUp/process_add';
 $route['lecture/process'] = 'Lecture/process';
 
 $route['dashboard'] = 'Dashboard/index';
+
