@@ -3,6 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class lecturer extends CI_Controller {
 
+	public function index(){
+		$this->load->library('session');
+
+		$data = [];
+		$this->load->model("Staff_model");
+		$data['lecturers'] = $this->Staff_model->getAllStaff();
+
+		$this->load->view('templates/header');
+		$this->load->view('StaffView', $data);
+		$this->load->view('templates/footer');
+	}
+
     public function add()
     {
         $this->load->library("session");

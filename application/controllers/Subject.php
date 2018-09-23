@@ -7,8 +7,8 @@ class Subject extends CI_Controller {
         $this->load->library('session');
 
         $data = [];
-        $this->load->model("Degree_model");
-        $data['degrees'] = $this->Degree_model->getAllDegrees();
+        $this->load->model("Subject_model");
+        $data['subjects'] = $this->Subject_model->getAllSubjects();
 
         $this->load->view('templates/header');
         $this->load->view('SubjectsView', $data);

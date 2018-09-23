@@ -39,9 +39,9 @@
 
     <div id="header" class="row align-middle" style="width:100%; margin:0px;">
         <div class="flex-row col-md-12" style="display:flex; align-items:center;">
-            <div style="align-items:">
+            <div>
                 <a href="http://ucsc.cmb.ac.lk/">
-                    <img src="images/ucsc.png" width="100px">
+                    <img src="<?=base_url('images/ucsc.png')?>" width="100px">
                 </a>
             </div>
             <div>
@@ -54,19 +54,19 @@
             <div style="margin-right:20px;">
                 <div>
                     <a href="https://www.facebook.com/PahasaraUCSC/">
-                        <img src="images/facebook.png" width="50px">
+                        <img src="<?=base_url('images/facebook.png')?>" width="50px">
                     </a>
                     <a href="https://twitter.com/UCSC_LK">
-                        <img src="images/twitter.png" width="35px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/twitter.png')?>" width="35px" style="margin-right: 10px">
                     </a>
                     <a href="https://www.instagram.com/ucsc_lk/">
-                        <img src="images/instagram.png" width="30px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/instagram.png')?>" width="30px" style="margin-right: 10px">
                     </a>
                     <a href="https://plus.google.com/+UniversityofColomboSchoolofComputingUCSC">
-                        <img src="images/googlePlus.png" width="35px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/googlePlus.png')?>" width="35px" style="margin-right: 10px">
                     </a>
                     <a href="https://www.youtube.com/channel/UC0gdcqEL6ZZeT67s0IbOrHg">
-                        <img src="images/youtube.png" width="36px">
+                        <img src="<?=base_url('images/youtube.png')?>" width="36px">
                     </a>
                 </div>
             </div>
