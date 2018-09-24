@@ -54,6 +54,7 @@
         <td></td>
         <td></td>
         <td></td>
+        <!--<td></td>-->
     </tr>
     <?php foreach($venues as $venue):?>
         <tr>
@@ -61,9 +62,10 @@
             <td><?=$venue->getName()?></td>
             <td><?=$venue->getType()?></td>
             <td><?=$venue->getCapacity()?></td>
-            <td><button>Time Table</button></td>
+            <!--<td><a href="<?=base_url("lecture_halls/view?id=".$venue->getId())?>"><button class="view_button">View</button></a></td>-->
+            <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$venue->getId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
             <td><a href="<?=base_url("lecture-halls/edit/?id=".$venue->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><button class="delete_button">Delete</button></td>
+            <td><a href="<?=base_url("lecture-halls/delete/?id=".$venue->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
