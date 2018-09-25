@@ -70,7 +70,6 @@ $route['lecture-halls/edit'] = 'LectureHall/edit';
 $route['lecture-halls/edit/process'] = 'LectureHall/process_edit';
 $route['lecture-halls/delete'] = 'LectureHall/delete';
 
-$route['student_groups/add/process'] = 'StudentGroup/process_add';
 
 $route['lecturers'] = 'lecturer/index';
 $route['add-lecturer'] = 'lecturer/add';
