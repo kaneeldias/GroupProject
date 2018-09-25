@@ -25,24 +25,25 @@ class StudentGroup extends CI_Controller {
     {
         try{
             //$this->validate_add();
-            $Degree = $_POST['Degree'];
-            $Year = $_POST['Year'];
-            $ParentGroup = $_POST['Parent Group'];
-            $GroupName = $_POST['Group Name'];
-            $DegreeID = 
+            $degree = $_POST['degree'];
+            $year = $_POST['year'];
+            $parentgroup = $_POST['parentgroup'];
+            $groupname = $_POST['groupname'];
+
 
             $this->load->database();
-            $this->db->set("Degree", $Degree);
-            $this->db->set("Year", $Year);
-            $this->db->set("ParentGroup", $ParentGroup);
-            $this->db->set("GroupName", $GroupName);
-            $this->db->insert("StudentGroup");
+            $this->db->set("degree_id", $degree);
+            $this->db->set("year", $year);
+            $this->db->set("parent_group", $parentgroup);
+            $this->db->set("name", $groupname);
 
-            redirect(base_url("student_groups/add/process")."?success=true", 'location');
+            $this->db->insert("student_group");
+
+            redirect(base_url("student_groups")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("student_groups/add/process")."?error=true", 'location');
+            redirect(base_url("student_groups/add")."?error=true", 'location');
         }
     }
 }
