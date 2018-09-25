@@ -1,13 +1,14 @@
 #header{
-    background-color:#6C7A89;
-    font-size:20px;
-    color:white;
-    padding:20px;
+    background-color:#e8e8e8 ;
+    font-size:25px;
+    text-transform:uppercase;
+    padding:10px;
     position:fixed;
     top:0px;
     left:0px;
-    width:100%;
+    width:100% !important;
     z-index:999;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
 
 #header div{
@@ -21,7 +22,6 @@
 }
 
 #header_links span, #header_links a{
-    color:white;
     font-size:15px;
     cursor:pointer;
     margin-left:10px;
@@ -32,6 +32,11 @@
 }
 
 #header_links a{
-    color:white;
+    color:black;
     text-decoration:none;
+}
+
+.row{
+    margin-left:0px !important;
+    margin-right:0px !important;
 }

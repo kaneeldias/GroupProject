@@ -1,0 +1,38 @@
+.time_table_container{
+    margin:20px;
+}
+
+
+.time_table td{
+    width:900px;
+    border-left-width:1px;
+    border-right-width:1px;
+}
+
+.time_table tr:hover{
+    background-color:white !important;
+}
+
+
+.time_table .selectable{
+    transition:all 0.3s;
+}
+
+.time_table a{
+    color:black;
+}
+
+.time_table .selectable:hover{
+    background-color:#EEEEEE;
+    cursor:pointer;
+}
+
+.time_table .selected{
+    transition:all 0.3s;
+    background-color:#4daf7c;
+    cursor:pointer;
+}
+
+.time_table .selected:hover{
+    background-color: #428a60;
+}

@@ -3,26 +3,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class StudentGroup extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+
 	public function add()
 	{
 		$this->load->library('session');
+
+		$data = [];
+		$this->load->model("Degree_model");
+		$data['degrees'] = $this->Degree_model->getAllDegrees();
+
+		$this->load->model("Group_model");
+		$data['groups'] = $this->Group_model->getAllGroups();
+
 		$this->load->view('templates/header');
-		$this->load->view('forms/addStudentGroup');
+		$this->load->view('forms/addStudentGroup', $data);
 		$this->load->view('templates/footer');
 	}
 }
