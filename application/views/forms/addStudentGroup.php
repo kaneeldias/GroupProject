@@ -35,6 +35,7 @@
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Year</span>
+
                     <select class="form_input" name="year">
                         <option selected disabled>Year</option>
                         <option value="1">1st Year</option>
@@ -45,14 +46,20 @@
                 </div>
 
                 <div class="form_item col-md-4">
-                    <span class="form_label">Semester</span>
-                    <select class="form_input" name="semester">
-                        <option disabled selected>Semester</option>
-                        <option value="1">1st Semester</option>
-                        <option value="2">2nd Semester</option>
+                    <span class="form_label">Parent Group</span>
+                    <select class="form_input"name="parentgroup">
+                        <option value="lecture_hall" disabled selected>None</option>
+                        <?php foreach($groups as $group): ?>
+                            <option value="<?=$group->getGroupId()?>"><?=$group->getName()?></option>
+                        <?php endforeach?>
                     </select>
                 </div>
 
+                <div class="form_item col-md-8">
+                    <span class="form_label">Group Name</span>
+                    <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
+
+                </div>
             </div>
 
             <div class="form_item col-md-3">
