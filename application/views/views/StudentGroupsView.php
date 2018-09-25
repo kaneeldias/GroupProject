@@ -2,12 +2,12 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">Subjects</div>
+    <div class="control_panel_title align-text-bottom">groups</div>
 
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("subjects/add")?>"><button>Add Subject</button></a>
+        <a href="<?=base_url("subjects/add")?>"><button>Add Group</button></a>
     </div>
 
     <style>
@@ -56,15 +56,15 @@
         <td></td>
         <td></td>
     </tr>
-    <?php foreach($subjects as $subject):?>
+    <?php foreach($Groups as $Group):?>
         <tr>
-            <td><?=$subject->getCode()?></td>
-            <td><?=$subject->getName()?></td>
-            <td><?=$subject->getDegreeId()?></td>
-            <td><?=$subject->getYear()?></td>
-            <td><?=$subject->getSemester()?></td>
-            <td><a href="<?=base_url("subjects/edit/?id=".$subject->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("subjects/delete/?id=".$subject->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$Group->getCode()?></td>
+            <td><?=$Group->getName()?></td>
+            <td><?=$Group->getDegreeId()?></td>
+            <td><?=$Group->getYear()?></td>
+            <td><?=$Group->getSemester()?></td>
+            <td><a href="<?=base_url("subjects/edit/?id=".$Group->getId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("subjects/delete/?id=".$Group->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
@@ -89,7 +89,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Subject has been added successfully.</p>
+                    <p>Student group has been added successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
