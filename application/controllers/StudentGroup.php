@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Subject extends CI_Controller {
+class StudentGroup extends CI_Controller {
 
     public function index(){
         $this->load->library('session');
@@ -138,15 +138,15 @@ class Subject extends CI_Controller {
             $this->db->set("degree_id", $degreeId);
             $this->db->set("year", $year);
             $this->db->where("subject_id", $_GET['id']);
-            $this->db->update("subject");
+            $this->db->update("student_group");
 
 
 
-            redirect(base_url("subjects")."?success=true", 'location');
+            redirect(base_url("student_group")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("subjects/edit")."?error=true&id=$id", 'location');
+            redirect(base_url("student_group/edit")."?error=true&id=$id", 'location');
         }
 		$this->load->view('templates/header');
 		$this->load->view('forms/addStudentGroup', $data);
