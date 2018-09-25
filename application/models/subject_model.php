@@ -24,6 +24,9 @@ class Subject_model extends CI_Model{
         $this->load->database();
         $this->db->select("code");
         $this->db->select("name");
+        $this->db->select("degree_id");
+        $this->db->select("semester");
+        $this->db->select("year");
         $this->db->from("subject");
         $this->db->where("subject_id", $id);
         $query = $this->db->get();
@@ -32,6 +35,9 @@ class Subject_model extends CI_Model{
             $subject = new Subject_model();
             $subject->setName($row->name);
             $subject->setCode($row->code);
+            $subject->setDegreeId($row->degree_id);
+            $subject->setSemester($row->semester);
+            $subject->setYear($row->year);
             return $subject;
         }
     }
@@ -40,6 +46,7 @@ class Subject_model extends CI_Model{
     {
         $subjects = [];
         $this->load->database();
+        $this->db->select("subject_id");
         $this->db->select("code");
         $this->db->select("name");
         $this->db->select("degree_id");
@@ -50,6 +57,7 @@ class Subject_model extends CI_Model{
         foreach ($query->result() as $row) {
             $subject = new Subject_model();
             $subject->setCode($row->code);
+            $subject->setId($row->subject_id);
             $subject->setName($row->name);
             $subject->setDegreeId($row->degree_id);
             $subject->setYear($row->year);

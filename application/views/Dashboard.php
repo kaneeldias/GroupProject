@@ -1,7 +1,7 @@
 <div class="row col-md-12" id="dashboard">
     <div class="column col-md-3 dashboard_links" style="padding:0px;">
         <a href="<?=base_url("signup")?>"><div class="dashboard_link">Register User</div></a>
-        <a href="<?=base_url("add-subject")?>"><div class="dashboard_link">Add Subject</div></a>
+        <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
         <a href="<?=base_url("add-lecturer")?>"><div class="dashboard_link">Add Lecturer</div></a>
         <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
         <a href="<?=base_url("add-student-group")?>"><div class="dashboard_link">Add Student Group</div></a>

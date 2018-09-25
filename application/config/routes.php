@@ -57,8 +57,10 @@ $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
 
 $route['subjects'] = 'Subject/index';
-$route['add-subject'] = 'Subject/add';
-$route['add-subject/process'] = 'Subject/process_add';
+$route['subjects/add'] = 'Subject/add';
+$route['subjects/add/process'] = 'Subject/process_add';
+$route['subjects/edit'] = 'Subject/edit';
+$route['subjects/edit/process'] = 'Subject/process_edit';
 
 $route['lecture-halls'] = 'LectureHall/index';
 $route['lecture-halls/add'] = 'LectureHall/add';
