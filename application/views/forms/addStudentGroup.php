@@ -7,18 +7,19 @@
 
         <form class="column form_content"method="post"action="<?=base_url("student_groups/add/process")?>">
 
-            <div class="row col-md-12">
+
                 <div class="form_item col-md-4">
-                    <span class="form_label">Degree</span>
-                    <input  class="form_input" type="text" placeholder="degreeId" name="degree_id"/>
+                    <span class="form_label">Group Id</span>
+                    <input  class="form_input"name="groupId" type="text" placeholder="Group Id"/>
+
                 </div>
 
-                <div class="form_item col-md-8">
-                    <span class="form_label">Subject Name</span>
-                    <input  class="form_input" type="text" placeholder="Name" name="name"/>
-                </div>
+
+            <div class="form_item col-md-6">
+                <span class="form_label">Group Name</span>
+                <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
+
             </div>
-
 
 
             <div class="row col-md-12">
@@ -55,11 +56,6 @@
                     </select>
                 </div>
 
-                <div class="form_item col-md-8">
-                    <span class="form_label">Group Name</span>
-                    <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
-
-                </div>
             </div>
 
             <div class="form_item col-md-3">

@@ -2,7 +2,7 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">groups</div>
+    <div class="control_panel_title align-text-bottom">Student Groups</div>
 
     <div class="flex-grow-1"></div>
 
