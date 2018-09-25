@@ -4,7 +4,8 @@
         <div class="form_title">Add Student Group</div>
 
 
-        <form class="column form_content" method="POST" action="student-groups/add/process">
+
+        <form class="column form_content"method="post"action="<?=base_url("student_groups/add/process")?>">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-4">

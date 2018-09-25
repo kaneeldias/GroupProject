@@ -120,7 +120,7 @@ class LectureHall extends CI_Controller {
 
 	public function process_add(){
 		try{
-			$this->validat_add();
+			$this->validate_add();
 			$code = $_POST['code'];
 			$name = $_POST['name'];
 			$type = $_POST['type'];
