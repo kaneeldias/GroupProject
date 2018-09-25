@@ -83,6 +83,23 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
+    public function getParentGroup(){
+        $groups = [];
+        $this->load->database();
+        $this->db->select("name");
+        $this->db->select("parent_group");
+        $this->db->from("student_group");
+        $this->db->where("group_id", $this->getGroupId());
+        $query = $this->db->get();
+
+        foreach($query->result() as $row){
+            return $row->parent_group;
+
+        }
+
+
+        return $groups;
+    }
     /**
      * @return mixed
      */
