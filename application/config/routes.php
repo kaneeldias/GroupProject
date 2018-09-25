@@ -61,6 +61,7 @@ $route['subjects/add'] = 'Subject/add';
 $route['subjects/add/process'] = 'Subject/process_add';
 $route['subjects/edit'] = 'Subject/edit';
 $route['subjects/edit/process'] = 'Subject/process_edit';
+$route['subjects/delete'] = 'Subject/delete';
 
 $route['lecture-halls'] = 'LectureHall/index';
 $route['lecture-halls/add'] = 'LectureHall/add';

@@ -64,7 +64,7 @@
             <td><?=$subject->getYear()?></td>
             <td><?=$subject->getSemester()?></td>
             <td><a href="<?=base_url("subjects/edit/?id=".$subject->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><button class="delete_button">Delete</button></td>
+            <td><a href="<?=base_url("subjects/delete/?id=".$subject->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
