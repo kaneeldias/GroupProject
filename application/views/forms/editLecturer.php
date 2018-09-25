@@ -1,36 +1,39 @@
 <div class="row">
-    <div class="col-md-8 mx-auto form_container">
+      <div class="col-md-6 mx-auto form_container">
 
-        <div class="form_title">Add Lecturer</div>
+          <div class="form_title">Edit Lecturer</div>
 
-        <form class="column form_content" method="POST" action="<?=base_url("lecturer/add/process")?>">
+          <form class="column form_content" method="POST" action="<?=base_url("lecturer/edit/process?id=$id")?>">
 
-            <div class="row col-md-12">
-                <div class="form_item col-md-3">
-                    <span class="form_label">Lecturer ID</span>
-                    <input class="form_input" type="text" placeholder="ID" name="id"/>
+              <div class="row col-md-12">
+                  <div class="form_item col-md-3">
+                      <span class="form_label">Lecturer ID</span>
+                      <input class="form_input" type="text" placeholder="ID" name="id" value="<?=$Lec->getId()?>"/>
+                  </div>
+
+                  <div class="form_item col-md-6">
+                      <span class="form_label">Lecturer Name</span>
+                      <input  class="form_input" type="text" placeholder="Name" name="name" value="<?=$Lec->getName()?>"/>
+                  </div class="form_item">
+              </div>
+
+                <div class="row col-md-12">
+
+
+                    <div class="form_item col-md-3">
+                        <span class="form_label">Short Form</span>
+                        <input class="form_input" type="text" placeholder="Shortform" name="shortform" value="<?=$Lec->getShortForm()?>"/>
+                    </div>
                 </div>
-
-                <div class="form_item col-md-6">
-                    <span class="form_label">Name</span>
-                    <input  class="form_input" type="text" placeholder="Name" name="name"/>
-                </div>
-
-                <div class="form_item col-md-3">
-                    <span class="form_label">Shortform</span>
-                    <input class="form_input" type="text" placeholder="Shortform" name="shortform"/>
-                </div>
-
-            </div>
+              <div class="form_item col-md-2">
+                  <button type="submit">Submit</button>
+              </div>
 
 
-            <div class="form_item col-md-3">
-                <button type="submit">Submit</button>
-            </div>
-
-        </form>
-    </div>
+          </form>
+      </div>
 </div>
+
 
 <?php if(isset($_GET['error']) && $_GET['error'] == true):?>
     <div id="errorModal" class="modal fade" role="dialog">
@@ -68,7 +71,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecturer has been added successfully.</p>
+                    <p>Lecturer Details has been edited successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>

@@ -2,7 +2,7 @@
     <div class="column col-md-3 dashboard_links" style="padding:0px;">
         <a href="<?=base_url("signup")?>"><div class="dashboard_link">Register User</div></a>
         <a href="<?=base_url("add-subject")?>"><div class="dashboard_link">Add Subject</div></a>
-        <a href="<?=base_url("add-lecturer")?>"><div class="dashboard_link">Add Lecturer</div></a>
+        <a href="<?=base_url("lecturer")?>"><div class="dashboard_link">Lecturer</div></a>
         <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
         <a href="<?=base_url("add-student-group")?>"><div class="dashboard_link">Add Student Group</div></a>
         <a href="<?=base_url("time-table/group?group=5&semester=1")?>"><div class="dashboard_link">Time Tables</div></a>

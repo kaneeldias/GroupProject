@@ -67,9 +67,12 @@ $route['lecture-halls/edit'] = 'LectureHall/edit';
 $route['lecture-halls/edit/process'] = 'LectureHall/process_edit';
 $route['lecture-halls/delete'] = 'LectureHall/delete';
 
-$route['lecturers'] = 'lecturer/index';
-$route['add-lecturer'] = 'lecturer/add';
-$route['add-lecturer/process'] = 'lecturer/process_add';
+$route['lecturer'] = 'lecturer/index';
+$route['lecturer/add'] = 'lecturer/add';
+$route['lecturer/add/process'] = 'lecturer/process_add';
+$route['lecturer/edit'] = 'lecturer/edit';
+$route['lecturer/edit/process'] = 'lecturer/process_edit';
+$route['lecturer/delete'] = 'lecturer/delete';
 
 
 $route['time-table/group'] = 'TimeTableController/GroupView';
