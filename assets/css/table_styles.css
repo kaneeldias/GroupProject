@@ -1,0 +1,78 @@
+.custom_table td{
+    border-style:solid;
+    border-color:#555555;
+    border-width:1px;
+    border-left-width:0px;
+    border-right-width:0px;
+    height:60px;
+    padding:10px;
+    padding-left:20px;
+    padding-right:20px;
+    text-align:center;
+    transition:all 0.2s;
+}
+
+.custom_table{
+    border-style:solid;
+    border-color:#22313f;
+    border-width:2px;
+}
+
+.custom_table tr{
+    transition:all 0.2s;
+}
+
+.custom_table .header td{
+    font-weight:bold;
+    font-size:18px;
+    background-color:#22313f;
+    color:white;
+}
+
+.custom_table tr:hover{
+    background-color:#e8e8e8;
+}
+
+.custom_table button{
+    border:none;
+    padding:10px;
+    font-size:12px;
+    border-radius:3px;
+    transition:all 0.2s;
+    padding-left:20px;
+    padding-right:20px;
+    cursor:pointer;
+    background-color:#22313f;
+    color:white;
+}
+
+.custom_table button:hover{
+    background-color: #39526a;
+}
+
+.custom_table .edit_button{
+    background-color:#663399;
+    color:white;
+}
+
+.custom_table .edit_button:hover{
+    background-color: #7f40bf;
+}
+
+.custom_table .delete_button{
+    background-color:#c0392b;
+    color:white;
+}
+
+.custom_table .delete_button:hover{
+    background-color: #dd4231;
+}
+
+.custom_table .view_button{
+    background-color: #208a4c;
+    color:white;
+}
+
+.custom_table .view_button:hover{
+    background-color:#26a65b;
+}

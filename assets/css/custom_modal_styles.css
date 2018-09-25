@@ -1,0 +1,47 @@
+.modal-footer button{
+    background-color:#22313f;
+    border:none;
+    color:white;
+    padding:10px;
+    font-size:20px;
+    border-radius:3px;
+    transition:all 0.2s;
+    padding-left:20px;
+    padding-right:20px;
+}
+
+
+.modal-footer button:hover {
+    background-color: #385065;
+}
+
+.modal-header{
+    font-size:30px;
+    font-weight:bold;
+    text-transform:uppercase;
+    margin-bottom:30px;
+    padding:10px;
+    text-align:center;
+    background-color:#d2d7d3;
+    color:#22313f;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    text-align:center;
+}
+
+.modal-title{
+    font-size:30px;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-align:center;
+    width:100%;
+}
+
+.modal-body{
+    font-size:18px;
+    text-align:center;
+}
+
+.modal-footer{
+    border-top:none;
+}
