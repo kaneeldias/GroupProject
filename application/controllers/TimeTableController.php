@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TimeTableController extends CI_Controller {
 
-	public function index(){
+	public function GroupView(){
 		try{
 			$this->load->library('session');
 
@@ -29,8 +29,20 @@ class TimeTableController extends CI_Controller {
 			$this->load->model("Staff_model");
 			$data['formData']['staff'] = $this->Staff_model->getAllStaff();
 
+			$data['formData']['groups'] = $group->getChildren();
+
 			$this->load->model("Lecture_model");
 			$data['lectures'] = $this->Lecture_model->getLectures($group_id, $_GET['semester']);
+
+			foreach($data['formData']['groups'] as $group){
+				//var_dump($this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']));
+				$l = $this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']);
+				for($i = 1; $i <= 5; $i++){
+					for($j = 8; $j <= 17; $j++){
+						foreach($l[$i][$j] as $lo) array_push($data['lectures'][$i][$j], $lo);
+					}
+				}
+			}
 
 			$this->load->view("templates/header");
 			$this->load->view("TimeTableView", $data);
@@ -46,4 +58,68 @@ class TimeTableController extends CI_Controller {
 
 	}
 
+	public function venueView(){
+			$this->config->load("globals");
+			$data = [];
+			$this->load->library('session');
+			if(!isset($_GET['venue_id'])) throw new Exception();
+			if(!isset($_GET['semester'])) throw new Exception();
+
+			$this->load->model("Venue_model");
+			$data['venue'] = $this->Venue_model->getVenueById($_GET['venue_id']);
+			$data['semester'] = $_GET['semester'];
+
+			$this->load->model("Lecture_model");
+			$lectures = $this->Lecture_model->getLecturesForVenue($_GET['venue_id'], $_GET['semester']);
+			$this->load->model("Subject_model");
+			$this->load->model("Group_model");
+			$this->load->model("Staff_model");
+			$data['lectures'] = [];
+			foreach($lectures as $lecture){
+				$obj = [];
+				$obj['lecture'] = $lecture;
+				$obj['subject']= $this->Subject_model->getSubjectById($lecture->getSubjectId());
+				$obj['group'] = $this->Group_model->getById($lecture->getGroupId());
+				$obj['staff'] = $this->Staff_model->getStaffForLecture($lecture->getId());
+				$data['lectures'][$lecture->getDay()][$lecture->getStartTime()] = $obj;
+			}
+			//var_dump($data);
+			//return;
+			$this->load->view("templates/header");
+			$this->load->view("views/timetables/TimeTableLectureHallView", $data);
+			$this->load->view("templates/footer");
+	}
+
+
+	public function lecturerView(){
+		$this->config->load("globals");
+		$data = [];
+		$this->load->library('session');
+		if(!isset($_GET['lecturer_id'])) throw new Exception();
+		if(!isset($_GET['semester'])) throw new Exception();
+
+		$this->load->model("Staff_model");
+		$data['staff'] = $this->Staff_model->getStaffById($_GET['lecturer_id']);
+		$data['semester'] = $_GET['semester'];
+
+		$this->load->model("Lecture_model");
+		$lectures = $this->Lecture_model->getLecturesForLecturer($_GET['lecturer_id'], $_GET['semester']);
+		$this->load->model("Subject_model");
+		$this->load->model("Group_model");
+		$this->load->model("Venue_model");
+		$data['lectures'] = [];
+		foreach($lectures as $lecture){
+			$obj = [];
+			$obj['lecture'] = $lecture;
+			$obj['subject']= $this->Subject_model->getSubjectById($lecture->getSubjectId());
+			$obj['group'] = $this->Group_model->getById($lecture->getGroupId());
+			$obj['venues'] = $this->Venue_model->getVenuesForLecture($lecture->getId());
+			$data['lectures'][$lecture->getDay()][$lecture->getStartTime()] = $obj;
+		}
+		//var_dump($data);
+		//return;
+		$this->load->view("templates/header");
+		$this->load->view("views/timetables/TimeTableLecturerView", $data);
+		$this->load->view("templates/footer");
+	}
 }

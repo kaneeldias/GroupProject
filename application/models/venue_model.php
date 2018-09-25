@@ -55,12 +55,52 @@ class Venue_model extends CI_Model{
 
         foreach ($query->result() as $row) {
             $venue = new Venue_model();
+            $venue->setId($id);
             $venue->setCode($row->code);
             $venue->setName($row->name);
             $venue->setType($row->type);
             $venue->setCapacity($row->capacity);
             return $venue;
         }
+    }
+
+    public function deleteVenueById($id){
+        $this->load->database();
+        $this->db->where('hall_id', $id);
+        return $this->db->delete('lecture_hall');
+    }
+
+    public function getVenuesForLecture($lecture_id){
+        $venues = [];
+        $this->load->database();
+        $this->db->select("hall_id");
+        $this->db->from("venue_allocation");
+        $this->db->where("lecture_id", $lecture_id);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            $venue = $this->getVenueById($row->hall_id);
+            array_push($venues, $venue);
+        }
+        return $venues;
+    }
+
+    public function checkConflict($venue_id, $day, $start_time){
+        $this->load->database();
+        $this->db->select("lecture_id");
+        $this->db->from("lecture");
+        $this->db->where("day", $day);
+        $this->db->where("start_time", $start_time);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            $this->db->select("hall_id");
+            $this->db->from("venue_allocation");
+            $this->db->where("lecture_id", $row->lecture_id);
+            $query2 = $this->db->get();
+            foreach($query2->result() as $row2){
+                if($row2->hall_id == $venue_id) return false;
+            }
+        }
+        return true;
     }
 
     /**

@@ -67,3 +67,12 @@
 .custom_table .delete_button:hover{
     background-color: #dd4231;
 }
+
+.custom_table .view_button{
+    background-color: #208a4c;
+    color:white;
+}
+
+.custom_table .view_button:hover{
+    background-color:#26a65b;
+}
