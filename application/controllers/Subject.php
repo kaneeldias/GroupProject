@@ -38,6 +38,19 @@ class Subject extends CI_Controller {
     }
 
 
+    public function delete(){
+        $this->load->library("session");
+        try{
+            $data['id'] = $_GET['id'];
+            $this->load->model("subject_model");
+            $data['subject'] = $this->subject_model->deleteSubjectById($data['id']);
+            redirect(base_url("subjects"), 'location');
+        }
+        catch(Exception $ex){
+            redirect(base_url("subjects")."?error=true", 'location');
+        }
+    }
+
     public  function  validate(){
         $this->load->library('form_validation');
         $this->load->database();
