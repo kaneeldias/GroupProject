@@ -22,6 +22,7 @@ class Subject_model extends CI_Model{
 
     public function getSubjectById($id){
         $this->load->database();
+        $this->db->select("subject_id");
         $this->db->select("code");
         $this->db->select("name");
         $this->db->from("subject");
@@ -30,6 +31,7 @@ class Subject_model extends CI_Model{
 
         foreach ($query->result() as $row) {
             $subject = new Subject_model();
+            $subject->setId($row->subject_id);
             $subject->setName($row->name);
             $subject->setCode($row->code);
             return $subject;
