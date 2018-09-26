@@ -7,11 +7,11 @@ class StudentGroup extends CI_Controller {
         $this->load->library('session');
 
         $data = [];
-        $this->load->model("Subject_model");
-        $data['subjects'] = $this->StudentGroup_model->getAllGroups();
+        $this->load->model("group_model");
+        $data['groups'] = $this->group_model->getAllGroups();
 
         $this->load->view('templates/header');
-        $this->load->view('views/View', $data);
+        $this->load->view('views/StudentGroupsView', $data);
         $this->load->view('templates/footer');
     }
 
@@ -22,7 +22,7 @@ class StudentGroup extends CI_Controller {
         $data['degrees'] = $this->Degree_model->getAllDegrees();
 
         $this->load->view('templates/header');
-        $this->load->view('forms/addSubject', $data);
+        $this->load->view('forms/addStudentGroup', $data);
         $this->load->view('templates/footer');
     }
 
@@ -30,8 +30,8 @@ class StudentGroup extends CI_Controller {
     public function edit(){
         $this->load->library("session");
         $data['id'] = $_GET['id'];
-        $this->load->model("subject_model");
-        $data['subject'] = $this->subject_model->getSubjectById($data['id']);
+        $this->load->model("group_model");
+        $data['groups'] = $this->group_model->getGroupById($data['id']);
         $this->load->view("templates/header");
         $this->load->view("forms/editSubject", $data);
         $this->load->view("templates/footer");
@@ -42,12 +42,12 @@ class StudentGroup extends CI_Controller {
         $this->load->library("session");
         try{
             $data['id'] = $_GET['id'];
-            $this->load->model("subject_model");
-            $data['subject'] = $this->subject_model->deleteSubjectById($data['id']);
-            redirect(base_url("subjects"), 'location');
+            $this->load->model("group_model");
+            $data['groups'] = $this->group_model->deleteGroupById($data['id']);
+            redirect(base_url("student-groups"), 'location');
         }
         catch(Exception $ex){
-            redirect(base_url("subjects")."?error=true", 'location');
+            redirect(base_url("student-groups")."?error=true", 'location');
         }
     }
 
@@ -93,50 +93,26 @@ class StudentGroup extends CI_Controller {
 
     }
 
-    public function process_add(){
-        try{
 
-            $this->validate();
-
-            $semester = $_POST['semester'];
-            $code = $_POST['code'];
-            $name = $_POST['name'];
-            $degreeId = $_POST['degree'];
-            $year = $_POST['year'];
-
-            $this->load->database();
-            $this->db->set("semester", $semester);
-            $this->db->set("code", $code);
-            $this->db->set("name", $name);
-            $this->db->set("degree_id", $degreeId);
-            $this->db->set("year", $year);
-            $this->db->insert("subject");
-
-            redirect(base_url("subjects")."?success=true", 'location');
-
-        }
-        catch(Exception $e){
-            redirect(base_url("subjects/add")."?error=true", 'location');
-        }
-
-    }
 
     public function process_edit(){
         try{
             $id = $_GET['id'];
             $this->validate();
-            $semester = $_POST['semester'];
-            $code = $_POST['code'];
-            $name = $_POST['name'];
-            $degreeId = $_POST['degree'];
+            $groupId = $_POST['group id'];
+            $degree = $_POST['degree'];
             $year = $_POST['year'];
+            $parentGroup = $_POST['parent group'];
+            $groupName = $_POST['group name'];
+
 
             $this->load->database();
-            $this->db->set("semester", $semester);
-            $this->db->set("code", $code);
-            $this->db->set("name", $name);
-            $this->db->set("degree_id", $degreeId);
+            $this->db->set("group_id", $groupId);
+            $this->db->set("degree_id", $degree);
             $this->db->set("year", $year);
+            $this->db->set("parent_group", $parentGroup);
+            $this->db->set("name", $groupName);
+
             $this->db->where("subject_id", $_GET['id']);
             $this->db->update("student_group");
 
@@ -148,35 +124,36 @@ class StudentGroup extends CI_Controller {
         catch(Exception $e){
             redirect(base_url("student_group/edit")."?error=true&id=$id", 'location');
         }
-		$this->load->view('templates/header');
-		$this->load->view('forms/addStudentGroup', $data);
-		$this->load->view('templates/footer');
 
 
 	}
 	public function process_add()
     {
         try{
-            //$this->validate_add();
+            $this->validate();
+
+            $groupId = $_POST['group id'];
             $degree = $_POST['degree'];
             $year = $_POST['year'];
-            $parentgroup = $_POST['parentgroup'];
-            $groupname = $_POST['groupname'];
+            $parentGroup = $_POST['parent group'];
+            $groupName = $_POST['group name'];
 
 
             $this->load->database();
+
+            $this->db->set("group_id", $groupId);
             $this->db->set("degree_id", $degree);
             $this->db->set("year", $year);
-            $this->db->set("parent_group", $parentgroup);
-            $this->db->set("name", $groupname);
+            $this->db->set("parent_group", $parentGroup);
+            $this->db->set("name", $groupName);
 
             $this->db->insert("student_group");
 
-            redirect(base_url("student_groups")."?success=true", 'location');
+            redirect(base_url("student-groups")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("student_groups/add")."?error=true", 'location');
+            redirect(base_url("student-groups/add")."?error=true", 'location');
         }
     }
 }

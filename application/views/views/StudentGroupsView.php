@@ -2,12 +2,12 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">groups</div>
+    <div class="control_panel_title align-text-bottom">Student Groups</div>
 
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("subjects/add")?>"><button>Add Group</button></a>
+        <a href="<?=base_url("student-groups/add")?>"><button>Add Group</button></a>
     </div>
 
     <style>
@@ -45,26 +45,26 @@
         }
     </style>
 </div>
-<table id="SubjectsTable" class="custom_table col-md-12">
+<table id="StudentGroupTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Code</td>
+
         <td>Name</td>
         <td>Degree</td>
         <td>Year</td>
-        <td>Semester</td>
+        <td>Parent Group</td>
         <td></td>
         <td></td>
         <td></td>
     </tr>
-    <?php foreach($Groups as $Group):?>
+    <?php foreach($groups as $group):?>
         <tr>
-            <td><?=$Group->getCode()?></td>
-            <td><?=$Group->getName()?></td>
-            <td><?=$Group->getDegreeId()?></td>
-            <td><?=$Group->getYear()?></td>
-            <td><?=$Group->getSemester()?></td>
-            <td><a href="<?=base_url("subjects/edit/?id=".$Group->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("subjects/delete/?id=".$Group->getId())?>"><button class="delete_button">Delete</button></a></td>
+
+            <td><?=$group->getName()?></td>
+            <td><?=$group->getDegreeId()?></td>
+            <td><?=$group->getYear()?></td>
+            <td><?=$group->getParentGroup()?></td>
+            <td><a href="<?=base_url("student-groups/edit/?id=".$group->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("student-groups/delete/?id=".$group->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>

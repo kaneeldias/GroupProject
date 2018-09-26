@@ -39,6 +39,12 @@ class Group_model extends CI_Model{
         return $group;
     }
 
+    public function deleteGroupById($id){
+        $this->load->database();
+        $this->db->where('group_id', $id);
+        return $this->db->delete('student_group');
+    }
+
     public function getAllGroups(){
         $groups = [];
         $this->load->database();
@@ -83,6 +89,7 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
+<<<<<<< HEAD
     public function checkConflict($group_id, $day, $start_time){
         $relGroups = $this->getRelatedGroups($group_id);
         $this->load->database();
@@ -137,6 +144,25 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
+=======
+    public function getParentGroup(){
+        $groups = [];
+        $this->load->database();
+        $this->db->select("name");
+        $this->db->select("parent_group");
+        $this->db->from("student_group");
+        $this->db->where("group_id", $this->getGroupId());
+        $query = $this->db->get();
+
+        foreach($query->result() as $row){
+            return $row->parent_group;
+
+        }
+
+
+        return $groups;
+    }
+>>>>>>> 12b59af8a128e631774be6aa780e1e8dd356a49b
     /**
      * @return mixed
      */
