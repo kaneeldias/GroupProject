@@ -6,7 +6,6 @@
 
 
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
-=======
 
         <form class="column form_content"method="post"action="<?=base_url("student-groups/add/process")?>">
 
