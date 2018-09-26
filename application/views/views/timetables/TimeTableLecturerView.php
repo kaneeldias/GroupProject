@@ -19,28 +19,35 @@
                 <td><?= $i.":00 - ".($i+1).":00" ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
-                        <?php if(isset($lectures[$j][$i])): ?>
-                            <div><?=$lectures[$j][$i]["subject"]->getCode()?></div>
+                        <?php foreach($lectures[$j][$i] as $item): ?>
+                        <div style="margin-top:5px; margin-bottom:5px;">
+                            <div><?=$item["subject"]->getCode()?></div>
                             <div style="font-size:12px;">
                                 <?php
-                                    $group_id = $lectures[$j][$i]['group']->getGroupId();
-                                    $semester = $_GET['semester'];
+                                $group_id = $item['group']->getGroupId();
+                                $semester = $_GET['semester'];
                                 ?>
-                                <a href="<?=base_url("time-table/group?group=$group_id&semester=$semester")?>"><?= $lectures[$j][$i]['group']->getName()?></a>
+                                <a href="<?=base_url("time-table/group?group=$group_id&semester=$semester")?>"><?= $item['group']->getName()?></a>
+                                <!--<div style="font-size:12px;"><?=$item["subject"]->getName()?></div>-->
+                                <div style="font-size:12px;">
+                                    <?php
+                                    $v = [];
+                                    foreach($item["venues"] as $venue){
+                                        $id = $venue->getId();
+                                        $linked = "<a href=".base_url("time-table/lecture-hall?venue_id=$id&semester=$semester").">".$venue->getName()."</a>";
+                                        array_push($v, $linked);
+                                    }
+                                    echo implode(", ", $v);
+                                    ?>
+                                </div>
                             </div>
-                            <!--<div style="font-size:12px;"><?=$lectures[$j][$i]["subject"]->getName()?></div>-->
-                            <div style="font-size:12px;">
-                                <?php
-                                $v = [];
-                                foreach($lectures[$j][$i]["venues"] as $venue){
-                                    $id = $venue->getId();
-                                    $linked = "<a href=".base_url("time-table/lecture-hall?venue_id=$id&semester=$semester").">".$venue->getName()."</a>";
-                                    array_push($v, $linked);
-                                }
-                                echo implode(", ", $v);
-                                ?>
-                            </div>
-                        <?php endif ?>
+                            <?php endforeach ?>
+
+
+
+
+
+                            
                     </td>
                 <?php endfor?>
             </tr>

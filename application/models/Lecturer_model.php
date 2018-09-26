@@ -6,10 +6,10 @@
  * Date: 2018-09-15
  * Time: 8:10 PM
  */
-class Staff_model extends CI_Model{
+class Lecturer_model extends CI_Model{
 
-    private $id;
     private $staff_id;
+    private $id;
     private $name;
     private $shortform;
 
@@ -18,62 +18,68 @@ class Staff_model extends CI_Model{
     }
 
 
-    public function getAllStaff(){
-        $staff = [];
+    public function getAllLecturers(){
+        $Lecturers = [];
         $this->load->database();
-        $this->db->select("id");
         $this->db->select("staff_id");
+        $this->db->select("id");
         $this->db->select("name");
         $this->db->select("short_name");
         $this->db->from("academic_staff");
         $query = $this->db->get();
 
         foreach($query->result() as $row){
-            $s = new Staff_model();
-            $s->setId($row->staff_id);
-            $s->setStaffId($row->id);
-            $s->setName($row->name);
-            $s->setShortform($row->short_name);
-
-            array_push($staff, $s);
+            $Lecturer = new Lecturer_model();
+            $Lecturer->setStaffId($row->staff_id);
+            $Lecturer->setId($row->id);
+            $Lecturer->setName($row->name);
+            $Lecturer->setShortForm($row->short_name);
+            array_push($Lecturers, $Lecturer);
         }
 
-        return $staff;
+        return $Lecturers;
     }
 
-    public function getStaffById($id){
+    public function getLecturersById($staff_id){
         $this->load->database();
-        $this->db->select("staff_id");
+        $this->db->select("id");
         $this->db->select("name");
         $this->db->select("short_name");
         $this->db->from("academic_staff");
-        $this->db->where("staff_id", $id);
+        $this->db->where("staff_id", $staff_id);
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
-            $lecturer = new Staff_model();
-            $lecturer->setId($row->staff_id);
-            $lecturer->setName($row->name);
-            $lecturer->setShortform($row->short_name);
-            return $lecturer;
+            $Lec = new Lecturer_model();
+            $Lec->setStaffId($staff_id);
+            $Lec->setId($row->id);
+            $Lec->setName($row->name);
+            $Lec->setShortForm($row->short_name);
+            return $Lec;
         }
     }
 
-    public function getStaffForLecture($lecture_id){
-        $staff = [];
+    public function deleteLecturerById($staff_id){
+        $this->load->database();
+        $this->db->where('staff_id', $staff_id);
+        return $this->db->delete('academic_staff');
+    }
+
+    public function getLecturersForLecture($lecture_id){
+        $Lecturers = [];
         $this->load->database();
         $this->db->select("staff_id");
-        $this->db->where("lecture_id", $lecture_id);
         $this->db->from("lecture_allocation");
+        $this->db->where("lecture_id", $lecture_id);
         $query = $this->db->get();
         foreach($query->result() as $row){
-            $s = $this->getStaffById($row->staff_id);
-            array_push($staff, $s);
+            $Lec = $this->getLecturersById($row->staff_id);
+            array_push($Lecturers, $Lec);
         }
-        return $staff;
+        return $Lecturers;
     }
 
-    public function checkConflict($staff_id, $day, $start_time){
+    /*public function checkConflict($venue_id, $day, $start_time){
         $this->load->database();
         $this->db->select("lecture_id");
         $this->db->from("lecture");
@@ -81,80 +87,60 @@ class Staff_model extends CI_Model{
         $this->db->where("start_time", $start_time);
         $query = $this->db->get();
         foreach($query->result() as $row){
-            $this->db->select("staff_id");
-            $this->db->from("lecture_allocation");
+            $this->db->select("hall_id");
+            $this->db->from("venue_allocation");
             $this->db->where("lecture_id", $row->lecture_id);
             $query2 = $this->db->get();
             foreach($query2->result() as $row2){
-                if($row2->staff_id == $staff_id) return false;
+                if($row2->hall_id == $venue_id) return false;
             }
         }
         return true;
-    }
+    }*/
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getStaffId()
     {
         return $this->staff_id;
     }
 
-    /**
-     * @param mixed $staff_id
-     */
     public function setStaffId($staff_id)
     {
         $this->staff_id = $staff_id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
     public function setName($name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getShortform()
+    public function getShortForm()
     {
         return $this->shortform;
     }
 
-    /**
-     * @param mixed $shortform
-     */
-    public function setShortform($shortform)
+    public function setShortForm($shortform)
     {
         $this->shortform = $shortform;
     }
+
+
+
+
 
 
 
