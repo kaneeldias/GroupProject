@@ -4,10 +4,30 @@
         <div class="form_title">Add Student Group</div>
 
 
+<<<<<<< HEAD
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
+=======
+
+        <form class="column form_content"method="post"action="<?=base_url("student_groups/add/process")?>">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-4">
+                    <span class="form_label">Degree</span>
+                    <input  class="form_input" type="text" placeholder="degreeId" name="degree_id"/>
+                </div>
+
+                <div class="form_item col-md-8">
+                    <span class="form_label">Subject Name</span>
+                    <input  class="form_input" type="text" placeholder="Name" name="name"/>
+                </div>
+            </div>
+
+
+>>>>>>> 587f329dba5e5902013cc18c16a7fdbc356429fc
+
+            <div class="row col-md-12">
+
+                <div class="form_item col-md-4">
                     <span class="form_label">Degree</span>
                     <select class="form_input" name="degree">
                         <option selected disabled>Degree</option>
@@ -17,25 +37,21 @@
                     </select>
                 </div>
 
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-4">
                     <span class="form_label">Year</span>
-                    <select class="form_input">
-                        <option value="" disabled selected>Year</option>
+
+                    <select class="form_input" name="year">
+                        <option selected disabled>Year</option>
                         <option value="1">1st Year</option>
                         <option value="2">2nd Year</option>
                         <option value="3">3rd Year</option>
                         <option value="4">4th Year</option>
                     </select>
                 </div>
-            </div>
-
-
-
-            <div class="row col-md-12">
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Parent Group</span>
-                    <select class="form_input">
+                    <select class="form_input"name="parentgroup">
                         <option value="lecture_hall" disabled selected>None</option>
                         <?php foreach($groups as $group): ?>
                             <option value="<?=$group->getGroupId()?>"><?=$group->getName()?></option>
@@ -45,10 +61,9 @@
 
                 <div class="form_item col-md-8">
                     <span class="form_label">Group Name</span>
-                    <input  class="form_input" type="text" placeholder="Group Name"/>
+                    <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
 
                 </div>
-
             </div>
 
             <div class="form_item col-md-3">
@@ -59,8 +74,53 @@
     </div>
 </div>
 
-<script src="<?=base_url("assets/libraries/lou-multi-select/js/jquery.multi-select.js")?>" type="text/javascript"></script>
+<?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+    <div id="errorModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
 
-<script>
-    $('#my-select').multiSelect();
-</script>
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Error</h4>
+                </div>
+                <div class="modal-body">
+                    <p>There was an error in your form. Please try again.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $('#errorModal').modal('show');
+    </script>
+<?php endif ?>
+
+
+<?php if(isset($_GET['success']) && $_GET['success'] == true):?>
+    <div id="successModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Success</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Subject has been added successfully.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $('#successModal').modal('show');
+    </script>
+<?php endif ?>
