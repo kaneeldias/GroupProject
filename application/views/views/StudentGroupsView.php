@@ -54,17 +54,15 @@
         <td>Parent Group</td>
         <td></td>
         <td></td>
-        <td></td>
     </tr>
     <?php foreach($groups as $group):?>
         <tr>
-
-            <td><?=$group->getName()?></td>
-            <td><?=$group->getDegreeId()?></td>
-            <td><?=$group->getYear()?></td>
-            <td><?=$group->getParentGroup()?></td>
-            <td><a href="<?=base_url("student-groups/edit/?id=".$group->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("student-groups/delete/?id=".$group->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$group['group']->getName()?></td>
+            <td><?=$group['degree']->getName()?></td>
+            <td><?=$group['group']->getYear()?></td>
+            <td><?=$group['parent']->getName()?></td>
+            <td><a href="<?=base_url("student-groups/edit/?id=".$group['group']->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("student-groups/delete/?id=".$group['group']->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>

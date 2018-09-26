@@ -3,6 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class TimeTableController extends CI_Controller {
 
+	public function index(){
+		$this->load->library('session');
+		$this->load->view("templates/header");
+		$this->load->view("TimeTableView", $data);
+		$this->load->view("templates/footer");
+	}
+
 	public function GroupView(){
 		try{
 			$this->load->library('session');
