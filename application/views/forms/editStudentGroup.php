@@ -1,43 +1,60 @@
 <div class="row">
       <div class="col-md-6 mx-auto form_container">
 
-          <div class="form_title">Edit Lecture Hall</div>
+          <div class="form_title">Edit Student Group</div>
 
-          <form class="column form_content" method="POST" action="<?=base_url("lecture-halls/edit/process?id=$id")?>">
+          <form class="column form_content" method="POST" action="<?=base_url("student-groups/edit/process?id=$id")?>">
 
-              <div class="row col-md-12">
-                  <div class="form_item col-md-4">
-                      <span class="form_label">Hall Code</span>
-                      <input class="form_input" type="text" placeholder="Code" name="code" value="<?=$venue->getCode()?>"/>
-                  </div>
+
 
                   <div class="form_item col-md-8">
-                      <span class="form_label">Hall Name</span>
-                      <input  class="form_input" type="text" placeholder="Name" name="name" value="<?=$venue->getName()?>"/>
+                      <span class="form_label">Group Name</span>
+                      <input  class="form_input" type="text" placeholder="Group Name" name="groupname" value="<?=$group->getName()?>"/>
                   </div class="form_item">
-              </div>
+
 
                 <div class="row col-md-12">
-                    <div class="form_item col-md-6">
-                        <span class="form_label">Hall Type</span>
-                        <select class="form_input" name="type">
+
+                    <div class="form_item col-md-4">
+                        <span class="form_label">Degree</span>
+                        <select class="form_input" name="degree_id">
                             <option value="" disabled>Type</option>
-                            <option value="lecture_hall" <?php if($venue->getType() == "lecture_hall") echo "selected"?>>Lecture Hall</option>
-                            <option value="lab" <?php if($venue->getType() == "lab") echo "selected"?>>Lab</option>
-                            <option value="other" <?php if($venue->getType() == "other") echo "selected"?>>Other</option>
+                            <option value="1" <?php if($group->getDegreeId() == "1") echo "selected"?>>Bsc in Computer Science</option>
+                            <option value="2" <?php if($group->getDegreeId() == "2") echo "selected"?>>BSc in Information Systems</option>
+                            <option value="3" <?php if($group->getDegreeId() == "3") echo "selected"?>>BSc in Software Engineering</option>
                         </select>
                     </div>
 
-                    <div class="form_item col-md-6">
-                        <span class="form_label">Capacity</span>
-                        <input class="form_input" type="number" placeholder="Capacity" name="capacity" value="<?=$venue->getCapacity()?>"/>
+                                       <div class="form_item col-md-4">
+                        <span class="form_label">Year</span>
+                        <select class="form_input" name="year">
+                            <option value="" disabled>Type</option>
+                            <option value="1" <?php if($group->getYear() == "1") echo "selected"?>>1st Year</option>
+                            <option value="2" <?php if($group->getYear() == "2") echo "selected"?>>2nd Year</option>
+                            <option value="3" <?php if($group->getYear() == "3") echo "selected"?>>3rd Year</option>
+                            <option value="4" <?php if($group->getYear() == "4") echo "selected"?>>4th Year</option>
+                        </select>
                     </div>
+
+                    <div class="form_item col-md-10">
+                        <span class="form_label">Parent Group</span>
+                        <select class="form_input" name="parentgroup">
+                            <option value="" disabled>Group</option>
+                            <?php foreach($groups as $group): ?>
+                                <option value="<?=$group->getGroupID()?>"><?= $group->getName()?></option>
+                            <?php endforeach ?>
+                        </select>
+                    </div>
+
+
+
+
                 </div>
               <div class="form_item col-md-2">
                   <button type="submit">Submit</button>
               </div>
 
-
+      </div>
           </form>
       </div>
 </div>

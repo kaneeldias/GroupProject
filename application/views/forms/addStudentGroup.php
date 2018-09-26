@@ -8,14 +8,7 @@
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
 =======
 
-        <form class="column form_content"method="post"action="<?=base_url("student_groups/add/process")?>">
-
-
-                <div class="form_item col-md-4">
-                    <span class="form_label">Group Id</span>
-                    <input  class="form_input"name="groupId" type="text" placeholder="Group Id"/>
-
-                </div>
+        <form class="column form_content"method="post"action="<?=base_url("student-groups/add/process")?>">
 
 
 <<<<<<< HEAD
@@ -33,7 +26,7 @@
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Degree</span>
-                    <select class="form_input" name="degree">
+                    <select class="form_input" name="degree_id">
                         <option selected disabled>Degree</option>
                         <?php foreach($degrees as $degree): ?>
                             <option value="<?=$degree->getId()?>"><?=$degree->getName()?></option>
