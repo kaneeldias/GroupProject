@@ -11,6 +11,7 @@
         <form class="column form_content"method="post"action="<?=base_url("student-groups/add/process")?>">
 
 
+
             <div class="form_item col-md-6">
                 <span class="form_label">Group Name</span>
                 <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
