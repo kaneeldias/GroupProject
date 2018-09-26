@@ -39,6 +39,12 @@ class Group_model extends CI_Model{
         return $group;
     }
 
+    public function deleteGroupById($id){
+        $this->load->database();
+        $this->db->where('group_id', $id);
+        return $this->db->delete('student_group');
+    }
+
     public function getAllGroups(){
         $groups = [];
         $this->load->database();
