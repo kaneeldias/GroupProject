@@ -29,6 +29,9 @@ class StudentGroup extends CI_Controller {
         $this->load->model("Degree_model");
         $data['degrees'] = $this->Degree_model->getAllDegrees();
 
+        $this->load->model("group_model");
+        $data['groups'] = $this->group_model->getAllGroups();
+
         $this->load->view('templates/header');
         $this->load->view('forms/addStudentGroup', $data);
         $this->load->view('templates/footer');
@@ -38,10 +41,16 @@ class StudentGroup extends CI_Controller {
     public function edit(){
         $this->load->library("session");
         $data['id'] = $_GET['id'];
+
+
+        $this->load->model("Degree_model");
+        $data['degrees'] = $this->Degree_model->getAllDegrees();
+
         $this->load->model("group_model");
-        $data['groups'] = $this->group_model->getGroupById($data['id']);
+        $data['groups'] = $this->group_model->getAllGroups();
+        $data['group'] = $this->group_model->getById($data['id']);
         $this->load->view("templates/header");
-        $this->load->view("forms/editSubject", $data);
+        $this->load->view("forms/editStudentGroup", $data);
         $this->load->view("templates/footer");
     }
 
@@ -64,39 +73,35 @@ class StudentGroup extends CI_Controller {
         $this->load->database();
 
         $this->form_validation->set_rules(
-            'code',
-            'Code',
-            'required'
-        );
-
-        $this->form_validation->set_rules(
-            'name',
-            'Name',
-            'required'
-        );
-
-        $this->form_validation->set_rules(
-            'degree',
+            'degree_id',
             'Degree',
+            'required'
+        );
+
+        $this->form_validation->set_rules(
+            'groupname',
+            'Group Name',
+            'required'
+        );
+
+        $this->form_validation->set_rules(
+            'parentgroup',
+            'Parent Group',
             'required|integer'
         );
 
         $this->form_validation->set_rules(
             'year',
             'Year',
-            'required|integer|in_list[1,2,3,4]'
+            'required|integer'
         );
 
-        $this->form_validation->set_rules(
-            'semester',
-            'Semester',
-            'required|integer|in_list[1,2]'
-        );
+
 
         if($this->form_validation->run() == false){
             echo validation_errors();
             exit();
-            //throw new Exception();
+            throw new Exception();
         }
 
     }
@@ -107,12 +112,11 @@ class StudentGroup extends CI_Controller {
         try{
             $id = $_GET['id'];
             $this->validate();
-            $groupId = $_POST['group id'];
-            $degree = $_POST['degree'];
+            $groupId = $_GET['id'];
+            $degree = $_POST['degree_id'];
             $year = $_POST['year'];
-            $parentGroup = $_POST['parent group'];
-            $groupName = $_POST['group name'];
-
+            $parentGroup = $_POST['parentgroup'];
+            $groupName = $_POST['groupname'];
 
             $this->load->database();
             $this->db->set("group_id", $groupId);
@@ -121,16 +125,16 @@ class StudentGroup extends CI_Controller {
             $this->db->set("parent_group", $parentGroup);
             $this->db->set("name", $groupName);
 
-            $this->db->where("subject_id", $_GET['id']);
+            $this->db->where("group_id", $_GET['id']);
             $this->db->update("student_group");
 
 
 
-            redirect(base_url("student_group")."?success=true", 'location');
+            redirect(base_url("student-groups")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("student_group/edit")."?error=true&id=$id", 'location');
+            redirect(base_url("student-groups/edit")."?error=true&id=$id", 'location');
         }
 
 
@@ -140,16 +144,16 @@ class StudentGroup extends CI_Controller {
         try{
             $this->validate();
 
-            $groupId = $_POST['group id'];
-            $degree = $_POST['degree'];
+           // $groupId = $_POST['group id'];
+            $degree = $_POST['degree_id'];
             $year = $_POST['year'];
-            $parentGroup = $_POST['parent group'];
-            $groupName = $_POST['group name'];
+            $parentGroup = $_POST['parentgroup'];
+            $groupName = $_POST['groupname'];
 
 
             $this->load->database();
 
-            $this->db->set("group_id", $groupId);
+           // $this->db->set("group_id", $groupId);
             $this->db->set("degree_id", $degree);
             $this->db->set("year", $year);
             $this->db->set("parent_group", $parentGroup);

@@ -93,6 +93,7 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
+
     public function checkConflict($group_id, $day, $start_time){
         $relGroups = $this->getRelatedGroups($group_id);
         $this->load->database();
@@ -164,7 +165,7 @@ class Group_model extends CI_Model{
 
         return $groups;
     }
-    /**
+  /**
      * @return mixed
      */
     public function getGroupId()

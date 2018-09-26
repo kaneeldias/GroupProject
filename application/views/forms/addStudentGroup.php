@@ -16,7 +16,7 @@
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Degree</span>
-                    <select class="form_input" name="degree">
+                    <select class="form_input" name="degree_id">
                         <option selected disabled>Degree</option>
                         <?php foreach($degrees as $degree): ?>
                             <option value="<?=$degree->getId()?>"><?=$degree->getName()?></option>
