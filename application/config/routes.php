@@ -70,19 +70,16 @@ $route['lecture-halls/edit'] = 'LectureHall/edit';
 $route['lecture-halls/edit/process'] = 'LectureHall/process_edit';
 $route['lecture-halls/delete'] = 'LectureHall/delete';
 
-<<<<<<< HEAD
 $route['lecturer'] = 'lecturer/index';
 $route['lecturer/add'] = 'lecturer/add';
 $route['lecturer/add/process'] = 'lecturer/process_add';
 $route['lecturer/edit'] = 'lecturer/edit';
 $route['lecturer/edit/process'] = 'lecturer/process_edit';
 $route['lecturer/delete'] = 'lecturer/delete';
-=======
 
 $route['lecturers'] = 'lecturer/index';
 $route['add-lecturer'] = 'lecturer/add';
 $route['add-lecturer/process'] = 'lecturer/process_add';
->>>>>>> 5331c716a116924f8713ac74fdbc453e2c4c79fd
 
 $route['student-groups'] = 'StudentGroup/index';
 $route['student-groups/add'] = 'StudentGroup/add';
