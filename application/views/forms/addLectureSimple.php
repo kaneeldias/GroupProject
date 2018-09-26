@@ -9,7 +9,7 @@
 
         <form class="column form_content" method="POST" action="<?=base_url("lecture/process")?>">
 
-            <input type="hidden" name="group" value="<?=$group->getGroupId()?>"/>
+            <input type="hidden" name="original_group" value="<?=$group->getGroupId()?>"/>
             <input type="hidden" name="semester" value="<?=$semester?>"/>
             <input id="day_input" type="hidden" name="day"/>
             <input id="start_time_input" type="hidden" name="start_time"/>
@@ -93,6 +93,16 @@
                         <?php endforeach ?>
                     </select>
                 </div>
+
+            <div class="form_item col-md-12">
+                    <span class="form_label">Student Group<span>
+                    <select class="form_input" name="group">
+                        <option selected value="<?=$group->getGroupId()?>"><?=$group->getName()?></option>
+                        <?php foreach($groups as $g):?>
+                            <option value="<?=$g->getGroupId()?>"><?=$g->getName()?></option>
+                        <?php endforeach ?>
+                    </select>
+            </div>
 
             <div class="form_item col-md-3">
                 <button type="submit">Submit</button>
