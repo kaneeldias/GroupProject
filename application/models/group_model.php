@@ -49,13 +49,17 @@ class Group_model extends CI_Model{
         $groups = [];
         $this->load->database();
         $this->db->select("name");
+        $this->db->select("year");
         $this->db->select("group_id");
+        $this->db->select("degree_id");
         $this->db->from("student_group");
         $query = $this->db->get();
 
         foreach($query->result() as $row){
             $group = new Group_model();
             $group->setName($row->name);
+            $group->setYear($row->year);
+            $group->setDegreeId($row->degree_id);
             $group->setGroupId($row->group_id);
             array_push($groups, $group);
         }
@@ -161,8 +165,7 @@ class Group_model extends CI_Model{
 
         return $groups;
     }
-
-    /**
+  /**
      * @return mixed
      */
     public function getGroupId()

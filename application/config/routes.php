@@ -105,5 +105,7 @@ $route['signup/process'] = 'SignUp/process_add';
 
 $route['lecture/process'] = 'Lecture/process';
 
-$route['dashboard'] = 'Dashboard/index';
-
+$route['dashboard-admin'] = 'Dashboard/admin';
+$route['dashboard-student'] = 'Dashboard/student';
+$route['dashboard-lecturer'] = 'Dashboard/lecturer';
+$route['dashboard-outsider'] = 'Dashboard/outsider';
