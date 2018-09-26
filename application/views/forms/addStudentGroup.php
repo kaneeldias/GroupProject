@@ -4,30 +4,13 @@
         <div class="form_title">Add Student Group</div>
 
 
-<<<<<<< HEAD
-        <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
-=======
+        <form class="column form_content" method="POST" action="<?=base_url("student-groups/add/process")?>">
 
-        <form class="column form_content"method="post"action="<?=base_url("student_groups/add/process")?>">
-
-
-                <div class="form_item col-md-4">
-                    <span class="form_label">Group Id</span>
-                    <input  class="form_input"name="groupId" type="text" placeholder="Group Id"/>
-
-                </div>
-
-
-<<<<<<< HEAD
->>>>>>> 587f329dba5e5902013cc18c16a7fdbc356429fc
-=======
             <div class="form_item col-md-6">
                 <span class="form_label">Group Name</span>
                 <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
 
             </div>
-
->>>>>>> 12b59af8a128e631774be6aa780e1e8dd356a49b
 
             <div class="row col-md-12">
 

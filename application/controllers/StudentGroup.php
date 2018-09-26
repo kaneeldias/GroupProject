@@ -8,7 +8,15 @@ class StudentGroup extends CI_Controller {
 
         $data = [];
         $this->load->model("group_model");
-        $data['groups'] = $this->group_model->getAllGroups();
+        $data['groups'] = [];
+        $this->load->model("degree_model");
+        foreach($this->group_model->getAllGroups() as $group){
+            $g = [];
+            $g['group'] = $group;
+            $g['degree'] = $this->degree_model->getById($group->getDegreeId());
+            $g['parent'] = $this->group_model->getById($group->getParentGroup());
+            array_push($data['groups'], $g);
+        }
 
         $this->load->view('templates/header');
         $this->load->view('views/StudentGroupsView', $data);

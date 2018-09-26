@@ -49,13 +49,17 @@ class Group_model extends CI_Model{
         $groups = [];
         $this->load->database();
         $this->db->select("name");
+        $this->db->select("year");
         $this->db->select("group_id");
+        $this->db->select("degree_id");
         $this->db->from("student_group");
         $query = $this->db->get();
 
         foreach($query->result() as $row){
             $group = new Group_model();
             $group->setName($row->name);
+            $group->setYear($row->year);
+            $group->setDegreeId($row->degree_id);
             $group->setGroupId($row->group_id);
             array_push($groups, $group);
         }
@@ -89,7 +93,6 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
-<<<<<<< HEAD
     public function checkConflict($group_id, $day, $start_time){
         $relGroups = $this->getRelatedGroups($group_id);
         $this->load->database();
@@ -144,7 +147,6 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
-=======
     public function getParentGroup(){
         $groups = [];
         $this->load->database();
@@ -162,7 +164,6 @@ class Group_model extends CI_Model{
 
         return $groups;
     }
->>>>>>> 12b59af8a128e631774be6aa780e1e8dd356a49b
     /**
      * @return mixed
      */
