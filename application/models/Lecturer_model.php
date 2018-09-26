@@ -1,11 +1,6 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: test12345
- * Date: 2018-09-15
- * Time: 8:10 PM
- */
+
 class Lecturer_model extends CI_Model{
 
     private $staff_id;
