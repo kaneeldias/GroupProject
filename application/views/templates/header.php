@@ -73,7 +73,7 @@
             <div>
                 <div id="header_links">
                     <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged')): ?>
-                        <span><a href="<?=base_url("Dashboard")?>">Dashboard</a></span>
+                        <span><a href="<?=base_url("dashboard")?>">Dashboard</a></span>
                         <span><a href="<?=base_url("auth/logout")?>">Log out</a></span>
                     <?php else : ?>
                         <span><a href="<?=base_url("log-in")?>">Login</a></span>
