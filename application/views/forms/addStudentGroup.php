@@ -5,10 +5,13 @@
 
 
 
+        <form class="column form_content" method="POST" action="<?=base_url("student-groups/add/process")?>">
+
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
 
 
         <form class="column form_content"method="post"action="<?=base_url("student-groups/add/process")?>">
+
 
 
 
@@ -17,8 +20,6 @@
                 <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
 
             </div>
-
-
 
             <div class="row col-md-12">
 
