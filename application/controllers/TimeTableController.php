@@ -95,6 +95,11 @@ class TimeTableController extends CI_Controller {
 		$this->config->load("globals");
 		$data = [];
 		$this->load->library('session');
+		for($i = 1; $i <= 5; $i++){
+			for($j = 8; $j <= 17; $j++){
+				$data['lectures'][$i][$j] = [];
+			}
+		}
 		if(!isset($_GET['lecturer_id'])) throw new Exception();
 		if(!isset($_GET['semester'])) throw new Exception();
 
@@ -107,14 +112,13 @@ class TimeTableController extends CI_Controller {
 		$this->load->model("Subject_model");
 		$this->load->model("Group_model");
 		$this->load->model("Venue_model");
-		$data['lectures'] = [];
 		foreach($lectures as $lecture){
 			$obj = [];
 			$obj['lecture'] = $lecture;
 			$obj['subject']= $this->Subject_model->getSubjectById($lecture->getSubjectId());
 			$obj['group'] = $this->Group_model->getById($lecture->getGroupId());
 			$obj['venues'] = $this->Venue_model->getVenuesForLecture($lecture->getId());
-			$data['lectures'][$lecture->getDay()][$lecture->getStartTime()] = $obj;
+			array_push($data['lectures'][$lecture->getDay()][$lecture->getStartTime()], $obj);
 		}
 		//var_dump($data);
 		//return;

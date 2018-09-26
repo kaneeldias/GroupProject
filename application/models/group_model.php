@@ -39,6 +39,12 @@ class Group_model extends CI_Model{
         return $group;
     }
 
+    public function deleteGroupById($id){
+        $this->load->database();
+        $this->db->where('group_id', $id);
+        return $this->db->delete('student_group');
+    }
+
     public function getAllGroups(){
         $groups = [];
         $this->load->database();
@@ -83,6 +89,62 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
+<<<<<<< HEAD
+    public function checkConflict($group_id, $day, $start_time){
+        $relGroups = $this->getRelatedGroups($group_id);
+        $this->load->database();
+        $this->db->select("group_id");
+        $this->db->from("lecture");
+        $this->db->where("day", $day);
+        $this->db->where("start_time", $start_time);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            foreach($relGroups as $group){
+                if($group->getGroupId() == $row->group_id) return false;
+            }
+        }
+        return true;
+    }
+
+    public function getRelatedGroups($group_id){
+        $groups = [];
+        array_push($groups, $this->getById($group_id));
+        $upperGroups = $this->getUpperGroups($group_id);
+        $lowerGroups = $this->getLowerGroups($group_id);
+        $groups = array_merge($groups, $lowerGroups);
+        $groups = array_merge($groups, $upperGroups);
+        return $groups;
+    }
+
+    public function getLowerGroups($group_id){
+        $groups = [];
+        $this->load->database();
+        $this->db->select("group_id");
+        $this->db->from("student_group");
+        $this->db->where("parent_group", $group_id);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            array_push($groups, $this->getById($row->group_id));
+            $groups = array_merge($groups, $this->getLowerGroups($row->group_id));
+        }
+        return $groups;
+    }
+
+    public function getUpperGroups($group_id){
+        $groups = [];
+        $this->load->database();
+        $this->db->select("parent_group");
+        $this->db->from("student_group");
+        $this->db->where("group_id", $group_id);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            array_push($groups, $this->getById($row->parent_group));
+            $groups = array_merge($groups, $this->getUpperGroups($row->parent_group));
+        }
+        return $groups;
+    }
+
+=======
     public function getParentGroup(){
         $groups = [];
         $this->load->database();
@@ -100,6 +162,7 @@ class Group_model extends CI_Model{
 
         return $groups;
     }
+>>>>>>> 12b59af8a128e631774be6aa780e1e8dd356a49b
     /**
      * @return mixed
      */

@@ -43,9 +43,42 @@
         <?php endforeach ?>
     </div>
 
+    <?php if(!$error):?>
+        <div>
+            <form method="POST" action="<?=base_url("lecture/process?ignore_warnings=true")?>">
+                <input type="hidden" name="original_group" value="<?=$original_group?>"/>
+                <input type="hidden" name="semester" value="<?=$semester?>"/>
+                <input type="hidden" name="day" value="<?=$day?>"/>
+                <input type="hidden" name="start_time" value="<?=$start_time?>"/>
+                <input type="hidden" name="end_time" value="<?=$end_time?>"/>
+                <input type="hidden" name="subject" value="<?=$subject->getId()?>"/>
+                <input type="hidden" name="type" value="<?=$type?>"/>
+                <?php foreach($venues as $venue):?>
+                    <input type="hidden" name="venues[]" value="<?=$venue->getId()?>"/>
+                <?php endforeach ?>
+                <?php foreach($staff as $s):?>
+                    <input type="hidden" name="staff[]" value="<?=$s->getId()?>"/>
+                <?php endforeach?>
+                <input type="hidden" name="group" value="<?=$group->getGroupId()?>"/>
+                <div class="form_item col-md-3">
+                    <button type="submit" class="conflict_button">Ignore Errors</button>
+                </div>
+            </form>
+        </div>
+    <?php endif ?>
+
 </div>
 
 <style>
+
+    .conflict_button:hover{
+        background-color:#c0392b !important;
+    }
+
+    .conflict_button{
+        background-color: #a93226 !important;
+        margin-bottom:20px;
+    }
 
     .error_header{
         color:white;
