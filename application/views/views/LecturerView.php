@@ -60,9 +60,9 @@
             <td><?=$Lec->getName()?></td>
             <td><?=$Lec->getShortForm()?></td>
             <!--<td><a href="<?=base_url("lecturer/view?id=".$Lec->getId())?>"><button class="view_button">View</button></a></td>-->
-            <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$Lec->getId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
+            <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$Lec->getStaffId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
             <td><a href="<?=base_url("lecturer/edit/?id=".$Lec->getStaffId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("lecturer/delete/?id=".$Lec->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><a href="<?=base_url("lecturer/delete/?id=".$Lec->getStaffId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
