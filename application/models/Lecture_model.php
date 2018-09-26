@@ -85,8 +85,13 @@ class Lecture_model extends CI_Model{
     }
 
     public function getLectures($group_id, $semester){
+        for($i = 1; $i <= 5; $i++){
+            for($j = 8; $j <= 17; $j++){
+                $lectures[$i][$j] = [];
+            }
+        }
+
         $this->load->model("Subject_model");
-        $lectures = [];
         $this->load->database();
         $this->db->select("lecture_id");
         $this->db->select("subject_id");
@@ -110,7 +115,7 @@ class Lecture_model extends CI_Model{
             foreach($query2->result() as $row2){
                 $this->load->model("Venue_model");
                 $venue = $this->Venue_model->getVenueById($row2->hall_id);
-                array_push($lecture['venues'], $venue->getName());
+                array_push($lecture['venues'], $venue);
             }
 
             $lecture['staff'] = [];
@@ -121,14 +126,75 @@ class Lecture_model extends CI_Model{
             foreach($query2->result() as $row2){
                 $this->load->model("staff_model");
                 $staff = $this->staff_model->getStaffById($row2->staff_id);
-                array_push($lecture['staff'], strtoupper($staff->getShortform()));
+                array_push($lecture['staff'], $staff);
             }
 
-            $lectures[$row->day][$row->start_time] = $lecture;
+            $this->load->model("Group_model");
+            $lecture['group'] = $this->Group_model->getById($group_id);
+
+            array_push($lectures[$row->day][$row->start_time], $lecture);
         }
 
         return $lectures;
 
+    }
+
+    public function getLectureById($lecture_id){
+        $lecture = new Lecture_model();
+        $this->load->database();
+        $this->db->select("subject_id");
+        $this->db->select("day");
+        $this->db->select("start_time");
+        $this->db->select("end_time");
+        $this->db->select("group_id");
+        $this->db->select("semester");
+        $this->db->from("lecture");
+        $this->db->where("lecture_id", $lecture_id);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            $lecture->setId($lecture_id);
+            $lecture->setSubjectId($row->subject_id);
+            $lecture->setDay($row->day);
+            $lecture->setStartTime($row->start_time);
+            $lecture->setEndTime($row->end_time);
+            $lecture->setGroupId($row->group_id);
+            $lecture->setSemester($row->semester);
+        }
+        return $lecture;
+    }
+
+    public function getLecturesForVenue($hall_id, $semester){
+        $lectures = [];
+        $this->load->database();
+        $this->db->distinct();
+        $this->db->select("venue_allocation.lecture_id");
+        $this->db->from("venue_allocation");
+        $this->db->join("lecture", "venue_allocation.lecture_id = lecture.lecture_id");
+        $this->db->where("hall_id", $hall_id);
+        $this->db->where("semester", $semester);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            array_push($lectures, $this->getLectureById($row->lecture_id));
+        }
+
+        return $lectures;
+    }
+
+    public function getLecturesForLecturer($staff_id, $semester){
+        $lectures = [];
+        $this->load->database();
+        $this->db->distinct();
+        $this->db->select("lecture_allocation.lecture_id");
+        $this->db->from("lecture_allocation");
+        $this->db->join("lecture", "lecture_allocation.lecture_id = lecture.lecture_id");
+        $this->db->where("staff_id", $staff_id);
+        $this->db->where("semester", $semester);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            array_push($lectures, $this->getLectureById($row->lecture_id));
+        }
+
+        return $lectures;
     }
 
 

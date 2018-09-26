@@ -57,23 +57,36 @@ $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
 
 $route['subjects'] = 'Subject/index';
-$route['add-subject'] = 'Subject/add';
-$route['add-subject/process'] = 'Subject/process_add';
+$route['subjects/add'] = 'Subject/add';
+$route['subjects/add/process'] = 'Subject/process_add';
+$route['subjects/edit'] = 'Subject/edit';
+$route['subjects/edit/process'] = 'Subject/process_edit';
+$route['subjects/delete'] = 'Subject/delete';
 
 $route['lecture-halls'] = 'LectureHall/index';
 $route['lecture-halls/add'] = 'LectureHall/add';
 $route['lecture-halls/add/process'] = 'LectureHall/process_add';
 $route['lecture-halls/edit'] = 'LectureHall/edit';
 $route['lecture-halls/edit/process'] = 'LectureHall/process_edit';
+$route['lecture-halls/delete'] = 'LectureHall/delete';
+
 
 $route['lecturers'] = 'lecturer/index';
 $route['add-lecturer'] = 'lecturer/add';
 $route['add-lecturer/process'] = 'lecturer/process_add';
 
+$route['student-groups'] = 'StudentGroup/index';
+$route['student-groups/add'] = 'StudentGroup/add';
+$route['student-groups/add/process'] = 'StudentGroup/process_add';
+$route['student-groups/edit'] = 'StudentGroup/edit';
+$route['student-groups/edit/process'] = 'StudentGroup/process_edit';
+$route['student-groups/delete'] = 'StudentGroup/delete';
 
+$route['time-table/group'] = 'TimeTableController/GroupView';
+$route['time-table/lecture-hall'] = 'TimeTableController/VenueView';
+$route['time-table/lecturer'] = 'TimeTableController/LecturerView';
 $route['time-table'] = 'TimeTableController/index';
 $route['add-lecture'] = 'lecture/add';
-$route['add-student-group'] = 'studentGroup/add';
 
 $route['signup'] = 'SignUp/submit';
 

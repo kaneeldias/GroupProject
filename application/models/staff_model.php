@@ -43,6 +43,7 @@ class Staff_model extends CI_Model{
 
     public function getStaffById($id){
         $this->load->database();
+        $this->db->select("staff_id");
         $this->db->select("name");
         $this->db->select("short_name");
         $this->db->from("academic_staff");
@@ -51,10 +52,44 @@ class Staff_model extends CI_Model{
 
         foreach ($query->result() as $row) {
             $lecturer = new Staff_model();
+            $lecturer->setId($row->staff_id);
             $lecturer->setName($row->name);
             $lecturer->setShortform($row->short_name);
             return $lecturer;
         }
+    }
+
+    public function getStaffForLecture($lecture_id){
+        $staff = [];
+        $this->load->database();
+        $this->db->select("staff_id");
+        $this->db->where("lecture_id", $lecture_id);
+        $this->db->from("lecture_allocation");
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            $s = $this->getStaffById($row->staff_id);
+            array_push($staff, $s);
+        }
+        return $staff;
+    }
+
+    public function checkConflict($staff_id, $day, $start_time){
+        $this->load->database();
+        $this->db->select("lecture_id");
+        $this->db->from("lecture");
+        $this->db->where("day", $day);
+        $this->db->where("start_time", $start_time);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            $this->db->select("staff_id");
+            $this->db->from("lecture_allocation");
+            $this->db->where("lecture_id", $row->lecture_id);
+            $query2 = $this->db->get();
+            foreach($query2->result() as $row2){
+                if($row2->staff_id == $staff_id) return false;
+            }
+        }
+        return true;
     }
 
     /**

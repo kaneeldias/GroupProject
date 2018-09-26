@@ -9,6 +9,8 @@ class LectureHall extends CI_Controller {
 		$data = [];
 		$this->load->model("Venue_model");
 		$data['venues'] = $this->Venue_model->getAllVenues();
+		$this->config->load("globals");
+		$data['current_semester'] = $this->config->item("current_semester");
 
 		$this->load->view("templates/header");
 		$this->load->view("views/LectureHallsView", $data);
@@ -33,7 +35,55 @@ class LectureHall extends CI_Controller {
 		$this->load->view("templates/footer");
 	}
 
-	public function validate(){
+	public function delete(){
+		$this->load->library("session");
+		try{
+			$data['id'] = $_GET['id'];
+			$this->load->model("Venue_model");
+			$data['venue'] = $this->Venue_model->deleteVenueById($data['id']);
+			redirect(base_url("lecture-halls"), 'location');
+		}
+		catch(Exception $ex){
+			redirect(base_url("lecture-halls")."?error=true", 'location');
+		}
+	}
+
+	public function validate_edit(){
+		$this->load->library('form_validation');
+		$this->load->database();
+
+		$this->form_validation->set_rules(
+			'code',
+			'Code',
+			'required'
+		);
+
+		$this->form_validation->set_rules(
+			'name',
+			'Name',
+			'required'
+		);
+
+		$this->form_validation->set_rules(
+			'type',
+			'Type',
+			'required|in_list[lecture_hall,lab,other]'
+		);
+
+		$this->form_validation->set_rules(
+			'capacity',
+			'Capacity',
+			'required|integer'
+		);
+
+		if($this->form_validation->run() == false){
+			echo validation_errors();
+			exit();
+			throw new Exception();
+		}
+	}
+
+	public function validate_add(){
 		$this->load->library('form_validation');
 		$this->load->database();
 
@@ -62,13 +112,15 @@ class LectureHall extends CI_Controller {
 		);
 
 		if($this->form_validation->run() == false){
+			echo validation_errors();
+			exit();
 			throw new Exception();
 		}
 	}
 
 	public function process_add(){
 		try{
-			$this->validate();
+			$this->validate_add();
 			$code = $_POST['code'];
 			$name = $_POST['name'];
 			$type = $_POST['type'];
@@ -94,7 +146,7 @@ class LectureHall extends CI_Controller {
 	public function process_edit(){
 		try{
 			$id = $_GET['id'];
-			$this->validate();
+			$this->validate_edit();
 			$code = $_POST['code'];
 			$name = $_POST['name'];
 			$type = $_POST['type'];

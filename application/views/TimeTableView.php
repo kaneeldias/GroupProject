@@ -3,6 +3,7 @@
     <h2 style="margin-bottom:20px;">Viewing Time Table for <?php if(isset($group)) echo $group->getName()?> Semester <?php if(isset($semester)) echo $semester?></h2>
 
     <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"></link>
+    <link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"></link>
 
     <table class="custom_table time_table col-md-12 mx-auto">
         <tr class="header">
@@ -18,16 +19,40 @@
                 <td><?= $i.":00 - ".($i+1).":00" ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
-                        <?php if(isset($lectures[$j][$i])): ?>
-                            <div><?=$lectures[$j][$i]["subject"]->getCode()?></div>
-                            <!--<div style="font-size:12px;"><?=$lectures[$j][$i]["subject"]->getName()?></div>-->
-                            <div style="font-size:12px;">
-                                <?=implode(", ", $lectures[$j][$i]["venues"])?>
+                        <?php foreach($lectures[$j][$i] as $item): ?>
+                            <div style="margin-top:5px; margin-bottom:5px;">
+                                <div><?=$item["subject"]->getCode()?></div>
+                                <div style="font-size:12px;">
+                                    <?php
+                                    $group_id = $item['group']->getGroupId();
+                                    $semester = $_GET['semester'];
+                                    ?>
+                                    <a href="<?=base_url("time-table/group?group=$group_id&semester=$semester")?>"><?= $item['group']->getName()?></a>
+                                    <!--<div style="font-size:12px;"><?=$item["subject"]->getName()?></div>-->
+                                <div style="font-size:12px;">
+                                    <?php
+                                    $v = [];
+                                    foreach($item["venues"] as $venue){
+                                        $id = $venue->getId();
+                                        $linked = "<a href=".base_url("time-table/lecture-hall?venue_id=$id&semester=$semester").">".$venue->getName()."</a>";
+                                        array_push($v, $linked);
+                                    }
+                                    echo implode(", ", $v);
+                                    ?>
+                                </div>
+                                <div style="font-size:12px; font-weight:bold;">
+                                    <?php
+                                    $s = [];
+                                    foreach($item["staff"] as $staff){
+                                        $id = $staff->getId();
+                                        $linked = "<a href=".base_url("time-table/lecturer?lecturer_id=$id&semester=$semester").">".strtoupper($staff->getShortform())."</a>";
+                                        array_push($s, $linked);
+                                    }
+                                    echo implode(", ", $s);
+                                    ?>
+                                </div>
                             </div>
-                            <div style="font-size:12px; font-weight:bold;">
-                                <?=implode(", ", $lectures[$j][$i]["staff"])?>
-                            </div>
-                        <?php endif ?>
+                        <?php endforeach ?>
                     </td>
                 <?php endfor?>
             </tr>
@@ -77,39 +102,6 @@
     </div>
 
 </div>
-
-<style>
-    .time_table_container{
-        margin:20px;
-    }
-
-
-    .time_table td{
-        width:900px;
-        border-left-width:1px;
-        border-right-width:1px;
-    }
-
-
-    .time_table .selectable{
-        transition:all 0.3s;
-    }
-
-    .time_table .selectable:hover{
-        background-color:#EEEEEE;
-        cursor:pointer;
-    }
-
-    .time_table .selected{
-        transition:all 0.3s;
-        background-color:#4daf7c;
-        cursor:pointer;
-    }
-
-    .time_table .selected:hover{
-        background-color: #428a60;
-    }
-</style>
 
 <script>
 

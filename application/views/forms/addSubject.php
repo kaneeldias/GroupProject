@@ -4,7 +4,7 @@
         <div class="form_title">Add Subject</div>
 
 
-        <form class="column form_content" method="POST" action="add-subject/process">
+        <form class="column form_content" method="POST" action="subjects/add/process">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-4">

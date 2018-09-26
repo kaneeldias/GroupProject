@@ -2,12 +2,12 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">Lecture Halls</div>
+    <div class="control_panel_title align-text-bottom">Student Groups</div>
 
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("lecture-halls/add")?>"><button>Add Lecture Hall</button></a>
+        <a href="<?=base_url("student-groups/add")?>"><button>Add Group</button></a>
     </div>
 
     <style>
@@ -45,27 +45,26 @@
         }
     </style>
 </div>
-<table id="lectureHallsTable" class="custom_table col-md-12">
+<table id="StudentGroupTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Code</td>
+
         <td>Name</td>
-        <td>Type</td>
-        <td>Capacity</td>
+        <td>Degree</td>
+        <td>Year</td>
+        <td>Parent Group</td>
         <td></td>
         <td></td>
         <td></td>
-        <!--<td></td>-->
     </tr>
-    <?php foreach($venues as $venue):?>
+    <?php foreach($groups as $group):?>
         <tr>
-            <td><?=$venue->getCode()?></td>
-            <td><?=$venue->getName()?></td>
-            <td><?=$venue->getType()?></td>
-            <td><?=$venue->getCapacity()?></td>
-            <!--<td><a href="<?=base_url("lecture_halls/view?id=".$venue->getId())?>"><button class="view_button">View</button></a></td>-->
-            <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$venue->getId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
-            <td><a href="<?=base_url("lecture-halls/edit/?id=".$venue->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("lecture-halls/delete/?id=".$venue->getId())?>"><button class="delete_button">Delete</button></a></td>
+
+            <td><?=$group->getName()?></td>
+            <td><?=$group->getDegreeId()?></td>
+            <td><?=$group->getYear()?></td>
+            <td><?=$group->getParentGroup()?></td>
+            <td><a href="<?=base_url("student-groups/edit/?id=".$group->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("student-groups/delete/?id=".$group->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
@@ -80,13 +79,6 @@
     }
 </style>
 
-<script>
-    $(document).ready(function () {
-        $('#lectureHallsTable').DataTable();
-        //$('.dataTables_length').addClass('bs-select');
-    });
-</script>
-
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
     <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
@@ -97,7 +89,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecture Hall has been added successfully.</p>
+                    <p>Student group has been added successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
