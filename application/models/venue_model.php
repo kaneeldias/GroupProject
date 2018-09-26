@@ -103,81 +103,51 @@ class Venue_model extends CI_Model{
         return true;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCapacity()
     {
         return $this->capacity;
     }
 
-    /**
-     * @param mixed $capacity
-     */
     public function setCapacity($capacity)
     {
         $this->capacity = $capacity;
     }
 
-    /**
-     * @return mixed
-     */
     public function getId()
     {
         return $this->id;
     }
 
-    /**
-     * @param mixed $id
-     */
     public function setId($id)
     {
         $this->id = $id;
     }
 
-    /**
-     * @return mixed
-     */
     public function getCode()
     {
         return $this->code;
     }
 
-    /**
-     * @param mixed $code
-     */
     public function setCode($code)
     {
         $this->code = $code;
     }
 
-    /**
-     * @return mixed
-     */
     public function getName()
     {
         return $this->name;
     }
 
-    /**
-     * @param mixed $name
-     */
     public function setName($name)
     {
         $this->name = $name;
     }
 
-    /**
-     * @return mixed
-     */
     public function getType()
     {
         return $this->type;
     }
 
-    /**
-     * @param mixed $type
-     */
     public function setType($type)
     {
         $this->type = $type;
