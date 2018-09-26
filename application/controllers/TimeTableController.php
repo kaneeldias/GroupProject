@@ -58,6 +58,30 @@ class TimeTableController extends CI_Controller {
 
 	}
 
+	public function select(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("group_model");
+        $data['groups']=$this->group_model->getAllGroups();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function generate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $group_id = $_POST['studentGroup'];
+
+        $str="time-table/group?group=".$group_id."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
+
 	public function venueView(){
 			$this->config->load("globals");
 			$data = [];
