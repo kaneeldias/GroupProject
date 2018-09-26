@@ -89,7 +89,7 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
-<<<<<<< HEAD
+
     public function checkConflict($group_id, $day, $start_time){
         $relGroups = $this->getRelatedGroups($group_id);
         $this->load->database();
@@ -144,7 +144,6 @@ class Group_model extends CI_Model{
         return $groups;
     }
 
-=======
     public function getParentGroup(){
         $groups = [];
         $this->load->database();
@@ -162,7 +161,7 @@ class Group_model extends CI_Model{
 
         return $groups;
     }
->>>>>>> 12b59af8a128e631774be6aa780e1e8dd356a49b
+
     /**
      * @return mixed
      */

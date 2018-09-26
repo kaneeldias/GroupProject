@@ -16,9 +16,6 @@
 
 
 <style>
-    #content{
-
-    }
 
     #dashboard{
         border-color:#22313f;
