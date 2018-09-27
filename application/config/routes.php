@@ -92,6 +92,8 @@ $route['time-table/group'] = 'TimeTableController/GroupView';
 $route['time-table/lecture-hall'] = 'TimeTableController/VenueView';
 $route['time-table/lecturer'] = 'TimeTableController/LecturerView';
 $route['time-table'] = 'TimeTableController/select';
+$route['time-tables'] = 'TimeTableController/LecturerViewSelect';
+$route['generate-time-tables'] = 'TimeTableController/LecturerViewGenerate';
 $route['generate-time-table'] = 'TimeTableController/generate';
 $route['add-lecture'] = 'lecture/add';
 
