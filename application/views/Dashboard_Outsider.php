@@ -1,11 +1,11 @@
 <div class="row col-md-12" id="dashboard">
     <div class="column col-md-3 dashboard_links" style="padding:0px;">
-        <a href="<?=base_url("signup")?>"><div class="dashboard_link">Register User</div></a>
-        <a href="<?=base_url("lecturer")?>"><div class="dashboard_link">Lecturer</div></a>
-        <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
-        <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
-        <a href="<?=base_url("student-groups")?>"><div class="dashboard_link">Student Group</div></a>
-        <a href="<?=base_url("time-table/group?group=5&semester=1")?>"><div class="dashboard_link">Time Tables</div></a>
+<!--        <a href="--><?//=base_url("signup")?><!--"><div class="dashboard_link">Register User</div></a>-->
+<!--        <a href="--><?//=base_url("lecturer")?><!--"><div class="dashboard_link">Lecturer</div></a>-->
+<!--        <a href="--><?//=base_url("subjects")?><!--"><div class="dashboard_link">Subjects</div></a>-->
+<!--        <a href="--><?//=base_url("lecture-halls")?><!--"><div class="dashboard_link">Lecture Halls</div></a>-->
+<!--        <a href="--><?//=base_url("student-groups")?><!--"><div class="dashboard_link">Student Group</div></a>-->
+<!--        <a href="--><?//=base_url("time-table/group?group=5&semester=1")?><!--"><div class="dashboard_link">Time Tables</div></a>-->
     </div>
     <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
         <div class="mx-auto">
