@@ -6,12 +6,23 @@ class SignUp extends CI_Controller {
     public function index()
     {
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $this->load->view("templates/header");
         $this->load->view("forms/signUp");
         $this->load->view("templates/footer");
     }
 
     public function process_add(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
             /*if( !isset($_POST['fname']) ||
                 !isset($_POST['lname']) ||
