@@ -109,3 +109,5 @@ $route['dashboard-admin'] = 'Dashboard/admin';
 $route['dashboard-student'] = 'Dashboard/student';
 $route['dashboard-lecturer'] = 'Dashboard/lecturer';
 $route['dashboard-outsider'] = 'Dashboard/outsider';
+
+$route['notes/update'] = "NotesController/update";

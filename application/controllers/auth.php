@@ -29,6 +29,7 @@ class auth extends CI_Controller {
 			$this->load->database();
             $this->db->select("fname");
 			$this->db->select("password");
+			$this->db->select("user_id");
 			$this->db->select("type");
 			$this->db->select("fname");
 			$this->db->select("lname");
@@ -42,6 +43,7 @@ class auth extends CI_Controller {
 					$this->load->library('session');
 					$this->session->set_userdata('logged', true);
 					$this->session->set_userdata('type', $row->type);
+					$this->session->set_userdata('user_id', $row->user_id);
 					$this->session->set_userdata('fname', $row->fname);
           redirect(base_url("Dashboard"), 'location');
 				}
