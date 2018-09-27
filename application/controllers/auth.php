@@ -27,6 +27,7 @@ class auth extends CI_Controller {
 			$password = $_POST['password'];
 
 			$this->load->database();
+            $this->db->select("fname");
 			$this->db->select("password");
 			$this->db->select("type");
 			$this->db->select("fname");
@@ -36,12 +37,13 @@ class auth extends CI_Controller {
 			$query = $this->db->get();
 
 			foreach($query->result() as $row){
+			    $fname = $row->fname;
 				if($row->password == $password){
 					$this->load->library('session');
 					$this->session->set_userdata('logged', true);
 					$this->session->set_userdata('type', $row->type);
 					$this->session->set_userdata('name', $row->fname);
-					redirect(base_url("Dashboard"), 'location');
+          redirect(base_url("Dashboard"), 'location');
 				}
 				break;
 			}
