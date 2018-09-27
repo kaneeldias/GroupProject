@@ -109,3 +109,6 @@ $route['dashboard-admin'] = 'Dashboard/admin';
 $route['dashboard-student'] = 'Dashboard/student';
 $route['dashboard-lecturer'] = 'Dashboard/lecturer';
 $route['dashboard-outsider'] = 'Dashboard/outsider';
+
+$route['profile'] = 'Profile/index';
+$route['profile/edit'] = 'Profile/edit';
