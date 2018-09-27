@@ -5,7 +5,12 @@ class lecturer extends CI_Controller {
 
 	public function index(){
 		$this->load->library('session');
-
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
 		$data = [];
 		$this->load->model("Lecturer_model");
 		$data['Lecturers'] = $this->Lecturer_model->getAllLecturers();
@@ -18,6 +23,12 @@ class lecturer extends CI_Controller {
     public function add()
     {
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $this->load->view("templates/header");
         $this->load->view("forms/addLecturer");
         $this->load->view("templates/footer");
@@ -25,6 +36,12 @@ class lecturer extends CI_Controller {
 
     public function edit(){
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $data['id'] = $_GET['id'];
         $this->load->model("Lecturer_model");
         $data['Lec'] = $this->Lecturer_model->getLecturersById($data['id']);
@@ -35,6 +52,10 @@ class lecturer extends CI_Controller {
 
     public function delete(){
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
             $data['id'] = $_GET['id'];
             $this->load->model("Lecturer_model");
@@ -47,6 +68,11 @@ class lecturer extends CI_Controller {
     }
 
 	public function process_add(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
 		try {
 
 			$this->load->library('form_validation');
@@ -94,6 +120,11 @@ class lecturer extends CI_Controller {
 
 	}
     public function process_edit(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
             $this->load->library('form_validation');
             $this->load->database();

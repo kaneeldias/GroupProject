@@ -5,7 +5,12 @@ class Subject extends CI_Controller {
 
     public function index(){
         $this->load->library('session');
-
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $data = [];
         $this->load->model("Subject_model");
         $data['subjects'] = $this->Subject_model->getAllSubjects();
@@ -17,7 +22,12 @@ class Subject extends CI_Controller {
 
 	public function add(){
         $this->load->library('session');
-
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $this->load->model("Degree_model");
         $data['degrees'] = $this->Degree_model->getAllDegrees();
 
@@ -29,6 +39,12 @@ class Subject extends CI_Controller {
 
     public function edit(){
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
         $data['id'] = $_GET['id'];
         $this->load->model("subject_model");
         $data['subject'] = $this->subject_model->getSubjectById($data['id']);
@@ -40,6 +56,10 @@ class Subject extends CI_Controller {
 
     public function delete(){
         $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
             $data['id'] = $_GET['id'];
             $this->load->model("subject_model");
@@ -51,7 +71,7 @@ class Subject extends CI_Controller {
         }
     }
 
-    public  function  validate(){
+    private function  validate(){
         $this->load->library('form_validation');
         $this->load->database();
 
@@ -94,6 +114,11 @@ class Subject extends CI_Controller {
     }
 
     public function process_add(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
 
             $this->validate();
@@ -122,6 +147,11 @@ class Subject extends CI_Controller {
     }
 
     public function process_edit(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
         try{
             $id = $_GET['id'];
             $this->validate();
