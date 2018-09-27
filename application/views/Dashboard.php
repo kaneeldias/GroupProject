@@ -10,7 +10,7 @@
     <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
         <div class="col-md-12 mx-auto form_container">
 
-            <div class="form_title">Notes</div>
+            <div class="form_title" style="font-size:18px;">Notes</div>
 
             <form class="column form_content" method="POST" action="<?=base_url("notes/update")?>">
                 <div class="form_item">
