@@ -77,6 +77,54 @@ class TimeTableController extends CI_Controller {
         $this->load->view("templates/footer");
     }
 
+    public function LecturerViewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("Lecturer_model");
+        $data['groups']=$this->Lecturer_model->getAllLecturers();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectLecturerTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function LectureHallViewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("venue_model");
+        $data['groups']=$this->venue_model ->getAllVenues();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectLectureHallTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function LecturerViewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $staff_id = $_POST['staff_id'];
+
+        $str="time-table/group?group=".$staff_id."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
+
+    public function LectureHallViewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $code = $_POST['code'];
+
+        $str="time-table/group?group=".$code."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
+
     public function generate(){
         $this->config->load("globals");
         $data = [];
