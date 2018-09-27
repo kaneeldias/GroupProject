@@ -6,12 +6,22 @@ class Lecture extends CI_Controller {
 	public function add()
 	{
 		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			$this->load->view("templates/header");
+			$this->load->view("errors/unauthorized_access");
+			$this->load->view("templates/footer");
+			return;
+		}
 		$this->load->view("templates/header");
 		$this->load->view("forms/addLecture");
 		$this->load->view("templates/footer");
 	}
 
 	public function process(){
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			echo "unauthorized access";
+			return;
+		}
 		try{
 			$this->load->library("session");
 
