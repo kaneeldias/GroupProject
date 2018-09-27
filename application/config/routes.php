@@ -114,5 +114,10 @@ $route['dashboard-student'] = 'Dashboard/student';
 $route['dashboard-lecturer'] = 'Dashboard/lecturer';
 $route['dashboard-outsider'] = 'Dashboard/outsider';
 
+$route['notes/update'] = "NotesController/update";
+
+$route['booking'] = "BookingController/index";
+$route['booking/process-select'] = "BookingController/process_select";
+$route['booking/view-slots'] = "BookingController/view_slots";
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
