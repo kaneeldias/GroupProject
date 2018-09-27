@@ -92,6 +92,10 @@ $route['time-table/group'] = 'TimeTableController/GroupView';
 $route['time-table/lecture-hall'] = 'TimeTableController/VenueView';
 $route['time-table/lecturer'] = 'TimeTableController/LecturerView';
 $route['time-table'] = 'TimeTableController/select';
+$route['time-tables'] = 'TimeTableController/LecturerViewSelect';
+$route['time-tables1'] = 'TimeTableController/LectureHallViewSelect';
+$route['generate-time-tables'] = 'TimeTableController/LecturerViewGenerate';
+$route['generate-time-tables1'] = 'TimeTableController/LectureHallViewGenerate';
 $route['generate-time-table'] = 'TimeTableController/generate';
 $route['add-lecture'] = 'lecture/add';
 
@@ -115,3 +119,5 @@ $route['notes/update'] = "NotesController/update";
 $route['booking'] = "BookingController/index";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
+$route['profile'] = 'Profile/index';
+$route['profile/edit'] = 'Profile/edit';
