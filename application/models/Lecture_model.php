@@ -84,6 +84,15 @@ class Lecture_model extends CI_Model{
         return true;
     }
 
+    public function getLecturesx(){
+        for($i = 1; $i <= 5; $i++){
+            for($j = 8; $j <= 17; $j++){
+                $lectures[$i][$j] = [];
+            }
+        }
+        $this->load->model("Group_model");
+    }
+
     public function getLectures($group_id, $semester){
         for($i = 1; $i <= 5; $i++){
             for($j = 8; $j <= 17; $j++){
