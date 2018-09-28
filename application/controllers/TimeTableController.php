@@ -87,7 +87,7 @@ class TimeTableController extends CI_Controller {
         $data = [];
         $this->load->library('session');
         $this->load->model("Lecturer_model");
-        $data['groups']=$this->Lecturer_model->getAllLecturers();
+        $data['lecturers']=$this->Lecturer_model->getAllLecturers();
 
         $this->load->view("templates/header");
         $this->load->view("forms/selectLecturerTimeTable", $data);
@@ -99,12 +99,44 @@ class TimeTableController extends CI_Controller {
         $data = [];
         $this->load->library('session');
         $this->load->model("venue_model");
-        $data['groups']=$this->venue_model ->getAllVenues();
+        $data['halls']=$this->venue_model ->getAllVenues();
 
         $this->load->view("templates/header");
         $this->load->view("forms/selectLectureHallTimeTable", $data);
         $this->load->view("templates/footer");
     }
+
+    public function viewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("venue_model");
+        //$data['halls']=$this->profile_model ->getAllVenues();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectView", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function viewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+
+       $type = $_POST['viewType'];
+        //$staff_id = $_POST['staff_id'];
+
+       // $str="time-table/lecturer?lecturer_id=".$staff_id."&semester=".$semester;
+        if($type==1){
+            redirect(base_url("time-table/student"), 'location');
+        }else if($type==2){
+            redirect(base_url("time-table/lecturer"), 'location');
+        }else if($type==3){
+            redirect(base_url("time-table/lecture-hall"), 'location');
+        }
+
+
+    }
+
 
     public function LecturerViewGenerate(){
         $this->config->load("globals");
@@ -112,7 +144,7 @@ class TimeTableController extends CI_Controller {
         $semester = $_POST['semester'];
         $staff_id = $_POST['staff_id'];
 
-        $str="time-table/group?group=".$staff_id."&semester=".$semester;
+        $str="time-table/lecturer?lecturer_id=".$staff_id."&semester=".$semester;
 
         redirect(base_url("$str"), 'location');
 
@@ -124,7 +156,7 @@ class TimeTableController extends CI_Controller {
         $semester = $_POST['semester'];
         $code = $_POST['code'];
 
-        $str="time-table/group?group=".$code."&semester=".$semester;
+        $str="time-table/lecture-hall?venue_id=".$code."&semester=".$semester;
 
         redirect(base_url("$str"), 'location');
 
