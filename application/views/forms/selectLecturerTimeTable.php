@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6 mx-auto form_container">
 
-        <div class="form_title">Select Time Tabele</div>
+        <div class="form_title">Select Time Table</div>
 
 
         <form class="column form_content" method="POST" action="<?=base_url("generate-time-tables")?>">
@@ -12,7 +12,7 @@
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Lecturer</span>
-                    <select class="form_input" name="lecturer">
+                    <select class="form_input" name="staff_id">
                         <option value="" disabled>Group</option>
                         <?php foreach($lecturers as $lecturer): ?>
                             <option value="<?=$lecturer->getStaffId()?>"><?= $lecturer->getName()?></option>

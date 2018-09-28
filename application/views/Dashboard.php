@@ -5,7 +5,7 @@
         <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
         <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
         <a href="<?=base_url("student-groups")?>"><div class="dashboard_link">Student Group</div></a>
-        <a href="<?=base_url("time-table")?>"><div class="dashboard_link">Time Tables</div></a>
+        <a href="<?=base_url("time-table-view")?>"><div class="dashboard_link">Time Tables</div></a>
     </div>
     <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
         <div class="mx-auto">
