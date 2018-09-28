@@ -18,6 +18,7 @@ class Lecture extends CI_Controller {
 	}
 
 	public function process(){
+		$this->load->library("session");
 		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
 			echo "unauthorized access";
 			return;
@@ -43,7 +44,7 @@ class Lecture extends CI_Controller {
 			$this->form_validation->set_rules(
 				'day',
 				'Day',
-				'required|in_list[1,2,3,4,5]'
+				'required'
 			);
 
 			$this->form_validation->set_rules(
@@ -55,13 +56,13 @@ class Lecture extends CI_Controller {
 			$this->form_validation->set_rules(
 				'start_time',
 				'Start Time',
-				'required|integer'
+				'required'
 			);
 
 			$this->form_validation->set_rules(
 				'end_time',
 				'End Time',
-				'required|integer'
+				'required'
 			);
 
 			$this->form_validation->set_rules(
@@ -81,50 +82,48 @@ class Lecture extends CI_Controller {
 				throw new Exception();
 			}
 
+			//if($_POST['start_time'] >= $_POST['end_time']) throw new Exception();
 
-			if($_POST['start_time'] >= $_POST['end_time']) throw new Exception();
+			$days = explode(",", $_POST['day']);
+			$start_times = explode(",", $_POST['start_time']);
 
 			$error = false;
 			$warning = false;
 			$error_messages = [];
 			$this->load->model("Venue_model");
 			foreach($_POST['venues'] as $venue){
-				if(!$this->Venue_model->checkConflict($venue, $_POST['day'], $_POST['start_time'])){
-					$error = true;
-					$message = $this->Venue_model->getVenueById($venue)->getName()." is not available during this time slot.";
-					array_push($error_messages, $message);
+				for($i = 0; $i < sizeof($days); $i++){
+					if(!$this->Venue_model->checkConflict($venue, $days[$i], $start_times[$i])){
+						$error = true;
+						$message = $this->Venue_model->getVenueById($venue)->getName()." is not available during this time slot.";
+						array_push($error_messages, $message);
+					}
 				}
 			}
 
 			$this->load->model("Staff_model");
 			foreach($_POST['staff'] as $staff){
-				if(!$this->Staff_model->checkConflict($staff, $_POST['day'], $_POST['start_time'])){
-					$warning = true;
-					$message = "Staff member " .$this->Staff_model->getStaffById($staff)->getName()." has another lecture during this time slot.";
-					array_push($error_messages, $message);
+				for($i = 0; $i < sizeof($days); $i++){
+					if(!$this->Staff_model->checkConflict($staff, $days[$i], $start_times[$i])) {
+						$warning = true;
+						$message = "Staff member " . $this->Staff_model->getStaffById($staff)->getName() . " has another lecture during this time slot.";
+						array_push($error_messages, $message);
+					}
 				}
 			}
 
 			$this->load->model("Group_model");
-			if(!$this->Group_model->checkConflict($_POST['group'], $_POST['day'], $_POST['start_time'])){
-				$error = true;
-				$message = "Student group " . $this->Group_model->getById($_POST['group'])->getName()." has another lecture during this time slot.";
-				array_push($error_messages, $message);
+			for($i = 0; $i < sizeof($days); $i++){
+				if(!$this->Group_model->checkConflict($_POST['group'], $days[$i], $start_times[$i])){
+					$error = true;
+					$message = "Student group " . $this->Group_model->getById($_POST['group'])->getName()." has another lecture during this time slot.";
+					array_push($error_messages, $message);
+				}
 			}
-
-			$this->load->model("Lecture_model");
-			$lecture = $this->Lecture_model->get();
-			$lecture->setGroupId($_POST['group']);
-			$lecture->setSemester($_POST['semester']);
-			$lecture->setDay($_POST['day']);
-			$lecture->setSubjectId($_POST['subject']);
-			$lecture->setStartTime($_POST['start_time']);
-			$lecture->setEndTime($_POST['end_time']);
-			$lecture->setVenues($_POST['venues']);
-			$lecture->setStaff($_POST['staff']);
 
 			$data['error'] = $error;
 			$data['warning'] = $warning;
+
 
 			if($error || $warning && !isset($_GET['ignore_warnings'])){
 				$this->load->model("Group_model");
@@ -153,8 +152,19 @@ class Lecture extends CI_Controller {
 				$this->load->view("templates/footer");
 				return;
 			}
-			if(!$lecture->save()) throw new Exception();
-
+			for($i = 0; $i < sizeof($days); $i++){
+				$this->load->model("Lecture_model");
+				$lecture = $this->Lecture_model->get();
+				$lecture->setGroupId($_POST['group']);
+				$lecture->setSemester($_POST['semester']);
+				$lecture->setDay($days[$i]);
+				$lecture->setSubjectId($_POST['subject']);
+				$lecture->setStartTime($start_times[$i]);
+				$lecture->setEndTime($start_times[$i]+1);
+				$lecture->setVenues($_POST['venues']);
+				$lecture->setStaff($_POST['staff']);
+				if(!$lecture->save()) throw new Exception();
+			}
 			$group = $_POST['group'];
 			$original_group = $_POST['original_group'];
 			$semester = $_POST['semester'];

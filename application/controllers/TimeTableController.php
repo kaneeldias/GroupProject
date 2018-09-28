@@ -39,9 +39,14 @@ class TimeTableController extends CI_Controller {
 			$data['formData']['groups'] = $group->getChildren();
 
 			$this->load->model("Lecture_model");
-			$data['lectures'] = $this->Lecture_model->getLectures($group_id, $_GET['semester']);
+			$data['lectures'] = [];
+			for($i = 1; $i <= 5; $i++) {
+				for ($j = 8; $j <= 17; $j++) {
+					$data['lectures'][$i][$j] = [];
+				}
+			}
 
-			foreach($data['formData']['groups'] as $group){
+			foreach($this->Group_model->getRelatedGroups($_GET['group']) as $group){
 				//var_dump($this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']));
 				$l = $this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']);
 				for($i = 1; $i <= 5; $i++){

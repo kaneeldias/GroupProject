@@ -30,12 +30,23 @@
 
 </div>
 
+<div id="book" class="fab" onclick="$('#add_modal').modal('show')">BOOK
+
+
+
 <style>
     .booked{
         background-color:#e74c3c;
     }
-
-    .selectable{
-    }
 </style>
 
+<link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>
+
+<script src="<?=base_url("assets/js/timetable_script.js")?>"></script>
+
+<script>
+    function selected_click_action(){
+        console.log("hi");
+        $("#book").show(200);
+    }
+</script>
