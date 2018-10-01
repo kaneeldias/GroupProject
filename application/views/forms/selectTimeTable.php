@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-6 mx-auto form_container">
 
-        <div class="form_title">Select Time Tabele</div>
+        <div class="form_title">Select Time Table</div>
 
 
         <form class="column form_content" method="POST" action="<?=base_url("generate-time-table")?>">

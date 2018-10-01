@@ -12,10 +12,14 @@ class Dashboard extends CI_Controller {
             return;
         }
 
+        $this->load->model("Notes_model");
+        $data['notes'] = $this->Notes_model->getNotes($this->session->userdata("user_id"));
+
         $this->load->view("templates/header");
-        if($this->session->userdata("type") == "admin") $this->load->view("Dashboard");
+        if($this->session->userdata("type") == "admin") $this->load->view("Dashboard", $data);
         if($this->session->userdata("type") == "student") $this->load->view("Dashboard_Student");
         if($this->session->userdata("type") == "lecturer") $this->load->view("Dashboard_Lecturer");
+        if($this->session->userdata("type") == "staff") $this->load->view("Dashboard_Lecturer");
         if($this->session->userdata("type") == "outsider") $this->load->view("Dashboard_outsider");
         $this->load->view("templates/footer");
 

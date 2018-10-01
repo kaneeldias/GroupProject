@@ -1,5 +1,5 @@
 <?php
 
-$config['current_semester']= 1;
+$config['current_semester'] = 1;
 
 ?>

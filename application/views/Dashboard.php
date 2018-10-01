@@ -5,11 +5,22 @@
         <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
         <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
         <a href="<?=base_url("student-groups")?>"><div class="dashboard_link">Student Group</div></a>
-        <a href="<?=base_url("time-table")?>"><div class="dashboard_link">Time Tables</div></a>
+        <a href="<?=base_url("time-table-view")?>"><div class="dashboard_link">Time Tables</div></a>
     </div>
     <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
-        <div class="mx-auto">
-            <img style="width:700px;" src="https://i.ytimg.com/vi/Zu7pIrl5XbU/maxresdefault.jpg"/>
+        <div class="col-md-12 mx-auto form_container">
+
+            <div class="form_title" style="font-size:18px;">Notes</div>
+
+            <form class="column form_content" method="POST" action="<?=base_url("notes/update")?>">
+                <div class="form_item">
+                    <textarea style="width:100%; height:190px;" class="form_input" type="text" name="notes"><?=$notes?></textarea>
+                </div>
+                <div class="form_item col-md-1">
+                    <button type="submit">Save</button>
+                </div>
+
+            </form>
         </div>
     </div>
 </div>

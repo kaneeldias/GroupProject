@@ -61,7 +61,7 @@
 
 </div>
 
-<div id="add_lecture" class="fab" onclick="$('#add_modal').modal('show')"> +
+<div id="add_lecture" class="fab" onclick="getAdd()"> +
     <style>
         .fab{
             display:none;
@@ -98,18 +98,16 @@
                 <?php $this->load->view("forms/addLectureSimple", $formData)?>
             </div>
         </div>
-
     </div>
-
 </div>
 
 <script>
 
     function selectableClick(element){
 
-        $("#day_input").val($(element).attr("day"));
+        /*$("#day_input").val($(element).attr("day"));
         $("#start_time_input").val($(element).attr("start_time"));
-        $("#end_time_input").val($(element).attr("end_time"));
+        $("#end_time_input").val($(element).attr("end_time"));*/
         $("#add_lecture").show(200);
         $(element).removeClass("selectable").addClass("selected");
         $(element).unbind( "click" );
@@ -138,6 +136,20 @@
         selectableClick(this);
     });
 
+    function getAdd(){
+        var days = [];
+        var start_times = [];
+        var end_times = [];
+        $( ".selected" ).each(function(index){
+            days.push($(this).attr("day"));
+            start_times.push($(this).attr("start_time"));
+            end_times.push($(this).attr("end_time"));
+        });
+        $("#day_input").val(days.toString());
+        $("#start_time_input").val(start_times.toString());
+        $("#end_time_input").val(end_times.toString());
+        $("#add_modal").modal("show");
+    }
 </script>
 
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
