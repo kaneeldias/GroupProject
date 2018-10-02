@@ -13,7 +13,18 @@ class Subject extends CI_Controller {
         }
         $data = [];
         $this->load->model("Subject_model");
-        $data['subjects'] = $this->Subject_model->getAllSubjects();
+        $this->load->model("degree_model");
+
+        $data['array'] = [];
+        $subjects = $this->Subject_model->getAllSubjects();
+        foreach($subjects as $subject){
+            $g = [];
+            $g['subject'] = $subject;
+            $g['degree'] = $this->degree_model->getById($subject->getDegreeId());
+            array_push($data['array'], $g);
+        }
+
+        $data['degree_id'] = $this->degree_model->getName();
 
         $this->load->view('templates/header');
         $this->load->view('views/SubjectsView', $data);
