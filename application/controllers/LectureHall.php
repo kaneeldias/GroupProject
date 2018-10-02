@@ -5,7 +5,12 @@ class LectureHall extends CI_Controller {
 
 	public function index(){
 		$this->load->library("session");
-
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			$this->load->view("templates/header");
+			$this->load->view("errors/unauthorized_access");
+			$this->load->view("templates/footer");
+			return;
+		}
 		$data = [];
 		$this->load->model("Venue_model");
 		$data['venues'] = $this->Venue_model->getAllVenues();
@@ -20,6 +25,12 @@ class LectureHall extends CI_Controller {
 	public function add()
 	{
 		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			$this->load->view("templates/header");
+			$this->load->view("errors/unauthorized_access");
+			$this->load->view("templates/footer");
+			return;
+		}
 		$this->load->view("templates/header");
 		$this->load->view("forms/addLectureHall");
 		$this->load->view("templates/footer");
@@ -27,6 +38,12 @@ class LectureHall extends CI_Controller {
 
 	public function edit(){
 		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			$this->load->view("templates/header");
+			$this->load->view("errors/unauthorized_access");
+			$this->load->view("templates/footer");
+			return;
+		}
 		$data['id'] = $_GET['id'];
 		$this->load->model("Venue_model");
 		$data['venue'] = $this->Venue_model->getVenueById($data['id']);
@@ -37,6 +54,10 @@ class LectureHall extends CI_Controller {
 
 	public function delete(){
 		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			echo "unauthorized access";
+			return;
+		}
 		try{
 			$data['id'] = $_GET['id'];
 			$this->load->model("Venue_model");
@@ -48,7 +69,7 @@ class LectureHall extends CI_Controller {
 		}
 	}
 
-	public function validate_edit(){
+	private function validate_edit(){
 		$this->load->library('form_validation');
 		$this->load->database();
 
@@ -83,7 +104,7 @@ class LectureHall extends CI_Controller {
 		}
 	}
 
-	public function validate_add(){
+	private function validate_add(){
 		$this->load->library('form_validation');
 		$this->load->database();
 
@@ -119,6 +140,11 @@ class LectureHall extends CI_Controller {
 	}
 
 	public function process_add(){
+		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			echo "unauthorized access";
+			return;
+		}
 		try{
 			$this->validate_add();
 			$code = $_POST['code'];
@@ -144,6 +170,11 @@ class LectureHall extends CI_Controller {
 	}
 
 	public function process_edit(){
+		$this->load->library("session");
+		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+			echo "unauthorized access";
+			return;
+		}
 		try{
 			$id = $_GET['id'];
 			$this->validate_edit();

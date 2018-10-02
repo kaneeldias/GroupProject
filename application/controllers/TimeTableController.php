@@ -39,9 +39,14 @@ class TimeTableController extends CI_Controller {
 			$data['formData']['groups'] = $group->getChildren();
 
 			$this->load->model("Lecture_model");
-			$data['lectures'] = $this->Lecture_model->getLectures($group_id, $_GET['semester']);
+			$data['lectures'] = [];
+			for($i = 1; $i <= 5; $i++) {
+				for ($j = 8; $j <= 17; $j++) {
+					$data['lectures'][$i][$j] = [];
+				}
+			}
 
-			foreach($data['formData']['groups'] as $group){
+			foreach($this->Group_model->getRelatedGroups($_GET['group']) as $group){
 				//var_dump($this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']));
 				$l = $this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']);
 				for($i = 1; $i <= 5; $i++){
@@ -64,6 +69,110 @@ class TimeTableController extends CI_Controller {
 		}
 
 	}
+
+	public function select(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("group_model");
+        $data['groups']=$this->group_model->getAllGroups();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function LecturerViewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("Lecturer_model");
+        $data['lecturers']=$this->Lecturer_model->getAllLecturers();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectLecturerTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function LectureHallViewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("venue_model");
+        $data['halls']=$this->venue_model ->getAllVenues();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectLectureHallTimeTable", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function viewSelect(){
+        $this->config->load("globals");
+        $data = [];
+        $this->load->library('session');
+        $this->load->model("venue_model");
+        //$data['halls']=$this->profile_model ->getAllVenues();
+
+        $this->load->view("templates/header");
+        $this->load->view("forms/selectView", $data);
+        $this->load->view("templates/footer");
+    }
+
+    public function viewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+
+       $type = $_POST['viewType'];
+        //$staff_id = $_POST['staff_id'];
+
+       // $str="time-table/lecturer?lecturer_id=".$staff_id."&semester=".$semester;
+        if($type==1){
+            redirect(base_url("time-tables/student"), 'location');
+        }else if($type==2){
+            redirect(base_url("time-tables/lecturer"), 'location');
+        }else if($type==3){
+            redirect(base_url("time-tables/lecture-hall"), 'location');
+        }
+
+
+    }
+
+
+    public function LecturerViewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $staff_id = $_POST['staff_id'];
+
+        $str="time-table/lecturer?lecturer_id=".$staff_id."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
+
+    public function LectureHallViewGenerate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $code = $_POST['code'];
+
+        $str="time-table/lecture-hall?venue_id=".$code."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
+
+    public function generate(){
+        $this->config->load("globals");
+        $data = [];
+        $semester = $_POST['semester'];
+        $group_id = $_POST['studentGroup'];
+
+        $str="time-table/group?group=".$group_id."&semester=".$semester;
+
+        redirect(base_url("$str"), 'location');
+
+    }
 
 	public function venueView(){
 			$this->config->load("globals");
