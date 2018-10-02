@@ -91,16 +91,15 @@ $route['student-groups/delete'] = 'StudentGroup/delete';
 $route['time-table/group'] = 'TimeTableController/GroupView';
 $route['time-table/lecture-hall'] = 'TimeTableController/VenueView';
 $route['time-table/lecturer'] = 'TimeTableController/LecturerView';
-$route['time-table/student'] = 'TimeTableController/select';
-$route['time-table/lecturer'] = 'TimeTableController/LecturerViewSelect';
-$route['time-table/lecture-hall'] = 'TimeTableController/LectureHallViewSelect';
+$route['time-tables/student'] = 'TimeTableController/select';
+$route['time-tables/lecturer'] = 'TimeTableController/LecturerViewSelect';
+$route['time-tables/lecture-hall'] = 'TimeTableController/LectureHallViewSelect';
 $route['generate-time-table-lecturer'] = 'TimeTableController/LecturerViewGenerate';
-$route['generate-time-tables-lecture-hall'] = 'TimeTableController/LectureHallViewGenerate';
+$route['generate-time-table-lecture-hall'] = 'TimeTableController/LectureHallViewGenerate';
 $route['generate-time-table'] = 'TimeTableController/generate';
 $route['add-lecture'] = 'lecture/add';
 $route['time-table-view'] = 'TimeTableController/ViewSelect';
 $route['generate-time-table-view'] = 'TimeTableController/ViewGenerate';
-
 
 $route['signup'] = 'SignUp/submit';
 
