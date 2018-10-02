@@ -127,11 +127,11 @@ class TimeTableController extends CI_Controller {
 
        // $str="time-table/lecturer?lecturer_id=".$staff_id."&semester=".$semester;
         if($type==1){
-            redirect(base_url("time-table/student"), 'location');
+            redirect(base_url("time-tables/student"), 'location');
         }else if($type==2){
-            redirect(base_url("time-table/lecturer"), 'location');
+            redirect(base_url("time-tables/lecturer"), 'location');
         }else if($type==3){
-            redirect(base_url("time-table/lecture-hall"), 'location');
+            redirect(base_url("time-tables/lecture-hall"), 'location');
         }
 
 
