@@ -7,7 +7,10 @@
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
+        <a href="<?=base_url("equipment/add")?>"><button>Pending Requests</button></a>
+        <a href="<?=base_url("equipment/add")?>"><button>Approved Requests</button></a>
         <a href="<?=base_url("equipment/add")?>"><button>Add Items</button></a>
+
     </div>
 
     <style>
