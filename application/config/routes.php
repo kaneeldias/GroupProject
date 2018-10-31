@@ -121,8 +121,10 @@ $route['notes/update'] = "NotesController/update";
 $route['booking'] = "BookingController/index";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
+
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
+$route['profile/edit/process'] = 'Profile/process_edit';
 
 $route['equipment'] = 'Equipment/index';
 $route['equipment/add']='Equipment/add';
