@@ -56,15 +56,15 @@
         <td></td>
         <td></td>
     </tr>
-    <?php foreach($subjects as $subject):?>
+    <?php foreach($array as $a):?>
         <tr>
-            <td><?=$subject->getCode()?></td>
-            <td><?=$subject->getName()?></td>
-            <td><?=$subject->getDegreeId()?></td>
-            <td><?=$subject->getYear()?></td>
-            <td><?=$subject->getSemester()?></td>
-            <td><a href="<?=base_url("subjects/edit/?id=".$subject->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("subjects/delete/?id=".$subject->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$a['subject']->getCode()?></td>
+            <td><?=$a['subject']->getName()?></td>
+            <td><?=$a['degree']->getName()?></td>
+            <td><?=$a['subject']->getYear()?></td>
+            <td><?=$a['subject']->getSemester()?></td>
+            <td><a href="<?=base_url("subjects/edit/?id=".$a['subject']->getId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("subjects/delete/?id=".$a['subject']->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>

@@ -4,7 +4,7 @@
         <div class="form_title">Select Time Table</div>
 
 
-        <form class="column form_content" method="POST" action="<?=base_url("generate-time-tables1")?>">
+        <form class="column form_content" method="POST" action="<?=base_url("generate-time-table-lecture-hall")?>">
 
 
 
