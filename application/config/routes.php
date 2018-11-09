@@ -123,6 +123,7 @@ $route['notes/update'] = "NotesController/update";
 $route['booking'] = "BookingController/index";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
+$route['booking/process'] = "BookingController/process";
 
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';

@@ -102,3 +102,20 @@
     font-size:18px;
     color:black;
 }
+
+.form_fab{
+    background-color: #23924e;
+    border:none;
+    color:white;
+    padding:10px;
+    font-size:20px;
+    border-radius:3px;
+    transition:all 0.2s;
+    padding-left:20px;
+    padding-right:20px;
+    cursor:pointer;
+}
+
+.form_fab:hover{
+    background-color:#26a65b;
+}
