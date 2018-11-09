@@ -96,11 +96,12 @@ $route['time-table/select/lecturer'] = 'TimeTableController/LecturerViewSelect';
 $route['time-table/select/lecture-hall'] = 'TimeTableController/LectureHallViewSelect';
 $route['generate-time-tables'] = 'TimeTableController/LecturerViewGenerate';
 $route['generate-time-tables1'] = 'TimeTableController/LectureHallViewGenerate';
+$route['generate-time-table-lecturer'] = 'TimeTableController/LecturerViewGenerate';
+$route['generate-time-table-lecture-hall'] = 'TimeTableController/LectureHallViewGenerate';
 $route['generate-time-table'] = 'TimeTableController/generate';
 $route['add-lecture'] = 'lecture/add';
 $route['time-table-view'] = 'TimeTableController/ViewSelect';
 $route['generate-time-table-view'] = 'TimeTableController/ViewGenerate';
-
 
 $route['signup'] = 'SignUp/submit';
 
@@ -122,5 +123,14 @@ $route['notes/update'] = "NotesController/update";
 $route['booking'] = "BookingController/index";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
+
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
+$route['profile/edit/process'] = 'Profile/process_edit';
+
+$route['equipment'] = 'Equipment/index';
+$route['equipment/add']='Equipment/add';
+$route['equipment/add/process'] = 'Equipment/process_add';
+$route['equipment/edit'] = 'Equipment/edit';
+$route['equipment/edit/process'] = 'Equipment/process_edit';
+$route['equipment/delete'] = 'Equipment/delete';

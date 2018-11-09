@@ -132,7 +132,7 @@ class TimeTableController extends CI_Controller {
             redirect(base_url("time-table/select/lecturer"), 'location');
         }else if($type==3){
             redirect(base_url("time-table/select/lecture-hall"), 'location');
-        }
+		}
 
 
     }

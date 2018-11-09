@@ -2,12 +2,15 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">Subjects</div>
+    <div class="control_panel_title align-text-bottom">Equipments</div>
 
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("subjects/add")?>"><button>Add Subject</button></a>
+        <a href="<?=base_url("equipment/add")?>"><button>Pending Requests</button></a>
+        <a href="<?=base_url("equipment/add")?>"><button>Approved Requests</button></a>
+        <a href="<?=base_url("equipment/add")?>"><button>Add Items</button></a>
+
     </div>
 
     <style>
@@ -45,26 +48,25 @@
         }
     </style>
 </div>
-<table id="SubjectsTable" class="custom_table col-md-12">
+<table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
         <td>Code</td>
         <td>Name</td>
-        <td>Degree</td>
-        <td>Year</td>
-        <td>Semester</td>
+        <td>Discription</td>
         <td></td>
         <td></td>
         <td></td>
+        <!--<td></td>-->
     </tr>
-    <?php foreach($array as $a):?>
+    <?php foreach($Items as $Item):?>
         <tr>
-            <td><?=$a['subject']->getCode()?></td>
-            <td><?=$a['subject']->getName()?></td>
-            <td><?=$a['degree']->getName()?></td>
-            <td><?=$a['subject']->getYear()?></td>
-            <td><?=$a['subject']->getSemester()?></td>
-            <td><a href="<?=base_url("subjects/edit/?id=".$a['subject']->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("subjects/delete/?id=".$a['subject']->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$Item->getEqid()?></td>
+            <td><?=$Item->getName()?></td>
+            <td><?=$Item->getInfo()?></td>
+
+            <
+            <td><a href="<?=base_url("equipment/edit/?id=".$Item->getEqId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("equipment/delete/?id=".$Item->getEqId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
@@ -79,6 +81,13 @@
     }
 </style>
 
+<script>
+    $(document).ready(function () {
+        $('#lectureHallsTable').DataTable();
+        //$('.dataTables_length').addClass('bs-select');
+    });
+</script>
+
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
     <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
@@ -89,7 +98,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Subject has been added successfully.</p>
+                    <p>Item has been added successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
