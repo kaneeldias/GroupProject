@@ -20,7 +20,7 @@
                 <?php for($j = 1; $j <= 5; $j++): ?>
                     <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
                         <?php foreach($lectures[$j][$i] as $item): ?>
-                            <div style="margin-top:5px; margin-bottom:5px;">
+                            <div style="margin-top:10px; margin-bottom:10px;">
                                 <div><?=$item["subject"]->getCode()?></div>
                                 <div style="font-size:12px;">
                                     <?php
@@ -51,6 +51,11 @@
                                     echo implode(", ", $s);
                                     ?>
                                 </div>
+                                    <?php
+                                        $lec_id = $item['lecture_id'];
+                                        $delete = base_url("lecture/delete?lecture_id=$lec_id")
+                                    ?>
+                                    <span><a style="color:#d91e18;" href="<?=$delete?>">Remove</a></span>
                             </div>
                         <?php endforeach ?>
                     </td>

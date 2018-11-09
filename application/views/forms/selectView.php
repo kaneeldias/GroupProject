@@ -14,7 +14,7 @@
                     <span class="form_label">View Type</span>
                     <select class="form_input" name="viewType">
                         <option value="" disabled>Type</option>
-                        <option value="1"  > Student</option>
+                        <option value="1"> Student</option>
                         <option value="2"  > Lecturer</option>
                         <option value="3"  > Lecture Hall</option>
                     </select>
