@@ -112,6 +112,7 @@ $route['signup'] = 'SignUp/index';
 $route['signup/process'] = 'SignUp/process_add';
 
 $route['lecture/process'] = 'Lecture/process';
+$route['lecture/delete'] = 'Lecture/delete';
 
 $route['dashboard-admin'] = 'Dashboard/admin';
 $route['dashboard-student'] = 'Dashboard/student';
