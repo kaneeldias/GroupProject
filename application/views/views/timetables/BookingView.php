@@ -16,13 +16,7 @@
             <tr>
                 <td><?=$i?>:00 to <?=($i+1)?>:00</td>
                 <?php foreach($dates as $date):?>
-                    <td
-                        <?php if($booked[$date][$i]):?>
-                            class="booked"
-                        <?php else:?>
-                            class="selectable"
-                        <?php endif ?>>
-                    </td>
+                    <td<?php if($booked[$date][$i]):?> class="booked" <?php else:?> class="selectable"<?php endif ?>></td>
                 <?php endforeach ?>
             </tr>
         <?php endfor?>
@@ -30,9 +24,54 @@
 
 </div>
 
-<div id="book" class="fab" onclick="$('#add_modal').modal('show')">BOOK
+<div id="book" class="fab" onclick="$('#add_modal').modal('show')">BOOK</div>
+
+<style>
+    #book{
+        position:fixed;
+        right:30px;
+        bottom:20px;
+        background-color:red;
+        padding:20px;
+        display:none;
+    }
+</style>
+
+<script>
+    function selectableClick(element){
+
+        /*$("#day_input").val($(element).attr("day"));
+         $("#start_time_input").val($(element).attr("start_time"));
+         $("#end_time_input").val($(element).attr("end_time"));*/
+        $("#book").show(200);
+        $(element).removeClass("selectable").addClass("selected");
+        $(element).unbind( "click" );
+        $(element).click(function(){
+            selectedClick(element);
+        })
+    }
+
+    function selectedClick(element){
+        $(element).removeClass("selected").addClass("selectable");
+        $(element).unbind( "click" );
+        $("#book").hide(200);
+        $(element).click(function(){
+            selectableClick(element);
+        })
+    }
 
 
+    $(".selected").click(function(){
+        selectedClick(this);
+    });
+
+
+
+    $(".selectable").click(function(){
+        selectableClick(this);
+    });
+
+</script>
 
 <style>
     .booked{
@@ -41,12 +80,3 @@
 </style>
 
 <link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>
-
-<script src="<?=base_url("assets/js/timetable_script.js")?>"></script>
-
-<script>
-    function selected_click_action(){
-        console.log("hi");
-        $("#book").show(200);
-    }
-</script>
