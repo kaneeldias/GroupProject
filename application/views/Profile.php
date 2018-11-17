@@ -5,7 +5,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 <div class="container emp-profile">
-            <form method="post" action="<?=base_url("profile/edit")?>">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -34,7 +33,9 @@ Change Photo
                         </div>
                     </div>
                     <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        <a href="<?=base_url("profile/edit")?>">
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
@@ -76,6 +77,27 @@ Change Photo
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $Details->getTp()?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Google Calendar Integration</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <?php if($calendar): ?>
+                                                <p>Integrated</p>
+                                                <?php else: ?>
+                                                <p onclick="getCodeWindow()">Get Code</p>
+                                                    <script>
+                                                        function getCodeWindow() {
+                                                            var newWin = window.open('<?=$authUrl?>', 'example', 'width=600,height=400');
+                                                        }
+                                                    </script>
+                                                    <form method="POST" action="<?=base_url("calendar/integrate")?>">
+                                                        <input type="text" name="authCode" placeholder="Enter Code"/>
+                                                        <input type="submit" value="Integrate"/>
+                                                    </form>
+                                                <?php endif ?>
                                             </div>
                                         </div>
 
@@ -131,7 +153,6 @@ Change Photo
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
 
 <style>

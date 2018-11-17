@@ -8,6 +8,15 @@ class Profile extends CI_Controller {
 
         $this->load->model("profile_model");
         $data['Details'] = $this->profile_model->getAllDetails($this->session->userdata('user_id'));
+
+        $this->load->library("google");
+        $client = $this->google->getClient();
+        if($client == false){
+            $data['calendar'] = false;
+            $data['authUrl'] = $this->google->getAuthUrl();
+        }
+        else $data['calendar'] = true;
+
         $this->load->view("templates/header");
         $this->load->view("Profile",$data);
         $this->load->view("templates/footer");
