@@ -16,6 +16,17 @@ class Profile extends CI_Controller {
             $data['authUrl'] = $this->google->getAuthUrl();
         }
         else $data['calendar'] = true;
+        $this->load->model("Staff_model");
+        if($this->session->userdata("type") == "staff"){
+            $data['lecturers'] = $this->Staff_model->getAllStaff();
+        }
+
+        $this->load->model("CalendarInfo_model");
+        $calendar = $this->CalendarInfo_model->getCalendarInfo($this->session->userdata('user_id'));
+        $data['timetable_id'] = -1;
+        if($calendar != false){
+            $data['timetable_id'] = $calendar->getTimetableId();
+        }
 
         $this->load->view("templates/header");
         $this->load->view("Profile",$data);

@@ -49,7 +49,7 @@ Change Photo
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Frist Name</label>
+                                                <label>First Name</label>
                                             </div>
                                             <div class="col-md-6">
                                                 <p><?php echo $Details->getFname()?></p>
@@ -76,16 +76,35 @@ Change Photo
                                                 <label>Contact Number</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p><?php echo $Details->getTp()?></p>
+                                                <p>.<?php echo $Details->getTp()?></p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Account Type</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><?php echo $this->session->userdata("type")?></p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Google Calendar Integration</label>
                                             </div>
-                                            <div class="col-md-6">
+                                            <div class="column col-md-6">
+                                                <?php if($this->session->userdata("type") == "staff"):?>
+                                                    <form class="row" method="POST" action="<?=base_url("calendar/setAccountLecturer")?>">
+                                                    <select class="form_input" id="lecturer" name="lecturer">
+                                                        <?php foreach($lecturers as $lecturer):?>
+                                                            <option <?php if($lecturer->getId() == $timetable_id) echo "selected"?> value="<?=$lecturer->getId()?>"><?=$lecturer->getName()?></option>
+                                                        <?php endforeach ?>
+                                                    </select>
+                                                    <input type="submit" value="Submit"/>
+                                                    </form>
+                                                <?php endif?>
                                                 <?php if($calendar): ?>
-                                                <p>Integrated</p>
+                                                <!--<p>Integrated</p>-->
+                                                <p><a href="<?=base_url("calendar/refresh")?>">Refresh</a></p>
                                                 <?php else: ?>
                                                 <p onclick="getCodeWindow()">Get Code</p>
                                                     <script>
