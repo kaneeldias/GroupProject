@@ -41,12 +41,12 @@
         <div class="flex-row col-md-12" style="display:flex; align-items:center;">
             <div>
                 <a href="http://ucsc.cmb.ac.lk/">
-                    <img src="<?=base_url('images/ucsc.png')?>" width="100px">
+                    <img src="<?=base_url('images/ucsc.png')?>" width="80px">
                 </a>
             </div>
             <div>
                 <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/header_styles.css")?>">
-                <div id="header_title">UCSC Academic Support System</div>
+                <div id="header_title">UCSC ACADEMIC SUPPORT SYSTEM</div>
             </div>
 
             <div class="flex-grow-1"></div>
@@ -54,19 +54,19 @@
             <div style="margin-right:20px;">
                 <div>
                     <a href="https://www.facebook.com/PahasaraUCSC/">
-                        <img src="<?=base_url('images/facebook.png')?>" width="50px">
+                        <img src="<?=base_url('images/facebook.png')?>" width="40px">
                     </a>
                     <a href="https://twitter.com/UCSC_LK">
-                        <img src="<?=base_url('images/twitter.png')?>" width="35px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/twitter.png')?>" width="40px" style="margin-right: 10px">
                     </a>
                     <a href="https://www.instagram.com/ucsc_lk/">
-                        <img src="<?=base_url('images/instagram.png')?>" width="30px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/instagram.png')?>" width="40px" style="margin-right: 10px">
                     </a>
                     <a href="https://plus.google.com/+UniversityofColomboSchoolofComputingUCSC">
-                        <img src="<?=base_url('images/googlePlus.png')?>" width="35px" style="margin-right: 10px">
+                        <img src="<?=base_url('images/googlePlus.png')?>" width="40px" style="margin-right: 10px">
                     </a>
                     <a href="https://www.youtube.com/channel/UC0gdcqEL6ZZeT67s0IbOrHg">
-                        <img src="<?=base_url('images/youtube.png')?>" width="36px">
+                        <img src="<?=base_url('images/youtube.png')?>" width="40px">
                     </a>
                 </div>
             </div>

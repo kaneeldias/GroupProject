@@ -115,6 +115,7 @@ class Lecture_model extends CI_Model{
         foreach($query->result() as $row){
             $lecture = [];
             $lecture["subject"] = $this->Subject_model->getSubjectById($row->subject_id);
+            $lecture["lecture_id"] = $row->lecture_id;
 
             $lecture['venues'] = [];
             $this->db->select("hall_id");
@@ -204,6 +205,14 @@ class Lecture_model extends CI_Model{
         }
 
         return $lectures;
+    }
+
+    public function delete($lecture_id){
+        $this->load->database();
+        $this->db->where("lecture_id", $lecture_id);
+        $this->db->delete("lecture");
+        redirect($_SERVER['HTTP_REFERER']);
+
     }
 
 

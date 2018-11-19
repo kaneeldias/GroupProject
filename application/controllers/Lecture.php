@@ -179,4 +179,10 @@ class Lecture extends CI_Controller {
 
 	}
 
+	public function delete(){
+		$id = $_GET['lecture_id'];
+		$this->load->model("Lecture_model");
+		$this->Lecture_model->delete($id);
+	}
+
 }
