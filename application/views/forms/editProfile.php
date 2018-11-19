@@ -50,14 +50,14 @@
 
                             <div class="col-xs-6">
                                 <label for="first_name"><h4>First Name</h4></label>
-                                <input type="text" class="form-control" name="first_name" id="first_name" placeholder="first name" >
+                                <input type="text" class="form-control" name="fname" id="fname" placeholder=<?php echo $Details->getFname()?> >
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="last_name"><h4>Last Name</h4></label>
-                                <input type="text" class="form-control" name="last_name" id="last_name" placeholder="last name" >
+                                <input type="text" class="form-control" name="lname" id="lname" placeholder=<?php echo $Details->getLname()?>>
                             </div>
                         </div>
 
@@ -65,21 +65,21 @@
 
                             <div class="col-xs-6">
                                 <label for="phone"><h4>Contact Number</h4></label>
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="enter phone" >
+                                <input type="text" class="form-control" name="tp" id="tp" placeholder=<?php echo $Details->getTp()?> >
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="you@email.com" >
+                                <input type="email" class="form-control" name="email" id="email" placeholder=<?php echo $Details->getEmail()?> >
                             </div>
                         </div>
                         <div class="form-group">
 
                             <div class="col-xs-6">
                                 <label for="email"><h4>Old Password</h4></label>
-                                <input type="password" class="form-control" id="location" placeholder="old password">
+                                <input type="password" class="form-control" id="oldpassword" placeholder="old password">
                             </div>
                         </div>
                         <div class="form-group">
@@ -142,3 +142,54 @@
         });
     });
 </script>
+
+    <?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+        <div id="errorModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Error</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>There was an error in your form. Please try again.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $('#errorModal').modal('show');
+        </script>
+    <?php endif ?>
+
+
+    <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
+        <div id="successModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Profile has been edited successfully.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $('#successModal').modal('show');
+        </script>
+    <?php endif ?>

@@ -74,24 +74,7 @@ class Lecturer_model extends CI_Model{
         return $Lecturers;
     }
 
-    /*public function checkConflict($venue_id, $day, $start_time){
-        $this->load->database();
-        $this->db->select("lecture_id");
-        $this->db->from("lecture");
-        $this->db->where("day", $day);
-        $this->db->where("start_time", $start_time);
-        $query = $this->db->get();
-        foreach($query->result() as $row){
-            $this->db->select("hall_id");
-            $this->db->from("venue_allocation");
-            $this->db->where("lecture_id", $row->lecture_id);
-            $query2 = $this->db->get();
-            foreach($query2->result() as $row2){
-                if($row2->hall_id == $venue_id) return false;
-            }
-        }
-        return true;
-    }*/
+
 
     public function getId()
     {
