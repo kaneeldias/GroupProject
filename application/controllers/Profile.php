@@ -10,6 +10,7 @@ class Profile extends CI_Controller {
         $data['Details'] = $this->profile_model->getAllDetails($this->session->userdata('user_id'));
 
         $this->load->library("google");
+        $this->google->setUserId($this->session->userdata('user_id'));
         $client = $this->google->getClient();
         if($client == false){
             $data['calendar'] = false;

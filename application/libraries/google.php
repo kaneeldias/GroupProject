@@ -6,6 +6,7 @@ require_once APPPATH . 'third_party/Google/vendor/autoload.php';
 class Google extends Google_Client {
 
     private $client;
+    private $user_id;
 
     function __construct($params = array()) {
         parent::__construct();
@@ -18,6 +19,10 @@ class Google extends Google_Client {
         $this->client = $client;
     }
 
+    public function setUserId($id){
+        $this->user_id = $id;
+    }
+
     public function getClient(){
 
 
@@ -25,7 +30,7 @@ class Google extends Google_Client {
         // The file token.json stores the user's access and refresh tokens, and is
         // created automatically when the authorization flow completes for the first
         // time.
-        $tokenPath = 'token.json';
+        $tokenPath = 'tokens/'.$this->user_id.'_token.json';
         if (file_exists($tokenPath)) {
             $accessToken = json_decode(file_get_contents($tokenPath), true);
             $this->client->setAccessToken($accessToken);
@@ -67,7 +72,7 @@ class Google extends Google_Client {
                 throw new Exception(join(', ', $accessToken));
             }
 
-            $tokenPath = 'token.json';
+            $tokenPath = 'tokens/'.$this->user_id.'_token.json';
 
             if (!file_exists(dirname($tokenPath))) {
                 mkdir(dirname($tokenPath), 0700, true);
