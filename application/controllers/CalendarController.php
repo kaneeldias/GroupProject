@@ -58,6 +58,20 @@ class CalendarController extends CI_Controller {
 			}
 		}
 
+		if($calender->getType() == "student"){
+			$lectures = $this->Lecture_model->getLecturesForGroup($calender->getTimetableId(), $semester);
+			foreach($lectures as $lecture){
+				$a = [];
+				$a['lecture'] = $lecture;
+				$a['subject'] = $this->Subject_model->getSubjectById($lecture->getSubjectId());
+				$a['venues'] = [];
+				foreach($this->Venue_model->getVenuesForLecture($lecture->getId()) as $venue){
+					array_push($a['venues'], $venue->getName());
+				}
+				array_push($data, $a);
+			}
+		}
+
 
 		$this->load->library("google");
 		$this->google->setUserId($this->session->userdata('user_id'));

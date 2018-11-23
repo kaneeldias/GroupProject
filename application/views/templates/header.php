@@ -40,18 +40,18 @@
     <div id="header" class="row align-middle" style="width:100%; margin:0px;">
         <div class="flex-row col-md-12" style="display:flex; align-items:center;">
             <div>
-                <a href="http://ucsc.cmb.ac.lk/">
-                    <img src="<?=base_url('images/ucsc.png')?>" width="100px">
+                <a href="<?=base_url('/Dashboard');?>">
+                    <img src="<?=base_url('images/ucsc_logo.png')?>" width="50px">
                 </a>
             </div>
             <div>
                 <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/header_styles.css")?>">
-                <div id="header_title">UCSC Academic Support System</div>
+                <!--<div id="header_title">UCSC Academic Support System</div>-->
             </div>
 
             <div class="flex-grow-1"></div>
 
-            <div style="margin-right:20px;">
+            <!--<div style="margin-right:20px;">
                 <div>
                     <a href="https://www.facebook.com/PahasaraUCSC/">
                         <img src="<?=base_url('images/facebook.png')?>" width="50px">
@@ -69,7 +69,7 @@
                         <img src="<?=base_url('images/youtube.png')?>" width="36px">
                     </a>
                 </div>
-            </div>
+            </div>-->
             <div>
                 <div id="header_links">
                     <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged')): ?>

@@ -1,6 +1,6 @@
 <div class="row col-md-12" id="dashboard">
     <div class="column col-md-3 dashboard_links" style="padding:0px;">
-        <a href="<?=base_url("time-table/group?group=5&semester=1")?>"><div class="dashboard_link">View Time Table</div></a>
+        <a href="<?=base_url("time-table/select/lecturer")?>"><div class="dashboard_link">View Time Table</div></a>
         <a href="<?=base_url("time-table/group?group=5&semester=1")?>"><div class="dashboard_link">Hall Booking</div></a>
         <a href="<?=base_url("time-table/group?group=5&semester=1")?>"><div class="dashboard_link">Equipment Reservation</div></a>
     </div>
