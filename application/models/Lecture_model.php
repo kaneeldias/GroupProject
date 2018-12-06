@@ -207,6 +207,23 @@ class Lecture_model extends CI_Model{
         return $lectures;
     }
 
+    public function getLecturesForGroup($group_id, $semester){
+        $lectures = [];
+        $this->load->database();
+        $this->db->distinct();
+        $this->db->select("lecture_allocation.lecture_id");
+        $this->db->from("lecture_allocation");
+        $this->db->join("lecture", "lecture_allocation.lecture_id = lecture.lecture_id");
+        $this->db->where("$group_id", $group_id);
+        $this->db->where("semester", $semester);
+        $query = $this->db->get();
+        foreach($query->result() as $row){
+            array_push($lectures, $this->getLectureById($row->lecture_id));
+        }
+
+        return $lectures;
+    }
+
     public function delete($lecture_id){
         $this->load->database();
         $this->db->where("lecture_id", $lecture_id);

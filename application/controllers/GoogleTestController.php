@@ -10,7 +10,7 @@ class GoogleTestController extends CI_Controller {
 	}
 
 	public function index(){
-		$this->google->getClient();
+		print_r($this->google->getClient());
 	}
 
 	public function index2(){

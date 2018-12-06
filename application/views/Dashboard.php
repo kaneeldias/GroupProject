@@ -1,5 +1,5 @@
 <div class="row col-md-12" id="dashboard">
-    <div class="column col-md-3 dashboard_links" style="padding:0px;">
+    <div class="row col-md-12 dashboard_links" style="padding:0px;">
         <a href="<?=base_url("signup")?>"><div class="dashboard_link">Register User</div></a>
         <a href="<?=base_url("lecturer")?>"><div class="dashboard_link">Lecturer</div></a>
         <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
@@ -61,3 +61,4 @@
         background-color: #364e64;
     }
 </style>
+

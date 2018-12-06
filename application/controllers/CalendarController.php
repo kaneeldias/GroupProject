@@ -6,6 +6,8 @@ class CalendarController extends CI_Controller {
 	public function integrate(){
 		$authCode = $_POST['authCode'];
 		$this->load->library("google");
+		$this->load->library("session");
+		$this->google->setUserId($this->session->userdata('user_id'));
 		if($this->google->checkAuthorize($authCode)){
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
@@ -56,9 +58,27 @@ class CalendarController extends CI_Controller {
 			}
 		}
 
+		if($calender->getType() == "student"){
+			$lectures = $this->Lecture_model->getLecturesForGroup($calender->getTimetableId(), $semester);
+			foreach($lectures as $lecture){
+				$a = [];
+				$a['lecture'] = $lecture;
+				$a['subject'] = $this->Subject_model->getSubjectById($lecture->getSubjectId());
+				$a['venues'] = [];
+				foreach($this->Venue_model->getVenuesForLecture($lecture->getId()) as $venue){
+					array_push($a['venues'], $venue->getName());
+				}
+				array_push($data, $a);
+			}
+		}
+
 
 		$this->load->library("google");
+		$this->google->setUserId($this->session->userdata('user_id'));
 		$client = $this->google->getClient();
+		if($client == false){
+			exit("Error");
+		}
 
 		foreach($data as $d){
 			/*echo $d['lecture']->getDay()."</br>";
