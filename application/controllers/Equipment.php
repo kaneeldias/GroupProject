@@ -140,8 +140,7 @@ class Equipment extends CI_Controller {
                 throw new Exception();
             }
 
-            $id = $_GET['eq_id'];
-            $this->validate_edit();
+            $id = $_GET['id'];
             $code = $_POST['code'];
             $name = $_POST['name'];
             $info = $_POST['info'];
