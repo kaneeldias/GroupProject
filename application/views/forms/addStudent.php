@@ -1,5 +1,3 @@
-@extends('layouts.app')
-@section('content')
 <div class="pcoded-content">
     <!-- [ breadcrumb ] start -->
     <div class="page-header">
@@ -135,4 +133,3 @@
         </div>
     </div>
 </div>
-@endsection
