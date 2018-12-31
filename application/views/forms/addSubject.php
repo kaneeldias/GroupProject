@@ -4,7 +4,7 @@
         <div class="form_title">Add Subject</div>
 
 
-        <form class="column form_content" method="POST" action="subjects/add/process">
+        <form id="addSubjectForm" class="column form_content" method="POST" action="subjects/add/process">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
@@ -112,3 +112,14 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+    <script src="<?=base_url('/assets/js/validation/add_subject_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>
