@@ -141,6 +141,7 @@ class Equipment extends CI_Controller {
             }
 
             $id = $_GET['id'];
+            //$this->validate_edit();
             $code = $_POST['code'];
             $name = $_POST['name'];
             $info = $_POST['info'];
