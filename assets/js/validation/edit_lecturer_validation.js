@@ -1,8 +1,8 @@
-$("#addLecturerForm").validate({
+$("#editLecturerForm").validate({
     rules:{
         id:{
             required: true,
-            minlength:5,
+            minlength:5
             //remote: "<?=base_url('validate/id-exists')?>"
         },
         name:{

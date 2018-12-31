@@ -1,4 +1,4 @@
-$("#lectureHallForm").validate({
+$("#editLectureHallForm").validate({
     rules:{
         code:{
             required: true,

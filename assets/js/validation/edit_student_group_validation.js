@@ -1,4 +1,4 @@
-$("#addStudentGroup").validate({
+$("#editStudentGroup").validate({
     rules:{
         groupname:{
             required: true,
@@ -16,7 +16,7 @@ $("#addStudentGroup").validate({
         }
     },
     messages:{
-         groupname:{
+        groupname:{
             required:"Enter Group Name",
             remote:"group name already exists"
         },
