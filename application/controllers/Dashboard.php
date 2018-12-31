@@ -69,8 +69,11 @@ class Dashboard extends CI_Controller {
                     //var_dump($this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']));
                     $l = $this->Lecture_model->getLecturesForDay($group->getGroupId(), $data['semester'], $day);
                     for($i = $day; $i <= $day; $i++){
+                        if($day == 6 || $day == 7) break;
                         for($j = 8; $j <= 17; $j++){
-                            foreach($l[$i][$j] as $lo) array_push($data['lectures'][$key][$j], $lo);
+                            foreach($l[$i][$j] as $lo){
+                                echo "Lol";
+                            } //array_push($data['lectures'][$key][$j], $lo);
                         }
                     }
                 }
