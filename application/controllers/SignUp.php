@@ -107,10 +107,12 @@ class SignUp extends CI_Controller {
             $this->db->set("type", $type);
             if(!$this->db->insert("user")) throw new Exception();
 
-            redirect(base_url("signUp")."?success=true",'location');
+            $this->session->set_flashdata('success', 'true');
+            redirect(base_url("signUp"),'location');
 
         }catch(Exception $e){
-            redirect(base_url("signUp")."?error=true",'location');
+            $this->session->set_flashdata('error', 'true');
+            redirect(base_url("signUp"),'location');
         }
     }
 }

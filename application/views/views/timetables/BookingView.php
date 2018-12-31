@@ -1,3 +1,6 @@
+
+<link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>
+
 <div class="column time_table_container mx-auto col-md-12" style="text-align:center;">
 
     <h2>Time Slots for <?=$venue->getName()?></h2>
@@ -17,7 +20,8 @@
             <tr>
                 <td><?=$i?>:00 to <?=($i+1)?>:00</td>
                 <?php foreach($dates as $date):?>
-                    <td date="<?=$date?>" start_time="<?=$i?>" end_time="<?=$i+1?>" <?php if($booked[$date][$i] || $bookedBooked[$date][$i]):?> class="booked" <?php else:?> class="selectable"<?php endif ?>>
+                    <td date="<?=$date?>" start_time="<?=$i?>" end_time="<?=$i+1?>" <?php if($booked[$date][$i] || $bookedBooked[$date][$i]):?> class="booked" <?php else:?> <?php if($this->session->userdata('type') == 'admin'):?>
+                        class="selectable"<?php endif?><?php endif ?>>
                         <?php if($booked[$date][$i]):?>Lecture<?php endif?>
                         <?php if($bookedBooked[$date][$i]):?>Booked<?php endif?>
                     </td>
@@ -28,6 +32,13 @@
 
 </div>
 
+<style>
+    .booked{
+        background-color:#e74c3c;
+    }
+</style>
+
+<?php if($this->session->userdata('type') == 'admin'):?>
 <!--<div id="book" class="fab" onclick="$('#add_modal').modal('show')">BOOK</div>-->
 <button id="book" class="form_fab" onclick="getAdd()">Book</button>
 
@@ -77,11 +88,7 @@
 
 </script>
 
-<style>
-    .booked{
-        background-color:#e74c3c;
-    }
-</style>
+
 
 <div id="add_modal" class="modal fade" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -111,7 +118,6 @@
 </script>
 
 
-<link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>
 
 <?php if(isset($_GET['error']) && $_GET['error'] == true):?>
     <div id="errorModal" class="modal fade" role="dialog">
@@ -163,3 +169,4 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+<?php endif?>
