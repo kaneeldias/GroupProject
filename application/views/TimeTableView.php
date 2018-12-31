@@ -18,7 +18,7 @@
             <tr>
                 <td><?= $i.":00 - ".($i+1).":00" ?></td>
                 <?php for($j = 1; $j <= 5; $j++): ?>
-                    <td class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>">
+                <td <?php if($this->session->userdata('type') == 'admin'):?> class="selectable" day="<?=$j?>" start_time="<?=$i?>" end_time="<?=$i+1?>"<?php endif?>>
                         <?php foreach($lectures[$j][$i] as $item): ?>
                             <div style="margin-top:10px; margin-bottom:10px;">
                                 <div><?=$item["subject"]->getCode()?></div>
@@ -51,11 +51,13 @@
                                     echo implode(", ", $s);
                                     ?>
                                 </div>
+                                    <?php if($this->session->userdata('type') == 'admin'):?>
                                     <?php
                                         $lec_id = $item['lecture_id'];
                                         $delete = base_url("lecture/delete?lecture_id=$lec_id")
                                     ?>
                                     <span><a style="color:#d91e18;" href="<?=$delete?>">Remove</a></span>
+                                    <?php endif?>
                             </div>
                         <?php endforeach ?>
                     </td>
@@ -66,6 +68,7 @@
 
 </div>
 
+<?php if($this->session->userdata('type') == 'admin'):?>
 <div id="add_lecture" class="fab" onclick="getAdd()"> +
     <style>
         .fab{
@@ -206,4 +209,5 @@
         $('#errorModal').modal('show');
     </script>
 <?php endif ?>
+<?php endif?>
 

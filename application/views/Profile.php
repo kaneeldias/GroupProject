@@ -4,9 +4,9 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile">
+<div class="container emp-profile col-md-6">
                 <div class="row">
-                    <div class="col-md-10">
+                    <div class="col-md-8">
                         <div class="profile-head">
                             <h5> <?php echo $Details->getFname()?> <?php echo $Details->getLname()?></h5>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -21,14 +21,14 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2" style="float:left;">
+                    <div class="col-md-4" style="float:left;">
                         <a href="<?=base_url("profile/edit")?>">
                             <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
                         </a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                                 <div class="row">
