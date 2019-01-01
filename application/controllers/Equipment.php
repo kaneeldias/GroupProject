@@ -224,6 +224,7 @@ class Equipment extends CI_Controller {
                 throw new Exception();
             }
 
+            $user_name = $this->session->userdata("fname");
             $item = $_POST['item'];
             $quantity = $_POST['quantity'];
             $from = $_POST['from'];
@@ -231,6 +232,7 @@ class Equipment extends CI_Controller {
             $date = $_POST['date'];
 
             $this->load->database();
+            $this->db->set("user_name",$user_name);
             $this->db->set("item", $item);
             $this->db->set("quantity", $quantity);
             $this->db->set("from_time", $from);
