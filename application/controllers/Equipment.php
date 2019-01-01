@@ -163,5 +163,19 @@ class Equipment extends CI_Controller {
         }
 
     }
+    public function request(){
+        $this->load->library('session');
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "staff"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
+        $this->load->model("Equipment_model");
+        $data['items'] = $this->Equipment_model->getAllItems();
 
+        $this->load->view('templates/header');
+        $this->load->view('forms/equipmentRequest', $data);
+        $this->load->view('templates/footer');
+    }
 }

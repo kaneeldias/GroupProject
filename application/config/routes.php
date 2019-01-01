@@ -138,6 +138,8 @@ $route['equipment/edit'] = 'Equipment/edit';
 $route['equipment/edit/process'] = 'Equipment/process_edit';
 $route['equipment/delete'] = 'Equipment/delete';
 
+$route['equipment/request'] = 'Equipment/request';
+
 $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
