@@ -61,6 +61,10 @@
                 <button type="submit">Submit</button>
             </div>
 
+            <div>
+                <a href="<?=base_url("signUp/bulk")?>">Bulk Registration</a>
+            </div>
+
         </form>
     </div>
 </div>
