@@ -12,7 +12,7 @@
                     <select class="form_input" name="item">
                         <option selected disabled>Item</option>
                         <?php foreach($items as $item): ?>
-                            <option value="<?=$item->getEqId()?>"><?=$item->getName()?></option>
+                            <option value="<?=$item->getName()?>"><?=$item->getName()?></option>
                         <?php endforeach?>
                     </select>
                 </div>
