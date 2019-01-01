@@ -1,34 +1,3 @@
-<div class="row col-md-12" id="dashboard">
-    <div class="row col-md-12 dashboard_links" style="padding:0px;">
-        <a href="<?=base_url("signup")?>"><div class="dashboard_link">Register User</div></a>
-        <a href="<?=base_url("lecturer")?>"><div class="dashboard_link">Lecturer</div></a>
-        <a href="<?=base_url("subjects")?>"><div class="dashboard_link">Subjects</div></a>
-        <a href="<?=base_url("lecture-halls")?>"><div class="dashboard_link">Lecture Halls</div></a>
-        <a href="<?=base_url("student-groups")?>"><div class="dashboard_link">Student Group</div></a>
-        <a href="<?=base_url("time-table-view")?>"><div class="dashboard_link">Time Tables</div></a>
-        <a href="<?=base_url("booking")?>"><div class="dashboard_link">Bookings</div></a>
-        <a href="<?=base_url("equipment")?>"><div class="dashboard_link">Equipment Reservation</div></a>
-    </div>
-    <div class="row col-md-9" style="display:flex; align-items:center; text-align:center;">
-        <!--<div class="col-md-12 mx-auto form_container">
-
-            <div class="form_title" style="font-size:18px;">Notes</div>
-
-            <form class="column form_content" method="POST" action="<?=base_url("notes/update")?>">
-                <div class="form_item">
-                    <textarea style="width:100%; height:190px;" class="form_input" type="text" name="notes"><?=$notes?></textarea>
-                </div>
-                <div class="form_item col-md-1">
-                    <button type="submit">Save</button>
-                </div>
-
-            </form>
-        </div>-->
-
-
-    </div>
-</div>
-
 
 <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"/>
 <link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>

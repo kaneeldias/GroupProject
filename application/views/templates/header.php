@@ -18,6 +18,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?=base_url("assets/js/jqueryvalidate/jquery.validate.js")?>"></script>
     <script type="text/javascript" src="<?=base_url("assets/js/jqueryvalidate/additional-methods.js")?>"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
 
 
 
@@ -40,6 +42,20 @@
 
     <div id="header" class="row align-middle" style="width:100%; margin:0px;">
         <div class="flex-row col-md-12" style="display:flex; align-items:center;">
+
+            <div id="sidebarCollapse" style="padding:5px; margin-right:25px;">
+                <i class="fas fa-bars"></i>
+                <style>
+                    #sidebarCollapse{
+                        color:#DDDDDD;
+                        transition:all 0.2s;
+                        cursor:pointer;
+                    }
+                    #sidebarCollapse:hover{
+                        color:white;
+                    }
+                </style>
+            </div>
             <div>
                 <a href="<?=base_url('/Dashboard');?>">
                     <img src="<?=base_url('images/ucsc_logo.png')?>" width="50px">                </a>
@@ -73,7 +89,7 @@
             <div>
                 <div id="header_links">
                     <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged')): ?>
-                        <span><a href="<?=base_url("Dashboard")?>">Dashboard</a></span>
+                        <!--<span><a href="<?=base_url("Dashboard")?>">Dashboard</a></span>-->
                         <span><a href="<?=base_url("profile")?>"><?php $fname = $this->session->userdata('fname'); echo $fname; ?></a></span>
                         <span><a href="<?=base_url("auth/logout")?>">Log out</a></span>
                     <?php else : ?>
@@ -85,5 +101,16 @@
         </div>
     </div>
 
+<?php $this->load->view("templates/sidebar")?>
 
-    <div class="column" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
+<?php if (isset($path)):?>
+<nav aria-label="breadcrumb" style="margin-top:44px;">
+    <ol class="breadcrumb" style="background-color:#2c3e50; border-radius:0px; color:white;">
+        <?php foreach($path as $p=>$k):?>
+        <li class="breadcrumb-item"><a style="color:white;" href="<?=$k?>"><?=$p?></a></li>
+        <?php endforeach?>
+    </ol>
+</nav>
+<?php endif?>
+
+<div class="column" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">

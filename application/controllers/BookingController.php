@@ -15,8 +15,11 @@ class BookingController extends CI_Controller {
         $this->load->model("Venue_model");
         $data['halls'] = $this->Venue_model->getAllVenues();
 
-        $data['weeks'] =
-        $this->load->view("templates/header");
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Bookings" => base_url("booking")
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view("forms/bookingSelector", $data);
         $this->load->view("templates/footer");
     }
@@ -102,7 +105,12 @@ class BookingController extends CI_Controller {
         $this->load->model("Staff_model");
         $data['formData']['lecturers'] = $this->Staff_model->getAllStaff();
 
-        $this->load->view("templates/header");
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Bookings" => base_url("booking"),
+            "View Slots" => "#"
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view("views/timetables/BookingView", $data);
         $this->load->view("templates/footer");
     }

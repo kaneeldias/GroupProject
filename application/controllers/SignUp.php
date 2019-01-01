@@ -12,8 +12,14 @@ class SignUp extends CI_Controller {
             $this->load->view("templates/footer");
             return;
         }
-        $this->load->view("templates/header");
-        $this->load->view("forms/signUp");
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Register User" => base_url("signUp")
+        );
+
+
+        $this->load->view("templates/header", $path);        $this->load->view("forms/signUp");
         $this->load->view("templates/footer");
     }
 
@@ -26,7 +32,13 @@ class SignUp extends CI_Controller {
             $this->load->view("templates/footer");
             return;
         }
-        $this->load->view("templates/header");
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Register User" => base_url("signUp"),
+            "Bulk Registration" => base_url("signUp/bulk")
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view("forms/signUpBulk");
         $this->load->view("templates/footer");
     }

@@ -17,7 +17,12 @@ class LectureHall extends CI_Controller {
 		$this->config->load("globals");
 		$data['current_semester'] = $this->config->item("current_semester");
 
-		$this->load->view("templates/header");
+		$path['path'] = array(
+			"Dashboard" => base_url("dashboard"),
+			"Lecture Halls" => base_url("lecture-halls")
+		);
+
+		$this->load->view("templates/header", $path);
 		$this->load->view("views/LectureHallsView", $data);
 		$this->load->view("templates/footer");
 	}
@@ -31,7 +36,15 @@ class LectureHall extends CI_Controller {
 			$this->load->view("templates/footer");
 			return;
 		}
-		$this->load->view("templates/header");
+
+		$path['path'] = array(
+			"Dashboard" => base_url("dashboard"),
+			"Lecture Halls" => base_url("lecture-halls"),
+			"Add Lecture Hall" => base_url("lecture-halls/add")
+		);
+
+
+		$this->load->view("templates/header", $path);
 		$this->load->view("forms/addLectureHall");
 		$this->load->view("templates/footer");
 	}
@@ -47,7 +60,14 @@ class LectureHall extends CI_Controller {
 		$data['id'] = $_GET['id'];
 		$this->load->model("Venue_model");
 		$data['venue'] = $this->Venue_model->getVenueById($data['id']);
-		$this->load->view("templates/header");
+
+		$path['path'] = array(
+			"Dashboard" => base_url("dashboard"),
+			"Lecture Halls" => base_url("lecture-halls"),
+			"Edit Lecture Hall" => "#"
+		);
+
+		$this->load->view("templates/header", $path);
 		$this->load->view("forms/editLectureHall", $data);
 		$this->load->view("templates/footer");
 	}
