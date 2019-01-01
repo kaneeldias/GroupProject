@@ -3,7 +3,7 @@
 
           <div class="form_title">Edit Student Group</div>
 
-          <form class="column form_content" method="POST" action="<?=base_url("student-groups/edit/process?id=$id")?>">
+          <form id="editStudentGroup" class="column form_content" method="POST" action="<?=base_url("student-groups/edit/process?id=$id")?>">
 
 
 
@@ -110,3 +110,15 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+
+    <script src="<?=base_url('/assets/js/validation/edit_student_group_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>
