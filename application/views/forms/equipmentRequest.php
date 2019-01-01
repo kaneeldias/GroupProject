@@ -4,7 +4,7 @@
         <div class="form_title">Request for Equipment</div>
 
 
-        <form id="addSubjectForm" class="column form_content" method="POST" action="<?=base_url("subjects/add/process")?>">
+        <form id="addSubjectForm" class="column form_content" method="POST" action="<?=base_url("equipment/request/process")?>">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-8">
@@ -33,7 +33,7 @@
 
             <div class="row col-md-12">
 
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-3">
                     <span class="form_label">From</span>
                     <select class="form_input" name="from">
                         <option selected disabled></option>
@@ -52,9 +52,9 @@
                     </select>
                 </div>
 
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-3">
                     <span class="form_label">To</span>
-                    <select class="form_input" name="from">
+                    <select class="form_input" name="to">
                         <option selected disabled></option>
                         <option value="0700">0700</option>
                         <option value="0800">0800</option>
@@ -68,6 +68,20 @@
                         <option value="1600">1600</option>
                         <option value="1700">1700</option>
                         <option value="0600">1800</option>
+                    </select>
+                </div>
+
+                <div class="form_item col-md-6">
+                    <span class="form_label">Date</span>
+                    <select class="form_input" name="date">
+                        <option selected disabled></option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                        <option value="Saturday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
                     </select>
                 </div>
 
