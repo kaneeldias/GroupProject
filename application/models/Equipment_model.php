@@ -25,10 +25,10 @@ class Equipment_model extends CI_Model{
 
         foreach($query->result() as $row){
             $Item = new Equipment_model();
-            $Item->setEqId()($row->eq_id);
+            $Item->setEqId($row->eq_id);
             $Item->setCode($row->code);
             $Item->setName($row->name);
-            $Item->setQuantity($row->info);
+            $Item->setInfo($row->info);
             array_push($Items, $Item);
         }
 
@@ -45,8 +45,8 @@ class Equipment_model extends CI_Model{
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
-            $Item = new Lecturer_model();
-            $Item->setEqid($eq_id);
+            $Item = new Equipment_model();
+            $Item->setEqId($eq_id);
             $Item->setCode($row->code);
             $Item->setName($row->name);
             $Item->setInfo($row->info);

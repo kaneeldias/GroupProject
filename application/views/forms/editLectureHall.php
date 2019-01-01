@@ -3,7 +3,7 @@
 
           <div class="form_title">Edit Lecture Hall</div>
 
-          <form class="column form_content" method="POST" action="<?=base_url("lecture-halls/edit/process?id=$id")?>">
+          <form id="editLectureHallForm" class="column form_content" method="POST" action="<?=base_url("lecture-halls/edit/process?id=$id")?>">
 
               <div class="row col-md-12">
                   <div class="form_item col-md-4">
@@ -93,3 +93,15 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+<script src="<?=base_url('/assets/js/validation/edit_lecture_hall_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>
+

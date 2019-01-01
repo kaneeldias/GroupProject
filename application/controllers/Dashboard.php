@@ -18,7 +18,10 @@ class Dashboard extends CI_Controller {
 
         if($this->session->userdata("type") == "admin") $this->admin();
 
+
+
         $this->load->view("templates/header");
+
         if($this->session->userdata("type") == "student") $this->load->view("Dashboard_Student");
         if($this->session->userdata("type") == "lecturer") $this->load->view("Dashboard_Lecturer");
         if($this->session->userdata("type") == "staff") $this->load->view("Dashboard_Lecturer");

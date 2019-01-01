@@ -17,8 +17,8 @@
                 </div>
 
                 <div class="form_item col-md-3">
-                    <span class="form_label">Discription</span>
-                    <input class="form_input" type="text" placeholder="Discription" name="discription"/>
+                    <span class="form_label">Description</span>
+                    <input class="form_input" type="text" placeholder="Description" name="info"/>
                 </div>
 
             </div>

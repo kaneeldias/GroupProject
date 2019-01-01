@@ -5,15 +5,11 @@
 
 
 
-        <form class="column form_content" method="POST" action="<?=base_url("student-groups/add/process")?>">
+        <form id="addStudentGroup" class="column form_content" method="POST" action="<?=base_url("student-groups/add/process")?>">
 
+        <!--
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
-
-
-        <form class="column form_content"method="post"action="<?=base_url("student-groups/add/process")?>">
-
-
-
+         -->
 
             <div class="form_item col-md-6">
                 <span class="form_label">Group Name</span>
@@ -115,3 +111,14 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+    <script src="<?=base_url('/assets/js/validation/add_student_group_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>

@@ -60,7 +60,7 @@
     </tr>
     <?php foreach($Items as $Item):?>
         <tr>
-            <td><?=$Item->getEqid()?></td>
+            <td><?=$Item->getCode()?></td>
             <td><?=$Item->getName()?></td>
             <td><?=$Item->getInfo()?></td>
 
