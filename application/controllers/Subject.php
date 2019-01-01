@@ -26,7 +26,12 @@ class Subject extends CI_Controller {
 
         $data['degree_id'] = $this->degree_model->getName();
 
-        $this->load->view('templates/header');
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Subjects" => base_url("subjects")
+        );
+
+        $this->load->view("templates/header", $path);
         $this->load->view('views/SubjectsView', $data);
         $this->load->view('templates/footer');
     }
@@ -42,8 +47,14 @@ class Subject extends CI_Controller {
         $this->load->model("Degree_model");
         $data['degrees'] = $this->Degree_model->getAllDegrees();
 
-		$this->load->view('templates/header');
-		$this->load->view('forms/addSubject', $data);
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Subjects" => base_url("subjects"),
+            "Add Subject" => base_url("subjects/add"),
+        );
+
+        $this->load->view("templates/header", $path);
+        $this->load->view('forms/addSubject', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -59,8 +70,16 @@ class Subject extends CI_Controller {
         $data['id'] = $_GET['id'];
         $this->load->model("subject_model");
         $data['subject'] = $this->subject_model->getSubjectById($data['id']);
-        $this->load->view("templates/header");
-        $this->load->view("forms/editSubject", $data);
+        $this->load->model("Degree_model");
+        $data['degrees'] = $this->Degree_model->getAllDegrees();
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Subjects" => base_url("subjects"),
+            "Edit Subject" => "#",
+        );
+        $this->load->view("templates/header", $path);
+        $this->load->view('forms/addSubject', $data);
         $this->load->view("templates/footer");
     }
 

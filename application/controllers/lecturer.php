@@ -5,7 +5,7 @@ class lecturer extends CI_Controller {
 
 	public function index(){
 		$this->load->library('session');
-        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+        if(!$this->session->userdata("logged")){
             $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
             $this->load->view("templates/footer");
@@ -15,8 +15,14 @@ class lecturer extends CI_Controller {
 		$this->load->model("Lecturer_model");
 		$data['Lecturers'] = $this->Lecturer_model->getAllLecturers();
 
-		$this->load->view('templates/header');
-		$this->load->view('views/LecturerView', $data);
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Lecturers" => base_url("lecturer")
+        );
+
+        $this->load->view("templates/header", $path);
+        $this->load->view('views/LecturerView', $data);
 		$this->load->view('templates/footer');
 	}
 
@@ -29,8 +35,13 @@ class lecturer extends CI_Controller {
             $this->load->view("templates/footer");
             return;
         }
-        $this->load->view("templates/header");
-        $this->load->view("forms/addLecturer");
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Lecturers" => base_url("lecturer"),
+            "Add Lecturer" => base_url("lecturer/add")
+        );
+
+        $this->load->view("templates/header", $path);	        $this->load->view("forms/addLecturer");
         $this->load->view("templates/footer");
     }
 

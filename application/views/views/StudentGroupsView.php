@@ -45,37 +45,7 @@
         }
     </style>
 </div>
-<table id="StudentGroupTable" class="custom_table col-md-12">
-    <tr class="header">
 
-        <td>Name</td>
-        <td>Degree</td>
-        <td>Year</td>
-        <td>Parent Group</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <?php foreach($groups as $group):?>
-        <tr>
-            <td><?=$group['group']->getName()?></td>
-            <td><?=$group['degree']->getName()?></td>
-            <td><?=$group['group']->getYear()?></td>
-            <td><?=$group['parent']->getName()?></td>
-            <td><a href="<?=base_url("student-groups/edit/?id=".$group['group']->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("student-groups/delete/?id=".$group['group']->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
-        </tr>
-    <?php endforeach?>
-</table>
-
-
-<style>
-    td{
-        border-width:1px;
-        border-style:solid;
-        border-color:black;
-        padding:10px;
-    }
-</style>
 
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
     <div id="successModal" class="modal fade" role="dialog">
@@ -101,3 +71,160 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+<script src="<?=base_url("assets/libraries/treant/vendor/raphael.js")?>"></script>
+<script src="<?=base_url("assets/libraries/treant/Treant.js")?>"></script>
+<link rel="stylesheet" href="<?=base_url("assets/libraries/treant/Treant.css")?>">
+
+<div class="chart" id="basic-example" style="width:100%; height:100%;"></div>
+
+
+<style>
+    body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0; }
+    table { border-collapse:collapse; border-spacing:0; }
+    fieldset,img { border:0; }
+    address,caption,cite,code,dfn,em,strong,th,var { font-style:normal; font-weight:normal; }
+    caption,th { text-align:left; }
+    h1,h2,h3,h4,h5,h6 { font-size:100%; font-weight:normal; }
+    q:before,q:after { content:''; }
+    abbr,acronym { border:0; }
+
+    body { background: #fff; }
+    /* optional Container STYLES */
+    .chart { height: 600px; margin: 5px; width: 900px; }
+    .Treant > .node {  }
+    .Treant > p { font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: bold; font-size: 12px; }
+    .node-name { font-weight: bold;}
+
+    .nodeExample1 {
+        padding: 2px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        border: 1px solid #000;
+        width: 200px;
+        font-family: Tahoma;
+        font-size: 12px;
+    }
+
+    .nodeExample1 img {
+        margin-right:  10px;
+    }
+</style>
+
+<style>
+    #basic-example{
+        padding:10px;
+        border-style:solid;
+        border-radius:3px;
+        border-color:black;
+        border-width:1px;
+    }
+
+    .node{
+        padding:10px;
+        border-style:solid;
+        border-radius:3px;
+        border-color:black;
+        border-width:1px;
+        max-width:120px;
+    }
+
+    .node-degree{
+        font-size:12px;
+    }
+
+    .node-year, .node-delete, .node-edit{
+        font-size:12px;
+    }
+
+    .node-edit{
+        margin-top:10px;
+        margin-right:10px;
+    }
+
+    .node-delete, .node-delete:hover{
+        color:red;
+    }
+
+
+</style>
+
+<script>
+    var config = {
+            container: "#basic-example",
+
+            connectors: {
+                type: 'step'
+            },
+            node: {
+                HTMLclass: 'node'
+            }
+        },
+        <?php foreach($groups as $group):?>
+p<?=$group['group']->getGroupId()?> = {
+    <?php if($group['parent']->getGroupId() != ""):?>
+        parent: p<?=$group['parent']->getGroupId()?>,
+    <?php endif?>
+        text:{
+                name:"<?=$group['group']->getName()?>",
+                degree:"<?=$group['degree']->getName()?>",
+                <?php if($group['group']->getYear() != ""):?>year:"Year <?=$group['group']->getYear()?>",<?php endif?>
+                edit:{
+                    val:"Edit",
+                    href: "<?=base_url("student-groups/edit/?id=".$group['group']->getGroupId())?>"
+                },
+                delete:{
+                    val:"Delete",
+                    href: "<?=base_url("student-groups/delete/?id=".$group['group']->getGroupId())?>"
+                },
+        }
+        },
+        <?php endforeach?>
+            abc = {
+                text:{
+                    name:"LOL"
+                }
+            }
+    chart_config = [
+        config,
+        <?php foreach($groups as $group):?>
+            p<?=$group['group']->getGroupId()?>,
+        <?php endforeach?>
+        abc
+    ];
+    new Treant( chart_config );
+</script>
+
+<!--<table id="StudentGroupTable" class="custom_table col-md-12">
+    <tr class="header">
+
+        <td>Name</td>
+        <td>Degree</td>
+        <td>Year</td>
+        <td>Parent Group</td>
+        <td></td>
+        <td></td>
+    </tr>
+    <?php foreach($groups as $group):?>
+        <tr>
+            <td><?=$group['group']->getName()?></td>
+            <td><?=$group['degree']->getName()?></td>
+            <td><?=$group['group']->getYear()?></td>
+            <td><?=$group['parent']->getName()?></td>
+            <td><a href="<?=base_url("student-groups/edit/?id=".$group['group']->getGroupId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("student-groups/delete/?id=".$group['group']->getGroupId())?>"><button class="delete_button">Delete</button></a></td>
+        </tr>
+    <?php endforeach?>
+</table>-->
+
+
+<style>
+    td{
+        border-width:1px;
+        border-style:solid;
+        border-color:black;
+        padding:10px;
+    }
+</style>
