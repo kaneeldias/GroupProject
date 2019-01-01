@@ -109,6 +109,7 @@ $route['process_add'] = 'SignUp/process_add';
 $route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
 
 $route['signup'] = 'SignUp/index';
+$route['signup/bulk/process'] = 'SignUp/process_bulk';
 $route['signup/process'] = 'SignUp/process_add';
 
 $route['lecture/process'] = 'Lecture/process';
