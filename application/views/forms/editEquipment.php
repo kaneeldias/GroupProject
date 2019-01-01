@@ -1,7 +1,7 @@
 <div class="row">
       <div class="col-md-6 mx-auto form_container">
 
-          <div class="form_title">Edit Lecturer</div>
+          <div class="form_title">Edit Equipment</div>
 
           <form class="column form_content" method="POST" action="<?=base_url("equipment/edit/process?id=$id")?>">
 
@@ -21,8 +21,8 @@
 
 
                     <div class="form_item col-md-3">
-                        <span class="form_label">Discription</span>
-                        <input class="form_input" type="text" placeholder="Discription" name="discription" value="<?=$Item->getInfo()?>"/>
+                        <span class="form_label">Description</span>
+                        <input class="form_input" type="text" placeholder="Discription" name="info" value="<?=$Item->getInfo()?>"/>
                     </div>
                 </div>
               <div class="form_item col-md-2">

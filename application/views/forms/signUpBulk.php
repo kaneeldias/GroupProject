@@ -1,38 +1,52 @@
+<style>
+       body{
+           background-image: url("<?=base_url('assests/images/register_background2.jpg')?>"); 
+           background-size: cover;
+
+       }
+</style>
+
 <div class="row">
-    <div class="col-md-8 mx-auto form_container">
+    <div class="col-md-5 mx-auto form_container">
 
-        <div class="form_title">Add Items</div>
+        <div class="form_title">Bulk User Registration</div>
 
-        <form class="column form_content" method="POST" action="<?=base_url("Equipment/process_add")?>">
+
+        <form id="signUpBulkForm" class="column form_content" method="POST" action="<?=base_url("signup/bulk/process")?>" enctype="multipart/form-data">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-3">
-                    <span class="form_label">Code</span>
-                    <input class="form_input" type="text" placeholder="Code" name="code"/>
-                </div>
-
                 <div class="form_item col-md-6">
-                    <span class="form_label">Name</span>
-                    <input  class="form_input" type="text" placeholder="Name" name="name"/>
+                    <span><a target="_blank" href="<?=base_url("assets/files/registerUser.csv")?>">Download Template</a></span>
                 </div>
-
-                <div class="form_item col-md-3">
-                    <span class="form_label">Description</span>
-                    <input class="form_input" type="text" placeholder="Description" name="info"/>
-                </div>
-
             </div>
 
+            <div class="row col-md-12">
+                <div class="form_item col-md-6">
+                    <span class="form_label">Upload File</span>
+                    <input class="form_input" type="file" placeholder="File" name="file"  accept=".csv" style="width:500px;"/>
+                </div>
+            </div>
 
             <div class="form_item col-md-3">
                 <button type="submit">Submit</button>
             </div>
-
         </form>
     </div>
 </div>
 
-<?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+<script src="<?=base_url('/assets/js/validation/signup_validation.js')?>"></script>
+
+<style>
+ label.error{
+     color:red;
+     font-size:12px;
+     margin:0px;
+     margin-left:5px;
+ }
+</style>
+
+
+<?php if($this->session->flashdata('success') === false):?>
     <div id="errorModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
 
@@ -42,7 +56,7 @@
                     <h4 class="modal-title">Error</h4>
                 </div>
                 <div class="modal-body">
-                    <p>There was an error in your form. Please try again.</p>
+                    <p><?=$this->session->flashdata('message')?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
@@ -57,8 +71,7 @@
     </script>
 <?php endif ?>
 
-
-<?php if(isset($_GET['success']) && $_GET['success'] == true):?>
+<?php if($this->session->flashdata('success') === true):?>
     <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
 
@@ -68,7 +81,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Item has been added successfully.</p>
+                    <p><?=$this->session->flashdata('message')?></p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
