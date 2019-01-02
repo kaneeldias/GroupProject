@@ -65,9 +65,9 @@
             <td><?=$Item->getTo()?></td>
             <td><?=$Item->getDate()?></td>
 
-            <td><a href="<?=base_url("equipment/approve/?id=".$Item->getId())?>"><button class="edit_button">Approve</button></a></td>
-            <td><a href="<?=base_url("equipment/reject/?id=".$Item->getId())?>"><button class="delete_button">Reject</button></a></td>
-            <td><a href="<?=base_url("equipment/delete/?id=".$Item->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button">Approve</button></a></td>
+            <td><a href="<?=base_url("request/reject/?id=".$Item->getId())?>"><button class="delete_button">Reject</button></a></td>
+            
         </tr>
     <?php endforeach?>
 </table>
