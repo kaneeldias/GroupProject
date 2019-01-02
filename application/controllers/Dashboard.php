@@ -75,8 +75,8 @@ class Dashboard extends CI_Controller {
                         if($day == 6 || $day == 7) break;
                         for($j = 8; $j <= 17; $j++){
                             foreach($l[$i][$j] as $lo){
-                                echo "Lol";
-                            } //array_push($data['lectures'][$key][$j], $lo);
+                                array_push($data['lectures'][$key][$j], $lo);
+                            } //
                         }
                     }
                 }
@@ -91,9 +91,7 @@ class Dashboard extends CI_Controller {
             return;
         }
 
-		$this->load->view("templates/header");
 		$this->load->view("Dashboard", $data);
-		$this->load->view("templates/footer");
 	}
 
     public function student()
