@@ -40,6 +40,12 @@ class CalendarInfo_model extends CI_Model{
 
     }
 
+    public function delete($user_id){
+        $this->load->database();
+        $this->db->where("user_id", $user_id);
+        $this->db->delete('calendar_info');
+    }
+
     /**
      * @return mixed
      */

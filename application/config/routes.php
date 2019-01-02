@@ -140,6 +140,7 @@ $route['equipment/delete'] = 'Equipment/delete';
 
 $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";
+$route['calendar/remove'] = "CalendarController/remove";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";
