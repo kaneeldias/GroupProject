@@ -163,5 +163,87 @@ class Equipment extends CI_Controller {
         }
 
     }
+    public function request(){
+        $this->load->library('session');
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "staff"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
+        $this->load->model("Equipment_model");
+        $data['items'] = $this->Equipment_model->getAllItems();
 
+        $this->load->view('templates/header');
+        $this->load->view('forms/equipmentRequest', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function request_add(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "staff"){
+            echo "unauthorized access";
+            return;
+        }
+        try {
+
+            $this->load->library('form_validation');
+            $this->load->database();
+
+            $this->form_validation->set_rules(
+                'item',
+                'Item',
+                'required'
+            );
+
+            $this->form_validation->set_rules(
+                'quantity',
+                'Quantity',
+                'required'
+            );
+
+            $this->form_validation->set_rules(
+                'from',
+                'From',
+                'required'
+            );
+
+            $this->form_validation->set_rules(
+                'to',
+                'To',
+                'required'
+            );
+
+            $this->form_validation->set_rules(
+                'date',
+                'Date',
+                'required'
+            );
+
+            if($this->form_validation->run() == false){
+                throw new Exception();
+            }
+
+            $user_name = $this->session->userdata("fname");
+            $item = $_POST['item'];
+            $quantity = $_POST['quantity'];
+            $from = $_POST['from'];
+            $to = $_POST['to'];
+            $date = $_POST['date'];
+
+            $this->load->database();
+            $this->db->set("user_name",$user_name);
+            $this->db->set("item", $item);
+            $this->db->set("quantity", $quantity);
+            $this->db->set("from_time", $from);
+            $this->db->set("to_time", $to);
+            $this->db->set("date", $date);
+            $this->db->insert("equipment_requests");
+
+            redirect(base_url("equipment/request") . "?success=true", 'location');
+        }
+        catch(Exception $e){
+            redirect(base_url("equipment/request/process")."?error=true", 'location');
+        }
+    }
 }
