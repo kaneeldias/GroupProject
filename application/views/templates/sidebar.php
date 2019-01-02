@@ -76,7 +76,7 @@
 <style>
     #sidebar{
         position:fixed;
-        padding-top:70px;
+        padding-top:5px;
         top:0px;
         left:0px;
         width:300px;
@@ -102,7 +102,7 @@
     }
 
     .sidebar_link{
-        padding:20px;
+        padding:18px;
         color:white;
         cursor:pointer;
         background-color:rgba(0,0,0,0);

@@ -20,4 +20,127 @@ class ValidatorController extends CI_Controller {
         echo json_encode(true);
 
     }
+
+    public function codeExists(){
+
+        if(!isset($_GET['code'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("code", $_GET['code']);
+        $query = $this->db->get('equipment');
+        if ($query->num_rows() > 0){
+            echo json_encode("Equipment code has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function editCodeExists(){
+
+        if(!isset($_GET['code'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+        if(!isset($_GET['eq_id'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("code", $_GET['code']);
+        $this->db->where("eq_id !=", $_GET['eq_id']);
+        $query = $this->db->get('equipment');
+        if ($query->num_rows() > 0){
+            echo json_encode("Equipment code has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function hallCodeExists(){
+
+        if(!isset($_GET['code'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("code", $_GET['code']);
+        $query = $this->db->get('lecture_hall');
+        if ($query->num_rows() > 0){
+            echo json_encode("Hall code has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function editHallCodeExists(){
+
+        if(!isset($_GET['code'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+        if(!isset($_GET['hall_id'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("code", $_GET['code']);
+        $this->db->where("hall_id !=", $_GET['hall_id']);
+        $query = $this->db->get('lecture_hall');
+        if ($query->num_rows() > 0){
+            echo json_encode("Hall code has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function lecturerIdExists(){
+
+        if(!isset($_GET['id'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("id", $_GET['id']);
+        $query = $this->db->get('academic_staff');
+        if ($query->num_rows() > 0){
+            echo json_encode("Lecturer id has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function editLecturerIdExists(){
+
+        if(!isset($_GET['id'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+        if(!isset($_GET['staff_id'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+
+        $this->load->database();
+        $this->db->where("id", $_GET['id']);
+        $this->db->where("staff_id !=", $_GET['staff_id']);
+        $query = $this->db->get('academic_staff');
+        if ($query->num_rows() > 0){
+            echo json_encode("Lecturer id has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
 }
