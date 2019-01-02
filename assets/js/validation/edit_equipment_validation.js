@@ -2,7 +2,10 @@ $("#editEquipmentForm").validate({
     rules:{
         code:{
             required: true,
-            //remote: "<?=base_url('validate/code-exists')?>"
+            remote: {
+                url:"http://127.0.0.1/GroupProject/validate/edit-code-exists",
+                data: {eq_id:$("#id_field").val()}
+            }
         },
         name:{
             required: true

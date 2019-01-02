@@ -3,7 +3,7 @@ $("#addLecturerForm").validate({
         id:{
             required: true,
             minlength:5,
-            //remote: "<?=base_url('validate/id-exists')?>"
+            remote: "http://127.0.0.1/GroupProject/validate/lecturer-id-exists"
         },
         name:{
             required: true
