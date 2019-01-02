@@ -2,15 +2,22 @@
 <div id="overlay">
     <div id="sidebar">
         <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "admin" ): ?>
-            <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
-            <a href="<?=base_url("signup")?>"><div class="sidebar_link">Register User</div></a>
-            <a href="<?=base_url("lecturer")?>"><div class="sidebar_link">Lecturers</div></a>
-            <a href="<?=base_url("subjects")?>"><div class="sidebar_link">Subjects</div></a>
-            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link">Lecture Halls</div></a>
-            <a href="<?=base_url("student-groups")?>"><div class="sidebar_link">Student Group</div></a>
-            <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link">Time Tables</div></a>
-            <a href="<?=base_url("booking")?>"><div class="sidebar_link">Bookings</div></a>
-            <a href="<?=base_url("equipment")?>"><div class="sidebar_link">Equipment Reservation</div></a>
+
+            <style>
+            .sidebar_link span{
+                margin-left:10px;
+            }
+            </style>
+
+            <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
+            <a href="<?=base_url("signup")?>"><div class="sidebar_link"><i class="fas fa-user"></i><span>Register User</span></div></a>
+            <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
+            <a href="<?=base_url("subjects")?>"><div class="sidebar_link"><i class="far fa-calendar-alt"></i><span>Subjects</span></div></a>
+            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
+            <a href="<?=base_url("student-groups")?>"><div class="sidebar_link"><i class="fas fa-users"></i><span>Student Group</span></div></a>
+            <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
+            <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
+            <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Reservation</span></div></a>
         <?php endif?>
         <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "staff" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
