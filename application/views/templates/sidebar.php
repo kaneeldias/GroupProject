@@ -2,7 +2,6 @@
 <div id="overlay">
     <div id="sidebar">
         <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "admin" ): ?>
-
             <style>
             .sidebar_link span{
                 margin-left:10px;

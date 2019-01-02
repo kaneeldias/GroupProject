@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Awesome Responsive Template</title>
+    <title>UCSC Academic Support System</title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
@@ -64,9 +64,9 @@
             <div class="col-md-offset-2 col-md-8">
                 <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make things <span>Easy</span></h2>
                 <div class="element">
-                    <div class="sub-element" color ="red">Hello, this is official web page of UCSC Academic Center</div>
-                    <div class="sub-element">Awesome Template is provided by templatemo.com website for everyone</div>
-                    <div class="sub-element">Download, edit and apply this awesome template for your websites</div>
+                    <div class="sub-element" color ="red">Hello, this is official web site of UCSC Academic Center . . .</div>
+                    <div class="sub-element">Hello, this is official web site of UCSC Academic Center . . .</div>
+                    <div class="sub-element">Hello, this is official web site of UCSC Academic Center . . .</div>
                 </div>
                 <a data-scroll href="<?=base_url("log-in")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Log In</a>
             </div>
