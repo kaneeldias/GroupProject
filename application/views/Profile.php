@@ -121,7 +121,10 @@
                                         <?php endif?>-->
                                         <?php if($calendar): ?>
                                         <p>Integrated</p>
-                                        <p><a href="<?=base_url("calendar/refresh")?>">Refresh</a></p>
+                                        <p>
+                                            <a href="<?=base_url("calendar/refresh")?>">Refresh</a>
+                                            <a style="margin-left:10px;" href="<?=base_url("calendar/remove")?>">Remove</a>
+                                        </p>
                                         <?php else: ?>
                                         <p onclick="getCodeWindow()" style="cursor:pointer;">Get Code</p>
                                             <script>
@@ -133,6 +136,7 @@
                                                 <input style="width:5000px; margin-bottom:10px;" class="custom_form_item" type="text" name="authCode" placeholder="Enter Code"/>
                                                 <button type="submit">Integrate</button>
                                             </form>
+
                                         <?php endif ?>
                                     </div>
                                 </div>

@@ -96,7 +96,7 @@
     }
 
     .sidebar_link{
-        padding:20px;
+        padding:18px;
         color:white;
         cursor:pointer;
         background-color:rgba(0,0,0,0);
