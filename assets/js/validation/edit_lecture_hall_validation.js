@@ -2,7 +2,10 @@ $("#editLectureHallForm").validate({
     rules:{
         code:{
             required: true,
-            //remote: "<?=base_url('validate/lecture-hall-exists')?>"
+            remote:{
+                url: "http://127.0.0.1/GroupProject/validate/edit-hall-code-exists",
+                data: {hall_id: $("#id_field").val()}
+            }
         },
         name:{
             required: true

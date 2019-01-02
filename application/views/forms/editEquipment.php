@@ -5,6 +5,8 @@
 
           <form id="editEquipmentForm" class="column form_content" method="POST" action="<?=base_url("equipment/edit/process?id=$id")?>">
 
+              <input type="hidden" id="id_field" value="<?=$id?>"/>
+
               <div class="row col-md-12">
                   <div class="form_item col-md-3">
                       <span class="form_label">Code</span>

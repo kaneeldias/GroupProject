@@ -143,3 +143,9 @@ $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";
+$route['validate/code-exists'] = "ValidatorController/codeExists";
+$route['validate/edit-code-exists'] = "ValidatorController/editCodeExists";
+$route['validate/hall-code-exists'] = "ValidatorController/hallCodeExists";
+$route['validate/edit-hall-code-exists'] = "ValidatorController/editHallCodeExists";
+$route['validate/lecturer-id-exists'] = "ValidatorController/lecturerIdExists";
+$route['validate/edit-lecturer-id-exists'] = "ValidatorController/editLecturerIdExists";
