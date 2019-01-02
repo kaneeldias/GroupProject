@@ -9,7 +9,7 @@
             email:{
                 required: true,
                 email:true,
-                remote: "<?=base_url('validate/email-exists')?>"
+                remote: "http://127.0.0.1/GroupProject/validate/email-exists"
             },
             type:{
                 required:true
