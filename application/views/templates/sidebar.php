@@ -11,6 +11,7 @@
             <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link">Time Tables</div></a>
             <a href="<?=base_url("booking")?>"><div class="sidebar_link">Bookings</div></a>
             <a href="<?=base_url("equipment")?>"><div class="sidebar_link">Equipment Reservation</div></a>
+            <a href="<?=base_url("request")?>"><div class="sidebar_link">Requests</div></a>
         <?php endif?>
         <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "staff" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
@@ -69,7 +70,7 @@
 <style>
     #sidebar{
         position:fixed;
-        padding-top:70px;
+        padding-top:5px;
         top:0px;
         left:0px;
         width:300px;

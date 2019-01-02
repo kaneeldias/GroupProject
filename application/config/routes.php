@@ -138,9 +138,21 @@ $route['equipment/edit'] = 'Equipment/edit';
 $route['equipment/edit/process'] = 'Equipment/process_edit';
 $route['equipment/delete'] = 'Equipment/delete';
 
+$route['equipment/request'] = 'Equipment/request';
+$route['equipment/request/process'] = 'Equipment/request_add';
+
+$route['request'] = "RequestController/index";
+$route['request/delete'] = "RequestController/delete";
+
 $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/remove'] = "CalendarController/remove";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";
+$route['validate/code-exists'] = "ValidatorController/codeExists";
+$route['validate/edit-code-exists'] = "ValidatorController/editCodeExists";
+$route['validate/hall-code-exists'] = "ValidatorController/hallCodeExists";
+$route['validate/edit-hall-code-exists'] = "ValidatorController/editHallCodeExists";
+$route['validate/lecturer-id-exists'] = "ValidatorController/lecturerIdExists";
+$route['validate/edit-lecturer-id-exists'] = "ValidatorController/editLecturerIdExists";

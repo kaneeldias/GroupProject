@@ -2,7 +2,7 @@ $("#addEquipmentForm").validate({
     rules:{
         code:{
             required: true,
-            //remote: "<?=base_url('validate/code-exists')?>"
+            remote: "http://127.0.0.1/GroupProject/validate/code-exists"
         },
         name:{
             required: true

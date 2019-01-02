@@ -2,8 +2,11 @@ $("#editLecturerForm").validate({
     rules:{
         id:{
             required: true,
-            minlength:5
-            //remote: "<?=base_url('validate/id-exists')?>"
+            minlength:2,
+            remote:{
+                url: "http://127.0.0.1/GroupProject/validate/edit-lecturer-id-exists",
+                data: {staff_id: $("#id_field").val()}
+            }
         },
         name:{
             required: true
