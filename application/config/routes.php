@@ -141,6 +141,9 @@ $route['equipment/delete'] = 'Equipment/delete';
 $route['equipment/request'] = 'Equipment/request';
 $route['equipment/request/process'] = 'Equipment/request_add';
 
+$route['request'] = "RequestController/index";
+$route['request/delete'] = "RequestController/delete";
+
 $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";

@@ -2,14 +2,10 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">Equipments</div>
+    <div class="control_panel_title align-text-bottom">Requests</div>
 
     <div class="flex-grow-1"></div>
 
-    <div class="control_panel_actions">
-        <a href="<?=base_url("equipment/add")?>"><button>Add Items</button></a>
-
-    </div>
 
     <style>
         .control_panel{
@@ -48,9 +44,13 @@
 </div>
 <table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Code</td>
-        <td>Name</td>
-        <td>Discription</td>
+        <td>Requested By</td>
+        <td>Item</td>
+        <td>Quantity</td>
+        <td>From</td>
+        <td>To</td>
+        <td>Date</td>
+
         <td></td>
         <td></td>
         <td></td>
@@ -58,13 +58,16 @@
     </tr>
     <?php foreach($Items as $Item):?>
         <tr>
-            <td><?=$Item->getCode()?></td>
-            <td><?=$Item->getName()?></td>
-            <td><?=$Item->getInfo()?></td>
+            <td><?=$Item->getRequestedBy()?></td>
+            <td><?=$Item->getItem()?></td>
+            <td><?=$Item->getQuantity()?></td>
+            <td><?=$Item->getFrom()?></td>
+            <td><?=$Item->getTo()?></td>
+            <td><?=$Item->getDate()?></td>
 
-            <
-            <td><a href="<?=base_url("equipment/edit/?id=".$Item->getEqId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("equipment/delete/?id=".$Item->getEqId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><a href="<?=base_url("equipment/approve/?id=".$Item->getReqId())?>"><button class="edit_button">Approve</button></a></td>
+            <td><a href="<?=base_url("equipment/reject/?id=".$Item->getReqId())?>"><button class="delete_button">Reject</button></a></td>
+            <td><a href="<?=base_url("equipment/delete/?id=".$Item->getReqId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
