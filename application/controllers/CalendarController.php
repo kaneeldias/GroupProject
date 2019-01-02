@@ -12,8 +12,18 @@ class CalendarController extends CI_Controller {
 			header('Location: ' . $_SERVER['HTTP_REFERER']);
 		}
 		else{
-			echo "fuck";
+			echo "error";
 		}
+	}
+
+	public function remove(){
+		$this->load->model("CalendarInfo_model");
+		$this->load->library("session");
+		$this->CalendarInfo_model->delete($this->session->userdata('user_id'));
+		$filename = $this->session->userdata('user_id')."_token.json";
+		$path = 'tokens/'.$filename;
+		unlink($path) or die("Couldn't delete file");
+		redirect(base_url("profile"), 'refresh');
 	}
 
 	public function setAccountLecturer(){
