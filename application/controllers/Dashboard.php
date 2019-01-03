@@ -22,7 +22,7 @@ class Dashboard extends CI_Controller {
 
         $this->load->view("templates/header");
 
-        if($this->session->userdata("type") == "student") $this->load->view("Dashboard_Student");
+        if($this->session->userdata("type") == "student") $this->student();
         if($this->session->userdata("type") == "lecturer") $this->lecturer();
         if($this->session->userdata("type") == "staff") $this->lecturer();
         if($this->session->userdata("type") == "outsider") $this->load->view("Dashboard_outsider");
@@ -97,15 +97,59 @@ class Dashboard extends CI_Controller {
     public function student()
     {
         $this->load->library("session");
-        if(!$this->session->userdata("logged") || $this->session->userdata("student") != "admin"){
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "student"){
             $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
             $this->load->view("templates/footer");
             return;
         }
+        $data = [];
+        for($i = 1; $i <= 5; $i++){
+            for($j = 8; $j <= 17; $j++){
+                $data['lectures'][$i][$j] = [];
+            }
+        }
+
+        $this->load->model("CalendarInfo_model");
+        $cal = $this->CalendarInfo_model->getCalendarInfo($this->session->userdata('user_id'));
+        if(!$cal){
+            $data['set'] = false;
+        }
+        else{
+            $data['set'] = true;
+            $_GET['lecturer_id'] = $cal->getTimeTableId();
+            $_GET['semester'] = 1;
+
+            if(!isset($_GET['lecturer_id'])) throw new Exception();
+            if(!isset($_GET['semester'])) throw new Exception();
+
+            $this->load->model("Staff_model");
+            $data['semester'] = $_GET['semester'];
+
+            $this->load->model("Lecture_model");
+            $data['lectures'] = [];
+            for($i = 1; $i <= 5; $i++) {
+                for ($j = 8; $j <= 17; $j++) {
+                    $data['lectures'][$i][$j] = [];
+                }
+            }
+
+            $this->load->model("Group_model");
+
+            foreach($this->Group_model->getRelatedGroups($_GET['lecturer_id']) as $group){
+                //var_dump($this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']));
+                $l = $this->Lecture_model->getLectures($group->getGroupId(), $_GET['semester']);
+                for($i = 1; $i <= 5; $i++){
+                    for($j = 8; $j <= 17; $j++){
+                        foreach($l[$i][$j] as $lo) array_push($data['lectures'][$i][$j], $lo);
+                    }
+                }
+            }
+        }
+
 
         $this->load->view("templates/header");
-        $this->load->view("Dashboard_Student");
+        $this->load->view("Dashboard_Lecturer", $data);
         $this->load->view("templates/footer");
     }
 
