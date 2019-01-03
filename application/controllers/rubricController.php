@@ -54,9 +54,13 @@ class rubricController extends CI_Controller {
         }
         $data['id'] = $_GET['id'];
         $this->load->model("subject_model");
-        $data['subject'] = $this->subject_model->getSubjectById($data['id']);
+        $data['subjects'] = $this->subject_model->getAllSubjects();
+        $this->load->model("staff_model");
+        $data['staff'] = $this->staff_model->getAllStaff();
+        $this->load->model("rubric_model");
+        $data['rubric'] = $this->rubric_model->getRubricById($data['id']);
         $this->load->view("templates/header");
-        $this->load->view("forms/editSubject", $data);
+        $this->load->view("forms/editRubrics", $data);
         $this->load->view("templates/footer");
     }
 
@@ -69,12 +73,12 @@ class rubricController extends CI_Controller {
         }
         try{
             $data['id'] = $_GET['id'];
-            $this->load->model("subject_model");
-            $data['subject'] = $this->subject_model->deleteSubjectById($data['id']);
-            redirect(base_url("subjects"), 'location');
+            $this->load->model("rubric_model");
+            $data['rubric'] = $this->rubric_model->deleteRubricById($data['id']);
+            redirect(base_url("rubrics"), 'location');
         }
         catch(Exception $ex){
-            redirect(base_url("subjects")."?error=true", 'location');
+            redirect(base_url("rubrics")."?error=true", 'location');
         }
     }
 
@@ -111,9 +115,9 @@ class rubricController extends CI_Controller {
             'Semester',
             'required|integer|in_list[1,2]'
         );
-
-        if($this->form_validation->run() == false){
             echo validation_errors();
+
+            if($this->form_validation->run() == false){
             exit();
             //throw new Exception();
         }
@@ -129,7 +133,6 @@ class rubricController extends CI_Controller {
         try{
 
             //$this->validate();
-
             $code = $_POST['code'];
             $setter1 = $_POST['setter1'];
             $setter2 = $_POST['setter2'];
@@ -148,13 +151,13 @@ class rubricController extends CI_Controller {
             $this->db->set("setter2",$setter2);
             $this->db->set("moderator",$moderator);
 
-            $this->db->insert("rubric");
+            $this->db->insert(rubric);
 
             redirect(base_url("rubrics")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("subjects/add")."?error=true", 'location');
+            redirect(base_url("rubrics/edit")."?error=true", 'location');
         }
 
     }
@@ -166,30 +169,33 @@ class rubricController extends CI_Controller {
             return;
         }
         try{
-            $id = $_GET['id'];
-            $this->validate();
-            $semester = $_POST['semester'];
+
+            $id = $_POST['id'];
             $code = $_POST['code'];
-            $name = $_POST['name'];
-            $degreeId = $_POST['degree'];
-            $year = $_POST['year'];
+            $setter1 = $_POST['setter1'];
+            $setter2 = $_POST['setter2'];
+            $moderator = $_POST['moderator'];
+            $semExam = $_POST['semExam'];
+            $assesment = $_POST['assesment'];
+            $examRubrics = $_POST['examRubrics'];
+
 
             $this->load->database();
-            $this->db->set("semester", $semester);
-            $this->db->set("code", $code);
-            $this->db->set("name", $name);
-            $this->db->set("degree_id", $degreeId);
-            $this->db->set("year", $year);
-            $this->db->where("subject_id", $_GET['id']);
-            $this->db->update("subject");
+            $this->db->set("subject_id", $code);
+            $this->db->set("exam", $semExam);
+            $this->db->set("assesments", $assesment);
+            $this->db->set("rubric", $examRubrics);
+            $this->db->set("setter1",$setter1);
+            $this->db->set("setter2",$setter2);
+            $this->db->set("moderator",$moderator);
+            $this->db->where("rubric_id", $id);
+            $this->db->update("rubric");
 
-
-
-            redirect(base_url("subjects")."?success=true", 'location');
+            redirect(base_url("rubrics")."?success=true", 'location');
 
         }
         catch(Exception $e){
-            redirect(base_url("subjects/edit")."?error=true&id=$id", 'location');
+            redirect(base_url("rubrics/edit")."?error=true&id=$id", 'location');
         }
 
     }

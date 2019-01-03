@@ -16,34 +16,41 @@ class rubric_model extends CI_Model{
         parent::__construct();
     }
 
-    public function getSubjectById($id){
+    public function getRubricById($id){
         $this->load->database();
+        $this->db->select("rubric_id");
         $this->db->select("subject_id");
-        $this->db->select("code");
-        $this->db->select("name");
-        $this->db->select("degree_id");
-        $this->db->select("semester");
-        $this->db->select("year");
-        $this->db->from("subject");
-        $this->db->where("subject_id", $id);
+        $this->db->select("exam");
+        $this->db->select("assesments");
+        $this->db->select("rubric");
+        $this->db->select("setter1");
+        $this->db->select("setter2");
+        $this->db->select("moderator");
+        $this->db->from("rubric");
+        $this->db->where("rubric_id", $id);
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
-            $subject = new Subject_model();
-            $subject->setId($row->subject_id);
-            $subject->setName($row->name);
-            $subject->setCode($row->code);
-            $subject->setDegreeId($row->degree_id);
-            $subject->setSemester($row->semester);
-            $subject->setYear($row->year);
-            return $subject;
+            $rubric = new rubric_model();
+            $rubric->setId($row->rubric_id);
+            $rubric->setExam($row->exam);
+            $rubric->setAssesments($row->assesments);
+            $rubric->setRubric($row->rubric);
+            $this->load->model("subject_model");
+            $rubric->subject=$this->subject_model->getSubjectById($row->subject_id);
+            $this->load->model("staff_model");
+            $rubric->setter1= $this->staff_model->getStaffById($row->setter1);
+            $rubric->setter2= $this->staff_model->getStaffById($row->setter2);
+            $rubric->moderator = $this->staff_model->getStaffById($row->moderator);
+
+            return $rubric;
         }
     }
 
-    public function deleteSubjectById($id){
+    public function deleteRubricById($id){
         $this->load->database();
-        $this->db->where('subject_id', $id);
-        return $this->db->delete('subject');
+        $this->db->where('rubric_id', $id);
+        return $this->db->delete('rubric');
     }
 
 
@@ -223,7 +230,7 @@ class rubric_model extends CI_Model{
      */
     public function getId()
     {
-        return $this->id;
+        return $this->rubric_id;
     }
 
     /**
@@ -231,7 +238,7 @@ class rubric_model extends CI_Model{
      */
     public function setId($id)
     {
-        $this->id = $id;
+        $this->rubric_id = $id;
     }
 
     /**

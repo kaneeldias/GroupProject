@@ -72,7 +72,8 @@
                 <?=$results->getSetter2()->getName()?>
             </td>
             <td><?=$results->getModerator()->getName()?></td>
-
+            <td><a href="<?=base_url("rubrics/edit/?id=".$results->getId())?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("rubrics/delete/?id=".$results->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>
