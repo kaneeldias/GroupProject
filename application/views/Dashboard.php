@@ -2,7 +2,7 @@
 <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"/>
 <link href="<?=base_url("assets/css/timetable_styles.css")?>" rel="stylesheet" type="text/css"/>
 
-<div class="column col-md-12">
+<div class="column col-md-12" style="margin-top:100px;">
 
     <div><h1 style="text-align:center;">Today's Time Table</h1></div>
 

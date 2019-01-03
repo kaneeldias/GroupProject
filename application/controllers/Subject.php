@@ -79,7 +79,7 @@ class Subject extends CI_Controller {
             "Edit Subject" => "#",
         );
         $this->load->view("templates/header", $path);
-        $this->load->view('forms/addSubject', $data);
+        $this->load->view('forms/editSubject', $data);
         $this->load->view("templates/footer");
     }
 

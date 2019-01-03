@@ -88,7 +88,7 @@
                         <div class="media-object pull-left">
                             <i class="fa fa-mobile"></i>
                         </div>
-                        <h3 class="media-heading">FULLY RESPONSIVE</h3>
+                        <h3 class="media-heading">Time Table Management</h3>
                     </div>
                     <div class="media-body">
                         <p>Awesome responsive template is provided by <a rel="nofollow" href="http://www.templatemo.com" target="_parent">templatemo</a> website. This is Bootstrap v3.3.2 layout built on HTML5 CSS3. You can use this for any purpose. Please tell your friends about it.</p>
@@ -101,7 +101,7 @@
                         <div class="media-object pull-left">
                             <i class="fa fa-comment-o"></i>
                         </div>
-                        <h3 class="media-heading">FREE SUPPORT</h3>
+                        <h3 class="media-heading">Hall Booking</h3>
                     </div>
                     <div class="media-body">
                         <p>Credits go to <a rel="nofollow" href="http://pixabay.com">Pixabay</a> for homepage image and <a rel="nofollow" href="http://unsplash.com">Unsplash</a> for portfolio images. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
@@ -114,7 +114,7 @@
                         <div class="media-object pull-left">
                             <i class="fa fa-html5"></i>
                         </div>
-                        <h3 class="media-heading">HTML5 &AMP; CSS3</h3>
+                        <h3 class="media-heading">Equipment Reservation</h3>
                     </div>
                     <div class="media-body">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet.</p>
@@ -296,6 +296,7 @@
     </div>
 </section>
 <!-- end portfolio -->
+<hr>
 
 </body>
 </html>

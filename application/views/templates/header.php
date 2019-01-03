@@ -64,7 +64,6 @@
             </div>
             <div>
                 <link rel="stylesheet" type="text/css" href="<?=base_url("assets/css/header_styles.css")?>">
-                <!--<div id="header_title">UCSC Academic Support System</div>-->
             </div>
 
             <div class="flex-grow-1"></div>
@@ -115,4 +114,4 @@
 </nav>
 <?php endif?>
 
-<div class="column" id="content" style="margin-top:100px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
+<div class="column" id="content" style="margin-top:70px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
