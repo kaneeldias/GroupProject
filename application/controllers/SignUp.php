@@ -78,7 +78,7 @@ class SignUp extends CI_Controller {
                 if($line[0] != "First Name") throw new Exception();
                 if($line[1] != "Last Name") throw new Exception();
                 if($line[2] != "Email") throw new Exception();
-                if($line[3] != "Type (admin, staff, student)") throw new Exception();
+                if($line[3] != "Type (admin, staff, student,outsider)") throw new Exception();
                 if($line[4] != "Password") throw new Exception();
 
                 $row = 0;
@@ -191,7 +191,7 @@ class SignUp extends CI_Controller {
                 array(
                     'required',
                     function($type){
-                        return ($type == "admin" || $type == "staff" || $type == "student");
+                        return ($type == "admin" || $type == "staff" || $type == "student"||$type=="outsider");
                     }
                 )
             );
@@ -267,7 +267,7 @@ class SignUp extends CI_Controller {
             array(
                 'required',
                 function($type){
-                    return ($type == "admin" || $type == "staff" || $type == "student");
+                    return ($type == "admin" || $type == "staff" || $type == "student"||$type=="outsider");
                 }
             )
         );
