@@ -5,6 +5,8 @@
 
         <form id="editSubjectForm" class="column form_content" method="POST" action="<?=base_url("subjects/edit/process?id=$id")?>">
 
+            <input type="hidden" id="id_field" value="<?=$id?>"/>
+
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Subject Code</span>

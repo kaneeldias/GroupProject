@@ -5,6 +5,7 @@
 
           <form id="editStudentGroup" class="column form_content" method="POST" action="<?=base_url("student-groups/edit/process?id=$id")?>">
 
+              <input type="hidden" id="id_field" value="<?=$id?>"/>
 
 
                   <div class="form_item col-md-8">
