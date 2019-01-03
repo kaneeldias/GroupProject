@@ -142,6 +142,13 @@ $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
 
+$route['rubrics'] = "rubricController/index";
+$route['rubrics/add'] = "rubricController/add";
+$route['rubrics/add/process'] = "rubricController/process_add";
+$route['rubrics/edit'] = "rubricController/edit";
+$route['rubrics/edit/process'] = "rubricController/process_edit";
+
+
 $route['validate/email-exists'] = "ValidatorController/emailExists";
 $route['validate/code-exists'] = "ValidatorController/codeExists";
 $route['validate/edit-code-exists'] = "ValidatorController/editCodeExists";
