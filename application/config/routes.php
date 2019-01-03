@@ -156,3 +156,7 @@ $route['validate/hall-code-exists'] = "ValidatorController/hallCodeExists";
 $route['validate/edit-hall-code-exists'] = "ValidatorController/editHallCodeExists";
 $route['validate/lecturer-id-exists'] = "ValidatorController/lecturerIdExists";
 $route['validate/edit-lecturer-id-exists'] = "ValidatorController/editLecturerIdExists";
+$route['validate/subject-code-exists'] = "ValidatorController/subjectCodeExists";
+$route['validate/edit-subject-code-exists'] = "ValidatorController/editSubjectCodeExists";
+$route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
+$route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";
