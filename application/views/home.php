@@ -296,6 +296,7 @@
     </div>
 </section>
 <!-- end portfolio -->
+<hr>
 
 </body>
 </html>
