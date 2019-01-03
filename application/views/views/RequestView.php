@@ -41,6 +41,7 @@
             color:#22313f;
         }
     </style>
+
 </div>
 <table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
@@ -50,6 +51,7 @@
         <td>From</td>
         <td>To</td>
         <td>Date</td>
+        <td>Status</td>
 
         <td></td>
         <td></td>
@@ -64,9 +66,10 @@
             <td><?=$Item->getFrom()?></td>
             <td><?=$Item->getTo()?></td>
             <td><?=$Item->getDate()?></td>
+            <td><?=$Item->getStatus()?></td>
 
-            <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button">Approve</button></a></td>
-            <td><a href="<?=base_url("request/reject/?id=".$Item->getId())?>"><button class="delete_button">Reject</button></a></td>        </tr>
+            <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button" >Approve</button></a></td>
+            <td><a href="<?=base_url("request/reject/?id=".$Item->getId())?>"><button class="delete_button" >Reject</button></a></td>        </tr>
     <?php endforeach?>
 </table>
 

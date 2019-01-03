@@ -143,6 +143,8 @@ $route['equipment/request/process'] = 'Equipment/request_add';
 
 $route['request'] = "RequestController/index";
 $route['request/delete'] = "RequestController/delete";
+$route['request/approve']="RequestController/approve";
+$route['request/reject']="RequestController/reject";
 
 $route['calendar/integrate'] = "CalendarController/integrate";
 $route['calendar/refresh'] = "CalendarController/refresh";

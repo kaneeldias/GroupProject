@@ -9,6 +9,7 @@ class Request_model extends CI_Model{
     private $from;
     private $to;
     private $date;
+    private $status;
 
     function __construct(){
         parent::__construct();
@@ -25,17 +26,20 @@ class Request_model extends CI_Model{
         $this->db->select("from_time");
         $this->db->select("to_time");
         $this->db->select("date");
+        $this->db->select("status");
         $this->db->from("equipment_requests");
         $query = $this->db->get();
 
         foreach($query->result() as $row){
             $item = new Request_model();
+            $item->setId($row->req_id);
             $item->setRequestedBy($row->user_name);
             $item->setItem($row->item);
             $item->setQuantity($row->quantity);
             $item->setFrom($row->from_time);
             $item->setTo($row->to_time);
             $item->setDate($row->date);
+            $item->setStatus($row->status);
             array_push($items, $item);
         }
 
@@ -50,6 +54,7 @@ class Request_model extends CI_Model{
         $this->db->select("from_time");
         $this->db->select("to_time");
         $this->db->select("date");
+        $this->db->select("status");
         $this->db->where("req_id", $id);
         $query = $this->db->get();
 
@@ -61,6 +66,7 @@ class Request_model extends CI_Model{
             $item->setFrom($row->from_time);
             $item->setTo($row->to_time);
             $item->setDate($row->date);
+            $item->setStatus($row->status);
             return $item;
         }
     }
@@ -162,6 +168,17 @@ class Request_model extends CI_Model{
         return $this;
     }
 
+    public function getStatus()
+    {
+        return $this->status;
+    }
+
+
+    public function setStatus($date)
+    {
+        $this->status = $date;
+        return $this;
+    }
 
 
 
