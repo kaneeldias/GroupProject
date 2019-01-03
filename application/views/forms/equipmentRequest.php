@@ -73,16 +73,7 @@
 
                 <div class="form_item col-md-6">
                     <span class="form_label">Date</span>
-                    <select class="form_input" name="date">
-                        <option selected disabled></option>
-                        <option value="Monday">Monday</option>
-                        <option value="Tuesday">Tuesday</option>
-                        <option value="Wednesday">Wednesday</option>
-                        <option value="Thursday">Thursday</option>
-                        <option value="Friday">Friday</option>
-                        <option value="Saturday">Saturday</option>
-                        <option value="Sunday">Sunday</option>
-                    </select>
+                    <input class="form_input" type="date" name="date">
                 </div>
 
             </div>
