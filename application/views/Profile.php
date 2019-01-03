@@ -4,136 +4,147 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
-<div class="container emp-profile">
-            <form method="post" action="<?=base_url("profile/edit")?>">
+<div class="container emp-profile col-md-6">
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-img">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt=""/>
-                            <div class="file btn btn-lg btn-primary">
-Change Photo
-<input type="file" name="file"/>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <div class="profile-head">
-                                    <h5>
-<?php echo $Details->getFname()?>
-</h5>
-                                    <h6>
-Web Developer and Designer
-</h6>
-                                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                            <h5> <?php echo $Details->getFname()?> <?php echo $Details->getLname()?></h5>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
                                 </li>
+                                <?php if($this->session->userdata("type") == "staff" || $this->session->userdata("type") == "student"):?>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Time Table</a>
                                 </li>
+                                <?php endif?>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                    <div class="col-md-4" style="float:left;">
+                        <a href="<?=base_url("profile/edit")?>">
+                            <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
+                        </a>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="profile-work">
-
-                        </div>
-                    </div>
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Frist Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo $Details->getFname()?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Last Name</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo $Details->getLname()?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Email</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo $Details->getEmail()?></p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Contact Number</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p><?php echo $Details->getTp()?></p>
-                                            </div>
-                                        </div>
-
-                            </div>
-                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Experience</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Hourly Rate</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>10$/hr</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Total Projects</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>230</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>English Level</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>Expert</p>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <label>Availability</label>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <p>6 months</p>
-                                            </div>
-                                        </div>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <label>Your Bio</label><br/>
-                                        <p>Your detail description</p>
+                                    <div class="col-md-6">
+                                        <label>First Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $Details->getFname()?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Last Name</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $Details->getLname()?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Email</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $Details->getEmail()?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Contact Number</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $Details->getTp()?></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Account Type</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p><?php echo $this->session->userdata("type")?></p>
                                     </div>
                                 </div>
                             </div>
+
+                            <?php if($this->session->userdata("type") == "staff" || $this->session->userdata("type") == "student"):?>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Time Table Profile</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <p>
+                                            <?php if(isset($cal_lec)):?>
+                                                <?= $cal_lec->getName();?>
+                                            <?php else: ?>
+                                                Not set
+                                            <?php endif?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <?php if($calendar):?>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Google Calendar Account</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                       <?php if($calendar):?>
+                                        <p><?=$cal_email?></p>
+                                        <?php endif?>
+                                    </div>
+                                </div>
+                                <?php endif?>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <label>Google Calendar Integration</label>
+                                    </div>
+                                    <div class="column col-md-6">
+                                        <!--<?php if($this->session->userdata("type") == "staff"):?>
+                                            <form class="row" method="POST" action="<?=base_url("calendar/setAccountLecturer")?>">
+                                            <select class="form_input" id="lecturer" name="lecturer">
+                                                <?php foreach($lecturers as $lecturer):?>
+                                                    <option <?php if($lecturer->getId() == $timetable_id) echo "selected"?> value="<?=$lecturer->getId()?>"><?=$lecturer->getName()?></option>
+                                                <?php endforeach ?>
+                                            </select>
+                                            <input type="submit" value="Submit"/>
+                                            </form>
+                                        <?php endif?>-->
+                                        <?php if($calendar): ?>
+                                        <p>Integrated</p>
+                                        <p>
+                                            <a href="<?=base_url("calendar/refresh")?>">Refresh</a>
+                                            <a style="margin-left:10px;" href="<?=base_url("calendar/remove")?>">Remove</a>
+                                        </p>
+                                        <?php else: ?>
+                                        <p onclick="getCodeWindow()" style="cursor:pointer;">Get Code</p>
+                                            <script>
+                                                function getCodeWindow() {
+                                                    var newWin = window.open('<?=$authUrl?>', 'example', 'width=600,height=400');
+                                                }
+                                            </script>
+                                            <form class="form_item row" method="POST" action="<?=base_url("calendar/integrate")?>">
+                                                <input style="width:5000px; margin-bottom:10px;" class="custom_form_item" type="text" name="authCode" placeholder="Enter Code"/>
+                                                <button type="submit">Integrate</button>
+                                            </form>
+
+                                        <?php endif ?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php endif?>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
 
 <style>

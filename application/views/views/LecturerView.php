@@ -7,7 +7,9 @@
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
+        <?php if($this->session->userdata('type') == "admin"):?>
         <a href="<?=base_url("lecturer/add")?>"><button>Add Lecturers</button></a>
+        <?php endif?>
     </div>
 
     <style>
@@ -51,8 +53,10 @@
         <td>Name</td>
         <td>ShortName</td>
         <td></td>
+        <?php if($this->session->userdata('type') == "admin"):?>
         <td></td>
         <td></td>
+        <?php endif?>
         <!--<td></td>-->
     </tr>
     <?php foreach($Lecturers as $Lec):?>
@@ -62,8 +66,10 @@
             <td><?=strtoupper($Lec->getShortForm())?></td>
             <!--<td><a href="<?=base_url("lecturer/view?id=".$Lec->getId())?>"><button class="view_button">View</button></a></td>-->
             <td><a href="<?=base_url("time-table/lecturer?lecturer_id=".$Lec->getStaffId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
+            <?php if($this->session->userdata('type') == "admin"):?>
             <td><a href="<?=base_url("lecturer/edit/?id=".$Lec->getStaffId())?>"><button class="edit_button">Edit</button></a></td>
             <td><a href="<?=base_url("lecturer/delete/?id=".$Lec->getStaffId())?>"><button class="delete_button">Delete</button></a></td>
+            <?php endif?>
         </tr>
     <?php endforeach?>
 </table>

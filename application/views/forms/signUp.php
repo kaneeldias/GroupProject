@@ -1,10 +1,18 @@
+<style>
+       body{
+           background-image: url("<?=base_url('assests/images/register_background2.jpg')?>"); 
+           background-size: cover;
+
+       }
+</style>
+
 <div class="row">
     <div class="col-md-5 mx-auto form_container">
 
         <div class="form_title">Sign Up</div>
 
 
-        <form class="column form_content" method="POST" action="<?=base_url("signup/process")?>">
+        <form id="signUpForm" class="column form_content" method="POST" action="<?=base_url("signup/process")?>">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-6">
@@ -32,6 +40,7 @@
                         <option value="admin">Admin</option>
                         <option value="staff">Staff</option>
                         <option value="student">Student</option>
+                        <option value="outsider">Outsider</option>
                     </select>
                 </div>
             </div>
@@ -39,7 +48,7 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-6">
                     <span class="form_label">Password</span>
-                    <input  class="form_input" type="password" placeholder="Password" name="password"/>
+                    <input id="password"  class="form_input" type="password" placeholder="Password" name="password"/>
                 </div>
 
                 <div class="form_item col-md-6">
@@ -53,11 +62,26 @@
                 <button type="submit">Submit</button>
             </div>
 
+            <div>
+                <a href="<?=base_url("signUp/bulk")?>">Bulk Registration</a>
+            </div>
+
         </form>
     </div>
 </div>
 
-<?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+<script src="<?=base_url('/assets/js/validation/signup_validation.js')?>"></script>
+
+<style>
+ label.error{
+     color:red;
+     font-size:12px;
+     margin:0px;
+     margin-left:5px;
+ }
+</style>
+
+<?php if($this->session->flashdata('error') == true):?>
     <div id="errorModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
 
@@ -83,7 +107,7 @@
 <?php endif ?>
 
 
-<?php if(isset($_GET['success']) && $_GET['success'] == true):?>
+<?php if($this->session->flashdata('success') == true):?>
     <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
 

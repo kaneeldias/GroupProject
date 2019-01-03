@@ -36,7 +36,7 @@
     margin-left:5px;
 }
 
-.form_container .form_item .form_input{
+.form_container .form_item .form_input, .custom_form_item{
     width:100%;
     outline:none;
     border-width:1px;
@@ -48,11 +48,11 @@
     border-radius:3px;
 }
 
-.form_container .form_item .form_input:hover{
+.form_container .form_item .form_input:hover, .custom_form_item:hover{
     opacity:1;
 }
 
-.form_container .form_item .form_input:focus {
+.form_container .form_item .form_input:focus, .custom_form_item:hover {
     border-width:1px;
     border-style:solid;
     border-color: #6d706d;
@@ -101,4 +101,21 @@
 .form_info_box .form_info{
     font-size:18px;
     color:black;
+}
+
+.form_fab{
+    background-color: #23924e;
+    border:none;
+    color:white;
+    padding:10px;
+    font-size:20px;
+    border-radius:3px;
+    transition:all 0.2s;
+    padding-left:20px;
+    padding-right:20px;
+    cursor:pointer;
+}
+
+.form_fab:hover{
+    background-color:#26a65b;
 }

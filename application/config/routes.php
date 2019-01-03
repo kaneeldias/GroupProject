@@ -91,9 +91,11 @@ $route['student-groups/delete'] = 'StudentGroup/delete';
 $route['time-table/group'] = 'TimeTableController/GroupView';
 $route['time-table/lecture-hall'] = 'TimeTableController/VenueView';
 $route['time-table/lecturer'] = 'TimeTableController/LecturerView';
-$route['time-tables/student'] = 'TimeTableController/select';
-$route['time-tables/lecturer'] = 'TimeTableController/LecturerViewSelect';
-$route['time-tables/lecture-hall'] = 'TimeTableController/LectureHallViewSelect';
+$route['time-table/select/student'] = 'TimeTableController/select';
+$route['time-table/select/lecturer'] = 'TimeTableController/LecturerViewSelect';
+$route['time-table/select/lecture-hall'] = 'TimeTableController/LectureHallViewSelect';
+$route['generate-time-tables'] = 'TimeTableController/LecturerViewGenerate';
+$route['generate-time-tables1'] = 'TimeTableController/LectureHallViewGenerate';
 $route['generate-time-table-lecturer'] = 'TimeTableController/LecturerViewGenerate';
 $route['generate-time-table-lecture-hall'] = 'TimeTableController/LectureHallViewGenerate';
 $route['generate-time-table'] = 'TimeTableController/generate';
@@ -107,9 +109,11 @@ $route['process_add'] = 'SignUp/process_add';
 $route['insert-lecture-hall'] = 'LectureHall/InsertLectureHall';
 
 $route['signup'] = 'SignUp/index';
+$route['signup/bulk/process'] = 'SignUp/process_bulk';
 $route['signup/process'] = 'SignUp/process_add';
 
 $route['lecture/process'] = 'Lecture/process';
+$route['lecture/delete'] = 'Lecture/delete';
 
 $route['dashboard-admin'] = 'Dashboard/admin';
 $route['dashboard-student'] = 'Dashboard/student';
@@ -121,5 +125,38 @@ $route['notes/update'] = "NotesController/update";
 $route['booking'] = "BookingController/index";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
+$route['booking/process'] = "BookingController/process";
+
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
+$route['profile/edit/process'] = 'Profile/process_edit';
+
+$route['equipment'] = 'Equipment/index';
+$route['equipment/add']='Equipment/add';
+$route['equipment/add/process'] = 'Equipment/process_add';
+$route['equipment/edit'] = 'Equipment/edit';
+$route['equipment/edit/process'] = 'Equipment/process_edit';
+$route['equipment/delete'] = 'Equipment/delete';
+
+$route['equipment/request'] = 'Equipment/request';
+$route['equipment/request/process'] = 'Equipment/request_add';
+
+$route['request'] = "RequestController/index";
+$route['request/delete'] = "RequestController/delete";
+
+$route['calendar/integrate'] = "CalendarController/integrate";
+$route['calendar/refresh'] = "CalendarController/refresh";
+$route['calendar/remove'] = "CalendarController/remove";
+$route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
+
+$route['validate/email-exists'] = "ValidatorController/emailExists";
+$route['validate/code-exists'] = "ValidatorController/codeExists";
+$route['validate/edit-code-exists'] = "ValidatorController/editCodeExists";
+$route['validate/hall-code-exists'] = "ValidatorController/hallCodeExists";
+$route['validate/edit-hall-code-exists'] = "ValidatorController/editHallCodeExists";
+$route['validate/lecturer-id-exists'] = "ValidatorController/lecturerIdExists";
+$route['validate/edit-lecturer-id-exists'] = "ValidatorController/editLecturerIdExists";
+$route['validate/subject-code-exists'] = "ValidatorController/subjectCodeExists";
+$route['validate/edit-subject-code-exists'] = "ValidatorController/editSubjectCodeExists";
+$route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
+$route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";

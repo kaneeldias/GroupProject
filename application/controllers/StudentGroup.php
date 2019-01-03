@@ -23,7 +23,11 @@ class StudentGroup extends CI_Controller {
             array_push($data['groups'], $g);
         }
 
-        $this->load->view('templates/header');
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Student Groups" => base_url("student-groups")
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view('views/StudentGroupsView', $data);
         $this->load->view('templates/footer');
     }
@@ -42,7 +46,12 @@ class StudentGroup extends CI_Controller {
         $this->load->model("group_model");
         $data['groups'] = $this->group_model->getAllGroups();
 
-        $this->load->view('templates/header');
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Student Groups" => base_url("student-groups"),
+            "Add Group" => base_url("student-groups/add")
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view('forms/addStudentGroup', $data);
         $this->load->view('templates/footer');
     }
@@ -65,7 +74,13 @@ class StudentGroup extends CI_Controller {
         $this->load->model("group_model");
         $data['groups'] = $this->group_model->getAllGroups();
         $data['group'] = $this->group_model->getById($data['id']);
-        $this->load->view("templates/header");
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Student Groups" => base_url("student-groups"),
+            "Edit Group" => "#"
+        );
+        $this->load->view("templates/header", $path);
         $this->load->view("forms/editStudentGroup", $data);
         $this->load->view("templates/footer");
     }

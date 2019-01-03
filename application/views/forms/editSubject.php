@@ -3,7 +3,9 @@
 
         <div class="form_title">Edit Subject</div>
 
-        <form class="column form_content" method="POST" action="<?=base_url("subjects/edit/process?id=$id")?>">
+        <form id="editSubjectForm" class="column form_content" method="POST" action="<?=base_url("subjects/edit/process?id=$id")?>">
+
+            <input type="hidden" id="id_field" value="<?=$id?>"/>
 
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
@@ -98,7 +100,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecture Hall has been edited successfully.</p>
+                    <p>Subject has been edited successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
@@ -112,3 +114,14 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+    <script src="<?=base_url('/assets/js/validation/edit_subject_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>

@@ -3,7 +3,7 @@
 
         <div class="form_title">Add Lecturer</div>
 
-        <form class="column form_content" method="POST" action="<?=base_url("lecturer/add/process")?>">
+        <form id="addLecturerForm" class="column form_content" method="POST" action="<?=base_url("lecturer/add/process")?> ">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-3">
@@ -78,7 +78,19 @@
         </div>
     </div>
 
+
     <script>
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+    <script src="<?=base_url('/assets/js/validation/add_lecturer_validation.js')?>"></script>
+
+    <style>
+        label.error{
+            color:red;
+            font-size:12px;
+            margin:0px;
+            margin-left:5px;
+        }
+    </style>
