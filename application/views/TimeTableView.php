@@ -1,4 +1,29 @@
-<div class="column time_table_container mx-auto col-md-12" style="text-align:center;">
+
+<div class="row">
+    <div class="col-md-11"></div>
+    <div class="btn col-md-1" onclick="print()">PRINT
+        <style>
+            .btn{
+                background-color:#062c33;
+                color:white;
+                font-weight:bold;
+                font-size:20px;
+                padding:10px;
+                padding-left:20px;
+                padding-right:20px;
+                cursor:pointer;
+                transition:all 0.2s;
+            }
+
+            .btn:hover{
+                background-color: #0a4d59;
+            }
+        </style>
+
+    </div>
+</div>
+
+<div id="table_p"  class="column time_table_container mx-auto col-md-12" style="text-align:center;">
 
     <h2 style="margin-bottom:20px;">Viewing Time Table for <?php if(isset($group)) echo $group->getName()?> Semester <?php if(isset($semester)) echo $semester?></h2>
 
@@ -211,3 +236,23 @@
 <?php endif ?>
 <?php endif?>
 
+
+<script src="<?=base_url("assets/libraries/html2canvas.min.js")?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<script>
+    function print(){
+        const filename = "pdf.pdf";
+
+        html2canvas(document.getElementById("table_p"), {
+            allowTaint:true,
+            useCORS: true
+        })
+            .then(function(canvas) {
+                //document.body.appendChild(canvas);
+                let pdf = new jsPDF('p', 'mm', 'a4');
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+                pdf.save(filename);
+            });
+    }
+
+</script>

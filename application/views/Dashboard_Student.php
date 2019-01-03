@@ -83,7 +83,7 @@
         border-radius:5px;
         border-style:solid;
         border-width:2px;
-    //box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
         padding:0px;
     }
 

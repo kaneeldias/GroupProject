@@ -114,4 +114,4 @@
 </nav>
 <?php endif?>
 
-<div class="column" id="content" style="margin-top:30px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
+<div class="column" id="content" style="margin-top:70px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
