@@ -25,6 +25,7 @@ class Staff_model extends CI_Model{
         $this->db->select("staff_id");
         $this->db->select("name");
         $this->db->select("short_name");
+        $this->db->order_by("name", "ASC");
         $this->db->from("academic_staff");
         $query = $this->db->get();
 

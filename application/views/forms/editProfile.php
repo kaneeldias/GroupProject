@@ -36,6 +36,11 @@
                 <div class="form_item col-md-6">
                     <span class="form_label">Time Table Profile<span>
                      <select class="form_input" id="lecturer" name="lecturer">
+
+                         <?php if($timetable_id == -1):?>
+                             <option selected disabled>Select Yourself</option>
+                         <?php endif?>
+
                          <?php foreach($lecturers as $lecturer):?>
                              <option <?php if($lecturer->getId() == $timetable_id) echo "selected"?> value="<?=$lecturer->getId()?>"><?=$lecturer->getName()?></option>
                          <?php endforeach ?>
