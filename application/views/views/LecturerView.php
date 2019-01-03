@@ -51,6 +51,8 @@
     <tr class="header">
         <td>ID</td>
         <td>Name</td>
+        <td>EmailAddress</td>
+
         <td>ShortName</td>
         <td></td>
         <?php if($this->session->userdata('type') == "admin"):?>
@@ -63,6 +65,7 @@
         <tr>
             <td><?=$Lec->getId()?></td>
             <td><?=$Lec->getName()?></td>
+            <td></td>
             <td><?=strtoupper($Lec->getShortForm())?></td>
             <!--<td><a href="<?=base_url("lecturer/view?id=".$Lec->getId())?>"><button class="view_button">View</button></a></td>-->
             <td><a href="<?=base_url("time-table/lecturer?lecturer_id=".$Lec->getStaffId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
