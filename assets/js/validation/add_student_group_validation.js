@@ -2,7 +2,7 @@ $("#addStudentGroup").validate({
     rules:{
         groupname:{
             required: true,
-            //remote: "<?=base_url('validate/group-name-exists')?>"
+            remote: "http://127.0.0.1/GroupProject/validate/group-name-exists"
         },
         degree_id:{
             required: true
