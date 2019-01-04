@@ -57,6 +57,8 @@
         <td>Rubric of the Semester exam</td>
         <td>Setter/1st Examiner</td>
         <td>Moderator/2nd Examiner</td>
+        <td></td>
+        <td></td>
 
     </tr>
     <?php foreach($array as $results):?>

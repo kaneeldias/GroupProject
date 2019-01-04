@@ -1,22 +1,19 @@
 <div class="row">
     <div class="col-md-6 mx-auto form_container">
 
-        <div class="form_title">Edit Rubrics</div>
+        <div class="form_title">Add Rubrics</div>
 
 
-        <form id="editRubricsForm" class="column form_content" method="POST" action="<?=base_url("rubrics/edit/process")?>">
-
-            <input type="hidden" id="id_field" value="<?=$rubric->getId()?>" name="id"/>
+        <form id="addRubricsForm" class="column form_content" method="POST" action="<?=base_url("rubrics/add/process")?>">
 
             <div class="row col-md-12">
 
                 <div class="form_item col-md-4">
                     <span class="form_label">Course</span>
                     <select class="form_input" name="code">
+                        <option selected disabled></option>
                         <?php foreach($subjects as $subject): ?>
-                            <option
-                                    <?php if($subject->getId() == $rubric->getSubject()->getId()):?>selected<?php endif?>
-                                    value="<?=$subject->getId()?>"><?=$subject->getName()?></option>
+                            <option value="<?=$subject->getId()?>"><?=$subject->getName()?></option>
                         <?php endforeach?>
                     </select>
                 </div>
@@ -28,10 +25,9 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Setter 1</span>
                     <select class="form_input" name="setter1">
+                        <option selected disabled></option>
                         <?php foreach($staff as $s): ?>
-                            <option
-                                <?php if($s->getId() == $rubric->getSetter1()->getId()):?>selected<?php endif?>
-                                value="<?=$s->getId()?>"><?=$s->getName()?></option>
+                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
                         <?php endforeach?>
                     </select>
                 </div>
@@ -43,9 +39,9 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Sem.Exam Perecentage</span>
                     <select class="form_input" name="semExam">
+                        <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
                             <option
-                                <?php if($rubric->getExam() == $i*10):?>selected<?php endif?>
                                 value="<?=$i*10?>"><?=$i*10?></option>
                         <?php endfor?>
                     </select>
@@ -56,12 +52,10 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Setter 2</span>
                     <select class="form_input" name="setter2">
+                        <option selected disabled></option>
                         <?php foreach($staff as $s): ?>
-                            <option
-                                <?php if($s->getId() == $rubric->getSetter2()->getId()):?>selected<?php endif?>
-                                value="<?=$s->getId()?>"><?=$s->getName()?></option>
+                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
                         <?php endforeach?>
-
                     </select>
                 </div>
             </div>
@@ -70,9 +64,9 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Assesment Perecentage</span>
                     <select class="form_input" name="assesment">
+                        <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
-                        <option
-                                <?php if($rubric->getAssesments() == $i*10):?>selected<?php endif?>
+                            <option
                                 value="<?=$i*10?>"><?=$i*10?></option>
                         <?php endfor?>
                     </select>
@@ -83,10 +77,9 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Moderator</span>
                     <select class="form_input" name="moderator">
+                        <option selected disabled></option>
                         <?php foreach($staff as $s): ?>
-                            <option
-                                <?php if($s->getId() == $rubric->getModerator()->getId()):?>selected<?php endif?>
-                                value="<?=$s->getId()?>"><?=$s->getName()?></option>
+                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
                         <?php endforeach?>
                     </select>
                 </div>
@@ -96,7 +89,8 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-10">
                     <span class="form_label">Rubrics of the Semester Exam</span>
-                    <input  class="form_input" type="text" placeholder="Code" name="examRubrics" value="<?=$rubric->getRubric()?>"/>
+                    <input  class="form_input" type="text" placeholder="Code" name="examRubrics"/>
+                    </select>
                 </div>
             </div>
             <div class="row col-md-12">
@@ -164,7 +158,7 @@
     </script>
 <?php endif ?>
 
-<script src="<?=base_url('/assets/js/validation/edit_rubrics_validation.js')?>"></script>
+<script src="<?=base_url('/assets/js/validation/add_rubrics_validation.js')?>"></script>
 
 <style>
     label.error{
