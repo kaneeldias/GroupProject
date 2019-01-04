@@ -44,7 +44,7 @@
         <div class ="row">
             <div class="col-md-3">
                 <a href="http://ucsc.cmb.ac.lk/">
-                    <img src="<?=base_url('images/ucsc.png')?>" width="80px">
+                    <img src="<?=base_url('images/ucsc_logo.png')?>" width="80px">
                 </a>
             </div>
             <div class="col-md-6">
