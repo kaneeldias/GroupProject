@@ -7,7 +7,9 @@
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("lecture-halls/add")?>"><button>Add Lecture Hall</button></a>
+        <?php if($this->session->userdata('type') == "admin"):?>
+            <a href="<?=base_url("lecture-halls/add")?>"><button>Add Lecture Hall</button></a>
+        <?php endif?>
     </div>
 
     <style>
@@ -65,6 +67,7 @@
             <td><?=$venue->getType()?></td>
             <td><?=$venue->getCapacity()?></td>
             <!--<td><a href="<?=base_url("lecture_halls/view?id=".$venue->getId())?>"><button class="view_button">View</button></a></td>-->
+            <?php if($this->session->userdata('type') == "admin"):?>
             <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$venue->getId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
             <?php if($this->session->userdata("type") == "admin"):?>
             <td><a href="<?=base_url("lecture-halls/edit/?id=".$venue->getId())?>"><button class="edit_button">Edit</button></a></td>
