@@ -7,7 +7,9 @@
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("lecture-halls/add")?>"><button>Add Lecture Hall</button></a>
+        <?php if($this->session->userdata('type') == "admin"):?>
+            <a href="<?=base_url("lecture-halls/add")?>"><button>Add Lecture Hall</button></a>
+        <?php endif?>
     </div>
 
     <style>
@@ -52,8 +54,10 @@
         <td>Type</td>
         <td>Capacity</td>
         <td></td>
+        <?php if($this->session->userdata("type") == "admin"):?>
         <td></td>
         <td></td>
+        <?php endif?>
         <!--<td></td>-->
     </tr>
     <?php foreach($venues as $venue):?>
@@ -63,10 +67,13 @@
             <td><?=$venue->getType()?></td>
             <td><?=$venue->getCapacity()?></td>
             <!--<td><a href="<?=base_url("lecture_halls/view?id=".$venue->getId())?>"><button class="view_button">View</button></a></td>-->
+            <?php if($this->session->userdata('type') == "admin"):?>
             <td><a href="<?=base_url("time-table/lecture-hall?venue_id=".$venue->getId()."&semester=$current_semester")?>"><button>Time Table</button></a></td>
+            <?php if($this->session->userdata("type") == "admin"):?>
             <td><a href="<?=base_url("lecture-halls/edit/?id=".$venue->getId())?>"><button class="edit_button">Edit</button></a></td>
             <td><a href="<?=base_url("lecture-halls/delete/?id=".$venue->getId())?>" onclick="return confirm('Are you sure?')"><button class="delete_button">Delete</button></a></td>
-        </tr>
+            <?php endif?>
+            </tr>
     <?php endforeach?>
 </table>
 

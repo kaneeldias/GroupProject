@@ -21,7 +21,7 @@ $("#addSubjectForm").validate({
     messages:{
         code:{
             required:"Enter code",
-            remote:"Enter a valid Subject Code"
+            c
         },
         name:{
             required:"Enter name"

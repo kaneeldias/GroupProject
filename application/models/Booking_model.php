@@ -2,6 +2,7 @@
 
 class Booking_model extends CI_Model{
 
+    private $id;
     private $venue;
     private $request;
     private $approved;
@@ -10,6 +11,23 @@ class Booking_model extends CI_Model{
     private $start_time;
     private $end_time;
 
+
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
     /**
      * @return mixed
      */
@@ -111,7 +129,7 @@ class Booking_model extends CI_Model{
      */
     public function getEndTime()
     {
-        return $this->end_tine;
+        return $this->end_time;
     }
 
     /**
@@ -173,11 +191,52 @@ class Booking_model extends CI_Model{
         return $arr;
     }
 
+    public function getAllBookings(){
+        $array = [];
+
+        $this->load->database();
+        $this->db->select("booking_id");
+        $this->db->select("date");
+        $this->db->select("venue");
+        $this->db->select("start_time");
+        $this->db->select("end_time");
+        $this->db->select("reason");
+        $this->db->select("approved");
+        $this->db->select("request");
+        $this->db->where("date >=", date("Y-m-d"));
+        $this->db->order_by("date", "ASC");
+        $this->db->order_by("start_time", "ASC");
+        $this->db->from("bookings");
+        $query = $this->db->get();
+        $this->load->model("staff_model");
+        $this->load->model("venue_model");
+        foreach($query->result() as $row){
+            $booking = $this->get();
+            $booking->setId($row->booking_id    );
+            $booking->setVenue($this->venue_model->getVenueById($row->venue));
+            $booking->setDate($row->date);
+            $booking->setStartTime($row->start_time);
+            $booking->setEndTime($row->end_time);
+            $booking->setReason($row->reason);
+            $booking->setApproved($this->staff_model->getStaffById($row->approved));
+            $booking->setRequest($row->request);
+            array_push($array,$booking);
+        }
+
+        return $array;
+    }
+
     function x_week_range($date) {
         $ts = strtotime($date);
         $start = (date('w', $ts) == 0) ? $ts : strtotime('last monday', $ts);
         return array(date('Y-m-d', $start),
             date('Y-m-d', strtotime('next sunday', $start)));
+    }
+
+    public function deleteBookingById($id){
+        $this->load->database();
+        $this->db->where('booking_id', $id);
+        return $this->db->delete('bookings');
     }
 
 }

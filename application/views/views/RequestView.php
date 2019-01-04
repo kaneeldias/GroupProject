@@ -55,7 +55,6 @@
 
         <td></td>
         <td></td>
-        <td></td>
         <!--<td></td>-->
     </tr>
     <?php foreach($Items as $Item):?>

@@ -4,7 +4,7 @@
         <div class="form_title">Request for Equipment</div>
 
 
-        <form id="addSubjectForm" class="column form_content" method="POST" action="<?=base_url("equipment/request/process")?>">
+        <form id="equipmentRequestForm" class="column form_content" method="POST" action="<?=base_url("equipment/request/process")?>">
 
             <div class="row col-md-12">
                 <div class="form_item col-md-8">
@@ -137,7 +137,7 @@
     </script>
 <?php endif ?>
 
-    <script src="<?=base_url('/assets/js/validation/add_subject_validation.js')?>"></script>
+    <script src="<?=base_url('/assets/js/validation/equipment_requests_validation.js')?>"></script>
 
     <style>
         label.error{

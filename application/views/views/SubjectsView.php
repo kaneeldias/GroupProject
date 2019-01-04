@@ -54,7 +54,6 @@
         <td>Semester</td>
         <td></td>
         <td></td>
-        <td></td>
     </tr>
     <?php foreach($array as $a):?>
         <tr>

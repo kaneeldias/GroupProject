@@ -3,6 +3,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class BookingController extends CI_Controller {
 
+    public function view(){
+        $this->load->library('session');
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            $this->load->view("templates/header");
+            $this->load->view("errors/unauthorized_access");
+            $this->load->view("templates/footer");
+            return;
+        }
+        $data = [];
+        $this->load->model("Booking_model");
+
+        $data['bookings'] = $this->Booking_model->getAllBookings();
+
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Bookings" => base_url("booking")
+        );
+
+        $this->load->view("templates/header", $path);
+        $this->load->view('views/BookingsView', $data);
+        $this->load->view('templates/footer');
+    }
+
     public function index(){
         $this->load->library("session");
         if(!$this->session->userdata("logged")){
@@ -219,7 +242,21 @@ class BookingController extends CI_Controller {
             $week = $_POST['week'];
             redirect(base_url("booking/view-slots")."?venue=$venue&week=$week&error=true", 'location');
         }
-
-
     }
-}
+
+    public function delete(){
+        $this->load->library("session");
+        if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+            echo "unauthorized access";
+            return;
+        }
+        try{
+            $data['id'] = $_GET['id'];
+            $this->load->model("Booking_model");
+            $this->Booking_model->deleteBookingById($data['id']);
+            redirect(base_url("booking"), 'location');
+        }
+        catch(Exception $ex){
+            redirect(base_url("booking")."?error=true", 'location');
+        }
+    }}

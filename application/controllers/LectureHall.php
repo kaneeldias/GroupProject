@@ -5,7 +5,7 @@ class LectureHall extends CI_Controller {
 
 	public function index(){
 		$this->load->library("session");
-		if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
+		if(!$this->session->userdata("logged")){
 			$this->load->view("templates/header");
 			$this->load->view("errors/unauthorized_access");
 			$this->load->view("templates/footer");
