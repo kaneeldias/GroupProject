@@ -157,7 +157,8 @@ $route['rubrics/add/process'] = "rubricController/process_add";
 $route['rubrics/edit'] = "rubricController/edit";
 $route['rubrics/edit/process'] = "rubricController/process_edit";
 $route['rubrics/delete'] = 'rubricController/delete';
-
+$route['rubrics/generate'] = "rubricController/generate";
+$route['rubrics/generate/process'] = "rubricController/process_generate";
 
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";

@@ -1,98 +1,53 @@
 <div class="row">
     <div class="col-md-6 mx-auto form_container">
 
-        <div class="form_title">Add Rubrics</div>
+        <div class="form_title">Generate Rubrics</div>
 
 
-        <form id="addRubricsForm" class="column form_content" method="POST" action="<?=base_url("rubrics/add/process")?>">
+        <form id="generateRubricsForm" class="column form_content" method="POST" action="<?=base_url("rubrics/generate/process")?>">
 
             <div class="row col-md-12">
 
-                <div class="form_item col-md-4">
-                    <span class="form_label">Course</span>
-                    <select class="form_input" name="code">
+                <div class="form_item col-md-5">
+                    <span class="form_label">Degree</span>
+                    <select class="form_input" name="degree">
                         <option selected disabled></option>
-                        <?php foreach($subjects as $subject): ?>
-                            <option value="<?=$subject->getId()?>"><?=$subject->getName()?></option>
+                        <?php foreach($degrees as $degree): ?>
+                            <option value="<?=$degree->getId()?>"><?=$degree->getName()?></option>
                         <?php endforeach?>
                     </select>
                 </div>
-
 
                 <div class="form_item col-md-2">
                 </div>
 
-                <div class="form_item col-md-4">
-                    <span class="form_label">Setter 1</span>
-                    <select class="form_input" name="setter1">
-                        <option selected disabled></option>
-                        <?php foreach($staff as $s): ?>
-                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
-                        <?php endforeach?>
-                    </select>
-                </div>
 
-            </div>
-
-
-            <div class="row col-md-12">
-                <div class="form_item col-md-4">
-                    <span class="form_label">Sem.Exam Perecentage</span>
+                <div class="form_item col-md-5">
+                    <span class="form_label">Year</span>
                     <select class="form_input" name="semExam">
                         <option selected disabled></option>
-                        <?php for($i = 0; $i<=10; $i++):?>
-                            <option
-                                value="<?=$i*10?>"><?=$i*10?></option>
-                        <?php endfor?>
-                    </select>
-                </div>
+                        <option value="year1">Year 1</option>
+                        <option value="year2">Year 2</option>
+                        <option value="year3">Year 3</option>
+                        <option value="year4">Year 4</option>
 
-                <div class="form_item col-md-2">
-                </div>
-                <div class="form_item col-md-4">
-                    <span class="form_label">Setter 2</span>
-                    <select class="form_input" name="setter2">
-                        <option selected disabled></option>
-                        <?php foreach($staff as $s): ?>
-                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
-                        <?php endforeach?>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row col-md-12">
-                <div class="form_item col-md-4">
-                    <span class="form_label">Assesment Perecentage</span>
-                    <select class="form_input" name="assesment">
-                        <option selected disabled></option>
-                        <?php for($i = 0; $i<=10; $i++):?>
-                            <option
-                                value="<?=$i*10?>"><?=$i*10?></option>
-                        <?php endfor?>
-                    </select>
-                </div>
-
-                <div class="form_item col-md-2">
-                </div>
-                <div class="form_item col-md-4">
-                    <span class="form_label">Moderator</span>
-                    <select class="form_input" name="moderator">
-                        <option selected disabled></option>
-                        <?php foreach($staff as $s): ?>
-                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
-                        <?php endforeach?>
                     </select>
                 </div>
 
             </div>
 
             <div class="row col-md-12">
-                <div class="form_item col-md-10">
-                    <span class="form_label">Rubrics of the Semester Exam</span>
-                    <input  class="form_input" type="text" placeholder="Code" name="examRubrics"/>
+                <div class="form_item col-md-5">
+                    <span class="form_label">Semester</span>
+                    <select class="form_input" name="semester">
+                        <option selected disabled></option>
+                        <option value="semester1">Semester 1</option>
+                        <option value="semester2">Semester 2</option>
                     </select>
                 </div>
+
             </div>
+
             <div class="row col-md-12">
                 <div class="form_item col-md-3">
                     <button type="submit">Submit</button>
