@@ -39,6 +39,7 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Sem.Exam Perecentage</span>
                     <select class="form_input" name="semExam">
+                        <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
                             <option
                                 value="<?=$i*10?>"><?=$i*10?></option>
@@ -63,6 +64,7 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Assesment Perecentage</span>
                     <select class="form_input" name="assesment">
+                        <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
                             <option
                                     value="<?=$i*10?>"><?=$i*10?></option>
@@ -156,7 +158,7 @@
     </script>
 <?php endif ?>
 
-<script src="<?=base_url('/assets/js/validation/add_subject_validation.js')?>"></script>
+<script src="<?=base_url('/assets/js/validation/add_rubrics_validation.js')?>"></script>
 
 <style>
     label.error{

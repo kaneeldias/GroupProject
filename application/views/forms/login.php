@@ -283,7 +283,7 @@
 
         <div class="form__field">
             <label for="login__username" class="my__label"><svg class="icon"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#user"></use></svg><span class="hidden">Username</span></label>
-            <input id="login__username" type="text" name="email" class="form_input" placeholder="Email" required>
+            <input style="width:300px;" id="login__username" type="text" name="email" class="form_input" placeholder="Email" required>
         </div>
 
         <div class="form__field">
