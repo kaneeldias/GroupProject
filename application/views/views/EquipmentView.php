@@ -50,8 +50,7 @@
     <tr class="header">
         <td>Code</td>
         <td>Name</td>
-        <td>Discription</td>
-        <td></td>
+        <td>Description</td>
         <td></td>
         <td></td>
         <!--<td></td>-->
