@@ -45,13 +45,12 @@
 </div>
 <table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Requested By</td>
+        <td>Date</td>
         <td>Item</td>
-        <td>Quantity</td>
         <td>From</td>
         <td>To</td>
-        <td>Date</td>
         <td>Status</td>
+        <td>Requested By</td>
 
         <td></td>
         <td></td>
@@ -59,12 +58,11 @@
     </tr>
     <?php foreach($Items as $Item):?>
         <tr>
-            <td><?=$Item->getRequestedBy()?></td>
-            <td><?=$Item->getItem()?></td>
-            <td><?=$Item->getQuantity()?></td>
-            <td><?=$Item->getFrom()?></td>
-            <td><?=$Item->getTo()?></td>
             <td><?=$Item->getDate()?></td>
+            <td><?=$Item->getItem()?></td>
+            <td><?=$Item->getFrom()?>:00</td>
+            <td><?=$Item->getTo()?>:00</td>
+            <td><?=$Item->getRequestedBy()->getfname()?> <?=$Item->getRequestedBy()->getlname()?></td>
             <td><?=$Item->getStatus()?></td>
 
             <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button" >Approve</button></a></td>

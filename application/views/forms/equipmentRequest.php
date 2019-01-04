@@ -16,65 +16,54 @@
                         <?php endforeach?>
                     </select>
                 </div>
-
-                <div class="form_item col-md-4">
-                    <span class="form_label">Quantity</span>
-                    <select class="form_input" name="quantity">
-                        <option selected disabled></option>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
-                </div>
             </div>
 
 
 
             <div class="row col-md-12">
 
+                <div class="form_item col-md-6">
+                    <span class="form_label">Date</span>
+                    <input class="form_input" type="date" name="date">
+                </div>
+
                 <div class="form_item col-md-3">
                     <span class="form_label">From</span>
                     <select class="form_input" name="from">
-                        <option selected disabled></option>
-                        <option value="0600">0600</option>
-                        <option value="0700">0700</option>
-                        <option value="0800">0800</option>
-                        <option value="0900">0900</option>
-                        <option value="1000">1000</option>
-                        <option value="1100">1100</option>
-                        <option value="1200">1200</option>
-                        <option value="1300">1300</option>
-                        <option value="1400">1400</option>
-                        <option value="1500">1500</option>
-                        <option value="1600">1600</option>
-                        <option value="1700">1700</option>
+                        <option value="6">6:00</option>
+                        <option value="7">7:00</option>
+                        <option value="8">8:00</option>
+                        <option value="9">9:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
                     </select>
                 </div>
 
                 <div class="form_item col-md-3">
                     <span class="form_label">To</span>
                     <select class="form_input" name="to">
-                        <option selected disabled></option>
-                        <option value="0700">0700</option>
-                        <option value="0800">0800</option>
-                        <option value="0900">0900</option>
-                        <option value="1000">1000</option>
-                        <option value="1100">1100</option>
-                        <option value="1200">1200</option>
-                        <option value="1300">1300</option>
-                        <option value="1400">1400</option>
-                        <option value="1500">1500</option>
-                        <option value="1600">1600</option>
-                        <option value="1700">1700</option>
-                        <option value="0600">1800</option>
+                        <option value="6">6:00</option>
+                        <option value="7">7:00</option>
+                        <option value="8">8:00</option>
+                        <option value="9">9:00</option>
+                        <option value="10">10:00</option>
+                        <option value="11">11:00</option>
+                        <option value="12">12:00</option>
+                        <option value="13">13:00</option>
+                        <option value="14">14:00</option>
+                        <option value="15">15:00</option>
+                        <option value="16">16:00</option>
+                        <option value="17">17:00</option>
                     </select>
                 </div>
 
-                <div class="form_item col-md-6">
-                    <span class="form_label">Date</span>
-                    <input class="form_input" type="date" name="date">
-                </div>
+
 
             </div>
 

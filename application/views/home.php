@@ -61,15 +61,22 @@
 <section id="home">
     <div class="container">
         <div class="row">
-            <div class="col-md-offset-2 col-md-8">
-                <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make things <span>Easy</span></h2>
-                <div class="element">
-                    <div class="sub-element" style="color:black;">This is official web site of UCSC Academic Center . . .</div>
+            <div class="col-md-offset-2 col-md-8" style="background-color:rgba(0,0,0,0.7); padding:20px; text-align:center;
+            border-radius:20px;">
+                <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make things <span>EASY</span></h2>
+                <div class="element" style="text-align:center;">
+                    <div class="sub-element">This is official web site of UCSC Academic Center . . .</div>
                     <div class="sub-element">This is official web site of UCSC Academic Center . . .</div>
                     <div class="sub-element">This is official web site of UCSC Academic Center . . .</div>
                 </div>
-                <a data-scroll href="<?=base_url("log-in")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Log In</a>
+                <a data-scroll href="<?=base_url("log-in")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s" style="margin-right:50px;">Log In</a>
                 <a data-scroll href="<?=base_url("guest")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Guest</a>
+
+                <style>
+                    .btn:hover{
+                        background-color:#444444;
+                    }
+                </style>
             </div>
         </div>
     </div>
