@@ -28,6 +28,7 @@ class Request_model extends CI_Model{
         $this->db->select("date");
         $this->db->select("status");
         $this->db->from("equipment_requests");
+        $this->db->order_by("date", "desc");
         $query = $this->db->get();
 
         foreach($query->result() as $row){
