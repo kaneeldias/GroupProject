@@ -2,17 +2,13 @@
 
 <div class="row control_panel col-md-12">
 
-
-    <div class="control_panel_title align-text-bottom"></div>
+    <div class="control_panel_title align-text-bottom">Bookings</div>
 
     <div class="flex-grow-1"></div>
 
-
-   <div class="control_panel_actions">
-        <a href="<?=base_url("rubrics/add")?>"><button>Add Data</button></a>
-        <a href="<?=base_url("rubrics/generate")?>"><button>Generate Reports</button></a>
-   </div>
-
+    <div class="control_panel_actions">
+        <a href="<?=base_url("booking/make")?>"><button>Create Booking</button></a>
+    </div>
 
     <style>
         .control_panel{
@@ -49,34 +45,27 @@
         }
     </style>
 </div>
-<table id="rubricTable" class="custom_table col-md-12">
+<table id="SubjectsTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Course Code</td>
-        <td>Name</td>
-        <td>Sem.Exam</td>
-        <td>Assesments</td>
-        <td>Rubric of the Semester exam</td>
-        <td>Setter/1st Examiner</td>
-        <td>Moderator/2nd Examiner</td>
+        <td>Date</td>
+        <td>Venue</td>
+        <td>Start Time</td>
+        <td>End Time</td>
+        <td>Requested By</td>
+        <td>Reason</td>
+        <td>Approved By</td>
         <td></td>
-        <td></td>
-
     </tr>
-    <?php foreach($array as $results):?>
+    <?php foreach($bookings as $a):?>
         <tr>
-            <td><?=$results->getSubject()->getCode()?></td>
-            <td><?=$results->getSubject()->getName()?></td>
-            <td><?=$results->getExam()?></td>
-            <td><?=$results->getAssesments()?></td>
-            <td><?=$results->getRubric()?></td>
-            <td>
-                <?=$results->getSetter1()->getName()?>
-                <br>
-                <?=$results->getSetter2()->getName()?>
-            </td>
-            <td><?=$results->getModerator()->getName()?></td>
-            <td><a href="<?=base_url("rubrics/edit/?id=".$results->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("rubrics/delete/?id=".$results->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$a->getDate()?></td>
+            <td><?=$a->getVenue()->getName()?></td>
+            <td><?=$a->getStartTime()?>:00</td>
+            <td><?=$a->getEndTime()?>:00</td>
+            <td><?=$a->getRequest()?></td>
+            <td><?=$a->getReason()?></td>
+            <td><?=$a->getApproved()->getName()?></td>
+            <td><a href="<?=base_url("booking/delete/?id=".$a->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>

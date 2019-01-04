@@ -122,10 +122,13 @@ $route['dashboard-outsider'] = 'Dashboard/outsider';
 
 $route['notes/update'] = "NotesController/update";
 
-$route['booking'] = "BookingController/index";
+$route['booking/make'] = "BookingController/index";
+$route['free-slots'] = "BookingController/index";
+$route['booking'] = "BookingController/view";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
 $route['booking/process'] = "BookingController/process";
+$route['booking/delete'] = "BookingController/delete";
 
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
@@ -157,7 +160,8 @@ $route['rubrics/add/process'] = "rubricController/process_add";
 $route['rubrics/edit'] = "rubricController/edit";
 $route['rubrics/edit/process'] = "rubricController/process_edit";
 $route['rubrics/delete'] = 'rubricController/delete';
-
+$route['rubrics/generate'] = "rubricController/generate";
+$route['rubrics/generate/process'] = "rubricController/process_generate";
 
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";
@@ -171,3 +175,5 @@ $route['validate/subject-code-exists'] = "ValidatorController/subjectCodeExists"
 $route['validate/edit-subject-code-exists'] = "ValidatorController/editSubjectCodeExists";
 $route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
 $route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";
+$route['validate/rubrics-exists'] = "ValidatorController/rubricsExists";
+$route['validate/edit-rubrics-exists'] = "ValidatorController/editRubricsExists";

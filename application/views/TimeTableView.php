@@ -1,7 +1,8 @@
 
 <div class="row">
     <div class="col-md-11"></div>
-    <div class="btn col-md-1" onclick="print()">PRINT
+    <div class="btn col-md-1" onclick="print()">
+        <i class="fa fa-print" aria-hidden="true"></i>
         <style>
             .btn{
                 background-color:#062c33;
@@ -249,8 +250,8 @@
         })
             .then(function(canvas) {
                 //document.body.appendChild(canvas);
-                let pdf = new jsPDF('p', 'mm', 'a4');
-                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+                let pdf = new jsPDF('l', 'mm', 'a4');
+                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, 190);
                 pdf.save(filename);
             });
     }
