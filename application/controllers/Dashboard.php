@@ -153,9 +153,7 @@ class Dashboard extends CI_Controller {
     {
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "staff"){
-            $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
-            $this->load->view("templates/footer");
             return;
         }
         $data = [];
@@ -200,9 +198,7 @@ class Dashboard extends CI_Controller {
         }
 
 
-        $this->load->view("templates/header");
         $this->load->view("Dashboard_Lecturer", $data);
-        $this->load->view("templates/footer");
     }
 
     public function outsider()
