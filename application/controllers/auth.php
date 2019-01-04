@@ -17,7 +17,7 @@ class auth extends CI_Controller {
 	public function login(){
 		$this->load->library('session');
 		if($this->session->userdata("logged")){
-			echo "You are already logged in.";
+			redirect(base_url("Dashboard"), 'location');
 			return;
 		}
 		try{

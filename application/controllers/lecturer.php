@@ -107,6 +107,12 @@ class lecturer extends CI_Controller {
 				'required|is_unique[academic_staff.short_name]|min_length[3]'
 			);
 
+            $this->form_validation->set_rules(
+                'emailaddress',
+                'EmailAddress',
+                'required|valid_email'
+            );
+
 			if($this->form_validation->run() == false){
 				throw new Exception();
 			}
@@ -114,13 +120,14 @@ class lecturer extends CI_Controller {
 			$id = $_POST['id'];
 			$name = $_POST['name'];
 			$shortform = $_POST['shortform'];
-
+            $emailaddress=$_POST['emailaddress'];
 			//validation
 
 			$this->load->database();
 			$this->db->set("id", $id);
 			$this->db->set("name", $name);
 			$this->db->set("short_name", $shortform);
+            $this->db->set("email_address",$emailaddress);
 			$this->db->insert("academic_staff");
 
 			redirect(base_url("lecturer/add") . "?success=true", 'location');
@@ -153,6 +160,12 @@ class lecturer extends CI_Controller {
             );
 
             $this->form_validation->set_rules(
+                'emailaddress',
+                'EmailAddress',
+                'required'
+            );
+
+            $this->form_validation->set_rules(
                 'shortform',
                 'Short Form',
                 'required|min_length[3]'
@@ -167,11 +180,12 @@ class lecturer extends CI_Controller {
             $id = $_POST['id'];
             $name = $_POST['name'];
             $shortform = $_POST['shortform'];
-
+            $emailaddress=$_POST['emailaddress'];
 
             $this->load->database();
             $this->db->set("id", $id);
             $this->db->set("name", $name);
+            $this->db->set("email_address, $emailaddress");
             $this->db->set("short_name", $shortform);
             $this->db->where("staff_id", $_GET['id']);
             $this->db->update("academic_staff");

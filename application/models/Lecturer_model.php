@@ -7,7 +7,7 @@ class Lecturer_model extends CI_Model{
     private $id;
     private $name;
     private $shortform;
-
+    private $emailaddress;
     function __construct(){
         parent::__construct();
     }
@@ -20,6 +20,7 @@ class Lecturer_model extends CI_Model{
         $this->db->select("id");
         $this->db->select("name");
         $this->db->select("short_name");
+        $this->db->select("email_address");
         $this->db->order_by("name", "ASC");
         $this->db->from("academic_staff");
         $query = $this->db->get();
@@ -30,6 +31,7 @@ class Lecturer_model extends CI_Model{
             $Lecturer->setId($row->id);
             $Lecturer->setName($row->name);
             $Lecturer->setShortForm($row->short_name);
+            $Lecturer->setEmailAddress($row->email_address);
             array_push($Lecturers, $Lecturer);
         }
 
@@ -41,8 +43,10 @@ class Lecturer_model extends CI_Model{
         $this->db->select("id");
         $this->db->select("name");
         $this->db->select("short_name");
+        $this->db->select("email_address");
         $this->db->from("academic_staff");
         $this->db->where("staff_id", $staff_id);
+
         $query = $this->db->get();
 
         foreach ($query->result() as $row) {
@@ -50,6 +54,7 @@ class Lecturer_model extends CI_Model{
             $Lec->setStaffId($staff_id);
             $Lec->setId($row->id);
             $Lec->setName($row->name);
+            $Lec->setEmailAddress($row->email_address);
             $Lec->setShortForm($row->short_name);
             return $Lec;
         }
@@ -115,6 +120,16 @@ class Lecturer_model extends CI_Model{
     public function setShortForm($shortform)
     {
         $this->shortform = $shortform;
+    }
+
+    public function getEmailAddress()
+    {
+        return $this->emailaddress;
+    }
+
+    public function setEmailAddress($emailaddress)
+    {
+        $this->emailaddress = $emailaddress;
     }
 
 
