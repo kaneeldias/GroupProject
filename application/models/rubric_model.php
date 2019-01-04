@@ -47,6 +47,44 @@ class rubric_model extends CI_Model{
         }
     }
 
+    public function getRubricBySubjectId($id){
+
+        $this->load->model("subject_model");
+        $rubric = new rubric_model();
+        $rubric->subject=$this->subject_model->getSubjectById($id);
+        $rubric->setExam("");
+        $rubric->setAssesments("");
+        $rubric->setRubric("");
+        $rubric->setSetter1("");
+
+        $this->load->database();
+        $this->db->select("rubric_id");
+        $this->db->select("subject_id");
+        $this->db->select("exam");
+        $this->db->select("assesments");
+        $this->db->select("rubric");
+        $this->db->select("setter1");
+        $this->db->select("setter2");
+        $this->db->select("moderator");
+        $this->db->from("rubric");
+        $this->db->where("subject_id", $id);
+        $query = $this->db->get();
+
+        foreach ($query->result() as $row) {
+            $rubric->setId($row->rubric_id);
+            $rubric->setExam($row->exam);
+            $rubric->setAssesments($row->assesments);
+            $rubric->setRubric($row->rubric);
+            //$rubric->subject=$this->subject_model->getSubjectById($row->subject_id);
+            $this->load->model("staff_model");
+            $rubric->setter1= $this->staff_model->getStaffById($row->setter1);
+            $rubric->setter2= $this->staff_model->getStaffById($row->setter2);
+            $rubric->moderator = $this->staff_model->getStaffById($row->moderator);
+        }
+        return $rubric;
+    }
+
+
     public function deleteRubricById($id){
         $this->load->database();
         $this->db->where('rubric_id', $id);
