@@ -2,12 +2,12 @@
 
 <div class="row control_panel col-md-12">
 
-    <div class="control_panel_title align-text-bottom">Subjects</div>
+    <div class="control_panel_title align-text-bottom">Bookings</div>
 
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
-        <a href="<?=base_url("subjects/add")?>"><button>Add Subject</button></a>
+        <a href="<?=base_url("booking/make")?>"><button>Create Booking</button></a>
     </div>
 
     <style>
@@ -47,23 +47,25 @@
 </div>
 <table id="SubjectsTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>Code</td>
-        <td>Name</td>
-        <td>Degree</td>
-        <td>Year</td>
-        <td>Semester</td>
-        <td></td>
+        <td>Date</td>
+        <td>Venue</td>
+        <td>Start Time</td>
+        <td>End Time</td>
+        <td>Requested By</td>
+        <td>Reason</td>
+        <td>Approved By</td>
         <td></td>
     </tr>
-    <?php foreach($array as $a):?>
+    <?php foreach($bookings as $a):?>
         <tr>
-            <td><?=$a['subject']->getCode()?></td>
-            <td><?=$a['subject']->getName()?></td>
-            <td><?=$a['degree']->getName()?></td>
-            <td><?=$a['subject']->getYear()?></td>
-            <td><?=$a['subject']->getSemester()?></td>
-            <td><a href="<?=base_url("subjects/edit/?id=".$a['subject']->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("subjects/delete/?id=".$a['subject']->getId())?>"><button class="delete_button">Delete</button></a></td>
+            <td><?=$a->getDate()?></td>
+            <td><?=$a->getVenue()->getName()?></td>
+            <td><?=$a->getStartTime()?>:00</td>
+            <td><?=$a->getEndTime()?>:00</td>
+            <td><?=$a->getRequest()?></td>
+            <td><?=$a->getReason()?></td>
+            <td><?=$a->getApproved()->getName()?></td>
+            <td><a href="<?=base_url("booking/delete/?id=".$a->getId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>
     <?php endforeach?>
 </table>

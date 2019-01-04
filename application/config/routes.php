@@ -122,10 +122,13 @@ $route['dashboard-outsider'] = 'Dashboard/outsider';
 
 $route['notes/update'] = "NotesController/update";
 
-$route['booking'] = "BookingController/index";
+$route['booking/make'] = "BookingController/index";
+$route['free-slots'] = "BookingController/index";
+$route['booking'] = "BookingController/view";
 $route['booking/process-select'] = "BookingController/process_select";
 $route['booking/view-slots'] = "BookingController/view_slots";
 $route['booking/process'] = "BookingController/process";
+$route['booking/delete'] = "BookingController/delete";
 
 $route['profile'] = 'Profile/index';
 $route['profile/edit'] = 'Profile/edit';
