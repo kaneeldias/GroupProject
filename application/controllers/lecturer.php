@@ -110,7 +110,7 @@ class lecturer extends CI_Controller {
             $this->form_validation->set_rules(
                 'emailaddress',
                 'EmailAddress',
-                'required'
+                'required|valid_email'
             );
 
 			if($this->form_validation->run() == false){
