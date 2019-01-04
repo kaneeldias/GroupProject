@@ -22,8 +22,8 @@
             <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
             <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment</span></div></a>
             <a href="<?=base_url("request")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Requests</span></div></a>
-        <?php endif?>
-        <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "staff" ): ?>
+
+        <?php elseif($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "staff" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
             <a href="<?=base_url("profile")?>"><div class="sidebar_link"><i class="fas fa-user-circle"></i><span>Profile</span></div></a>
             <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
@@ -34,9 +34,8 @@
             
 
 
-        <?php endif?>
           
-            <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "student" ): ?>
+            <?php elseif($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "student" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
 
             <a href="<?=base_url("profile")?>"><div class="sidebar_link"><i class="fas fa-user-circle"></i><span>Profile</span></div></a>
@@ -48,14 +47,13 @@
 
             <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
             <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
-        <?php endif?> 
-<?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "outsider" ): ?>
+
+    <?php else: ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
 
-            <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
-            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Halls</span></div></a>
+            <a href="<?=base_url("free-slots")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
 
-        <?php endif?>     
+        <?php endif?>
 
     </div>
 </div>

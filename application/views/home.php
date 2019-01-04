@@ -64,11 +64,12 @@
             <div class="col-md-offset-2 col-md-8">
                 <h2 class="wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">We make things <span>Easy</span></h2>
                 <div class="element">
-                    <div class="sub-element" color ="red">This is official web site of UCSC Academic Center . . .</div>
+                    <div class="sub-element" style="color:black;">This is official web site of UCSC Academic Center . . .</div>
                     <div class="sub-element">This is official web site of UCSC Academic Center . . .</div>
                     <div class="sub-element">This is official web site of UCSC Academic Center . . .</div>
                 </div>
                 <a data-scroll href="<?=base_url("log-in")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Log In</a>
+                <a data-scroll href="<?=base_url("guest")?>" class="btn btn-default wow fadeInUp" data-wow-offset="50" data-wow-delay="0.6s">Guest</a>
             </div>
         </div>
     </div>
