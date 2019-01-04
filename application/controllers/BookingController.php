@@ -28,12 +28,7 @@ class BookingController extends CI_Controller {
 
     public function index(){
         $this->load->library("session");
-        if(!$this->session->userdata("logged")){
-            $this->load->view("templates/header");
-            $this->load->view("errors/unauthorized_access");
-            $this->load->view("templates/footer");
-            return;
-        }
+
 
         $this->load->model("Venue_model");
         $data['halls'] = $this->Venue_model->getAllVenues();
