@@ -7,13 +7,6 @@
 
     <div class="flex-grow-1"></div>
 
-
-   <div class="control_panel_actions">
-        <a href="<?=base_url("rubrics/add")?>"><button>Add Data</button></a>
-        <a href="<?=base_url("rubrics/generate")?>"><button>Generate Reports</button></a>
-   </div>
-
-
     <style>
         .control_panel{
             background-color:#22313f;
@@ -62,23 +55,6 @@
         <td></td>
 
     </tr>
-    <?php foreach($array as $results):?>
-        <tr>
-            <td><?=$results->getSubject()->getCode()?></td>
-            <td><?=$results->getSubject()->getName()?></td>
-            <td><?=$results->getExam()?></td>
-            <td><?=$results->getAssesments()?></td>
-            <td><?=$results->getRubric()?></td>
-            <td>
-                <?=$results->getSetter1()->getName()?>
-                <br>
-                <?=$results->getSetter2()->getName()?>
-            </td>
-            <td><?=$results->getModerator()->getName()?></td>
-            <td><a href="<?=base_url("rubrics/edit/?id=".$results->getId())?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("rubrics/delete/?id=".$results->getId())?>"><button class="delete_button">Delete</button></a></td>
-        </tr>
-    <?php endforeach?>
 </table>
 
 

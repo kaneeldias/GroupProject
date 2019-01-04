@@ -164,7 +164,7 @@
     </script>
 <?php endif ?>
 
-<script src="<?=base_url('/assets/js/validation/add_subject_validation.js')?>"></script>
+<script src="<?=base_url('/assets/js/validation/edit_rubrics_validation.js')?>"></script>
 
 <style>
     label.error{
