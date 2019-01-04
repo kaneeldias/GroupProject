@@ -60,8 +60,6 @@
             <td><?=$Item->getCode()?></td>
             <td><?=$Item->getName()?></td>
             <td><?=$Item->getInfo()?></td>
-
-            <
             <td><a href="<?=base_url("equipment/edit/?id=".$Item->getEqId())?>"><button class="edit_button">Edit</button></a></td>
             <td><a href="<?=base_url("equipment/delete/?id=".$Item->getEqId())?>"><button class="delete_button">Delete</button></a></td>
         </tr>

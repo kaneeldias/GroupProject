@@ -1,6 +1,6 @@
 
 <div id="overlay">
-    <div id="sidebar">
+    <div id="sidebar" style="margin-top:8px;">
 
 <style>
             .sidebar_link span{
@@ -16,7 +16,7 @@
             <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
             <a href="<?=base_url("subjects")?>"><div class="sidebar_link"><i class="far fa-calendar-alt"></i><span>Subjects</span></div></a>
             <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
-            <a href="<?=base_url("student-groups")?>"><div class="sidebar_link"><i class="fas fa-users"></i><span>Student Group</span></div></a>
+            <a href="<?=base_url("student-groups")?>"><div class="sidebar_link"><i class="fas fa-users"></i><span>Student Groups</span></div></a>
             <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
             <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
             <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment</span></div></a>
@@ -26,12 +26,10 @@
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
             <a href="<?=base_url("profile")?>"><div class="sidebar_link"><i class="fas fa-user-circle"></i><span>Profile</span></div></a>
             <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
-            <a href="<?=base_url("subjects")?>"><div class="sidebar_link"><i class="far fa-calendar-alt"></i><span>Subjects</span></div></a>
             <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
-            <a href="<?=base_url("student-groups")?>"><div class="sidebar_link"><i class="fas fa-users"></i><span>Student Group</span></div></a>
             <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
-            <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
-            <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Reservation</span></div></a>
+            <a href="<?=base_url("free-slots")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
+            <a href="<?=base_url("equipment/request")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Request</span></div></a>
             
 
 
@@ -41,14 +39,14 @@
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
 
             <a href="<?=base_url("profile")?>"><div class="sidebar_link"><i class="fas fa-user-circle"></i><span>Profile</span></div></a>
-            
-            <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
+                <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
+                <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
+
+                <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
             <a href="<?=base_url("free-slots")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Free Slots</span></div></a>
             
             
-            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="far fa-building"></i><span>Lecture Halls</span></div></a>
-            <a href="<?=base_url("lecturer")?>"><div class="sidebar_link"><i class="fas fa-user-tie"></i><span>Lecturers</span></div></a>
-        <?php endif?> 
+        <?php endif?>
 
              <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "outsider" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
@@ -127,7 +125,7 @@
     }
 
     .sidebar_link{
-        padding:18px;
+        padding: 16px;
         color:white;
         cursor:pointer;
         background-color:rgba(0,0,0,0);
