@@ -16,10 +16,18 @@
                     <input  class="form_input" type="text" placeholder="Name" name="name"/>
                 </div>
 
+                <div class="form_item col-md-6">
+                    <span class="form_label">EmailAddress</span>
+                    <input class="form_input" type="text" placeholder="EmailAddress" name="emailaddress"/>
+                </div>
+
+
                 <div class="form_item col-md-3">
                     <span class="form_label">Shortform</span>
                     <input class="form_input" type="text" placeholder="Shortform" name="shortform"/>
                 </div>
+
+                
 
             </div>
 
