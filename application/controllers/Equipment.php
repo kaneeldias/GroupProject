@@ -197,12 +197,6 @@ class Equipment extends CI_Controller {
             );
 
             $this->form_validation->set_rules(
-                'quantity',
-                'Quantity',
-                'required'
-            );
-
-            $this->form_validation->set_rules(
                 'from',
                 'From',
                 'required'
@@ -224,17 +218,18 @@ class Equipment extends CI_Controller {
                 throw new Exception();
             }
 
-            $user_name = $this->session->userdata("fname");
+            $user_name = $this->session->userdata("user_id");
             $item = $_POST['item'];
-            $quantity = $_POST['quantity'];
             $from = $_POST['from'];
             $to = $_POST['to'];
             $date = $_POST['date'];
 
+            if($date <= date("Y-m-d")) throw new Exception();
+            if($from >= $to) throw new Exception();
+
             $this->load->database();
-            $this->db->set("user_name",$user_name);
+            $this->db->set("user_id",$user_name);
             $this->db->set("item", $item);
-            $this->db->set("quantity", $quantity);
             $this->db->set("from_time", $from);
             $this->db->set("to_time", $to);
             $this->db->set("date", $date);
@@ -243,7 +238,7 @@ class Equipment extends CI_Controller {
             redirect(base_url("equipment/request") . "?success=true", 'location');
         }
         catch(Exception $e){
-            redirect(base_url("equipment/request/process")."?error=true", 'location');
+            redirect(base_url("equipment/request")."?error=true", 'location');
         }
     }
 }
