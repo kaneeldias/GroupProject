@@ -31,7 +31,7 @@
             <a href="<?=base_url("student-groups")?>"><div class="sidebar_link"><i class="fas fa-users"></i><span>Student Group</span></div></a>
             <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
             <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
-            <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Reservation</span></div></a>
+            <a href="<?=base_url("equipment/request")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Reservation</span></div></a>
             
 
 
@@ -54,7 +54,8 @@
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
 
             <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
-            
+            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Halls</span></div></a>
+
         <?php endif?>     
 
     </div>
