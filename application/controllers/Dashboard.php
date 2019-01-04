@@ -30,6 +30,7 @@ class Dashboard extends CI_Controller {
 
     }
 
+
 	private function admin()
     {
 		$this->load->library("session");
@@ -201,16 +202,13 @@ class Dashboard extends CI_Controller {
         $this->load->view("Dashboard_Lecturer", $data);
     }
 
-    public function outsider()
+    public function guest()
     {
 
         $this->load->library("session");
-        if(!$this->session->userdata("logged") || $this->session->userdata("outsider") != "admin"){
-            $this->load->view("templates/header");
-            $this->load->view("errors/unauthorized_access");
-            $this->load->view("templates/footer");
-            return;
-        }
+
+
+
         $this->load->view("templates/header");
         $this->load->view("Dashboard_Outsider");
         $this->load->view("templates/footer");
