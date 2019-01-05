@@ -21,7 +21,7 @@
             <a href="<?=base_url("time-table-view")?>"><div class="sidebar_link"><i class="fas fa-receipt"></i><span>Time Tables</span></div></a>
             <a href="<?=base_url("booking")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
             <a href="<?=base_url("equipment")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment</span></div></a>
-            <a href="<?=base_url("request")?>"><div class="sidebar_link"><i class="fas fa-tv"></i><span>Equipment Requests</span></div></a>
+            <a href="<?=base_url("request")?>"><div class="sidebar_link"><i class="fas fa-edit"></i><span>Equipment Requests</span></div></a>
         <?php endif?>
         <?php if($this->session->userdata('logged') !== null && $this->session->userdata('logged') && $this->session->userdata('type') == "staff" ): ?>
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link">Dashboard</div></a>
