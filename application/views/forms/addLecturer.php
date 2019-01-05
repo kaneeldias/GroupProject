@@ -1,28 +1,28 @@
 <div class="row">
-    <div class="col-md-8 mx-auto form_container">
+    <div class="col-md-6 mx-auto form_container">
 
         <div class="form_title">Add Lecturer</div>
 
         <form id="addLecturerForm" class="column form_content" method="POST" action="<?=base_url("lecturer/add/process")?> ">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-3">
+                <div class="form_item col-md-4">
                     <span class="form_label">Lecturer ID</span>
                     <input class="form_input" type="text" placeholder="ID" name="id"/>
                 </div>
 
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-8">
                     <span class="form_label">Name</span>
                     <input  class="form_input" type="text" placeholder="Name" name="name"/>
                 </div>
 
-                <div class="form_item col-md-6">
+                <div class="form_item col-md-8">
                     <span class="form_label">EmailAddress</span>
                     <input class="form_input" type="text" placeholder="EmailAddress" name="emailaddress"/>
                 </div>
 
 
-                <div class="form_item col-md-3">
+                <div class="form_item col-md-4">
                     <span class="form_label">Shortform</span>
                     <input class="form_input" type="text" placeholder="Shortform" name="shortform"/>
                 </div>
