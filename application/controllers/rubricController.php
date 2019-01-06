@@ -225,32 +225,35 @@ class rubricController extends CI_Controller {
         }
         try{
 
-            $id = $_POST['id'];
-            $code = $_POST['code'];
-            $setter1 = $_POST['setter1'];
-            $setter2 = $_POST['setter2'];
-            $moderator = $_POST['moderator'];
-            $semExam = $_POST['semExam'];
-            $assesment = $_POST['assesment'];
-            $examRubrics = $_POST['examRubrics'];
-
+            $degree = $_POST['degree'];
+            $semester = $_POST['semester'];
+            $year = $_POST['year'];
 
             $this->load->database();
-            $this->db->set("subject_id", $code);
-            $this->db->set("exam", $semExam);
-            $this->db->set("assesments", $assesment);
-            $this->db->set("rubric", $examRubrics);
-            $this->db->set("setter1",$setter1);
-            $this->db->set("setter2",$setter2);
-            $this->db->set("moderator",$moderator);
-            $this->db->where("rubric_id", $id);
-            $this->db->update("rubric");
+            $this->db->select("subject_id");
+            $this->db->from("subject");
+            $this->db->where("degree_id", $degree);
+            $this->db->where("year", $year);
+            $this->db->where("semester", $semester);
+            $query = $this->db->get();
 
-            redirect(base_url("rubrics")."?success=true", 'location');
+            $this->load->model("rubric_model");
 
+            $data['array'] = [];
+
+            foreach($query->result() as $row){
+                $subject_id = $row->subject_id;
+                $rubric = $this->rubric_model->getRubricBySubjectId($subject_id);
+
+                array_push($data['array'], $rubric);
+            }
+
+            $this->load->view('templates/header');
+            $this->load->view('views/rubricGeneratedView', $data);
+            $this->load->view('templates/footer');
         }
         catch(Exception $e){
-            redirect(base_url("rubrics/generate")."?error=true&id=$id", 'location');
+            redirect(base_url("rubrics")."?error=true", 'location');
         }
 
     }
