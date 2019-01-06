@@ -20,23 +20,24 @@ class Request_model extends CI_Model{
         $items = [];
         $this->load->database();
         $this->db->select("req_id");
-        $this->db->select("user_name");
+        $this->db->select("user_id");
         $this->db->select("item");
-        $this->db->select("quantity");
         $this->db->select("from_time");
         $this->db->select("to_time");
         $this->db->select("date");
         $this->db->select("status");
         $this->db->from("equipment_requests");
+        $this->db->where("date >= ", date("Y-m-d"));
         $this->db->order_by("date", "desc");
         $query = $this->db->get();
+
+        $this->load->model("profile_model");
 
         foreach($query->result() as $row){
             $item = new Request_model();
             $item->setId($row->req_id);
-            $item->setRequestedBy($row->user_name);
+            $item->setRequestedBy($this->profile_model->getAllDetails($row->user_id));
             $item->setItem($row->item);
-            $item->setQuantity($row->quantity);
             $item->setFrom($row->from_time);
             $item->setTo($row->to_time);
             $item->setDate($row->date);

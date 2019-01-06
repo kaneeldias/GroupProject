@@ -55,6 +55,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['login'] = 'auth/login';
 $route['log-in'] = 'auth/log_in';
 $route['logout'] = 'auth/logout';
+$route['guest'] = 'Dashboard/guest';
+
 
 $route['subjects'] = 'Subject/index';
 $route['subjects/add'] = 'Subject/add';

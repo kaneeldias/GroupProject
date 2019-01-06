@@ -1,47 +1,5 @@
 <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"></link>
 
-<div class="row control_panel col-md-12">
-
-
-    <div class="control_panel_title align-text-bottom"></div>
-
-    <div class="flex-grow-1"></div>
-
-    <style>
-        .control_panel{
-            background-color:#22313f;
-            color:white;
-            margin-bottom:20px;
-            padding:20px;
-            border-radius:5px;
-        }
-
-        .control_panel_title{
-            font-size:25px;
-            font-weight:bold;
-            display: flex;
-            align-items: center;
-        }
-
-        .control_panel_actions button{
-            background-color:white;
-            border:none;
-            color:#22313f;
-            padding:10px;
-            font-size:20px;
-            border-radius:3px;
-            transition:all 0.2s;
-            padding-left:20px;
-            padding-right:20px;
-            cursor:pointer;
-        }
-
-        .control_panel_actions button:hover{
-            background-color:#DDDDDD;
-            color:#22313f;
-        }
-    </style>
-</div>
 <table id="rubricTable" class="custom_table col-md-12">
     <tr class="header">
         <td>Course Code</td>
@@ -51,10 +9,28 @@
         <td>Rubric of the Semester exam</td>
         <td>Setter/1st Examiner</td>
         <td>Moderator/2nd Examiner</td>
-        <td></td>
-        <td></td>
-
     </tr>
+    <?php foreach($array as $results):?>
+        <tr>
+            <td><?=$results->getSubject()->getCode()?></td>
+            <td><?=$results->getSubject()->getName()?></td>
+            <td><?=$results->getExam()?></td>
+            <td><?=$results->getAssesments()?></td>
+            <td><?=$results->getRubric()?></td>
+
+            <?php if($results->getSetter1() != ""):?>
+            <td>
+                <?=$results->getSetter1()->getName()?>
+                <br>
+                <?=$results->getSetter2()->getName()?>
+            </td>
+            <td><?=$results->getModerator()->getName()?></td>
+            <?php else:?>
+                <td></td>
+                <td></td>
+            <?php endif?>
+        </tr>
+    <?php endforeach?>
 </table>
 
 
