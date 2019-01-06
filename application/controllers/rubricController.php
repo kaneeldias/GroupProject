@@ -135,7 +135,12 @@ class rubricController extends CI_Controller {
             //$this->validate();
             $code = $_POST['code'];
             $setter1 = $_POST['setter1'];
-            $setter2 = $_POST['setter2'];
+            if(!isset($_POST['setter2'])){
+                $setter2 = "";
+            }
+            else{
+                $setter2 = $_POST['setter2'];
+            }
             $moderator = $_POST['moderator'];
             $semExam = $_POST['semExam'];
             $assesment = $_POST['assesment'];

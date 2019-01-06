@@ -56,9 +56,10 @@
                 <div class="form_item col-md-4">
                     <span class="form_label">Setter 2</span>
                     <select class="form_input" name="setter2">
+                        <option  value=""></option>
                         <?php foreach($staff as $s): ?>
                             <option
-                                <?php if($s->getId() == $rubric->getSetter2()->getId()):?>selected<?php endif?>
+                                <?php if($rubric->getSetter2() != "" && $s->getId() == $rubric->getSetter2()->getId()):?>selected<?php endif?>
                                 value="<?=$s->getId()?>"><?=$s->getName()?></option>
                         <?php endforeach?>
 
