@@ -52,6 +52,7 @@
             <a href="<?=base_url("dashboard")?>"><div class="sidebar_link"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></div></a>
 
             <a href="<?=base_url("free-slots")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Bookings</span></div></a>
+            <a href="<?=base_url("lecture-halls")?>"><div class="sidebar_link"><i class="fas fa-calendar-check"></i><span>Lecture Halls</span></div></a>
 
         <?php endif?>
 

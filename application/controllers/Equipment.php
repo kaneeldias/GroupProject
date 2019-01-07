@@ -227,6 +227,12 @@ class Equipment extends CI_Controller {
             if($date <= date("Y-m-d")) throw new Exception();
             if($from >= $to) throw new Exception();
 
+            $this->load->model("Request_model");
+            if(!$this->Request_model->checkAvaialability($item, $from, $to)){
+                exit("sdf");
+                return;
+            };
+
             $this->load->database();
             $this->db->set("user_id",$user_name);
             $this->db->set("item", $item);
