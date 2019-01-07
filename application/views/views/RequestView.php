@@ -49,8 +49,8 @@
         <td>Item</td>
         <td>From</td>
         <td>To</td>
-        <td>Status</td>
         <td>Requested By</td>
+        <td>Status</td>
 
         <td></td>
         <td></td>

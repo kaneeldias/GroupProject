@@ -10,7 +10,8 @@ $("#equipmentRequestForm").validate({
             required: true,
         },
         to:{
-            required:true
+            required:true,
+            greaterThan:"#from"
         },
         date:{
             required:true,
@@ -28,7 +29,8 @@ $("#equipmentRequestForm").validate({
             required:"Select a time "
         },
         to:{
-            required:"Select a time "
+            required:"Select a time ",
+            greaterThan:"To time should be after the from time"
         },
         date:{
             required:"Give a date for reservation"
