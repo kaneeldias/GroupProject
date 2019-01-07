@@ -228,10 +228,10 @@ class Equipment extends CI_Controller {
             if($from >= $to) throw new Exception();
 
             $this->load->model("Request_model");
-            if(!$this->Request_model->checkAvaialability($item, $from, $to)){
-                exit("sdf");
-                return;
-            };
+//            if(!$this->Request_model->checkAvaialability($item, $from, $to)){
+//                exit("sdf");
+//                return;
+//            };
 
             $this->load->database();
             $this->db->set("user_id",$user_name);

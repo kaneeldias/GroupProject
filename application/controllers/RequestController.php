@@ -68,6 +68,10 @@ class RequestController extends CI_Controller {
             $this->load->model("request_model");
             $request = $this->request_model->getRequestById($_GET['id']);
             $email = $request->getRequestedBy()->getEmail();
+            $item = $request->getItem();
+            $date = $request->getDate();
+            $from = $request->getFrom();
+            $to = $request->getTo();
 
             $this->load->library('email');
             $config['protocol']    = 'smtp';
@@ -89,7 +93,13 @@ class RequestController extends CI_Controller {
             $this->email->bcc('');
 
             $this->email->subject('Approved');
-            $this->email->message('');
+            $this->email->message("Your equipment request has been approved.
+            Reservation details: 
+                Item - $item
+                Date - $date 
+                From - $from
+                To - $to
+                ");
 
             $this->email->send();
             echo $this->email->print_debugger();
@@ -145,7 +155,7 @@ class RequestController extends CI_Controller {
             $this->email->bcc('');
 
             $this->email->subject('Rejected');
-            $this->email->message('');
+            $this->email->message('Your equipment request has been rejected.');
 
             $this->email->send();
             echo $this->email->print_debugger();
