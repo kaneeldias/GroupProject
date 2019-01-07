@@ -10,9 +10,6 @@ $("#editRubricsForm").validate({
         setter1:{
             required: true
         },
-        setter2:{
-            required: true,
-        },
         semExam:{
             required:true
         },
@@ -34,9 +31,6 @@ $("#editRubricsForm").validate({
         },
         setter1:{
             required:"Select Setter1"
-        },
-        setter2:{
-            required:"Select Setter2"
         },
         semExam:{
             required:"Select Sem.Exam Percentage"
