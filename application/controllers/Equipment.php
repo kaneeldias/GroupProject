@@ -60,10 +60,14 @@ class Equipment extends CI_Controller {
             $data['id'] = $_GET['id'];
             $this->load->model("Equipment_model");
             $data['Item'] = $this->Equipment_model->deleteItemById($data['id']);
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Equipment has been deleted");
             redirect(base_url("equipment"), 'location');
         }
         catch(Exception $ex){
-            redirect(base_url("equipment")."?error=true", 'location');
+            $this->session->set_flashdata("error", true);
+            $this->session->set_flashdata("message", "An error occurred");
+            redirect(base_url("equipment"), 'location');
         }
     }
 
@@ -106,10 +110,14 @@ class Equipment extends CI_Controller {
 			$this->db->set("info", $info);
 			$this->db->insert("equipment");
 
-			redirect(base_url("equipment") . "?success=true", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Equipment has been added");
+            redirect(base_url("equipment"), 'location');
 		}
 		catch(Exception $e){
-			redirect(base_url("equipment/add")."?error=true", 'location');
+            $this->session->set_flashdata("error", true);
+            $this->session->set_flashdata("message", "There was an error with your form");
+            redirect(base_url("equipment/add"), 'location');
 		}
 
 	}
@@ -154,12 +162,16 @@ class Equipment extends CI_Controller {
             $this->db->where("eq_id", $_GET['id']);
             $this->db->update("equipment");
 
-            redirect(base_url("equipment")."?success=true", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Equipment has been edited");
+            redirect(base_url("equipment"), 'location');
 
         }
         catch(Exception $e){
             $id = $_GET['id'];
-            redirect(base_url("equipment/edit")."?error=true&id=$code", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "There was an error with your form");
+            redirect(base_url("equipment/edit")."?id=$code", 'location');
         }
 
     }
@@ -228,10 +240,10 @@ class Equipment extends CI_Controller {
             if($from >= $to) throw new Exception();
 
             $this->load->model("Request_model");
-            if(!$this->Request_model->checkAvaialability($item, $from, $to)){
+            /*if(!$this->Request_model->checkAvaialability($item, $from, $to)){
                 exit("sdf");
                 return;
-            };
+            };*/
 
             $this->load->database();
             $this->db->set("user_id",$user_name);
@@ -241,10 +253,14 @@ class Equipment extends CI_Controller {
             $this->db->set("date", $date);
             $this->db->insert("equipment_requests");
 
-            redirect(base_url("equipment/request") . "?success=true", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Your request is pending...");
+            redirect(base_url("equipment/request"), 'location');
         }
         catch(Exception $e){
-            redirect(base_url("equipment/request")."?error=true", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "There was an error with your form");
+            redirect(base_url("equipment/request"), 'location');
         }
     }
 }
