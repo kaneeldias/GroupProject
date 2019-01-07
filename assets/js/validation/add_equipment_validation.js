@@ -21,7 +21,7 @@ $("#addEquipmentForm").validate({
             required:"Enter name"
         },
         info:{
-            required:"Enter degree"
+            required:"Enter description"
         }
     }
 });
