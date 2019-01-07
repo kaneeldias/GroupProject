@@ -1,3 +1,31 @@
+<div class="row">
+    <div class="col-md-11"></div>
+    <div class="btn col-md-1" onclick="print()">
+        <i class="fa fa-print" aria-hidden="true"></i>
+        <style>
+            .btn{
+                background-color:#062c33;
+                color:white;
+                font-weight:bold;
+                font-size:20px;
+                padding:10px;
+                padding-left:20px;
+                padding-right:20px;
+                cursor:pointer;
+                transition:all 0.2s;
+                margin-bottom:20px;
+            }
+
+            .btn:hover{
+                background-color: #0a4d59;
+            }
+        </style>
+
+    </div>
+</div>
+
+<div id="table_p">
+
 <link href="<?=base_url("assets/css/table_styles.css")?>" rel="stylesheet" type="text/css"></link>
 
 <table id="rubricTable" class="custom_table col-md-12">
@@ -43,6 +71,8 @@
     }
 </style>
 
+</div>
+
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
     <div id="successModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
@@ -67,3 +97,30 @@
         $('#successModal').modal('show');
     </script>
 <?php endif ?>
+
+<script src="<?=base_url("assets/libraries/html2canvas.min.js")?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<script src="<?=base_url("assets/libraries/html2canvas.min.js")?>"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
+<script>
+    function print(){
+        const filename = "pdf.pdf";
+
+        html2canvas(document.getElementById("table_p"), {
+            allowTaint:true,
+            useCORS: true
+        })
+            .then(function(canvas) {
+                //document.body.appendChild(canvas);
+                let pdf = new jsPDF('l', 'mm', 'a4');
+                if(canvas.height*277/canvas.width > 190){
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, canvas.width*190/canvas.height, 190);
+                }
+                else{
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, canvas.height*277/canvas.width);
+                }
+                pdf.save(filename);
+            });
+    }
+
+</script>

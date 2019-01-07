@@ -8,10 +8,10 @@
               <input type="hidden" id="id_field" value="<?=$id?>"/>
 
               <div class="row col-md-12">
-                  <div class="form_item col-md-3">
+                  <!--<div class="form_item col-md-3">
                       <span class="form_label">Lecturer ID</span>
-                      <input class="form_input" type="text" placeholder="ID" name="id" value="<?=$Lec->getId()?>"/>
-                  </div>
+                      <input class="form_input" type="text" placeholder="ID" name="id" value=""/>
+                  </div>-->
 
                   <div class="form_item col-md-6">
                       <span class="form_label">Lecturer Name</span>
@@ -21,6 +21,10 @@
 
                 <div class="row col-md-12">
 
+                    <div class="form_item col-md-8">
+                        <span class="form_label">Email Address</span>
+                        <input class="form_input" type="text" placeholder="Email Address" name="emailaddress" value="<?=$Lec->getEmailAddress()?>"/>
+                    </div>
 
                     <div class="form_item col-md-3">
                         <span class="form_label">Short Form</span>

@@ -141,8 +141,7 @@ class Lecture_model extends CI_Model{
 
             $this->load->model("Group_model");
             $lecture['group'] = $this->Group_model->getById($group_id);
-
-            array_push($lectures[$row->day][$row->start_time], $lecture);
+            if($row->day >= 1 && $row->day <= 5) array_push($lectures[$row->day][$row->start_time], $lecture);
         }
 
         return $lectures;

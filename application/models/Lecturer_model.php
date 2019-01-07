@@ -20,7 +20,7 @@ class Lecturer_model extends CI_Model{
         $this->db->select("id");
         $this->db->select("name");
         $this->db->select("short_name");
-        $this->db->select("email_address");
+        $this->db->select(  "email_address");
         $this->db->order_by("name", "ASC");
         $this->db->from("academic_staff");
         $query = $this->db->get();
