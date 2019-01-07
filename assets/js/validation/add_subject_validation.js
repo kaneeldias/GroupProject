@@ -20,8 +20,7 @@ $("#addSubjectForm").validate({
     },
     messages:{
         code:{
-            required:"Enter code",
-            c
+            required:"Enter code"
         },
         name:{
             required:"Enter name"

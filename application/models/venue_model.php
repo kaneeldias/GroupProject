@@ -84,12 +84,13 @@ class Venue_model extends CI_Model{
         return $venues;
     }
 
-    public function checkConflict($venue_id, $day, $start_time){
+    public function checkConflict($venue_id, $day, $start_time, $semester){
         $this->load->database();
         $this->db->select("lecture_id");
         $this->db->from("lecture");
         $this->db->where("day", $day);
         $this->db->where("start_time", $start_time);
+        $this->db->where("semester", $semester);
         $query = $this->db->get();
         foreach($query->result() as $row){
             $this->db->select("hall_id");
