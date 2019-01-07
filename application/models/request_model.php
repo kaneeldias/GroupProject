@@ -73,6 +73,13 @@ class Request_model extends CI_Model{
         }
     }
 
+    public function checkAvailability($id, $to, $end){
+        $this->load->database();
+        $this->db->select("user_name");
+        $this->db->from("equipment_requests");
+        $this->db->where("item", $id);
+    }
+
     public function deleteRequestById($id){
         $this->load->database();
         $this->db->where('req_id', $id);
