@@ -94,17 +94,21 @@ class Group_model extends CI_Model{
     }
 
 
-    public function checkConflict($group_id, $day, $start_time){
+    public function checkConflict($group_id, $day, $start_time, $semester){
         $relGroups = $this->getRelatedGroups($group_id);
         $this->load->database();
         $this->db->select("group_id");
         $this->db->from("lecture");
         $this->db->where("day", $day);
         $this->db->where("start_time", $start_time);
+        $this->db->where("semester", $semester);
         $query = $this->db->get();
         foreach($query->result() as $row){
             foreach($relGroups as $group){
-                if($group->getGroupId() == $row->group_id) return false;
+                if($group->getGroupId() == $row->group_id){
+                    echo $group->getName();
+                    return false;
+                }
             }
         }
         return true;

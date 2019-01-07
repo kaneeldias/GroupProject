@@ -25,7 +25,7 @@ class Staff_model extends CI_Model{
         $this->db->select("staff_id");
         $this->db->select("name");
         $this->db->select("short_name");
-        $this->db->order_by("name", "ASC");
+        $this->db->order_by("short_name", "ASC");
         $this->db->from("academic_staff");
         $query = $this->db->get();
 
@@ -74,12 +74,13 @@ class Staff_model extends CI_Model{
         return $staff;
     }
 
-    public function checkConflict($staff_id, $day, $start_time){
+    public function checkConflict($staff_id, $day, $start_time, $semester){
         $this->load->database();
         $this->db->select("lecture_id");
         $this->db->from("lecture");
         $this->db->where("day", $day);
         $this->db->where("start_time", $start_time);
+        $this->db->where("semester", $semester);
         $query = $this->db->get();
         foreach($query->result() as $row){
             $this->db->select("staff_id");
