@@ -38,7 +38,7 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Sem.Exam Perecentage</span>
-                    <select class="form_input" name="semExam">
+                    <select id="semP" class="form_input" name="semExam" onchange="autoChange()">
                         <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
                             <option
@@ -46,6 +46,7 @@
                         <?php endfor?>
                     </select>
                 </div>
+
 
                 <div class="form_item col-md-2">
                 </div>
@@ -63,7 +64,7 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Assesment Perecentage</span>
-                    <select class="form_input" name="assesment">
+                    <select id="assP" class="form_input" name="assesment" onchange="autoChange2()">
                         <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
                             <option
@@ -168,3 +169,17 @@
         margin-left:5px;
     }
 </style>
+
+<script>
+    function autoChange(){
+        var sem = $("#semP").val();
+        var ass = 100 - sem;
+        $("#assP").val(ass);
+    }
+
+    function autoChange2(){
+        var sem = $("#assP").val();
+        var ass = 100 - sem;
+        $("#semP").val(ass);
+    }
+</script>

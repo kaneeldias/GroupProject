@@ -29,11 +29,11 @@
 
                 <div class="form_item col-md-3">
                     <span class="form_label">From</span>
-                    <select class="form_input" name="from">
-                        <option value="6">6:00</option>
-                        <option value="7">7:00</option>
-                        <option value="8">8:00</option>
-                        <option value="9">9:00</option>
+                    <select id="from" class="form_input" name="from">
+                        <option value="06">6:00</option>
+                        <option value="07">7:00</option>
+                        <option value="08">8:00</option>
+                        <option value="09">9:00</option>
                         <option value="10">10:00</option>
                         <option value="11">11:00</option>
                         <option value="12">12:00</option>
@@ -48,10 +48,10 @@
                 <div class="form_item col-md-3">
                     <span class="form_label">To</span>
                     <select class="form_input" name="to">
-                        <option value="6">6:00</option>
-                        <option value="7">7:00</option>
-                        <option value="8">8:00</option>
-                        <option value="9">9:00</option>
+                        <option value="06">6:00</option>
+                        <option value="07">7:00</option>
+                        <option value="08">8:00</option>
+                        <option value="09">9:00</option>
                         <option value="10">10:00</option>
                         <option value="11">11:00</option>
                         <option value="12">12:00</option>
