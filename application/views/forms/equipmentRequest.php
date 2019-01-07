@@ -7,15 +7,19 @@
         <form id="equipmentRequestForm" class="column form_content" method="POST" action="<?=base_url("equipment/request/process")?>">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-8">
-                    <span class="form_label">Item</span>
-                    <select class="form_input" name="item">
-                        <option selected disabled>Item</option>
-                        <?php foreach($items as $item): ?>
-                            <option value="<?=$item->getName()?>"><?=$item->getName()?></option>
-                        <?php endforeach?>
-                    </select>
-                </div>
+                    <div class="form_item col-md-6">
+                        <span class="form_label">Type</span>
+                        <select  class="form_input" type="text" placeholder="Name" name="item">
+                            <option value="Laptop">Laptop</option>
+                            <option value="Fan">Fan</option>
+                            <option value="Converter">HDMI Converter</option>
+                            <option value="Microphone">Microphone</option>
+                            <option value="PortableMicrophone">Portable Microphone</option>
+                            <option value="Pointer">Pointer</option>
+                            <option value="Projector">Projector</option>
+                            <option value="Extension">Extension Cord</option>
+                        </select>
+                    </div>
             </div>
 
 
