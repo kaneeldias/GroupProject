@@ -18,13 +18,13 @@ $("#editEquipmentForm").validate({
     messages:{
         code:{
             required:"Enter code",
-            remote:"Enter a valid Subject Code"
+            remote:"Enter a valid Item Code"
         },
         name:{
-            required:"Enter name"
+            required:"Choose a type"
         },
         info:{
-            required:"Enter degree"
+            required:"Enter small description"
         }
     }
 });
