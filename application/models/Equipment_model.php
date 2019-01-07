@@ -16,12 +16,12 @@ class Equipment_model extends CI_Model{
     public function getAllItems(){
         $Items = [];
         $this->load->database();
+        $this->db->select("DISTINCT(name)");
         $this->db->select("eq_id");
         $this->db->select("code");
-        $this->db->select("name");
         $this->db->select("info");
-        $this->db->from("equipment");
-        $query = $this->db->get();
+        $this->db->distinct();
+        $query = $this->db->get("equipment");
 
         foreach($query->result() as $row){
             $Item = new Equipment_model();

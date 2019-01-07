@@ -52,7 +52,7 @@ class Request_model extends CI_Model{
         $this->load->database();
         $this->db->select("user_id");
         $this->db->select("item");
-        $this->db->select("quantity");
+        //$this->db->select("quantity");
         $this->db->select("from_time");
         $this->db->select("to_time");
         $this->db->select("date");

@@ -215,6 +215,9 @@ class Equipment extends CI_Controller {
             );
 
             if($this->form_validation->run() == false){
+
+                echo validation_errors();
+                exit();
                 throw new Exception();
             }
 
