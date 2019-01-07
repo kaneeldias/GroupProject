@@ -82,7 +82,6 @@
     </div>
 </section>
 <!-- end home -->
-
 <!-- start service -->
 <section id="service">
     <div class="container">
