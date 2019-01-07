@@ -59,8 +59,42 @@ class RequestController extends CI_Controller {
             $this->db->where("req_id", $_GET['id']);
             $this->db->update("equipment_requests");
 
-            redirect(base_url("request")."?success=true", 'location');
 
+            $this->load->database();
+            $this->db->select('user_id');
+            $this->db->where("req_id",$_GET['id']);
+            $this->db->from("equipment");
+
+            $this->load->model("request_model");
+            $request = $this->request_model->getRequestById($_GET['id']);
+            $email = $request->getRequestedBy()->getEmail();
+
+            $this->load->library('email');
+            $config['protocol']    = 'smtp';
+            $config['smtp_host']    = 'ssl://smtp.gmail.com';
+            $config['smtp_port']    = '465';
+            $config['smtp_timeout'] = '7';
+            $config['smtp_user']    = 'academic.center.test@gmail.com';
+            $config['smtp_pass']    = 'aca@123456';
+            $config['charset']    = 'utf-8';
+            $config['newline']    = "\r\n";
+            $config['mailtype'] = 'text'; // or html
+            $config['validation'] = TRUE; // bool whether to validate email or not
+
+            $this->email->initialize($config);
+
+            $this->email->from('academic.center.test@gmail.com', 'UCSC Academic Center');
+            $this->email->to($email);
+            $this->email->cc('');
+            $this->email->bcc('');
+
+            $this->email->subject('Approved');
+            $this->email->message('');
+
+            $this->email->send();
+            echo $this->email->print_debugger();
+
+            redirect(base_url("request")."?success=true", 'location');
         }
         catch(Exception $e){
             redirect(base_url("request")."?error=true&id=$id", 'location');
@@ -80,6 +114,41 @@ class RequestController extends CI_Controller {
 
             $this->db->where("req_id", $_GET['id']);
             $this->db->update("equipment_requests");
+
+
+            $this->load->database();
+            $this->db->select('user_id');
+            $this->db->where("req_id",$_GET['id']);
+            $this->db->from("equipment");
+
+            $this->load->model("request_model");
+            $request = $this->request_model->getRequestById($_GET['id']);
+            $email = $request->getRequestedBy()->getEmail();
+
+            $this->load->library('email');
+            $config['protocol']    = 'smtp';
+            $config['smtp_host']    = 'ssl://smtp.gmail.com';
+            $config['smtp_port']    = '465';
+            $config['smtp_timeout'] = '7';
+            $config['smtp_user']    = 'academic.center.test@gmail.com';
+            $config['smtp_pass']    = 'aca@123456';
+            $config['charset']    = 'utf-8';
+            $config['newline']    = "\r\n";
+            $config['mailtype'] = 'text'; // or html
+            $config['validation'] = TRUE; // bool whether to validate email or not
+
+            $this->email->initialize($config);
+
+            $this->email->from('academic.center.test@gmail.com', 'UCSC Academic Center');
+            $this->email->to($email);
+            $this->email->cc('');
+            $this->email->bcc('');
+
+            $this->email->subject('Rejected');
+            $this->email->message('');
+
+            $this->email->send();
+            echo $this->email->print_debugger();
 
             redirect(base_url("request")."?success=true", 'location');
 

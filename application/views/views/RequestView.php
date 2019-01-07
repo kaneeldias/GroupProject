@@ -62,7 +62,7 @@
             <td><?=$Item->getItem()?></td>
             <td><?=$Item->getFrom()?>:00</td>
             <td><?=$Item->getTo()?>:00</td>
-            <td><?=$Item->getRequestedBy()->getfname()?> <?=$Item->getRequestedBy()->getlname()?></td>
+            <td><?=$Item->getRequestedBy()->getFname()?> <?=$Item->getRequestedBy()->getLname()?></td>
             <td><?=$Item->getStatus()?></td>
 
             <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button" >Approve</button></a></td>
