@@ -21,7 +21,7 @@
                     <select class="form_input" name="subject">
                         <option value="" disabled selected>Subject</option>
                         <?php foreach($subjects as $subject): ?>
-                            <option value="<?=$subject->getID()?>"><?= $subject->getName()?></option>
+                            <option value="<?=$subject->getID()?>"><?=$subject->getCode()?> - <?= $subject->getName()?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -65,7 +65,7 @@
                     <span class="form_label">Venue(s)<span>
                     <select multiple id="venues" name="venues[]">
                         <?php foreach($venues as $venue):?>
-                            <option value="<?=$venue->getId()?>"><?=$venue->getName()?></option>
+                            <option value="<?=$venue->getId()?>"><?=$venue->getCode()?></option>
                         <?php endforeach ?>
                     </select>
                 </div>
@@ -89,7 +89,7 @@
                     <span class="form_label">Staff<span>
                     <select multiple id="staff" name="staff[]">
                         <?php foreach($staff as $s):?>
-                            <option value="<?=$s->getId()?>"><?=$s->getName()?></option>
+                            <option value="<?=$s->getId()?>"><?=$s->getName()?> (<?=$s->getShortform()?>)</option>
                         <?php endforeach ?>
                     </select>
                 </div>
