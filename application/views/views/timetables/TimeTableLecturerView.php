@@ -81,7 +81,6 @@
     </table>
 
 </div>
-
 <script src="<?=base_url("assets/libraries/html2canvas.min.js")?>"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.debug.js" integrity="sha384-NaWTHo/8YCBYJ59830LTz/P4aQZK1sS0SneOgAvhsIl3zBu8r9RevNg5lHCHAuQ/" crossorigin="anonymous"></script>
 <script>
@@ -95,7 +94,12 @@
             .then(function(canvas) {
                 //document.body.appendChild(canvas);
                 let pdf = new jsPDF('l', 'mm', 'a4');
-                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, 190);
+                if(canvas.height*277/canvas.width > 190){
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, canvas.width*190/canvas.height, 190);
+                }
+                else{
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, canvas.height*277/canvas.width);
+                }
                 pdf.save(filename);
             });
     }

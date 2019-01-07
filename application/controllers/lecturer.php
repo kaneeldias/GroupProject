@@ -89,11 +89,11 @@ class lecturer extends CI_Controller {
 			$this->load->library('form_validation');
 			$this->load->database();
 
-			$this->form_validation->set_rules(
+			/*$this->form_validation->set_rules(
 				'id',
 				'ID',
 				'required|is_unique[academic_staff.id]'
-			);
+			);*/
 
 			$this->form_validation->set_rules(
 				'name',
@@ -117,14 +117,14 @@ class lecturer extends CI_Controller {
 				throw new Exception();
 			}
 
-			$id = $_POST['id'];
+			//$id = $_POST['id'];
 			$name = $_POST['name'];
 			$shortform = $_POST['shortform'];
-            $emailaddress=$_POST['emailaddress'];
+            $emailaddress = $_POST['emailaddress'];
 			//validation
 
 			$this->load->database();
-			$this->db->set("id", $id);
+			//$this->db->set("id", $id);
 			$this->db->set("name", $name);
 			$this->db->set("short_name", $shortform);
             $this->db->set("email_address",$emailaddress);
@@ -147,11 +147,11 @@ class lecturer extends CI_Controller {
             $this->load->library('form_validation');
             $this->load->database();
 
-            $this->form_validation->set_rules(
+            /*$this->form_validation->set_rules(
                 'id',
                 'ID',
                 'required'
-            );
+            );*/
 
             $this->form_validation->set_rules(
                 'name',
@@ -177,15 +177,15 @@ class lecturer extends CI_Controller {
 
             $id = $_GET['id'];
             //$this->validate_edit();
-            $id = $_POST['id'];
+            //$id = $_POST['id'];
             $name = $_POST['name'];
             $shortform = $_POST['shortform'];
             $emailaddress=$_POST['emailaddress'];
 
             $this->load->database();
-            $this->db->set("id", $id);
+            //$this->db->set("id", $id);
             $this->db->set("name", $name);
-            $this->db->set("email_address, $emailaddress");
+            $this->db->set("email_address", $emailaddress);
             $this->db->set("short_name", $shortform);
             $this->db->where("staff_id", $_GET['id']);
             $this->db->update("academic_staff");
