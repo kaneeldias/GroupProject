@@ -88,7 +88,12 @@
             .then(function(canvas) {
                 //document.body.appendChild(canvas);
                 let pdf = new jsPDF('l', 'mm', 'a4');
-                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, 190);
+                if(canvas.height*277/canvas.width > 190){
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, canvas.width*190/canvas.height, 190);
+                }
+                else{
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, canvas.height*277/canvas.width);
+                }
                 pdf.save(filename);
             });
     }

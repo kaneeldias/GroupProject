@@ -49,9 +49,9 @@
 </div>
 <table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
-        <td>ID</td>
+        <!--<td>ID</td>-->
         <td>Name</td>
-        <td>EmailAddress</td>
+        <td>Email Address</td>
 
         <td>ShortName</td>
         <td></td>
@@ -63,7 +63,7 @@
     </tr>
     <?php foreach($Lecturers as $Lec):?>
         <tr>
-            <td><?=$Lec->getId()?></td>
+            <!--<td><?=$Lec->getId()?></td>-->
             <td><?=$Lec->getName()?></td>
             <td><?=$Lec->getEmailAddress()?></td>
             <td><?=strtoupper($Lec->getShortForm())?></td>

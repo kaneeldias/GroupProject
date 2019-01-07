@@ -86,6 +86,7 @@ class Subject_model extends CI_Model{
         $this->db->select("name");
         $this->db->from("subject");
         $this->db->where("degree_id", $group->getDegreeId());
+        $this->db->where("year", $group->getYear());
         $this->db->where("semester", $semester);
         $query = $this->db->get();
 
