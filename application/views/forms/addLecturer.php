@@ -17,8 +17,8 @@
                 </div>
 
                 <div class="form_item col-md-8">
-                    <span class="form_label">EmailAddress</span>
-                    <input class="form_input" type="text" placeholder="EmailAddress" name="emailaddress"/>
+                    <span class="form_label">Email Address</span>
+                    <input class="form_input" type="text" placeholder="Email Address" name="emailaddress"/>
                 </div>
 
 
