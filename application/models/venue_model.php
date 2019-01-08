@@ -104,9 +104,9 @@ class Venue_model extends CI_Model{
         return true;
     }
 
-    public function checkConflictDate($venue_id, $date, $start_time){
+    public function checkConflictDate($venue_id, $date, $start_time, $semester){
         $day  = date('w', strtotime($date));
-        if(!$this->checkConflict($venue_id, $day, $start_time)) return false;
+        if(!$this->checkConflict($venue_id, $day, $start_time, $semester)) return false;
         return true;
     }
 

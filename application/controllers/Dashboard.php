@@ -50,13 +50,13 @@ class Dashboard extends CI_Controller {
             $data['day'] = $day = $day_number = date('N', strtotime(date('Y-m-d h:i:s')));
 
             $groups = [];
-            $groups['CS1'] = 5;
-            $groups['IS1'] = 11;
-            $groups['CS2'] = 7;
+            $groups['CS1'] = 7;
+            $groups['IS1'] = 9;
+            $groups['CS2'] = 8;
             $groups['IS2'] = 12;
-            $groups['CS3'] = 8;
+            $groups['CS3'] = 10;
             $groups['IS3'] = 13;
-            $groups['CS4'] = 9;
+            $groups['CS4'] = 11;
             $groups['IS4'] = 14;
             $data['groups'] = $groups;
 

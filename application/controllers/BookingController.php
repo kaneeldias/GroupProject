@@ -199,7 +199,7 @@ class BookingController extends CI_Controller {
             $this->load->model("Booking_model");
             $venue = $_POST['venue'];
             for($i = 0; $i < sizeof($dates); $i++){
-                if(!$this->Venue_model->checkConflictDate($venue, $dates[$i], $start_times[$i]) || !$this->Booking_model->checkConflict($venue, $dates[$i], $start_times[$i])){
+                if(!$this->Venue_model->checkConflictDate($venue, $dates[$i], $start_times[$i], 1) || !$this->Booking_model->checkConflict($venue, $dates[$i], $start_times[$i])){
                     $error = true;
                     $message = $this->Venue_model->getVenueById($venue)->getName()." is not available during this time slot.";
                     array_push($error_messages, $message);
