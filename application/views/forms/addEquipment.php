@@ -90,8 +90,8 @@
     <script>
         $('#successModal').modal('show');
     </script>
-<?php endif ?>
 
+<?php endif ?>
 
     <script src="<?=base_url('/assets/js/validation/add_equipment_validation.js')?>"></script>
 
