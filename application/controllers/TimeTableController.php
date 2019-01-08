@@ -137,7 +137,6 @@ class TimeTableController extends CI_Controller {
 
     }
 
-
     public function LecturerViewGenerate(){
         $this->config->load("globals");
         $data = [];
@@ -205,7 +204,6 @@ class TimeTableController extends CI_Controller {
 			$this->load->view("views/timetables/TimeTableLectureHallView", $data);
 			$this->load->view("templates/footer");
 	}
-
 
 	public function lecturerView(){
 		$this->config->load("globals");

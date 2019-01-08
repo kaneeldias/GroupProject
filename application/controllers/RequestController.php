@@ -59,6 +59,10 @@ class RequestController extends CI_Controller {
             $this->db->where("req_id", $_GET['id']);
             $this->db->update("equipment_requests");
 
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Request has been approved");
+            redirect(base_url("request"), 'location');
+
 
             $this->load->database();
             $this->db->select('user_id');
@@ -107,8 +111,9 @@ class RequestController extends CI_Controller {
             redirect(base_url("request")."?success=true", 'location');
         }
         catch(Exception $e){
-            redirect(base_url("request")."?error=true&id=$id", 'location');
-        }
+            $this->session->set_flashdata("error", true);
+            $this->session->set_flashdata("message", "An error occured");
+            redirect(base_url("request"), 'location');        }
     }
     public function reject(){
         $this->load->library("session");
@@ -125,8 +130,7 @@ class RequestController extends CI_Controller {
             $this->db->where("req_id", $_GET['id']);
             $this->db->update("equipment_requests");
 
-
-            $this->load->database();
+          $this->load->database();
             $this->db->select('user_id');
             $this->db->where("req_id",$_GET['id']);
             $this->db->from("equipment");
@@ -164,8 +168,9 @@ class RequestController extends CI_Controller {
 
         }
         catch(Exception $e){
-            redirect(base_url("request")."?error=true&id=$id", 'location');
-        }
+            $this->session->set_flashdata("error", true);
+            $this->session->set_flashdata("message", "An error occurred");
+            redirect(base_url("request"), 'location');        }
     }
 
 
