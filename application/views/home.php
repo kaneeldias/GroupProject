@@ -82,7 +82,6 @@
     </div>
 </section>
 <!-- end home -->
-
 <!-- start service -->
 <section id="service">
     <div class="container">
@@ -93,17 +92,17 @@
             <div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <i class="fa fa-laptop"></i>
                 <h4>Time Table Management</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+                <p></p>
             </div>
             <div class="col-md-4 active wow fadeIn" data-wow-offset="50" data-wow-delay="0.9s">
                 <i class="fa fa-cloud"></i>
                 <h4>Hall Booking</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+                <p></p>
             </div>
             <div class="col-md-4 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <i class="fa fa-cog"></i>
                 <h4>Equipment Reservation</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie. Adipiscing vitae vel quam proin eget mauris eget. Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget diam et laoreet phasellus ut nisi id leo molestie.</p>
+                <p></p>
             </div>
         </div>
     </div>
@@ -122,8 +121,7 @@
                     <img src="images/portfolio-img1.jpg" class="img-responsive" alt="portfolio img 1">
                     <div class="portfolio-overlay">
                         <h4>W 001</h4>
-                        <p>Lecture hall</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -132,68 +130,61 @@
                     <img src="images/portfolio-img2.jpg" class="img-responsive" alt="portfolio img 2">
                     <div class="portfolio-overlay">
                         <h4>W 002</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img3.jpg" class="img-responsive" alt="portfolio img 3">
+                    <img src="images/audi.jpg" class="img-responsive" alt="portfolio img 3">
                     <div class="portfolio-overlay">
                         <h4>V K Samaranayaka Audi</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img4.jpg" class="img-responsive" alt="portfolio img 4">
+                    <img src="images/miniaudi.jpg" class="img-responsive" alt="portfolio img 4">
                     <div class="portfolio-overlay">
-                        <h4>4th Floor</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <h4>Mini Auditorium</h4>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img3.jpg" class="img-responsive" alt="portfolio img 3">
+                    <img src="images/a.jpg" class="img-responsive" alt="portfolio img 3">
                     <div class="portfolio-overlay">
                         <h4>Lab A</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img4.jpg" class="img-responsive" alt="portfolio img 4">
+                    <img src="images/b.jpg" class="img-responsive" alt="portfolio img 4">
                     <div class="portfolio-overlay">
                         <h4>Lab B</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img1.jpg" class="img-responsive" alt="portfolio img 1">
+                    <img src="images/c.jpg" class="img-responsive" alt="portfolio img 1">
                     <div class="portfolio-overlay">
                         <h4>Lab C</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-12 wow fadeIn" data-wow-offset="50" data-wow-delay="0.6s">
                 <div class="portfolio-thumb">
-                    <img src="images/portfolio-img2.jpg" class="img-responsive" alt="portfolio img 2">
+                    <img src="images/d.jpg" class="img-responsive" alt="portfolio img 2">
                     <div class="portfolio-overlay">
                         <h4>Lab D</h4>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elitquisque tempus ac eget dia.</p>
-                        <a href="#" class="btn btn-default">DETAIL</a>
+                        <p></p>
                     </div>
                 </div>
             </div>
@@ -202,6 +193,7 @@
 </section>
 <!-- end portfolio -->
 <hr>
+<h4 style="align-content: center">© 2018. All Rights Reserved.Group 20</h4>
 
 </body>
 </html>

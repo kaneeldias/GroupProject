@@ -84,12 +84,13 @@ class Venue_model extends CI_Model{
         return $venues;
     }
 
-    public function checkConflict($venue_id, $day, $start_time){
+    public function checkConflict($venue_id, $day, $start_time, $semester){
         $this->load->database();
         $this->db->select("lecture_id");
         $this->db->from("lecture");
         $this->db->where("day", $day);
         $this->db->where("start_time", $start_time);
+        $this->db->where("semester", $semester);
         $query = $this->db->get();
         foreach($query->result() as $row){
             $this->db->select("hall_id");
@@ -103,9 +104,9 @@ class Venue_model extends CI_Model{
         return true;
     }
 
-    public function checkConflictDate($venue_id, $date, $start_time){
+    public function checkConflictDate($venue_id, $date, $start_time, $semester){
         $day  = date('w', strtotime($date));
-        if(!$this->checkConflict($venue_id, $day, $start_time)) return false;
+        if(!$this->checkConflict($venue_id, $day, $start_time, $semester)) return false;
         return true;
     }
 

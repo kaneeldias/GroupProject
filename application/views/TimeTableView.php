@@ -196,7 +196,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecture has been added to the time table</p>
+                    <p>L</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
@@ -211,7 +211,60 @@
     </script>
 <?php endif ?>
 
-<?php if(isset($_GET['error']) && $_GET['error'] == true):?>
+<?php if($this->session->flashdata('success') === true):?>
+        <div id="successModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><?=$this->session->flashdata('message')?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $('#successModal').modal('show');
+        </script>
+<?php endif ?>
+
+
+
+    <?php if($this->session->flashdata('success') === false):?>
+        <div id="successModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Error</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><?=$this->session->flashdata('message')?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $('#successModal').modal('show');
+        </script>
+    <?php endif ?>
+
+
+    <?php if(isset($_GET['error']) && $_GET['error'] == true):?>
     <div id="errorModal" class="modal fade" role="dialog">
         <div class="modal-dialog modal-md">
 
@@ -251,7 +304,12 @@
             .then(function(canvas) {
                 //document.body.appendChild(canvas);
                 let pdf = new jsPDF('l', 'mm', 'a4');
-                pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, 190);
+                if(canvas.height*277/canvas.width > 190){
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, canvas.width*190/canvas.height, 190);
+                }
+                else{
+                    pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 10, 10, 277, canvas.height*277/canvas.width);
+                }
                 pdf.save(filename);
             });
     }

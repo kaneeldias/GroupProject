@@ -6,10 +6,10 @@
         <form id="addLecturerForm" class="column form_content" method="POST" action="<?=base_url("lecturer/add/process")?> ">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-4">
+               <!--<div class="form_item col-md-4">
                     <span class="form_label">Lecturer ID</span>
                     <input class="form_input" type="text" placeholder="ID" name="id"/>
-                </div>
+                </div>-->
 
                 <div class="form_item col-md-8">
                     <span class="form_label">Name</span>
@@ -17,8 +17,8 @@
                 </div>
 
                 <div class="form_item col-md-8">
-                    <span class="form_label">EmailAddress</span>
-                    <input class="form_input" type="text" placeholder="EmailAddress" name="emailaddress"/>
+                    <span class="form_label">Email Address</span>
+                    <input class="form_input" type="text" placeholder="Email Address" name="emailaddress"/>
                 </div>
 
 

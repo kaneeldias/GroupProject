@@ -93,7 +93,7 @@ class Lecture extends CI_Controller {
 			$this->load->model("Venue_model");
 			foreach($_POST['venues'] as $venue){
 				for($i = 0; $i < sizeof($days); $i++){
-					if(!$this->Venue_model->checkConflict($venue, $days[$i], $start_times[$i])){
+					if(!$this->Venue_model->checkConflict($venue, $days[$i], $start_times[$i], $_POST['semester'])){
 						$error = true;
 						$message = $this->Venue_model->getVenueById($venue)->getName()." is not available during this time slot.";
 						array_push($error_messages, $message);
@@ -104,7 +104,7 @@ class Lecture extends CI_Controller {
 			$this->load->model("Staff_model");
 			foreach($_POST['staff'] as $staff){
 				for($i = 0; $i < sizeof($days); $i++){
-					if(!$this->Staff_model->checkConflict($staff, $days[$i], $start_times[$i])) {
+					if(!$this->Staff_model->checkConflict($staff, $days[$i], $start_times[$i], $_POST['semester'])) {
 						$warning = true;
 						$message = "Staff member " . $this->Staff_model->getStaffById($staff)->getName() . " has another lecture during this time slot.";
 						array_push($error_messages, $message);
@@ -114,8 +114,9 @@ class Lecture extends CI_Controller {
 
 			$this->load->model("Group_model");
 			for($i = 0; $i < sizeof($days); $i++){
-				if(!$this->Group_model->checkConflict($_POST['group'], $days[$i], $start_times[$i])){
+				if(!$this->Group_model->checkConflict($_POST['group'], $days[$i], $start_times[$i], $_POST['semester'])){
 					$error = true;
+                    echo $days[$i]  ."-".$start_times[$i]."<br>";
 					$message = "Student group " . $this->Group_model->getById($_POST['group'])->getName()." has another lecture during this time slot.";
 					array_push($error_messages, $message);
 				}
@@ -168,12 +169,16 @@ class Lecture extends CI_Controller {
 			$group = $_POST['group'];
 			$original_group = $_POST['original_group'];
 			$semester = $_POST['semester'];
-			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester&success=true", 'location');
+			$this->session->set_flashdata("success", true);
+			$this->session->set_flashdata("message", "Lecture has been added to the time table.");
+			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester", 'location');
 		}
 		catch(Exception $ex){
 			$original_group = $_POST['original_group'];
 			$semester = $_POST['semester'];
-			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester&error=true", 'location');
+			$this->session->set_flashdata("success", true);
+			$this->session->set_flashdata("message", "There was an error with your form.");
+			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester", 'location');
 		}
 
 

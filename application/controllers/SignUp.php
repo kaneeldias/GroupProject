@@ -78,7 +78,7 @@ class SignUp extends CI_Controller {
                 if($line[0] != "First Name") throw new Exception();
                 if($line[1] != "Last Name") throw new Exception();
                 if($line[2] != "Email") throw new Exception();
-                if($line[3] != "Type (admin, staff, student,outsider)") throw new Exception();
+                if($line[3] != "Type (admin, staff, student)") throw new Exception();
                 if($line[4] != "Password") throw new Exception();
 
                 $row = 0;
@@ -123,7 +123,7 @@ class SignUp extends CI_Controller {
                 }
                 else{
                     $this->session->set_flashdata('success', true);
-                    $this->session->set_flashdata('message', "$row users registered successfully");
+                    $this->session->set_flashdata('message', ($row-1)." users registered successfully");
                 }
                 redirect(base_url("signUp/bulk"),'location');
 
@@ -267,7 +267,7 @@ class SignUp extends CI_Controller {
             array(
                 'required',
                 function($type){
-                    return ($type == "admin" || $type == "staff" || $type == "student"||$type=="outsider");
+                    return ($type == "admin" || $type == "staff" || $type == "student" ||$type=="outsider");
                 }
             )
         );

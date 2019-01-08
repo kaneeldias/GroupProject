@@ -72,7 +72,9 @@
             <td>
                 <?=$results->getSetter1()->getName()?>
                 <br>
+                <?php if($results->getSetter2() != ""):?>
                 <?=$results->getSetter2()->getName()?>
+                <?php endif?>
             </td>
             <td><?=$results->getModerator()->getName()?></td>
             <td><a href="<?=base_url("rubrics/edit/?id=".$results->getId())?>"><button class="edit_button">Edit</button></a></td>

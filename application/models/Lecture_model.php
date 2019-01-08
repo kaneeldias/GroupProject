@@ -141,8 +141,7 @@ class Lecture_model extends CI_Model{
 
             $this->load->model("Group_model");
             $lecture['group'] = $this->Group_model->getById($group_id);
-
-            array_push($lectures[$row->day][$row->start_time], $lecture);
+            if($row->day >= 1 && $row->day <= 5) array_push($lectures[$row->day][$row->start_time], $lecture);
         }
 
         return $lectures;
@@ -285,6 +284,9 @@ class Lecture_model extends CI_Model{
         $this->load->database();
         $this->db->where("lecture_id", $lecture_id);
         $this->db->delete("lecture");
+        $this->load->library("session");
+        $this->session->set_flashdata("success", true);
+        $this->session->set_flashdata("message", "Lecture has been removed from the time table");
         redirect($_SERVER['HTTP_REFERER']);
 
     }

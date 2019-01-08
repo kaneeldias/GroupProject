@@ -7,15 +7,19 @@
         <form id="equipmentRequestForm" class="column form_content" method="POST" action="<?=base_url("equipment/request/process")?>">
 
             <div class="row col-md-12">
-                <div class="form_item col-md-8">
-                    <span class="form_label">Item</span>
-                    <select class="form_input" name="item">
-                        <option selected disabled>Item</option>
-                        <?php foreach($items as $item): ?>
-                            <option value="<?=$item->getName()?>"><?=$item->getName()?></option>
-                        <?php endforeach?>
-                    </select>
-                </div>
+                    <div class="form_item col-md-6">
+                        <span class="form_label">Type</span>
+                        <select  class="form_input" type="text" placeholder="Name" name="item">
+                            <option value="Laptop">Laptop</option>
+                            <option value="Fan">Fan</option>
+                            <option value="Converter">HDMI Converter</option>
+                            <option value="Microphone">Microphone</option>
+                            <option value="PortableMicrophone">Portable Microphone</option>
+                            <option value="Pointer">Pointer</option>
+                            <option value="Projector">Projector</option>
+                            <option value="Extension">Extension Cord</option>
+                        </select>
+                    </div>
             </div>
 
 
@@ -29,11 +33,11 @@
 
                 <div class="form_item col-md-3">
                     <span class="form_label">From</span>
-                    <select class="form_input" name="from">
-                        <option value="6">6:00</option>
-                        <option value="7">7:00</option>
-                        <option value="8">8:00</option>
-                        <option value="9">9:00</option>
+                    <select id="from" class="form_input" name="from">
+                        <option value="06">6:00</option>
+                        <option value="07">7:00</option>
+                        <option value="08">8:00</option>
+                        <option value="09">9:00</option>
                         <option value="10">10:00</option>
                         <option value="11">11:00</option>
                         <option value="12">12:00</option>
@@ -48,10 +52,10 @@
                 <div class="form_item col-md-3">
                     <span class="form_label">To</span>
                     <select class="form_input" name="to">
-                        <option value="6">6:00</option>
-                        <option value="7">7:00</option>
-                        <option value="8">8:00</option>
-                        <option value="9">9:00</option>
+                        <option value="06">6:00</option>
+                        <option value="07">7:00</option>
+                        <option value="08">8:00</option>
+                        <option value="09">9:00</option>
                         <option value="10">10:00</option>
                         <option value="11">11:00</option>
                         <option value="12">12:00</option>

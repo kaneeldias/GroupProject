@@ -49,8 +49,8 @@
         <td>Item</td>
         <td>From</td>
         <td>To</td>
-        <td>Status</td>
         <td>Requested By</td>
+        <td>Status</td>
 
         <td></td>
         <td></td>
@@ -62,11 +62,11 @@
             <td><?=$Item->getItem()?></td>
             <td><?=$Item->getFrom()?>:00</td>
             <td><?=$Item->getTo()?>:00</td>
-            <td><?=$Item->getRequestedBy()->getfname()?> <?=$Item->getRequestedBy()->getlname()?></td>
+            <td><?=$Item->getRequestedBy()->getFname()?> <?=$Item->getRequestedBy()->getLname()?></td>
             <td><?=$Item->getStatus()?></td>
 
-            <td><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button" >Approve</button></a></td>
-            <td><a href="<?=base_url("request/reject/?id=".$Item->getId())?>"><button class="delete_button" >Reject</button></a></td>        </tr>
+            <td><?php if($Item->getStatus() != "Approved"):?><a href="<?=base_url("request/approve/?id=".$Item->getId())?>"><button class="edit_button" >Approve</button></a><?php endif?></td>
+            <td><?php if($Item->getStatus() != "Rejected"):?><a href="<?=base_url("request/reject/?id=".$Item->getId())?>"><button class="delete_button" >Reject</button></a><?php endif?></td>        </tr>
     <?php endforeach?>
 </table>
 
