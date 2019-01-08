@@ -169,12 +169,16 @@ class Lecture extends CI_Controller {
 			$group = $_POST['group'];
 			$original_group = $_POST['original_group'];
 			$semester = $_POST['semester'];
-			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester&success=true", 'location');
+			$this->session->set_flashdata("success", true);
+			$this->session->set_flashdata("message", "Lecture has been added to the time table.");
+			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester", 'location');
 		}
 		catch(Exception $ex){
 			$original_group = $_POST['original_group'];
 			$semester = $_POST['semester'];
-			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester&error=true", 'location');
+			$this->session->set_flashdata("success", true);
+			$this->session->set_flashdata("message", "There was an error with your form.");
+			redirect(base_url("time-table/group")."?group=$original_group&semester=$semester", 'location');
 		}
 
 

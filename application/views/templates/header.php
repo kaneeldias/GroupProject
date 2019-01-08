@@ -115,3 +115,53 @@
 <?php endif?>
 
 <div class="column" id="content" style="margin-top:70px; margin-bottom:50px; min-height:100%; padding-left:20px; padding-right:20px;">
+
+    <?php if($this->session->flashdata("success") === true):?>
+    <div id="successModal" class="modal fade" role="dialog">
+        <div class="modal-dialog modal-md">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Success</h4>
+                </div>
+                <div class="modal-body">
+                    <p><?=$this->session->flashdata("message")?></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button"  data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        $('#successModal').modal('show');
+    </script>
+<?php endif ?>
+
+    <?php if($this->session->flashdata("error") === true):?>
+        <div id="successModal" class="modal fade" role="dialog">
+            <div class="modal-dialog modal-md">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Success</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p><?=$this->session->flashdata("message")?></p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button"  data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $('#successModal').modal('show');
+        </script>
+    <?php endif ?>
