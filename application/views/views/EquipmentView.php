@@ -49,7 +49,7 @@
 <table id="lecturersTable" class="custom_table col-md-12">
     <tr class="header">
         <td>Code</td>
-        <td>Name</td>
+        <td>Type</td>
         <td>Description</td>
         <td></td>
         <td></td>

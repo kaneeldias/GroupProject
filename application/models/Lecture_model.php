@@ -284,6 +284,9 @@ class Lecture_model extends CI_Model{
         $this->load->database();
         $this->db->where("lecture_id", $lecture_id);
         $this->db->delete("lecture");
+        $this->load->library("session");
+        $this->session->set_flashdata("success", true);
+        $this->session->set_flashdata("message", "Lecture has been removed from the time table");
         redirect($_SERVER['HTTP_REFERER']);
 
     }
