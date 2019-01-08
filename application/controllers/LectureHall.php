@@ -18,7 +18,7 @@ class LectureHall extends CI_Controller {
 		$data['current_semester'] = $this->config->item("current_semester");
 
 		$path['path'] = array(
-			"Dashboard" => base_url("dashboard"), 
+			"Dashboard" => base_url("dashboard"),
 			"Lecture Halls" => base_url("lecture-halls")
 		);
 
