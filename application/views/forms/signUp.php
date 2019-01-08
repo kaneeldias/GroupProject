@@ -40,7 +40,6 @@
                         <option value="admin">Admin</option>
                         <option value="staff">Staff</option>
                         <option value="student">Student</option>
-                        <option value="outsider">Outsider</option>
                     </select>
                 </div>
             </div>
