@@ -12,8 +12,17 @@
                 </div>
 
                 <div class="form_item col-md-6">
-                    <span class="form_label">Name</span>
-                    <input  class="form_input" type="text" placeholder="Name" name="name"/>
+                    <span class="form_label">Type</span>
+                    <select  class="form_input" type="text" placeholder="Name" name="name">
+                        <option value="Laptop">Laptop</option>
+                        <option value="Fan">Fan</option>
+                        <option value="Converter">HDMI Converter</option>
+                        <option value="Microphone">Microphone</option>
+                        <option value="PortableMicrophone">Portable Microphone</option>
+                        <option value="Pointer">Pointer</option>
+                        <option value="Projector">Projector</option>
+                        <option value="Extension">Extension Cord</option>
+                    </select>
                 </div>
 
                 <div class="form_item col-md-3">

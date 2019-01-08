@@ -227,6 +227,9 @@ class Equipment extends CI_Controller {
             );
 
             if($this->form_validation->run() == false){
+
+                echo validation_errors();
+                exit();
                 throw new Exception();
             }
 
@@ -240,10 +243,7 @@ class Equipment extends CI_Controller {
             if($from >= $to) throw new Exception();
 
             $this->load->model("Request_model");
-            /*if(!$this->Request_model->checkAvaialability($item, $from, $to)){
-                exit("sdf");
-                return;
-            };*/
+
 
             $this->load->database();
             $this->db->set("user_id",$user_name);
