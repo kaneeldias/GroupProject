@@ -44,11 +44,7 @@ class BookingController extends CI_Controller {
 
     public function process_select(){
         $this->load->library("session");
-        if(!$this->session->userdata("logged")){
-            echo "unauthorized access";
-            return;
-        }
-
+        
         try{
             $this->load->library('form_validation');
             $this->load->database();
@@ -83,17 +79,23 @@ class BookingController extends CI_Controller {
         $hall = $_GET['venue'];
         $week = $_GET['week'];
         $date = new DateTime($week);
+
+        //get the first day of the week (monday)
         while($date->format('D') != "Mon"){
             $date->modify("-1 day");
         }
+
+        //get the dates of the week (Mon - sun)
         $data['dates'] = [];
         for($i = 1; $i <= 7; $i++){
             array_push($data['dates'], $date->format("Y-m-d"));
             $date->modify('+1 day');
         }
-        $booked = [];
-        $bookedBooked = [];
 
+        $booked = []; //booked in the time table array
+        $bookedBooked = []; //booked separately
+
+        //Mark all times as available
         foreach($data['dates'] as $date){
             for($i = 8; $i <= 17; $i++){
                 $booked[$date][$i] = false;
@@ -103,23 +105,30 @@ class BookingController extends CI_Controller {
         $this->load->model("Lecture_model");
         $this->load->model("Constant_model");
         $semester = $this->Constant_model->getCurrentSemester();
+
+        //Get all lectures for that venue for the current semester, and mark that slot as taken for a lecture
         $tt = $this->Lecture_model->getLecturesForVenue($hall, $semester);
         foreach($tt as $t){
             $booked[$data['dates'][$t->getDay()-1]][$t->getStartTime()] = true;
         }
 
+        //Get all the bookings for that venue and mark as booked
         $this->load->model("Booking_model");
         foreach($this->Booking_model->getBookings($hall, $week) as $booking){
             $bookedBooked[$booking->getDate()][$booking->getStartTime()] = true;
         }
-        $data['bookedBooked'] = $bookedBooked;
 
+        $data['bookedBooked'] = $bookedBooked;
         $data['booked'] = $booked;
+
+        //Load information about the venue
         $this->load->model("Venue_model");
         $data['venue'] = $this->Venue_model->getVenueById($hall);
 
         $data['formData']['venue'] = $data['venue'];
         $data['formData']['week'] = $week;
+
+        //Get list of all staff for approved by dropdown
         $this->load->model("Staff_model");
         $data['formData']['lecturers'] = $this->Staff_model->getAllStaff();
 
