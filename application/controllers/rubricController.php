@@ -136,7 +136,7 @@ class rubricController extends CI_Controller {
             $code = $_POST['code'];
             $setter1 = $_POST['setter1'];
             if(!isset($_POST['setter2'])){
-                $setter2 = "";
+                $setter2 = NULL;
             }
             else{
                 $setter2 = $_POST['setter2'];
@@ -156,7 +156,7 @@ class rubricController extends CI_Controller {
             $this->db->set("setter2",$setter2);
             $this->db->set("moderator",$moderator);
 
-            $this->db->insert(rubric);
+            $this->db->insert("rubric");
 
             redirect(base_url("rubrics")."?success=true", 'location');
 
