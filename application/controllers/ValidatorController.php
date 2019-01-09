@@ -264,4 +264,55 @@ class ValidatorController extends CI_Controller {
         echo json_encode(true);
 
     }
+
+    public function Guest(){
+        if(!isset($_GET['code'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+        $this->load->database();
+        $this->db->where("code", $_GET['code']);
+        $query = $this->db->get('guest');
+        if ($query->num_rows() > 0){
+            echo json_encode("Code has already been taken.");
+            return;
+        }
+        echo json_encode(true);
+
+    }
+
+    public function GuestNIC(){
+        $nic = $_GET['nic'];
+        if(!isset($_GET['nic'])) {
+            echo json_encode("Invalid");
+            return;
+        }
+        $this->load->database();
+        $this->db->where("nic", $_GET['nic']);
+        $query = $this->db->get('guest');
+        if ($query->num_rows() > 0){
+            echo json_encode("NIC has already been taken.");
+            return;
+        }
+
+        if(strlen($nic)!=10){
+            echo json_encode("Wrong input length");
+            exit();
+        }
+        for($a=0;$a<9;$a++){
+            if(!is_numeric($nic[$a])){
+                echo json_encode("Wrong input");
+                exit();
+            }
+        }
+        if($nic[9] == "v" && $nic[9] =="V"){
+            echo json_encode("Wrong input character");
+            exit();
+
+        }
+        echo json_encode(true);
+
+
+
+    }
 }

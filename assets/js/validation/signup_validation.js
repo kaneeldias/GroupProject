@@ -16,7 +16,8 @@
             },
             password:{
                 required:true,
-                minlength:8
+                minlength:8,
+                maxlength:10,
             },
             cpassword:{
                 equalTo: "#password"
