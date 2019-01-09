@@ -179,3 +179,8 @@ $route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
 $route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";
 $route['validate/rubrics-exists'] = "ValidatorController/rubricsExists";
 $route['validate/edit-rubrics-exists'] = "ValidatorController/editRubricsExists";
+
+$route['guestLecturers'] = "GuestController/index";
+$route['guestLecturers/add'] = "GuestController/add";
+$route['guestLecturers/add/process'] = "GuestController/add_process";
+$route['guestLecturers/edit'] = "GuestController/edit";

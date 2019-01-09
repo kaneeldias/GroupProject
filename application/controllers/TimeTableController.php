@@ -6,10 +6,11 @@ class TimeTableController extends CI_Controller {
 	public function index(){
 		$this->load->library('session');
 		$this->load->view("templates/header");
-		$this->load->view("TimeTableView", $data);
+		$this->load->view("TimeTableView");
 		$this->load->view("templates/footer");
 	}
 
+	//view a time table from the perspective of a student group
 	public function GroupView(){
 		try{
 			$this->load->library('session');
