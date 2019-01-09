@@ -1,5 +1,5 @@
 $("#addRubricsForm").validate({
-    /*rules:{
+     rules:{
         code:{
             required: true,
             remote: "http://127.0.0.1/GroupProject/validate/rubrics-exists"
@@ -41,5 +41,5 @@ $("#addRubricsForm").validate({
         examRubrics:{
             required:"Enter moderator"
         }
-    }*/
+    }
 });

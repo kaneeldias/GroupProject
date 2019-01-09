@@ -264,4 +264,34 @@ class ValidatorController extends CI_Controller {
         echo json_encode(true);
 
     }
+
+
+    public function validNic(){
+
+        $nic=($_GET['nic']);
+        if(!isset($nic)) {
+            echo json_encode("Invalid1");
+            return;
+        }
+
+        if(strlen($nic)!=10){
+            echo json_encode("Invalid2");
+            return;
+        }
+
+        for($a=0;$a<9;$a++){
+            if(!is_numeric($nic[$a])){
+                echo json_encode("Invalid3");
+                return;
+            }
+        }
+
+        if($nic[9]!="v" && $nic[9]!="V"){
+            echo json_encode("Invalid4");
+            return;
+        }
+
+        echo json_encode(true);
+
+    }
 }

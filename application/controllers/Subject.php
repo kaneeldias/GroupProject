@@ -1,8 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//create Subject Controller by extending codeignitor Controller
 class Subject extends CI_Controller {
 
+    //load the subject data and load the subject View with the relevant data
     public function index(){
         $this->load->library('session');
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -26,6 +28,7 @@ class Subject extends CI_Controller {
 
         $data['degree_id'] = $this->degree_model->getName();
 
+
         $path['path'] = array(
             "Dashboard" => base_url("dashboard"),
             "Subjects" => base_url("subjects")
@@ -36,6 +39,8 @@ class Subject extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+
+    //load form to add subjects
 	public function add(){
         $this->load->library('session');
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -59,6 +64,7 @@ class Subject extends CI_Controller {
 	}
 
 
+    //load form to edit subjects
     public function edit(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -84,6 +90,7 @@ class Subject extends CI_Controller {
     }
 
 
+    //delete a subject
     public function delete(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -101,6 +108,7 @@ class Subject extends CI_Controller {
         }
     }
 
+    //back end validation
     private function  validate(){
         $this->load->library('form_validation');
         $this->load->database();
@@ -143,6 +151,7 @@ class Subject extends CI_Controller {
 
     }
 
+    //Validate and insert new subjects to the database
     public function process_add(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -176,6 +185,7 @@ class Subject extends CI_Controller {
 
     }
 
+    //Validate and update existing subjects to the database
     public function process_edit(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){

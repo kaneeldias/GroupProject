@@ -156,14 +156,14 @@ $route['calendar/refresh'] = "CalendarController/refresh";
 $route['calendar/remove'] = "CalendarController/remove";
 $route['calendar/setAccountLecturer'] = "CalendarController/setAccountLecturer";
 
-$route['rubrics'] = "rubricController/index";
-$route['rubrics/add'] = "rubricController/add";
-$route['rubrics/add/process'] = "rubricController/process_add";
-$route['rubrics/edit'] = "rubricController/edit";
-$route['rubrics/edit/process'] = "rubricController/process_edit";
-$route['rubrics/delete'] = 'rubricController/delete';
-$route['rubrics/generate'] = "rubricController/generate";
-$route['rubrics/generate/process'] = "rubricController/process_generate";
+$route['rubrics'] = "Rubric/index";
+$route['rubrics/add'] = "Rubric/add";
+$route['rubrics/add/process'] = "Rubric/process_add";
+$route['rubrics/edit'] = "Rubric/edit";
+$route['rubrics/edit/process'] = "Rubric/process_edit";
+$route['rubrics/delete'] = 'Rubric/delete';
+$route['rubrics/generate'] = "Rubric/generate";
+$route['rubrics/generate/process'] = "Rubric/process_generate";
 
 
 $route['validate/email-exists'] = "ValidatorController/emailExists";
@@ -179,3 +179,13 @@ $route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
 $route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";
 $route['validate/rubrics-exists'] = "ValidatorController/rubricsExists";
 $route['validate/edit-rubrics-exists'] = "ValidatorController/editRubricsExists";
+
+$route['guestLecturers'] = "GuestController/index";
+$route['guestLecturers/add'] = "GuestController/add";
+$route['guestLecturers/add/process'] = "GuestController/addProcess";
+$route['guestLecturers/edit'] = "GuestController/edit";
+$route['guestLecturers/edit/process'] = "GuestController/editProcess";
+$route['guestLecturers/delete'] = "GuestController/delete";
+$route['validate/valid-nic'] = "ValidatorController/validNic";
+
+

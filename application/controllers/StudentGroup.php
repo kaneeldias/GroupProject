@@ -15,10 +15,13 @@ class StudentGroup extends CI_Controller {
         $this->load->model("group_model");
         $data['groups'] = [];
         $this->load->model("degree_model");
+        //Load all student groups in the database
         foreach($this->group_model->getAllGroups() as $group){
             $g = [];
             $g['group'] = $group;
+            //get degree id from the student-group table and load the name of the degree from the degree table
             $g['degree'] = $this->degree_model->getById($group->getDegreeId());
+            //get parent id of the from the student-group table and load the name of the group from the student_group table
             $g['parent'] = $this->group_model->getById($group->getParentGroup());
             array_push($data['groups'], $g);
         }

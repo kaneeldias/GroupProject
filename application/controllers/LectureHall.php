@@ -121,7 +121,9 @@ class LectureHall extends CI_Controller {
 			echo validation_errors();
 			exit();
 			throw new Exception();
-		}
+		};
+
+
 	}
 
 	private function validate_add(){

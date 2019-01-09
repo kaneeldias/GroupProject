@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class rubricController extends CI_Controller {
+//create class Rubrics extending rubric Controller
+class Rubric extends CI_Controller {
 
     public function index(){
         $this->load->library('session');
@@ -12,18 +13,23 @@ class rubricController extends CI_Controller {
             return;
         }
         $data = [];
-        //$this->load->model("Subject_model");
-       // $this->load->model("degree_model");
+
         $this->load->model("rubric_model");
 
         $rubrics = $this->rubric_model->getAllRubrics();
         $data['array'] = $rubrics;
 
-        $this->load->view('templates/header');
+        $path['path'] = array(
+            "Dashboard" => base_url("dashboard"),
+            "Rubrics" => base_url("rubrics")
+        );
+
+        $this->load->view('templates/header', $path);
         $this->load->view('views/rubricView', $data);
         $this->load->view('templates/footer');
     }
 
+    //view form to add new rubric details about a subject
     public function add(){
         $this->load->library('session');
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -44,6 +50,7 @@ class rubricController extends CI_Controller {
     }
 
 
+    //view form edit rubrics of a subject
     public function edit(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -65,6 +72,7 @@ class rubricController extends CI_Controller {
     }
 
 
+    //delete currently added rubrics subject
     public function delete(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -82,6 +90,7 @@ class rubricController extends CI_Controller {
         }
     }
 
+    //back end validation of the rubrics
     private function  validate(){
         $this->load->library('form_validation');
         $this->load->database();
@@ -129,6 +138,7 @@ class rubricController extends CI_Controller {
 
     }
 
+    //add new rubrics to the database
     public function process_add(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -171,6 +181,7 @@ class rubricController extends CI_Controller {
 
     }
 
+    //update edited details of the rubrics
     public function process_edit(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -208,6 +219,8 @@ class rubricController extends CI_Controller {
         }
 
     }
+
+    //display the form to generate rubrics list
     public function generate(){
         $this->load->library('session');
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -226,6 +239,7 @@ class rubricController extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    //generate rubrics list of the subjects for a given course for a given year and a semester
     public function process_generate(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
