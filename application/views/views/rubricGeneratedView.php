@@ -50,7 +50,9 @@
             <td>
                 <?=$results->getSetter1()->getName()?>
                 <br>
+                <?php if($results->getSetter2() != null):?>
                 <?=$results->getSetter2()->getName()?>
+                <?php endif?>
             </td>
             <td><?=$results->getModerator()->getName()?></td>
             <?php else:?>
@@ -83,7 +85,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Subject has been added successfully.</p>
+                    <p>Rubrics has been generated successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>

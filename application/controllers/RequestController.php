@@ -59,11 +59,6 @@ class RequestController extends CI_Controller {
             $this->db->where("req_id", $_GET['id']);
             $this->db->update("equipment_requests");
 
-            $this->session->set_flashdata("success", true);
-            $this->session->set_flashdata("message", "Request has been approved");
-            redirect(base_url("request"), 'location');
-
-
             $this->load->database();
             $this->db->select('user_id');
             $this->db->where("req_id",$_GET['id']);
@@ -106,9 +101,11 @@ class RequestController extends CI_Controller {
                 ");
 
             $this->email->send();
-            echo $this->email->print_debugger();
+            //echo $this->email->print_debugger();
 
-            redirect(base_url("request")."?success=true", 'location');
+            $this->session->set_flashdata("success", true);
+            $this->session->set_flashdata("message", "Request has been approved");
+            redirect(base_url("request"), 'location');
         }
         catch(Exception $e){
             $this->session->set_flashdata("error", true);

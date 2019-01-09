@@ -93,33 +93,38 @@ class rubricController extends CI_Controller {
         );
 
         $this->form_validation->set_rules(
-            'name',
-            'Name',
-            'required'
-        );
-
-        $this->form_validation->set_rules(
-            'degree',
-            'Degree',
+            'setter1',
+            'Setter1',
             'required|integer'
         );
 
         $this->form_validation->set_rules(
-            'year',
-            'Year',
-            'required|integer|in_list[1,2,3,4]'
+            'moderator',
+            'Moderator',
+            'required|integer'
         );
 
         $this->form_validation->set_rules(
-            'semester',
-            'Semester',
-            'required|integer|in_list[1,2]'
+            'semExam',
+            'SemExam',
+            'required|integer|in_list[0,10,20,30,40,50,60,70,80,90,100]'
         );
-            echo validation_errors();
 
-            if($this->form_validation->run() == false){
+        $this->form_validation->set_rules(
+            'assesment',
+            'Assesment',
+            'required|integer|in_list[0,10,20,30,40,50,60,70,80,90,100]'
+        );
+        $this->form_validation->set_rules(
+            'examRubrics',
+            'ExamRubrics',
+            'required'
+        );
+
+        if($this->form_validation->run() == false){
+            echo validation_errors();
             exit();
-            //throw new Exception();
+        //throw new Exception();
         }
 
     }
@@ -131,8 +136,7 @@ class rubricController extends CI_Controller {
             return;
         }
         try{
-
-            //$this->validate();
+            $this->validate();
             $code = $_POST['code'];
             $setter1 = $_POST['setter1'];
             if(!isset($_POST['setter2'])){

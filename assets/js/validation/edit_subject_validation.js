@@ -1,4 +1,4 @@
-$("#editRubricsForm").validate({
+$("#editSubjectForm").validate({
     rules:{
         code:{
             required: true,
