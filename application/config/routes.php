@@ -179,3 +179,6 @@ $route['validate/group-name-exists'] = "ValidatorController/groupNameExists";
 $route['validate/edit-group-name-exists'] = "ValidatorController/editGroupNameExists";
 $route['validate/rubrics-exists'] = "ValidatorController/rubricsExists";
 $route['validate/edit-rubrics-exists'] = "ValidatorController/editRubricsExists";
+
+
+
