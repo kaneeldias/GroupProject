@@ -72,6 +72,7 @@
     </script>
 <?php endif ?>
 
+<!--Used these 2 libraries to genereta the tree structure of the student groups-->
 <script src="<?=base_url("assets/libraries/treant/vendor/raphael.js")?>"></script>
 <script src="<?=base_url("assets/libraries/treant/Treant.js")?>"></script>
 <link rel="stylesheet" href="<?=base_url("assets/libraries/treant/Treant.css")?>">
@@ -163,28 +164,36 @@
             }
         },
         <?php foreach($groups as $group):?>
-p<?=$group['group']->getGroupId()?> = {
-    <?php if($group['parent']->getGroupId() != ""):?>
-        parent: p<?=$group['parent']->getGroupId()?>,
-    <?php endif?>
-        text:{
+            //because group id is an int a variable name cant start with an int we add a character at the begining
+            p<?=$group['group']->getGroupId()?> = {
+                <?php if($group['parent']->getGroupId() != ""):?>
+                    parent: p<?=$group['parent']->getGroupId()?>,
+                <?php endif?>
+
+            //things that should be printed inside a node
+            text:{
                 name:"<?=$group['group']->getName()?>",
                 degree:"<?=$group['degree']->getName()?>",
                 <?php if($group['group']->getYear() != ""):?>year:"Year <?=$group['group']->getYear()?>",<?php endif?>
+                //edit button
                 edit:{
                     val:"Edit",
                     href: "<?=base_url("student-groups/edit/?id=".$group['group']->getGroupId())?>"
                 },
+                //delete button
                 delete:{
                     val:"Delete",
                     href: "<?=base_url("student-groups/delete/?id=".$group['group']->getGroupId())?>"
                 },
         }
         },
+
         <?php endforeach?>
+
+        //can't end with a comma so we add an extra node at the end
             abc = {
                 text:{
-                    name:"LOL"
+                    name:""
                 }
             }
     chart_config = [

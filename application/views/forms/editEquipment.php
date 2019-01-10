@@ -83,7 +83,7 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
-                    <p>Lecturer Details has been edited successfully.</p>
+                    <p>Equipment has been edited successfully.</p>
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>
