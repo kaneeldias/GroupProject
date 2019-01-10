@@ -8,10 +8,12 @@
               <input type="hidden" id="id_field" value="<?=$id?>"/>
 
 
+              <div class="row col-md-12">
                   <div class="form_item col-md-8">
-                      <span class="form_label">Group Name</span>
-                      <input  class="form_input" type="text" placeholder="Group Name" name="groupname" value="<?=$group->getName()?>"/>
-                  </div class="form_item">
+                          <span class="form_label">Group Name</span>
+                          <input  class="form_input" type="text" placeholder="Group Name" name="groupname" value="<?=$group->getName()?>"/>
+                      </div class="form_item">
+              </div>
 
 
                 <div class="row col-md-12">
