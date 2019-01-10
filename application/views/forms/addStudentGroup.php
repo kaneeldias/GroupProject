@@ -11,10 +11,12 @@
         <form class="column form_content" method="POST" action=<?=base_url("student-group/add/process")?>">
          -->
 
-            <div class="form_item col-md-6">
-                <span class="form_label">Group Name</span>
-                <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
+            <div class="row col-md-12">
+                <div class="form_item col-md-6">
+                    <span class="form_label">Group Name</span>
+                    <input  class="form_input"name="groupname" type="text" placeholder="Group Name"/>
 
+                </div>
             </div>
 
             <div class="row col-md-12">

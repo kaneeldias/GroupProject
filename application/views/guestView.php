@@ -7,8 +7,12 @@
     <div class="flex-grow-1"></div>
 
     <div class="control_panel_actions">
+<<<<<<< HEAD
         <a href="<?=base_url("guestLecturers/add")?>"><button>Add Lecturers</button></a>
 
+=======
+            <a href="<?=base_url("guestLecturers/add")?>"><button>Add Guest Lecturer</button></a>
+>>>>>>> master
     </div>
 
     <style>
@@ -47,27 +51,10 @@
     </style>
 </div>
 
+<<<<<<< HEAD
 
 <table id="guestLecturersTable" class="custom_table col-md-12">
-    <tr class="header">
-        <td>Code</td>
-        <td>Name</td>
-        <td>Subject</td>
-        <td></td>
-        <td></td>
-    </tr>
-    <?php foreach($array as $a):?>
-        <tr>
-            <td><?=$a['code']?></td>
-            <td><?=$a['name']?></td>
-            <td><?=$a['subject']?></td>
-
-            <td><a href="<?=base_url("guestLecturers/edit/?id=".$a['id'])?>"><button class="edit_button">Edit</button></a></td>
-            <td><a href="<?=base_url("guestLecturers/delete/?id=".$a['id'])?>"><button class="delete_button">Delete</button></a></td>
-        </tr>
-    <?php endforeach?>
-</table>
-
+=======
 <style>
     td{
         border-width:1px;
@@ -77,6 +64,53 @@
     }
 </style>
 
+<table id="lectureHallsTable" class="custom_table col-md-12">
+>>>>>>> master
+    <tr class="header">
+        <td>Code</td>
+        <td>Name</td>
+        <td>Subject</td>
+        <td></td>
+<<<<<<< HEAD
+        <td></td>
+=======
+>>>>>>> master
+    </tr>
+    <?php foreach($array as $a):?>
+        <tr>
+            <td><?=$a['code']?></td>
+            <td><?=$a['name']?></td>
+            <td><?=$a['subject']?></td>
+<<<<<<< HEAD
+
+            <td><a href="<?=base_url("guestLecturers/edit/?id=".$a['id'])?>"><button class="edit_button">Edit</button></a></td>
+            <td><a href="<?=base_url("guestLecturers/delete/?id=".$a['id'])?>"><button class="delete_button">Delete</button></a></td>
+=======
+            <td><a href="<?=base_url("guestLecturers/edit/?id=".$a['id'])?>"><button class="edit_button">Edit</button></a></td>
+>>>>>>> master
+        </tr>
+    <?php endforeach?>
+</table>
+
+<<<<<<< HEAD
+<style>
+    td{
+        border-width:1px;
+        border-style:solid;
+        border-color:black;
+        padding:10px;
+    }
+</style>
+
+=======
+
+<script>
+    $(document).ready(function () {
+        $('#lectureHallsTable').DataTable();
+        //$('.dataTables_length').addClass('bs-select');
+    });
+</script>
+>>>>>>> master
 
 <?php if(isset($_GET['success']) && $_GET['success'] == true):?>
     <div id="successModal" class="modal fade" role="dialog">
@@ -88,7 +122,11 @@
                     <h4 class="modal-title">Success</h4>
                 </div>
                 <div class="modal-body">
+<<<<<<< HEAD
                     <p>Subject has been added successfully.</p>
+=======
+                    <p>Lecture Hall has been added successfully.</p>
+>>>>>>> master
                 </div>
                 <div class="modal-footer">
                     <button type="button"  data-dismiss="modal">Close</button>

@@ -3,8 +3,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class lecturer extends CI_Controller {
 
+    //Loads all the staff members in the database and displays them
 	public function index(){
 		$this->load->library('session');
+
+        //Check if user is logged in
         if(!$this->session->userdata("logged")){
             $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
@@ -26,9 +29,12 @@ class lecturer extends CI_Controller {
 		$this->load->view('templates/footer');
 	}
 
+    //Form to add a new lecturer
     public function add()
     {
         $this->load->library("session");
+
+        //Check is user is logged in as an admin
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
             $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
@@ -41,28 +47,39 @@ class lecturer extends CI_Controller {
             "Add Lecturer" => base_url("lecturer/add")
         );
 
-        $this->load->view("templates/header", $path);	        $this->load->view("forms/addLecturer");
+        $this->load->view("templates/header", $path);
+        $this->load->view("forms/addLecturer");
         $this->load->view("templates/footer");
     }
 
+    //Loads form to edit a lecturer
     public function edit(){
         $this->load->library("session");
+
+        //Check if user is logged in as an admin
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
             $this->load->view("templates/header");
             $this->load->view("errors/unauthorized_access");
             $this->load->view("templates/footer");
             return;
         }
+
         $data['id'] = $_GET['id'];
+
+        //Get details of lecturer
         $this->load->model("Lecturer_model");
         $data['Lec'] = $this->Lecturer_model->getLecturersById($data['id']);
+
         $this->load->view("templates/header");
         $this->load->view("forms/editLecturer", $data);
         $this->load->view("templates/footer");
     }
 
+    //Delete a lecturer
     public function delete(){
         $this->load->library("session");
+
+        //Check if user is logged in as an admin
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
             echo "unauthorized access";
             return;
@@ -78,6 +95,7 @@ class lecturer extends CI_Controller {
         }
     }
 
+    //Validate and insert a lecturer to the database
 	public function process_add(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
@@ -137,6 +155,8 @@ class lecturer extends CI_Controller {
 		}
 
 	}
+
+    //validate and update a lecturer in the database
     public function process_edit(){
         $this->load->library("session");
         if(!$this->session->userdata("logged") || $this->session->userdata("type") != "admin"){
