@@ -43,8 +43,10 @@
                         <span class="form_label">Parent Group</span>
                         <select class="form_input" name="parentgroup">
                             <option value="" disabled>Group</option>
-                            <?php foreach($groups as $group): ?>
-                                <option value="<?=$group->getGroupID()?>"><?= $group->getName()?></option>
+                            <?php foreach($groups as $g): ?>
+                                <option <?php if($g->getGroupID()==$group->getParentGroup()):?>selected<?php endif?>
+                                value="<?=$g->getGroupID()?>"><?= $g->getName()?>
+                                </option>
                             <?php endforeach ?>
                         </select>
                     </div>

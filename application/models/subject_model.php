@@ -61,6 +61,7 @@ class Subject_model extends CI_Model{
         $this->db->select("degree_id");
         $this->db->select("year");
         $this->db->select("semester");
+        //$this->db->order_by("semester","asc");
         $this->db->from("subject");
         $query = $this->db->get();
         foreach ($query->result() as $row) {

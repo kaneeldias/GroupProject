@@ -38,6 +38,7 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Sem.Exam Perecentage</span>
+                    <!--automatically make sure total of exam and assesment marks are 100-->
                     <select id="semP" class="form_input" name="semExam" onchange="autoChange()">
                         <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
@@ -64,6 +65,7 @@
             <div class="row col-md-12">
                 <div class="form_item col-md-4">
                     <span class="form_label">Assesment Perecentage</span>
+                    <!--automatically make sure total of exam and assesment marks are 100-->
                     <select id="assP" class="form_input" name="assesment" onchange="autoChange2()">
                         <option selected disabled></option>
                         <?php for($i = 0; $i<=10; $i++):?>
@@ -161,6 +163,7 @@
 
 <script src="<?=base_url('/assets/js/validation/add_rubrics_validation.js')?>"></script>
 
+//automatically make sure total of exam and assesment marks are 100
 <style>
     label.error{
         color:red;

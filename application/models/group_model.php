@@ -25,6 +25,7 @@ class Group_model extends CI_Model{
         $this->db->select("name");
         $this->db->select("degree_id");
         $this->db->select("year");
+        $this->db->select("parent_group");
         $this->db->from("student_group");
         $this->db->where("group_id", $group_id);
         $query = $this->db->get();
@@ -33,6 +34,7 @@ class Group_model extends CI_Model{
             $group->setName($row->name);
             $group->setYear($row->year);
             $group->setDegreeId($row->degree_id);
+            $group->setParentId($row->parent_group);
             break;
         }
 
@@ -163,7 +165,6 @@ class Group_model extends CI_Model{
 
         foreach($query->result() as $row){
             return $row->parent_group;
-
         }
 
 
